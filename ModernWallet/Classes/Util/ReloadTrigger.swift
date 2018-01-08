@@ -15,6 +15,10 @@ class ReloadTrigger {
     
     private let trigger: PublishSubject<Void>
     
+    func triggerNowAndWith(interval: RxTimeInterval) -> Observable<Void> {
+        return Observable.merge([trigger.asObservable(), Observable.just(Void()), Observable.interval(interval)])
+    }
+    
     func trigger(interval: RxTimeInterval) -> Observable<Void> {
         return Observable.merge([trigger.asObservable(), Observable.interval(interval)])
     }
