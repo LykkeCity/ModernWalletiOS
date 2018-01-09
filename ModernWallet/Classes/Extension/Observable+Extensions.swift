@@ -31,7 +31,7 @@ extension ObservableType where Self.E == Void {
 
 extension UIApplicationState {
     var isActive: Bool {
-        if case .active = UIApplication.shared.applicationState {
+        if [.active, .inactive].contains(UIApplication.shared.applicationState) {
             return true
         }
         

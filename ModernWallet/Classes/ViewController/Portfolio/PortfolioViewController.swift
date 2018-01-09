@@ -26,7 +26,7 @@ class PortfolioViewController: UIViewController {
     fileprivate let pieChartValueFormatter = PieValueFormatter()
     
     fileprivate lazy var totalBalanceViewModel: TotalBalanceViewModel = {
-        return TotalBalanceViewModel(refresh: ReloadTrigger.instance.triggerNowAndWith(interval: 10))
+        return TotalBalanceViewModel(refresh: ReloadTrigger.instance.trigger(interval: 10))
     }()
     
     fileprivate lazy var walletsViewModel: WalletsViewModel = {
@@ -126,7 +126,7 @@ class PortfolioViewController: UIViewController {
         // if the screen was changed and brought back.
         loadingDisposeBag = DisposeBag()
         
-        loadingViewModel.isLoading.debug()
+        loadingViewModel.isLoading
             .bind(to: rx.loading)
             .disposed(by: loadingDisposeBag)
     }
