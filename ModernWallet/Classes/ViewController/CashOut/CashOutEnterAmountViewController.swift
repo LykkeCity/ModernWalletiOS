@@ -134,7 +134,22 @@ class CashOutEnterAmountViewController: UIViewController {
             .bind(to: amountViewModel.amount)
             .disposed(by: disposeBag)
         
+        Observable.combineLatest(walletObservable, baseAmountTextField.rx.text.filterNil())
+            .map { (data) -> Decimal in
+                let (wallet, amountString) = data
+                var amount = amountString.decimalValue ?? 0
+                var roundedAmount = Decimal()
+                NSDecimalRound(&roundedAmount, &amount, wallet.asset.accuracy.intValue, .bankers)
+                return roundedAmount
+            }
+            .bind(to: amountViewModel.baseAmount)
+            .disposed(by: disposeBag)
+        
         amountViewModel.isValid.asDriver(onErrorJustReturn: false)
+            .drive(confirmSlider.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        amountViewModel.isBaseValid.asDriver(onErrorJustReturn: false)
             .drive(confirmSlider.rx.isEnabled)
             .disposed(by: disposeBag)
         
