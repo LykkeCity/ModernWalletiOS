@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y4U-dS-YYm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y4U-dS-YYm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +33,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="279.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="AVAILABLE BALANCE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVr-rR-0K7">
-                                        <rect key="frame" x="135" y="53.5" width="105.5" height="12"/>
+                                        <rect key="frame" x="135.5" y="53.5" width="105.5" height="12"/>
                                         <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -42,7 +43,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT ASSET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wB8-FE-4rs">
-                                        <rect key="frame" x="134" y="241.5" width="107" height="18"/>
+                                        <rect key="frame" x="134.5" y="241.5" width="107" height="18"/>
                                         <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -184,13 +185,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER AMOUNT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28y-Fm-EZx">
-                                                <rect key="frame" x="124" y="235.5" width="127.5" height="18"/>
+                                                <rect key="frame" x="124" y="225.5" width="127.5" height="18"/>
                                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wf8-Rs-F5Q">
-                                                <rect key="frame" x="131.5" y="263.5" width="112.5" height="30"/>
+                                                <rect key="frame" x="55" y="273.5" width="266.5" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCg-yg-d4X">
                                                         <rect key="frame" x="0.0" y="0.0" width="34.5" height="30"/>
@@ -198,9 +199,12 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" placeholder="0.00" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcv-ef-fB0">
-                                                        <rect key="frame" x="54.5" y="0.0" width="58" height="30"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" placeholder="0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcv-ef-fB0">
+                                                        <rect key="frame" x="54.5" y="0.0" width="212" height="30"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="4HR-zV-rcq"/>
+                                                        </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="30"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -213,7 +217,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zP2-tW-RNb">
-                                                <rect key="frame" x="130" y="303.5" width="115" height="30"/>
+                                                <rect key="frame" x="55" y="313.5" width="266.5" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6c-Iy-XYJ">
                                                         <rect key="frame" x="0.0" y="0.0" width="37" height="30"/>
@@ -221,8 +225,8 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" placeholder="0.00" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nH8-Xg-CRF">
-                                                        <rect key="frame" x="57" y="0.0" width="58" height="30"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" placeholder="0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nH8-Xg-CRF">
+                                                        <rect key="frame" x="57" y="0.0" width="209.5" height="30"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="30"/>
@@ -236,7 +240,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="SLIDE TO RETRIEVE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfU-am-kXR">
-                                                <rect key="frame" x="129.5" y="427" width="118.5" height="15"/>
+                                                <rect key="frame" x="130" y="427" width="118.5" height="15"/>
                                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -253,12 +257,12 @@
                                         <constraints>
                                             <constraint firstItem="zP2-tW-RNb" firstAttribute="top" secondItem="wf8-Rs-F5Q" secondAttribute="bottom" constant="10" id="1RQ-B7-hK7"/>
                                             <constraint firstItem="GsC-Kx-PKC" firstAttribute="top" secondItem="tRz-lE-6Ok" secondAttribute="top" constant="20" id="40z-Rn-QJc"/>
-                                            <constraint firstItem="wf8-Rs-F5Q" firstAttribute="centerY" secondItem="tRz-lE-6Ok" secondAttribute="centerY" constant="-55" id="6Dw-gn-wm5"/>
+                                            <constraint firstItem="wf8-Rs-F5Q" firstAttribute="centerY" secondItem="tRz-lE-6Ok" secondAttribute="centerY" constant="-45" id="6Dw-gn-wm5"/>
                                             <constraint firstItem="ZfU-am-kXR" firstAttribute="centerX" secondItem="tRz-lE-6Ok" secondAttribute="centerX" constant="1.25" id="6P0-vx-Prb"/>
                                             <constraint firstItem="w0l-aV-KzA" firstAttribute="centerX" secondItem="tRz-lE-6Ok" secondAttribute="centerX" constant="1" id="REv-Cv-F4V"/>
                                             <constraint firstAttribute="trailing" secondItem="GsC-Kx-PKC" secondAttribute="trailing" constant="15" id="Sef-QC-733"/>
                                             <constraint firstItem="GsC-Kx-PKC" firstAttribute="leading" secondItem="tRz-lE-6Ok" secondAttribute="leading" constant="15" id="SwU-tG-arz"/>
-                                            <constraint firstItem="wf8-Rs-F5Q" firstAttribute="top" secondItem="28y-Fm-EZx" secondAttribute="bottom" constant="10" id="Tjo-0e-lGH"/>
+                                            <constraint firstItem="wf8-Rs-F5Q" firstAttribute="top" secondItem="28y-Fm-EZx" secondAttribute="bottom" constant="30" id="Tjo-0e-lGH"/>
                                             <constraint firstItem="w0l-aV-KzA" firstAttribute="top" secondItem="ZfU-am-kXR" secondAttribute="bottom" constant="8" id="aUN-Fy-kxp"/>
                                             <constraint firstAttribute="bottom" secondItem="w0l-aV-KzA" secondAttribute="bottom" constant="20" id="ajE-wd-O6U"/>
                                             <constraint firstItem="28y-Fm-EZx" firstAttribute="centerX" secondItem="tRz-lE-6Ok" secondAttribute="centerX" id="gat-23-NmP"/>
@@ -283,7 +287,9 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ezE-54-sIS" secondAttribute="trailing" id="7mh-W4-dup"/>
                             <constraint firstItem="ezE-54-sIS" firstAttribute="leading" secondItem="yvf-yg-oYH" secondAttribute="leading" id="BZr-gx-zlH"/>
+                            <constraint firstItem="zP2-tW-RNb" firstAttribute="width" secondItem="yvf-yg-oYH" secondAttribute="height" multiplier="2:5" id="Hah-1K-bbr"/>
                             <constraint firstItem="ezE-54-sIS" firstAttribute="top" secondItem="yvf-yg-oYH" secondAttribute="top" id="QWw-SE-ljS"/>
+                            <constraint firstItem="wf8-Rs-F5Q" firstAttribute="width" secondItem="yvf-yg-oYH" secondAttribute="height" multiplier="2:5" id="bVJ-5p-qHM"/>
                             <constraint firstAttribute="bottom" secondItem="ezE-54-sIS" secondAttribute="bottom" id="zHB-Jz-O0e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mKD-Zx-zjV"/>
@@ -777,7 +783,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="Fbn-XD-MoP">
-                                                    <rect key="frame" x="20" y="13" width="122" height="15"/>
+                                                    <rect key="frame" x="20" y="12.5" width="122" height="15"/>
                                                     <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -883,16 +889,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OperationSuccessIcon" translatesAutoresizingMaskIntoConstraints="NO" id="oc5-T4-9Du">
-                                <rect key="frame" x="151" y="40" width="72" height="72"/>
+                                <rect key="frame" x="151.5" y="40" width="72" height="72"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRANSACTION SUCCESSFUL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqb-m1-Nja">
-                                <rect key="frame" x="20" y="122" width="335" height="23.5"/>
+                                <rect key="frame" x="20" y="122" width="335" height="20"/>
                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRANSACTION DETAILS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wd-Tg-tm6">
-                                <rect key="frame" x="20" y="185.5" width="335" height="21"/>
+                                <rect key="frame" x="20" y="182" width="335" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="335" id="r3o-Qz-yD8"/>
                                 </constraints>
@@ -901,7 +907,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEU-CE-8eI" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
-                                <rect key="frame" x="20" y="226.5" width="335" height="2"/>
+                                <rect key="frame" x="20" y="220" width="335" height="2"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="HZ0-wE-O55"/>
@@ -911,7 +917,7 @@
                                 <rect key="frame" x="20" y="230.5" width="335" height="353.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please allow 3-5 business days for the transaction to be processed." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Knd-fI-dw5">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="42"/>
+                                        <rect key="frame" x="0.0" y="28" width="335" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="335" id="MFj-D6-BJb"/>
                                         </constraints>
@@ -924,28 +930,28 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2qw-vG-efw">
-                                        <rect key="frame" x="0.0" y="150.5" width="109" height="100"/>
+                                        <rect key="frame" x="0.0" y="150.5" width="109" height="90"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="BANK NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJU-ZD-8Z9">
-                                                <rect key="frame" x="21" y="0.0" width="88" height="17.5"/>
+                                                <rect key="frame" x="29.5" y="0.0" width="79.5" height="15"/>
                                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="IBAN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTD-hz-bNx">
-                                                <rect key="frame" x="74" y="27.5" width="35" height="17.5"/>
+                                                <rect key="frame" x="77.5" y="25" width="31.5" height="15"/>
                                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="BIC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1o-eP-0ED">
-                                                <rect key="frame" x="84" y="55" width="25" height="17.5"/>
+                                                <rect key="frame" x="87.5" y="50" width="21.5" height="15"/>
                                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ACC. HOLDER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Yg-RG-X7E">
-                                                <rect key="frame" x="8.5" y="82.5" width="100.5" height="17.5"/>
+                                                <rect key="frame" x="19.5" y="75" width="89.5" height="15"/>
                                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -953,28 +959,28 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="81l-Ky-9BN">
-                                        <rect key="frame" x="129" y="150.5" width="206" height="100"/>
+                                        <rect key="frame" x="129" y="150.5" width="206" height="90"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8e-un-F94">
-                                                <rect key="frame" x="0.0" y="0.0" width="37" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="15"/>
                                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3Q-B5-a3z">
-                                                <rect key="frame" x="0.0" y="27.5" width="37" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="25" width="35" height="15"/>
                                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbq-nL-tth">
-                                                <rect key="frame" x="0.0" y="55" width="37" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="50" width="35" height="15"/>
                                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdn-eT-emM">
-                                                <rect key="frame" x="0.0" y="82.5" width="37" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="75" width="35" height="15"/>
                                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
