@@ -107,7 +107,14 @@ class SignUpFormViewController: UIViewController {
             performSegue(withIdentifier: segueIdentifier, sender: nil)
         }
         else {
-            navigationController?.dismiss(animated: true)
+            // Remove all loading animations before dismissing the view controller
+            // To prevent the interference between loading signals
+            formController.unbind()
+            
+            // Optional: remove the dismissal animation when logging in
+            // (which is visible through the semitransparent loading screen)
+            let animated = !(formController is SignInConfirmPhoneFormController)
+            navigationController?.dismiss(animated: animated)
         }
     }
 

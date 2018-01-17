@@ -23,6 +23,7 @@ class PortfolioViewController: UIViewController {
     
     fileprivate let disposeBag = DisposeBag()
     fileprivate let pieChartValueFormatter = PieValueFormatter()
+    fileprivate var loadingDisposeBag = DisposeBag()
     
     fileprivate lazy var totalBalanceViewModel: TotalBalanceViewModel = {
         return TotalBalanceViewModel(refresh: ReloadTrigger.instance.trigger(interval: 10))
@@ -43,7 +44,6 @@ class PortfolioViewController: UIViewController {
     }()
     
     var assets = Variable<[Variable<Asset>]>([])
-    var isScreenVisible = PublishSubject<Bool>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,7 +111,7 @@ class PortfolioViewController: UIViewController {
                 self?.performSegue(withIdentifier: "AddMoney", sender: nil)
             })
             .disposed(by: disposeBag)
-        
+
         bindViewModels()
     }
     
@@ -122,14 +122,14 @@ class PortfolioViewController: UIViewController {
             return
         }
         
-        Observable.combineLatest(loadingViewModel.isLoading, isScreenVisible) { return $0 && $1 }
-            .distinctUntilChanged()
-            .debug("bebe")
-            .bind(to: rx.loading)
-            .disposed(by: disposeBag)
+        loadingDisposeBag = DisposeBag()
         
-        // Notify the loading observer, that the screen is visible for the user
-        isScreenVisible.onNext(true)
+        loadingViewModel.isLoading
+            .distinctUntilChanged()
+            .take(2)
+            .observeOn(MainScheduler.instance)
+            .bind(to: rx.loading)
+            .disposed(by: loadingDisposeBag)
     }
     
     deinit {
