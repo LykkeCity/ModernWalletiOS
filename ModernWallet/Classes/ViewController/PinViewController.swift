@@ -191,11 +191,21 @@ class PinViewController: UIViewController {
     }
 
     @IBAction private func touchIdTapped() {
+        // Disable the blur from `applicationWillResignActive:application` in the AppDelegate class
+        let delegate = (UIApplication.shared.delegate as? AppDelegate)
+        delegate?.isVisibleTouchID = true
+        
         LWFingerprintHelper.validateFingerprintTitle(Localize("auth.validation.fingerpring"), ok: {
+            // Re-enable the blur when TouchID is valid
+            delegate?.isVisibleTouchID = false
             self.dismiss(success: true, animated: true)
         }, bad: {
+            // Re-enable the blur when TouchID failed for some reason
+            delegate?.isVisibleTouchID = false
             print("Something went wrong")
         }) {
+            // Re-enable the blur even if TouchID is unavailable
+            delegate?.isVisibleTouchID = false
             print("Something went wrong")
         }
     }

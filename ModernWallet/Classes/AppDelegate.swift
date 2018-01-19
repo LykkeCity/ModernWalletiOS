@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var inactivitySubscription: Disposable?
     let pinInactivityInterval = RxTimeInterval(10)
+    
+    var isVisibleTouchID = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -72,7 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func applicationWillResignActive(_ application: UIApplication) {        
+    func applicationWillResignActive(_ application: UIApplication) {
+        guard !isVisibleTouchID else { return }
         // Show blur when app goes to background (also when the Task Switcher is opened)
         let blurredImageView = buildBlurredImageViewFromVisibleViewController()
         blurredImageView.tag = blurViewTag
