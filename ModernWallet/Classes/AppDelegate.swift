@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var inactivitySubscription: Disposable?
     let pinInactivityInterval = RxTimeInterval(10)
+    
+    var noConnectionWindow: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -73,16 +75,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ReachabilityService.instance
             .reachabilityStatus
             .filter{!$0}
-            .observeOn(MainScheduler.instance)
+            .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] value in
-                let noConnectionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NoConnection")
-                noConnectionViewController.modalTransitionStyle = .crossDissolve
-                
-                // Don't show the NoConnectionViewController if the PinViewController is about to be presented
-                if !(self?.visibleViewController is NoConnectionViewController)
-                    && !(self?.visibleViewController is PinViewController) {
-                    self?.visibleViewController?.present(noConnectionViewController, animated: true)
-                }
+                self?.showNoNetworkScreen()
+            })
+            .disposed(by: disposeBag)
+        
+        ReachabilityService.instance
+            .reachabilityStatus
+            .filter{$0}
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] value in
+                self?.hideNoNetworkScreen()
             })
             .disposed(by: disposeBag)
 

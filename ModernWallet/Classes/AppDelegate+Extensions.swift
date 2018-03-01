@@ -31,19 +31,6 @@ extension AppDelegate {
             let loginViewController = UIStoryboard(name: "SignIn", bundle: nil).instantiateInitialViewController()!
             visibleViewController?.present(loginViewController, animated: false)
         }
-        else {
-            guard
-                let error = ctx.error as NSError?,
-                error.domain == NSURLErrorDomain,
-                error.code == NSURLErrorNotConnectedToInternet,
-                !(visibleViewController is NoConnectionViewController)
-            else {
-                return
-            }
-            let noConnectionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NoConnection")
-            noConnectionViewController.modalTransitionStyle = .crossDissolve
-            visibleViewController?.present(noConnectionViewController, animated: true)
-        }
     }
     
     var visibleViewController: UIViewController? {
@@ -154,5 +141,22 @@ extension AppDelegate {
                 
                 visibleViewController.present(pinViewController, animated: true)
             })
+    }
+    
+    // MARK: - No Network handling (LMW-268)
+    func showNoNetworkScreen() {        
+        self.noConnectionWindow = UIWindow(frame: UIScreen.main.bounds)
+        self.noConnectionWindow?.tag = 5678
+        self.noConnectionWindow?.rootViewController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "NoConnection")
+        
+        self.noConnectionWindow?.makeKeyAndVisible()
+    }
+    
+    func hideNoNetworkScreen() {
+        self.noConnectionWindow?.resignKey()
+        self.noConnectionWindow = nil
+        
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
 }
