@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		11DA99157D1096C1AE2DAB86 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA906845E44B9E56EC79B6 /* PortfolioViewController.swift */; };
+		19E94C402084E84000F6BB9C /* ModernMoneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94C3F2084E84000F6BB9C /* ModernMoneyUITests.swift */; };
+		19E94C4C2085E1BC00F6BB9C /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94C4B2085E1BC00F6BB9C /* Page.swift */; };
+		19E94C4E2085E22000F6BB9C /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94C4D2085E22000F6BB9C /* LoginPage.swift */; };
+		19E94C52208605C400F6BB9C /* EnterPasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94C51208605C400F6BB9C /* EnterPasswordPage.swift */; };
+		19E94C542086081A00F6BB9C /* EnterPINPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94C532086081A00F6BB9C /* EnterPINPage.swift */; };
 		253592A61FEAE4570038CD92 /* AddMoneyCryptoCurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253592A41FEAE4570038CD92 /* AddMoneyCryptoCurrencyTableViewCell.swift */; };
 		253592A71FEAE4570038CD92 /* AddMoneyCryptoCurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 253592A51FEAE4570038CD92 /* AddMoneyCryptoCurrencyTableViewCell.xib */; };
 		25A41843201A0233004F63BD /* SettingsTermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A41842201A0233004F63BD /* SettingsTermsOfUseViewController.swift */; };
@@ -196,9 +201,26 @@
 		EC9C947D1C899019006FD46B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC9C947C1C899019006FD46B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		19E94C422084E84000F6BB9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF21DC731C17590E00D2399E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF21DC7A1C17590E00D2399E;
+			remoteInfo = ModernMoney;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		11DA906845E44B9E56EC79B6 /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		18D2E9858DFE4FA358E0A0C1 /* Pods-ModernMoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModernMoney.release.xcconfig"; path = "Pods/Target Support Files/Pods-ModernMoney/Pods-ModernMoney.release.xcconfig"; sourceTree = "<group>"; };
+		19E94C3D2084E84000F6BB9C /* ModernMoneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModernMoneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19E94C3F2084E84000F6BB9C /* ModernMoneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernMoneyUITests.swift; sourceTree = "<group>"; };
+		19E94C412084E84000F6BB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19E94C4B2085E1BC00F6BB9C /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		19E94C4D2085E22000F6BB9C /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
+		19E94C51208605C400F6BB9C /* EnterPasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordPage.swift; sourceTree = "<group>"; };
+		19E94C532086081A00F6BB9C /* EnterPINPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPINPage.swift; sourceTree = "<group>"; };
 		1B4362117F035AB105CCBAC9 /* Pods-ModernMoney.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModernMoney.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ModernMoney/Pods-ModernMoney.debug.xcconfig"; sourceTree = "<group>"; };
 		253592A41FEAE4570038CD92 /* AddMoneyCryptoCurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyCryptoCurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		253592A51FEAE4570038CD92 /* AddMoneyCryptoCurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMoneyCryptoCurrencyTableViewCell.xib; sourceTree = "<group>"; };
@@ -397,6 +419,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		19E94C3A2084E84000F6BB9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF21DC781C17590E00D2399E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -437,6 +466,27 @@
 				665286621FD1BD1E0085640C /* PinViewController.xib */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		19E94C3E2084E84000F6BB9C /* ModernMoneyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				19E94C4F2086007E00F6BB9C /* Pages */,
+				19E94C3F2084E84000F6BB9C /* ModernMoneyUITests.swift */,
+				19E94C412084E84000F6BB9C /* Info.plist */,
+			);
+			path = ModernMoneyUITests;
+			sourceTree = "<group>";
+		};
+		19E94C4F2086007E00F6BB9C /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				19E94C4B2085E1BC00F6BB9C /* Page.swift */,
+				19E94C4D2085E22000F6BB9C /* LoginPage.swift */,
+				19E94C51208605C400F6BB9C /* EnterPasswordPage.swift */,
+				19E94C532086081A00F6BB9C /* EnterPINPage.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 		2532E5BD1FEA92AB009D2C3A /* AddMoney */ = {
@@ -873,6 +923,7 @@
 			isa = PBXGroup;
 			children = (
 				CF21DC7D1C17590E00D2399E /* ModernWallet */,
+				19E94C3E2084E84000F6BB9C /* ModernMoneyUITests */,
 				CF21DC7C1C17590E00D2399E /* Products */,
 				D19F0116617E74EB428F44A8 /* Frameworks */,
 				72A76C69889DEAE095EE8160 /* Pods */,
@@ -883,6 +934,7 @@
 			isa = PBXGroup;
 			children = (
 				CF21DC7B1C17590E00D2399E /* ModernMoney.app */,
+				19E94C3D2084E84000F6BB9C /* ModernMoneyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -967,6 +1019,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		19E94C3C2084E84000F6BB9C /* ModernMoneyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19E94C482084E84100F6BB9C /* Build configuration list for PBXNativeTarget "ModernMoneyUITests" */;
+			buildPhases = (
+				19E94C392084E84000F6BB9C /* Sources */,
+				19E94C3A2084E84000F6BB9C /* Frameworks */,
+				19E94C3B2084E84000F6BB9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19E94C432084E84000F6BB9C /* PBXTargetDependency */,
+			);
+			name = ModernMoneyUITests;
+			productName = ModernMoneyUITests;
+			productReference = 19E94C3D2084E84000F6BB9C /* ModernMoneyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		CF21DC7A1C17590E00D2399E /* ModernMoney */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF21DC921C17590E00D2399E /* Build configuration list for PBXNativeTarget "ModernMoney" */;
@@ -977,7 +1047,6 @@
 				CF21DC791C17590E00D2399E /* Resources */,
 				CDECDC2F1C178C2B005AF96F /* ShellScript */,
 				4714FD13A95B6EB3AABECD0A /* [CP] Embed Pods Frameworks */,
-				165C25A20A29F6322C18E543 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -994,9 +1063,15 @@
 		CF21DC731C17590E00D2399E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Lykkex;
 				TargetAttributes = {
+					19E94C3C2084E84000F6BB9C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CF21DC7A1C17590E00D2399E;
+					};
 					CF21DC7A1C17590E00D2399E = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = SPFVYM4YAV;
@@ -1029,11 +1104,19 @@
 			projectRoot = "";
 			targets = (
 				CF21DC7A1C17590E00D2399E /* ModernMoney */,
+				19E94C3C2084E84000F6BB9C /* ModernMoneyUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		19E94C3B2084E84000F6BB9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF21DC791C17590E00D2399E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1092,21 +1175,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		165C25A20A29F6322C18E543 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ModernMoney/Pods-ModernMoney-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4714FD13A95B6EB3AABECD0A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1229,6 +1297,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		19E94C392084E84000F6BB9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19E94C52208605C400F6BB9C /* EnterPasswordPage.swift in Sources */,
+				19E94C4C2085E1BC00F6BB9C /* Page.swift in Sources */,
+				19E94C4E2085E22000F6BB9C /* LoginPage.swift in Sources */,
+				19E94C542086081A00F6BB9C /* EnterPINPage.swift in Sources */,
+				19E94C402084E84000F6BB9C /* ModernMoneyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF21DC771C17590E00D2399E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1368,6 +1448,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		19E94C432084E84000F6BB9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF21DC7A1C17590E00D2399E /* ModernMoney */;
+			targetProxy = 19E94C422084E84000F6BB9C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		CF66327D1C1768B0004353F5 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -1380,6 +1468,130 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		19E94C442084E84100F6BB9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ModernMoneyUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lykke.ModernMoneyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ModernMoney;
+			};
+			name = Debug;
+		};
+		19E94C452084E84100F6BB9C /* Debug.Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ModernMoneyUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lykke.ModernMoneyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ModernMoney;
+			};
+			name = Debug.Test;
+		};
+		19E94C462084E84100F6BB9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ModernMoneyUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lykke.ModernMoneyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ModernMoney;
+			};
+			name = Release;
+		};
+		19E94C472084E84100F6BB9C /* Release.Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ModernMoneyUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lykke.ModernMoneyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ModernMoney;
+			};
+			name = Release.Test;
+		};
 		CF21DC901C17590E00D2399E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1747,6 +1959,17 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		19E94C482084E84100F6BB9C /* Build configuration list for PBXNativeTarget "ModernMoneyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19E94C442084E84100F6BB9C /* Debug */,
+				19E94C452084E84100F6BB9C /* Debug.Test */,
+				19E94C462084E84100F6BB9C /* Release */,
+				19E94C472084E84100F6BB9C /* Release.Test */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CF21DC761C17590E00D2399E /* Build configuration list for PBXProject "ModernWallet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

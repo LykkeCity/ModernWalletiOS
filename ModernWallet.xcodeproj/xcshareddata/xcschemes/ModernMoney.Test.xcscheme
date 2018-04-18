@@ -29,6 +29,16 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "19E94C3C2084E84000F6BB9C"
+               BuildableName = "ModernMoneyUITests.xctest"
+               BlueprintName = "ModernMoneyUITests"
+               ReferencedContainer = "container:ModernWallet.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
