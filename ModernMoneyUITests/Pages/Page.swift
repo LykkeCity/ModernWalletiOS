@@ -12,7 +12,7 @@ class Page {
     }
     
     func isErrorAlert(alertText: String) -> Bool {
-        exist = errorAlert.staticTexts(alertText).exists
+        let exist = errorAlert.staticTexts[alertText].exists
         return exist
     }
     

@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		11DA99157D1096C1AE2DAB86 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA906845E44B9E56EC79B6 /* PortfolioViewController.swift */; };
+		19855C452088ABC400DEB789 /* RegistrationEmailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C442088ABC400DEB789 /* RegistrationEmailPage.swift */; };
+		19855C472088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C462088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift */; };
+		19855C492088C56F00DEB789 /* EnterSMSCodePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C482088C56F00DEB789 /* EnterSMSCodePage.swift */; };
+		19855C4B2088C92400DEB789 /* PortfolioPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C4A2088C92400DEB789 /* PortfolioPage.swift */; };
+		19855C4D2088D8C400DEB789 /* CreatePasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C4C2088D8C400DEB789 /* CreatePasswordPage.swift */; };
+		19855C4F2088DF9A00DEB789 /* EnterHuntPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C4E2088DF9A00DEB789 /* EnterHuntPage.swift */; };
+		19855C512088E14200DEB789 /* CompleteProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C502088E14200DEB789 /* CompleteProfilePage.swift */; };
+		19855C532088E30D00DEB789 /* CompleteYourPhonePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C522088E30D00DEB789 /* CompleteYourPhonePage.swift */; };
+		19855C552088E4D700DEB789 /* EnterPhoneCodePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C542088E4D700DEB789 /* EnterPhoneCodePage.swift */; };
+		19855C572088EA5300DEB789 /* CreatePINPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C562088EA5300DEB789 /* CreatePINPage.swift */; };
 		19E94C402084E84000F6BB9C /* ModernMoneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94C3F2084E84000F6BB9C /* ModernMoneyUITests.swift */; };
 		19E94C4C2085E1BC00F6BB9C /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94C4B2085E1BC00F6BB9C /* Page.swift */; };
 		19E94C4E2085E22000F6BB9C /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94C4D2085E22000F6BB9C /* LoginPage.swift */; };
@@ -214,6 +224,16 @@
 /* Begin PBXFileReference section */
 		11DA906845E44B9E56EC79B6 /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		18D2E9858DFE4FA358E0A0C1 /* Pods-ModernMoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModernMoney.release.xcconfig"; path = "Pods/Target Support Files/Pods-ModernMoney/Pods-ModernMoney.release.xcconfig"; sourceTree = "<group>"; };
+		19855C442088ABC400DEB789 /* RegistrationEmailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEmailPage.swift; sourceTree = "<group>"; };
+		19855C462088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEnterEmailValidationCodePage.swift; sourceTree = "<group>"; };
+		19855C482088C56F00DEB789 /* EnterSMSCodePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterSMSCodePage.swift; sourceTree = "<group>"; };
+		19855C4A2088C92400DEB789 /* PortfolioPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioPage.swift; sourceTree = "<group>"; };
+		19855C4C2088D8C400DEB789 /* CreatePasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordPage.swift; sourceTree = "<group>"; };
+		19855C4E2088DF9A00DEB789 /* EnterHuntPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterHuntPage.swift; sourceTree = "<group>"; };
+		19855C502088E14200DEB789 /* CompleteProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteProfilePage.swift; sourceTree = "<group>"; };
+		19855C522088E30D00DEB789 /* CompleteYourPhonePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteYourPhonePage.swift; sourceTree = "<group>"; };
+		19855C542088E4D700DEB789 /* EnterPhoneCodePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhoneCodePage.swift; sourceTree = "<group>"; };
+		19855C562088EA5300DEB789 /* CreatePINPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePINPage.swift; sourceTree = "<group>"; };
 		19E94C3D2084E84000F6BB9C /* ModernMoneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModernMoneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19E94C3F2084E84000F6BB9C /* ModernMoneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernMoneyUITests.swift; sourceTree = "<group>"; };
 		19E94C412084E84000F6BB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -485,6 +505,16 @@
 				19E94C4D2085E22000F6BB9C /* LoginPage.swift */,
 				19E94C51208605C400F6BB9C /* EnterPasswordPage.swift */,
 				19E94C532086081A00F6BB9C /* EnterPINPage.swift */,
+				19855C442088ABC400DEB789 /* RegistrationEmailPage.swift */,
+				19855C462088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift */,
+				19855C482088C56F00DEB789 /* EnterSMSCodePage.swift */,
+				19855C4A2088C92400DEB789 /* PortfolioPage.swift */,
+				19855C4C2088D8C400DEB789 /* CreatePasswordPage.swift */,
+				19855C4E2088DF9A00DEB789 /* EnterHuntPage.swift */,
+				19855C502088E14200DEB789 /* CompleteProfilePage.swift */,
+				19855C522088E30D00DEB789 /* CompleteYourPhonePage.swift */,
+				19855C542088E4D700DEB789 /* EnterPhoneCodePage.swift */,
+				19855C562088EA5300DEB789 /* CreatePINPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -1302,10 +1332,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				19E94C52208605C400F6BB9C /* EnterPasswordPage.swift in Sources */,
+				19855C532088E30D00DEB789 /* CompleteYourPhonePage.swift in Sources */,
+				19855C4F2088DF9A00DEB789 /* EnterHuntPage.swift in Sources */,
 				19E94C4C2085E1BC00F6BB9C /* Page.swift in Sources */,
+				19855C512088E14200DEB789 /* CompleteProfilePage.swift in Sources */,
+				19855C4B2088C92400DEB789 /* PortfolioPage.swift in Sources */,
+				19855C492088C56F00DEB789 /* EnterSMSCodePage.swift in Sources */,
+				19855C452088ABC400DEB789 /* RegistrationEmailPage.swift in Sources */,
 				19E94C4E2085E22000F6BB9C /* LoginPage.swift in Sources */,
+				19855C572088EA5300DEB789 /* CreatePINPage.swift in Sources */,
+				19855C472088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift in Sources */,
 				19E94C542086081A00F6BB9C /* EnterPINPage.swift in Sources */,
+				19855C552088E4D700DEB789 /* EnterPhoneCodePage.swift in Sources */,
 				19E94C402084E84000F6BB9C /* ModernMoneyUITests.swift in Sources */,
+				19855C4D2088D8C400DEB789 /* CreatePasswordPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
