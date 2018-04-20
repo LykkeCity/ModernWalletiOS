@@ -488,11 +488,19 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		19258DDD208A0DDE00ACDEA5 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				19E94C3F2084E84000F6BB9C /* ModernMoneyUITests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		19E94C3E2084E84000F6BB9C /* ModernMoneyUITests */ = {
 			isa = PBXGroup;
 			children = (
+				19258DDD208A0DDE00ACDEA5 /* Tests */,
 				19E94C4F2086007E00F6BB9C /* Pages */,
-				19E94C3F2084E84000F6BB9C /* ModernMoneyUITests.swift */,
 				19E94C412084E84000F6BB9C /* Info.plist */,
 			);
 			path = ModernMoneyUITests;
@@ -1219,6 +1227,7 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/EasyMapping/EasyMapping.framework",
+				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
 				"${BUILT_PRODUCTS_DIR}/GHODictionary/GHODictionary.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/KYDrawerController/KYDrawerController.framework",
@@ -1258,6 +1267,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyMapping.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GHODictionary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KYDrawerController.framework",

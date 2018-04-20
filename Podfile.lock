@@ -42,6 +42,7 @@ PODS:
     - EasyMapping/Core (= 0.21.2)
   - EasyMapping/Core (0.21.2)
   - Fabric (1.7.2)
+  - Fakery (2.0.0)
   - Firebase/Core (4.8.0):
     - FirebaseAnalytics (= 4.0.5)
     - FirebaseCore (= 4.0.13)
@@ -122,6 +123,7 @@ DEPENDENCIES:
   - Charts (= 3.0.2)
   - Crashlytics (~> 3.9.3)
   - Fabric (~> 1.7.2)
+  - Fakery (= 2.0.0)
   - Firebase/Core
   - Koyomi (from `https://github.com/whoislyuboanyway/Koyomi`, branch `show-border-instead-of-filled-background`)
   - KYDrawerController
@@ -150,6 +152,7 @@ SPEC REPOS:
     - Crashlytics
     - EasyMapping
     - Fabric
+    - Fakery
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -214,6 +217,7 @@ SPEC CHECKSUMS:
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   EasyMapping: 93c1f054da1bc5dff6aa332477b040bea7767841
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
+  Fakery: 97b99c23937d2e025d9135c75e2b17351ccd5031
   Firebase: 710decbbc6d9d48530e9a5dba3209740c3532e05
   FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
   FirebaseCore: 3c02ec652db3d03fdc8bc6d9154af3e20d64b6f5
@@ -248,6 +252,6 @@ SPEC CHECKSUMS:
   WalletCore: 95d4cbb9e4672f6425850cf6be13de91fdd97fd1
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
 
-PODFILE CHECKSUM: 660296f5824a72d4a26d530dfc3b6635ed984e91
+PODFILE CHECKSUM: 07581a1929cc459c989e94f3e28edaa7ba098b04
 
 COCOAPODS: 1.5.0

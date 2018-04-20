@@ -2,6 +2,9 @@ import XCTest
 
 class ModernMoneyUITests: XCTestCase {
     
+    // let faker = Fakery(locale: "nb-NO")
+    
+    
     override func setUp() {
         super.setUp()
         
@@ -11,6 +14,7 @@ class ModernMoneyUITests: XCTestCase {
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
+        XCUIApplication().launchArguments = ["-StartFromCleanState", "YES"]
         
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -173,7 +177,7 @@ class ModernMoneyUITests: XCTestCase {
         loginPage.tapRegisterButton()
         
         registrationEmailPage.tapYourEmailTextField()
-        registrationEmailPage.enterEmail(email: "new101@email.com") //TODO: Generate new email for each test execution (Faker?)
+        registrationEmailPage.enterEmail(email: "new104@email.com") //TODO: Generate new email for each test execution (Faker?)
         registrationEmailPage.tapConfirmnButton()
         
         registrationEnterEmailValidationCodePage.tapCodeField()
@@ -197,7 +201,7 @@ class ModernMoneyUITests: XCTestCase {
         completeProfilePage.tapNextButton()
        
         completeYourPhonePage.tapPhoneNumberTextField()
-        completeYourPhonePage.enterPhoneNumber(phoneNumber: "+3599890086") //TODO: Generate new phone for each test execution (Faker?)
+        completeYourPhonePage.enterPhoneNumber(phoneNumber: "+3599890080") //TODO: Generate new phone for each test execution (Faker?)
         completeYourPhonePage.tapSubmitButton()
        
         enterPhoneCodePage.tapCodeField()
@@ -207,11 +211,64 @@ class ModernMoneyUITests: XCTestCase {
         createPINPage.enterPIN(pin: "0000")
         createPINPage.confirmPIN(pin: "0000")
         
+        //TODO: Shake device gesture
         
-        //        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element
-        //        element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
-
     
+        
+        XCTAssertTrue(Page.app.tables["TOTAL VALUE, $0.00, USD, YOUR PORTFOLIO IS EMPTY, Add money to get started."].staticTexts["$0.00"].exists)
+    }
+    
+    func testPasswordMustBeMinimumFiveSymbols() {
+        // Password must be at least five symbols.
+        
+        let loginPage = LoginPage()
+        let registrationEmailPage = RegistrationEmailPage()
+        let registrationEnterEmailValidationCodePage = RegistrationEnterEmailValidationCodePage()
+        let createPasswordPage = CreatePasswordPage()
+        
+        loginPage.tapRegisterButton()
+        
+        registrationEmailPage.tapYourEmailTextField()
+        registrationEmailPage.enterEmail(email: "testPsw2@email.com") //TODO: Generate new email for each test execution (Faker?)
+        registrationEmailPage.tapConfirmnButton()
+        
+        registrationEnterEmailValidationCodePage.tapCodeField()
+        registrationEnterEmailValidationCodePage.enterCode(code: "0000")
+        registrationEnterEmailValidationCodePage.tapConfirmButton()
+        
+        createPasswordPage.tapEnterAPasswordSecureTextField()
+        createPasswordPage.enterPassword(password: "1234")
+        createPasswordPage.tapEnterAgainSecureTextField()
+        createPasswordPage.enterPasswordAgain(password: "1234")
+        
+        XCTAssertFalse(createPasswordPage.nextButton.isEnabled)
+    }
+    
+    func testRegistrationConfirmPassword() {
+        /* When the password do not match "Next" button is disabled and the user is not able to
+         continue with the registration. */
+        
+        let loginPage = LoginPage()
+        let registrationEmailPage = RegistrationEmailPage()
+        let registrationEnterEmailValidationCodePage = RegistrationEnterEmailValidationCodePage()
+        let createPasswordPage = CreatePasswordPage()
+        
+        loginPage.tapRegisterButton()
+        
+        registrationEmailPage.tapYourEmailTextField()
+        registrationEmailPage.enterEmail(email: "testPsw2@email.com") //TODO: Generate new email for each test execution (Faker?)
+        registrationEmailPage.tapConfirmnButton()
+        
+        registrationEnterEmailValidationCodePage.tapCodeField()
+        registrationEnterEmailValidationCodePage.enterCode(code: "0000")
+        registrationEnterEmailValidationCodePage.tapConfirmButton()
+        
+        createPasswordPage.tapEnterAPasswordSecureTextField()
+        createPasswordPage.enterPassword(password: "123456")
+        createPasswordPage.tapEnterAgainSecureTextField()
+        createPasswordPage.enterPasswordAgain(password: "123457")
+        
+        XCTAssertFalse(createPasswordPage.nextButton.isEnabled)
     }
     
 }
