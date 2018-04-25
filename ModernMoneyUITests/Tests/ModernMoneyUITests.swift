@@ -271,5 +271,152 @@ class ModernMoneyUITests: XCTestCase {
         XCTAssertFalse(createPasswordPage.nextButton.isEnabled)
     }
     
+    func testLoginWhenSMSCodeIsNotValid() {
+        // Error message "Wrong confirmation code" appears when the SMS confirmation code is not valid
+        
+        let loginPage = LoginPage()
+        let enterPasswordPage = EnterPasswordPage()
+        let enterPINPage = EnterPINPage()
+        let enterSMSCodePage = EnterSMSCodePage()
+        let page = Page()
+        
+        loginPage.tapYourEmailTextField()
+        loginPage.enterEmail(email: "g30@g.com")
+        loginPage.tapSignInButton()
+        
+        enterPasswordPage.tapYourPasswordTextField()
+        enterPasswordPage.enterPassword(password: "123456")
+        enterPasswordPage.tapSignInButton()
+        
+        XCTAssertTrue(Page.app.staticTexts["ENTER PIN"].exists)
+        
+        enterPINPage.enterPIN(pin: "0000")
+
+        enterSMSCodePage.tapCodeField()
+        enterSMSCodePage.enterCode(code: "2121")
+        enterSMSCodePage.tapConfirnButton()
+        
+        XCTAssertTrue(page.isErrorAlert(alertText: "Wrong confirmation code"))
+        page.closeErrorAlert()
+        XCTAssertFalse(page.isErrorAlert(alertText: "Wrong confirmation code"))
+    }
+    
+    func testLoginSMSBlockedUser() {
+        /* "Error! Please contact support: support@lykke.com" message appears on the screen when blocked user tries to login */
+        
+        let loginPage = LoginPage()
+        let enterPasswordPage = EnterPasswordPage()
+        let enterPINPage = EnterPINPage()
+        let enterSMSCodePage = EnterSMSCodePage()
+        let page = Page()
+        
+        loginPage.tapYourEmailTextField()
+        loginPage.enterEmail(email: "sms@blockeduser.com")
+        loginPage.tapSignInButton()
+        
+        enterPasswordPage.tapYourPasswordTextField()
+        enterPasswordPage.enterPassword(password: "123456")
+        enterPasswordPage.tapSignInButton()
+        
+        XCTAssertTrue(Page.app.staticTexts["ENTER PIN"].exists)
+        
+        enterPINPage.enterPIN(pin: "0000")
+        
+        enterSMSCodePage.tapCodeField()
+        enterSMSCodePage.enterCode(code: "0000")
+        enterSMSCodePage.tapConfirnButton()
+        
+        XCTAssertTrue(page.isErrorAlert(alertText: "Error! Please contact support: support@lykke.com"))
+        page.closeErrorAlert()
+        XCTAssertFalse(page.isErrorAlert(alertText: "Error! Please contact support: support@lykke.com"))
+    }
+    
+    func testLoginPINBlockedUser() {
+        /* "Error! Please contact support: support@lykke.com" message appears on the screen when blocked user tries to login */
+        
+        let loginPage = LoginPage()
+        let enterPasswordPage = EnterPasswordPage()
+        let enterPINPage = EnterPINPage()
+        let page = Page()
+        
+        loginPage.tapYourEmailTextField()
+        loginPage.enterEmail(email: "pin@blockeduser.com")
+        loginPage.tapSignInButton()
+        
+        enterPasswordPage.tapYourPasswordTextField()
+        enterPasswordPage.enterPassword(password: "123456")
+        enterPasswordPage.tapSignInButton()
+        
+        XCTAssertTrue(Page.app.staticTexts["ENTER PIN"].exists)
+
+        enterPINPage.enterPIN(pin: "0000")
+        
+        XCTAssertTrue(page.isErrorAlert(alertText: "Error! Please contact support: support@lykke.com"))
+        page.closeErrorAlert()
+        XCTAssertFalse(page.isErrorAlert(alertText: "Error! Please contact support: support@lykke.com"))
+    }
+    
+    func testPortfolioAddMoneyLink() {
+        // Taping on "+Add Money" link on Portfolio page redirects to Add Money page.
+        
+        let loginPage = LoginPage()
+        let enterPasswordPage = EnterPasswordPage()
+        let enterPINPage = EnterPINPage()
+        let enterSMSCodePage = EnterSMSCodePage()
+        let portfolioPage = PortfolioPage()
+        
+        loginPage.tapYourEmailTextField()
+        loginPage.enterEmail(email: "radi.dichev@primeholding.com")
+        loginPage.tapSignInButton()
+        
+        enterPasswordPage.tapYourPasswordTextField()
+        enterPasswordPage.enterPassword(password: "123456")
+        enterPasswordPage.tapSignInButton()
+        
+        XCTAssertTrue(Page.app.staticTexts["ENTER PIN"].exists)
+        
+        enterPINPage.enterPIN(pin: "0000")
+                
+        enterSMSCodePage.tapCodeField()
+        enterSMSCodePage.enterCode(code: "0000")
+        enterSMSCodePage.tapConfirnButton()
+        
+        portfolioPage.tapAddMoneyLink()
+        
+        XCTAssertTrue(Page.app.staticTexts["TOTAL VALUE"].exists)
+        XCTAssertTrue(Page.app.staticTexts["ADD MONEY FROM"].exists)
+    }
+    
+    func testPortfolioOpenAssetDetailsPage() {
+        // Asset details page opens when user taps on currency.
+        
+        let loginPage = LoginPage()
+        let enterPasswordPage = EnterPasswordPage()
+        let enterPINPage = EnterPINPage()
+        let enterSMSCodePage = EnterSMSCodePage()
+        let portfolioPage = PortfolioPage()
+        
+        loginPage.tapYourEmailTextField()
+        loginPage.enterEmail(email: "radi.dichev@primeholding.com")
+        loginPage.tapSignInButton()
+        
+        enterPasswordPage.tapYourPasswordTextField()
+        enterPasswordPage.enterPassword(password: "123456")
+        enterPasswordPage.tapSignInButton()
+        
+        XCTAssertTrue(Page.app.staticTexts["ENTER PIN"].exists)
+        
+        enterPINPage.enterPIN(pin: "0000")
+        
+        enterSMSCodePage.tapCodeField()
+        enterSMSCodePage.enterCode(code: "0000")
+        enterSMSCodePage.tapConfirnButton()
+        
+        portfolioPage.tapOnCurrency(currency: "EUR")
+        
+        XCTAssertTrue(Page.app.staticTexts["EUR"].exists)
+        XCTAssertTrue(Page.app.staticTexts["TOTAL VALUE"].exists)
+        XCTAssertTrue(Page.app.staticTexts["TRANSACTIONS"].exists)
+    }
 }
 
