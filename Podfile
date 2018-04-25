@@ -25,7 +25,10 @@ pod 'QRCodeReader.swift', '~> 7.5.0'
 pod 'Koyomi', :git => 'https://github.com/whoislyuboanyway/Koyomi', :branch => 'show-border-instead-of-filled-background'
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.2'
 pod 'UIScrollView-InfiniteScroll', '~> 1.0.0'
-pod 'Fakery', '2.0.0'
+    target 'ModernMoneyUITests' do
+        inherit! :search_paths
+        pod 'Fakery', '3.3.0'
+    end
 end
 
 post_install do |installer_representation|

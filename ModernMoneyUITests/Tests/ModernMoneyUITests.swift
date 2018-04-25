@@ -1,20 +1,20 @@
 import XCTest
-
 class ModernMoneyUITests: XCTestCase {
     
-    // let faker = Fakery(locale: "nb-NO")
-    
+    private let app = XCUIApplication()
     
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
+
+        UserDefaults.standard.set(nil, forKey: "SingUpStep")
+        UserDefaults.standard.synchronize()
+
+
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-        XCUIApplication().launchArguments = ["-StartFromCleanState", "YES"]
+        app.launch()
+        
         
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -22,12 +22,23 @@ class ModernMoneyUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+
         
     }
+   
     
     func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .motionShake {
             print("Shaked") }
+    }
+    
+    
+    func logout() {
+        
+        let sideNavBar = SideNavBar()
+        sideNavBar.open()
+        sideNavBar.selectMenuItem(item: "LOGOUT")
+        
     }
     
     func testLoginWithValidUserCredentials() {
@@ -60,6 +71,8 @@ class ModernMoneyUITests: XCTestCase {
         XCTAssertTrue(portfolioPage.viewAllButton.exists)
         XCTAssertTrue(portfolioPage.cryptoCurrenciesButton.exists)
         XCTAssertTrue(portfolioPage.fiatCurrencies.exists)
+        
+        logout()
     }
     
     func testLoginWithInvalidUsername() {
@@ -173,11 +186,13 @@ class ModernMoneyUITests: XCTestCase {
         let completeYourPhonePage = CompleteYourPhonePage()
         let enterPhoneCodePage = EnterPhoneCodePage()
         let createPINPage = CreatePINPage()
+        let testData = TestData()
         
+        let password = testData.password
         loginPage.tapRegisterButton()
         
         registrationEmailPage.tapYourEmailTextField()
-        registrationEmailPage.enterEmail(email: "new104@email.com") //TODO: Generate new email for each test execution (Faker?)
+        registrationEmailPage.enterEmail(email: testData.email)
         registrationEmailPage.tapConfirmnButton()
         
         registrationEnterEmailValidationCodePage.tapCodeField()
@@ -185,23 +200,23 @@ class ModernMoneyUITests: XCTestCase {
         registrationEnterEmailValidationCodePage.tapConfirmButton()
         
         createPasswordPage.tapEnterAPasswordSecureTextField()
-        createPasswordPage.enterPassword(password: "123456")
+        createPasswordPage.enterPassword(password: password)
         createPasswordPage.tapEnterAgainSecureTextField()
-        createPasswordPage.enterPasswordAgain(password: "123456")
+        createPasswordPage.enterPasswordAgain(password: password)
         createPasswordPage.tapNextButton()
 
         enterHuntPage.tapEnterAHuntTextField()
-        enterHuntPage.enterHunt(hunt: "hunt")
+        enterHuntPage.enterHunt(hunt: testData.hunt)
         enterHuntPage.tapNextButton()
         
         completeProfilePage.tapFirstNameTextField()
-        completeProfilePage.enterFirstName(firstName: "John")
+        completeProfilePage.enterFirstName(firstName: testData.firstName)
         completeProfilePage.tapLastNameTextField()
-        completeProfilePage.enterLastName(lastName: "Doe")
+        completeProfilePage.enterLastName(lastName: testData.lastName)
         completeProfilePage.tapNextButton()
        
         completeYourPhonePage.tapPhoneNumberTextField()
-        completeYourPhonePage.enterPhoneNumber(phoneNumber: "+3599890080") //TODO: Generate new phone for each test execution (Faker?)
+        completeYourPhonePage.enterPhoneNumber(phoneNumber: testData.phoneNumber)
         completeYourPhonePage.tapSubmitButton()
        
         enterPhoneCodePage.tapCodeField()
@@ -225,11 +240,12 @@ class ModernMoneyUITests: XCTestCase {
         let registrationEmailPage = RegistrationEmailPage()
         let registrationEnterEmailValidationCodePage = RegistrationEnterEmailValidationCodePage()
         let createPasswordPage = CreatePasswordPage()
+        let testData = TestData()
         
         loginPage.tapRegisterButton()
         
         registrationEmailPage.tapYourEmailTextField()
-        registrationEmailPage.enterEmail(email: "testPsw2@email.com") //TODO: Generate new email for each test execution (Faker?)
+        registrationEmailPage.enterEmail(email: testData.email)
         registrationEmailPage.tapConfirmnButton()
         
         registrationEnterEmailValidationCodePage.tapCodeField()
@@ -252,11 +268,12 @@ class ModernMoneyUITests: XCTestCase {
         let registrationEmailPage = RegistrationEmailPage()
         let registrationEnterEmailValidationCodePage = RegistrationEnterEmailValidationCodePage()
         let createPasswordPage = CreatePasswordPage()
+        let testData = TestData()
         
         loginPage.tapRegisterButton()
         
         registrationEmailPage.tapYourEmailTextField()
-        registrationEmailPage.enterEmail(email: "testPsw2@email.com") //TODO: Generate new email for each test execution (Faker?)
+        registrationEmailPage.enterEmail(email: testData.email)
         registrationEmailPage.tapConfirmnButton()
         
         registrationEnterEmailValidationCodePage.tapCodeField()
@@ -385,6 +402,8 @@ class ModernMoneyUITests: XCTestCase {
         
         XCTAssertTrue(Page.app.staticTexts["TOTAL VALUE"].exists)
         XCTAssertTrue(Page.app.staticTexts["ADD MONEY FROM"].exists)
+        
+         logout()
     }
     
     func testPortfolioOpenAssetDetailsPage() {
@@ -417,6 +436,9 @@ class ModernMoneyUITests: XCTestCase {
         XCTAssertTrue(Page.app.staticTexts["EUR"].exists)
         XCTAssertTrue(Page.app.staticTexts["TOTAL VALUE"].exists)
         XCTAssertTrue(Page.app.staticTexts["TRANSACTIONS"].exists)
+        
+         logout()
     }
+    
 }
 
