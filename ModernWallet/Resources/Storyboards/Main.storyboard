@@ -234,14 +234,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ADD MONEY" translatesAutoresizingMaskIntoConstraints="NO" id="YLG-oe-HRC">
-                                            <rect key="frame" x="24" y="16" width="22" height="22"/>
+                                            <rect key="frame" x="28" y="16" width="22" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="5rD-sr-CKo"/>
                                                 <constraint firstAttribute="width" constant="22" id="b5h-U2-lTK"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD MONEY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlH-ia-xii">
-                                            <rect key="frame" x="56" y="21.666666666666668" width="62" height="11.000000000000004"/>
+                                            <rect key="frame" x="60" y="20.5" width="65.5" height="13"/>
                                             <fontDescription key="fontDescription" name="Geomanist" family="Geomanist" pointSize="11"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -306,7 +306,7 @@
                                         <rect key="frame" x="109.66666666666669" y="11" width="155" height="24"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLj-NN-jgj" customClass="IconOverTextButton" customModule="ModernMoney" customModuleProvider="target">
-                                        <rect key="frame" x="323.33333333333331" y="1" width="43.666666666666686" height="44"/>
+                                        <rect key="frame" x="322.33333333333331" y="1" width="44.666666666666686" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="9N1-LK-uVA"/>
                                         </constraints>
@@ -345,7 +345,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ezg-3T-fv3">
-                                        <rect key="frame" x="68" y="14.666666666666671" width="239" height="15"/>
+                                        <rect key="frame" x="68" y="13.33333333333333" width="239" height="17.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Geomanist-Book" family="Geomanist" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -410,16 +410,16 @@
                                 <rect key="frame" x="110" y="52" width="155" height="24"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoConnection" translatesAutoresizingMaskIntoConstraints="NO" id="eTd-9s-vBz">
-                                <rect key="frame" x="97" y="225" width="181" height="183"/>
+                                <rect key="frame" x="97" y="223.33333333333337" width="181" height="183"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO CONNECTION" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtW-P4-yom">
-                                <rect key="frame" x="32" y="438" width="311" height="20"/>
+                                <rect key="frame" x="32" y="436.33333333333331" width="311" height="23.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9S-0d-fE2">
-                                <rect key="frame" x="32" y="466" width="311" height="30"/>
+                                <rect key="frame" x="32" y="467.66666666666669" width="311" height="35"/>
                                 <string key="text">You are not connected to the internet.
 Please check and try again.</string>
                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
@@ -427,16 +427,16 @@ Please check and try again.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mg1-v9-vcm">
-                                <rect key="frame" x="105.33333333333333" y="714" width="164.66666666666669" height="24"/>
+                                <rect key="frame" x="104.33333333333333" y="714" width="166.66666666666669" height="24"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting to reconnect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbh-v0-gx7">
-                                        <rect key="frame" x="0.0" y="0.0" width="136.66666666666666" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="138.66666666666666" height="24"/>
                                         <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="g2h-Aq-851">
-                                        <rect key="frame" x="144.66666666666669" y="0.0" width="20" height="24"/>
+                                        <rect key="frame" x="146.66666666666669" y="0.0" width="20" height="24"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <constraints>
@@ -504,22 +504,22 @@ Please check and try again.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL VALUE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMM-h2-5bm">
-                                <rect key="frame" x="150" y="97.333333333333329" width="76.333333333333314" height="14"/>
+                                <rect key="frame" x="150" y="97" width="76.5" height="14"/>
                                 <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11.899999618530273"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" translatesAutoresizingMaskIntoConstraints="NO" id="4r3-b7-WVg">
-                                <rect key="frame" x="150" y="116.33333333333333" width="94" height="35.666666666666671"/>
+                                <rect key="frame" x="150" y="116" width="94.5" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J9-Qd-Qde">
-                                        <rect key="frame" x="0.0" y="0.0" width="76.333333333333329" height="35.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="36"/>
                                         <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="30.5"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPY-tL-KuR">
-                                        <rect key="frame" x="76.333333333333343" y="21.000000000000014" width="17.666666666666671" height="10"/>
+                                        <rect key="frame" x="76.5" y="21" width="18" height="10"/>
                                         <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="8.5"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -563,19 +563,19 @@ Please check and try again.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="289.66666666666669"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdX-4x-Q2r" userLabel="Balance Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="221.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="221.66666666666666"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dvg-p9-w07" userLabel="Asset Balance">
-                                                <rect key="frame" x="107.66666666666669" y="71.333333333333329" width="160" height="78.999999999999986"/>
+                                                <rect key="frame" x="133.66666666666666" y="80" width="108" height="61.666666666666657"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL VALUE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-j1-Q4T">
-                                                        <rect key="frame" x="48.333333333333329" y="0.0" width="63.666666666666671" height="11"/>
+                                                        <rect key="frame" x="18.666666666666686" y="0.0" width="70.666666666666671" height="13"/>
                                                         <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="11"/>
                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1MM-5Y-eOM" customClass="AssetAmountView" customModule="ModernMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="15" width="160" height="30"/>
+                                                        <rect key="frame" x="0.0" y="17" width="108" height="20.333333333333329"/>
                                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
@@ -587,7 +587,7 @@ Please check and try again.</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tF3-il-4Jb" customClass="AssetAmountView" customModule="ModernMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="49" width="160" height="30"/>
+                                                        <rect key="frame" x="0.0" y="41.333333333333329" width="108" height="20.333333333333329"/>
                                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
@@ -612,16 +612,16 @@ Please check and try again.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5Z-Cl-lLi" userLabel="Action Buttons Container">
-                                        <rect key="frame" x="0.0" y="221.33333333333334" width="375" height="68.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="221.66666666666666" width="375" height="67.999999999999972"/>
                                         <subviews>
                                             <stackView opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pA1-ar-Qyg">
-                                                <rect key="frame" x="0.0" y="5.0000000000000036" width="375" height="58.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="5.3333333333333428" width="375" height="58"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTI-rQ-A80">
-                                                        <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="58.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="58"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIp-8T-X4e">
-                                                                <rect key="frame" x="92.666666666666671" y="14.333333333333314" width="1" height="30"/>
+                                                                <rect key="frame" x="92.666666666666671" y="14.333333333333343" width="1" height="30"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="1" id="WNL-px-xqy"/>
@@ -636,10 +636,10 @@ Please check and try again.</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RxS-ZT-DEd">
-                                                        <rect key="frame" x="93.666666666666686" y="0.0" width="94" height="58.333333333333336"/>
+                                                        <rect key="frame" x="93.666666666666686" y="0.0" width="94" height="58"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2R-Ro-x2Q">
-                                                                <rect key="frame" x="92.999999999999986" y="14.333333333333314" width="1" height="30"/>
+                                                                <rect key="frame" x="92.999999999999986" y="14.333333333333343" width="1" height="30"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="1" id="gje-Cu-JP7"/>
@@ -653,10 +653,10 @@ Please check and try again.</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TeJ-AC-zxp">
-                                                        <rect key="frame" x="187.66666666666666" y="0.0" width="93.666666666666657" height="58.333333333333336"/>
+                                                        <rect key="frame" x="187.66666666666666" y="0.0" width="93.666666666666657" height="58"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3VQ-14-XFp">
-                                                                <rect key="frame" x="92.666666666666657" y="14.333333333333314" width="1" height="30"/>
+                                                                <rect key="frame" x="92.666666666666657" y="14.333333333333343" width="1" height="30"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="1" id="xAk-Xk-vB2"/>
@@ -670,10 +670,10 @@ Please check and try again.</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mzz-Ip-vxN">
-                                                        <rect key="frame" x="281.33333333333331" y="0.0" width="93.666666666666686" height="58.333333333333336"/>
+                                                        <rect key="frame" x="281.33333333333331" y="0.0" width="93.666666666666686" height="58"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfR-7h-BIO">
-                                                                <rect key="frame" x="92.666666666666686" y="14.333333333333314" width="1" height="30"/>
+                                                                <rect key="frame" x="92.666666666666686" y="14.333333333333343" width="1" height="30"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="1" id="OEf-bP-mBP"/>
@@ -694,10 +694,10 @@ Please check and try again.</string>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="W9A-q9-Xky" userLabel="Action Buttons">
-                                                <rect key="frame" x="0.0" y="5.0000000000000036" width="375" height="58.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="5.3333333333333428" width="375" height="58"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKs-Q8-j3B" customClass="IconOverTextButton" customModule="ModernMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="93" height="58.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="93" height="58"/>
                                                         <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="10"/>
                                                         <state key="normal" title="BUY" image="buyIcon"/>
                                                         <userDefinedRuntimeAttributes>
@@ -710,7 +710,7 @@ Please check and try again.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ccx-lx-GjE" customClass="IconOverTextButton" customModule="ModernMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="94" y="0.0" width="93" height="58.333333333333336"/>
+                                                        <rect key="frame" x="94" y="0.0" width="93" height="58"/>
                                                         <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="10"/>
                                                         <state key="normal" title="SELL" image="sellIcon"/>
                                                         <userDefinedRuntimeAttributes>
@@ -723,7 +723,7 @@ Please check and try again.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJu-jR-HiH" customClass="IconOverTextButton" customModule="ModernMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="188" y="0.0" width="93" height="58.333333333333336"/>
+                                                        <rect key="frame" x="188" y="0.0" width="93" height="58"/>
                                                         <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="10"/>
                                                         <state key="normal" title="SEND" image="sendIcon"/>
                                                         <userDefinedRuntimeAttributes>
@@ -736,7 +736,7 @@ Please check and try again.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uru-6Z-Vey" customClass="IconOverTextButton" customModule="ModernMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="282" y="0.0" width="93" height="58.333333333333336"/>
+                                                        <rect key="frame" x="282" y="0.0" width="93" height="58"/>
                                                         <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="10"/>
                                                         <state key="normal" title="RECEIVE" image="portfolioRecieveIcon"/>
                                                         <userDefinedRuntimeAttributes>
@@ -780,7 +780,7 @@ Please check and try again.</string>
                                 <rect key="frame" x="0.0" y="289.66666666666669" width="375" height="90"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1Zw-d5-6GX" userLabel="Header">
-                                        <rect key="frame" x="29" y="0.0" width="317" height="90"/>
+                                        <rect key="frame" x="29" y="0.33333333333331439" width="317" height="90"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="M8N-hl-lDm" userLabel="Main Items">
                                                 <rect key="frame" x="0.0" y="0.0" width="317" height="60"/>
@@ -802,7 +802,7 @@ Please check and try again.</string>
                                                         <rect key="frame" x="60" y="0.0" width="197" height="60"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="0yU-D9-gM2" userLabel="Transactions Stack View">
-                                                                <rect key="frame" x="34.333333333333329" y="23.666666666666629" width="129.66666666666669" height="14"/>
+                                                                <rect key="frame" x="29" y="23.333333333333314" width="141.33333333333334" height="14"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transactionsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="bvp-5i-wvn">
                                                                         <rect key="frame" x="0.0" y="0.0" width="21" height="14"/>
@@ -812,7 +812,7 @@ Please check and try again.</string>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRANSACTIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wR4-KT-fCz">
-                                                                        <rect key="frame" x="27.000000000000007" y="0.0" width="102.66666666666669" height="14"/>
+                                                                        <rect key="frame" x="26.999999999999993" y="0.0" width="114.33333333333331" height="14"/>
                                                                         <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -986,13 +986,13 @@ Please check and try again.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZiR-gZ-usr">
-                                <rect key="frame" x="88.333333333333329" y="290.66666666666669" width="199.66666666666669" height="231.00000000000006"/>
+                                <rect key="frame" x="87.666666666666686" y="288" width="200" height="236.33333333333337"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comingSoonIcon" translatesAutoresizingMaskIntoConstraints="NO" id="V18-eG-6Hb">
-                                        <rect key="frame" x="0.0" y="0.0" width="199.66666666666666" height="179"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="179"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming soon!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvC-CJ-cmE">
-                                        <rect key="frame" x="0.0" y="199" width="199.66666666666666" height="32"/>
+                                        <rect key="frame" x="0.0" y="199" width="200" height="37.333333333333343"/>
                                         <fontDescription key="fontDescription" name="Geomanist" family="Geomanist" pointSize="32"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1024,22 +1024,22 @@ Please check and try again.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="rqi-49-MLO">
-                                <rect key="frame" x="60" y="255" width="255" height="232"/>
+                                <rect key="frame" x="60" y="252" width="255" height="238"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyWallet" translatesAutoresizingMaskIntoConstraints="NO" id="ybI-Oz-tnN">
                                         <rect key="frame" x="0.0" y="0.0" width="255" height="159"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7Cr-Kz-xaI">
-                                        <rect key="frame" x="0.0" y="189" width="255" height="43"/>
+                                        <rect key="frame" x="0.0" y="189" width="255" height="49"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63w-QJ-kLi">
-                                                <rect key="frame" x="0.0" y="0.0" width="255" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="255" height="23.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoM-de-7jv">
-                                                <rect key="frame" x="0.0" y="28" width="255" height="15"/>
+                                                <rect key="frame" x="0.0" y="31.333333333333314" width="255" height="17.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>

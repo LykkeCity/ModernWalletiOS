@@ -36,7 +36,6 @@ class TotalBalanceViewController: UIViewController {
 //        viewModel.loading.isLoading
 //            .bind(to: rx.loading)
 //            .disposed(by: disposeBag)
-        
         totalBalanceLabel.text = Localize("totalbalance.newDesign.totalValue")
     }
 

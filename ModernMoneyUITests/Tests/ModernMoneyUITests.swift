@@ -23,22 +23,38 @@ class ModernMoneyUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
 
+        let sideNavBar = SideNavBar()
+        if sideNavBar.menuIcon.exists {
+            sideNavBar.open()
+            sideNavBar.selectMenuItem(item: "LOGOUT")
+        }
         
     }
    
-    
     func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .motionShake {
             print("Shaked") }
     }
     
-    
-    func logout() {
+    func login(email: String, password: String, pin: String, smsCode: String) {
+        let loginPage = LoginPage()
+        let enterPasswordPage = EnterPasswordPage()
+        let enterPINPage = EnterPINPage()
+        let enterSMSCodePage = EnterSMSCodePage()
         
-        let sideNavBar = SideNavBar()
-        sideNavBar.open()
-        sideNavBar.selectMenuItem(item: "LOGOUT")
+        loginPage.tapYourEmailTextField()
+        loginPage.enterEmail(email: email)
+        loginPage.tapSignInButton()
         
+        enterPasswordPage.tapYourPasswordTextField()
+        enterPasswordPage.enterPassword(password: password)
+        enterPasswordPage.tapSignInButton()
+        
+        enterPINPage.enterPIN(pin: pin)
+        
+        enterSMSCodePage.tapCodeField()
+        enterSMSCodePage.enterCode(code: smsCode)
+        enterSMSCodePage.tapConfirnButton()
     }
     
     func testLoginWithValidUserCredentials() {
@@ -71,8 +87,6 @@ class ModernMoneyUITests: XCTestCase {
         XCTAssertTrue(portfolioPage.viewAllButton.exists)
         XCTAssertTrue(portfolioPage.cryptoCurrenciesButton.exists)
         XCTAssertTrue(portfolioPage.fiatCurrencies.exists)
-        
-        logout()
     }
     
     func testLoginWithInvalidUsername() {
@@ -402,8 +416,6 @@ class ModernMoneyUITests: XCTestCase {
         
         XCTAssertTrue(Page.app.staticTexts["TOTAL VALUE"].exists)
         XCTAssertTrue(Page.app.staticTexts["ADD MONEY FROM"].exists)
-        
-         logout()
     }
     
     func testPortfolioOpenAssetDetailsPage() {
@@ -436,9 +448,101 @@ class ModernMoneyUITests: XCTestCase {
         XCTAssertTrue(Page.app.staticTexts["EUR"].exists)
         XCTAssertTrue(Page.app.staticTexts["TOTAL VALUE"].exists)
         XCTAssertTrue(Page.app.staticTexts["TRANSACTIONS"].exists)
-        
-         logout()
     }
     
+    func testChangeBaseAsset() {
+        // User is able to change tha base asset
+        let sideNavBar = SideNavBar()
+        let settingsPage = SettingsPage()
+        let portfolioPage = PortfolioPage()
+        
+        login(email: "user@lykke.com", password: "123456", pin: "0000", smsCode: "0000")
+        let baseAsset = portfolioPage.getTotalBalanceAmount().first
+        let newBaseAsset = "BTC"
+        settingsPage.open()
+        /* TODO: We have to check for the currently selected asset before change the it */
+        settingsPage.selectBaseAsset(baseAsset: newBaseAsset)
+        sideNavBar.open()
+        sideNavBar.selectMenuItem(item: "PORTFOLIO")
+        XCTAssertNotEqual(portfolioPage.getTotalBalanceAmount().first, baseAsset)
+    }
+    
+    
+    func testPortfolioViewOnlyCryptoCurrrencies() {
+        /* Filter only cryptocurrencies and make sure that the correct currencies are
+         listed in the table below */
+        
+        let portfolioPage = PortfolioPage()
+        let expectedNunberOfRecords = 4
+        let expectedCurrencies = ["LKK", "ETH", "SLR", "BTC"]
+       
+        login(email: "user@lykke.com", password: "123456", pin: "0000", smsCode: "0000")
+        
+        portfolioPage.showOnlyCryptoCurrencies()
+        portfolioPage.swipeTableUp()
+        XCTAssertTrue(portfolioPage.getTableRowCount() == expectedNunberOfRecords)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[0]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[1]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[2]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[3]].exists)
+    }
+        
+    
+    
+    func testPortfolioViewOnlyFiatCurrrencies() {
+        /* Filter only fiat currencies and make sure that the correct currencies are
+         listed in the table below */
+        
+        let portfolioPage = PortfolioPage()
+        let expectedNunberOfRecords = 3
+        let expectedCurrencies = ["USD", "EUR", "CHF"]
+        
+        login(email: "user@lykke.com", password: "123456", pin: "0000", smsCode: "0000")
+        
+        portfolioPage.showOnlyFiatCurrencies()
+        portfolioPage.swipeTableUp()
+        XCTAssertTrue(portfolioPage.getTableRowCount() == expectedNunberOfRecords)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[0]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[1]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[2]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[3]].exists)
+    }
+    
+    func testPortfolioViewAllCurrrencies() {
+        /* Make sure that all currencies are listed in the table below */
+        
+        let portfolioPage = PortfolioPage()
+        let expectedNunberOfRecords = 7
+        let expectedCurrencies = ["USD", "EUR", "CHF", "LKK", "ETH", "SLR", "BTC"]
+        
+        login(email: "user@lykke.com", password: "123456", pin: "0000", smsCode: "0000")
+        
+        portfolioPage.swipeTableUp()
+        XCTAssertTrue(portfolioPage.getTableRowCount() == expectedNunberOfRecords)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[0]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[1]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[2]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[3]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[4]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[5]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[6]].exists)
+        XCTAssertTrue(portfolioPage.portfolioTable.staticTexts[expectedCurrencies[7]].exists)
+    }
+    
+    func testSendReceiveButtonsDisabledForFiatCurrencies() {
+        // Send and Receive Buttons on assert details page are disabled for fiat currencies
+        
+        let portfolioPage = PortfolioPage()
+        let assetDetailsPage = AssetDetailsPage()
+       
+        login(email: "user@lykke.com", password: "123456", pin: "0000", smsCode: "0000")
+        
+        portfolioPage.showOnlyFiatCurrencies()
+        portfolioPage.tapOnCurrency(currency: "EUR")
+        
+        XCTAssertFalse(assetDetailsPage.sendButton.isEnabled)
+        XCTAssertFalse(assetDetailsPage.receiveButton.isEnabled)
+    }
+
 }
 

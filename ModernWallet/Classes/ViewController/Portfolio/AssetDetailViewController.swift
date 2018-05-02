@@ -56,6 +56,8 @@ class AssetDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        settupAccessiabilityIdentifiers()
+        
         transactionsTable.contentInset = UIEdgeInsetsMake(0, 0, 44, 0)
 
         transactionsTable.register(UINib(nibName: "AssetInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "AssetInfoTableViewCell")
@@ -230,5 +232,19 @@ fileprivate extension AssetAmountView {
     func configure(fontSize: CGFloat) {
         codeFont = UIFont(name: "Geomanist-Light", size: fontSize)
         amountFont = UIFont(name: "Geomanist-Light", size: fontSize)
+    }
+}
+
+// MARK: - UI testing purposes
+extension AssetDetailViewController {
+    
+    fileprivate func settupAccessiabilityIdentifiers() {
+        baseAssetAmount.accessibilityIdentifier = "Base asset amount"
+        receiveButton.accessibilityIdentifier = "Receive Button"
+        filterButton.accessibilityIdentifier = "Filter Button"
+        sendButton.accessibilityIdentifier = "Send Button"
+        messageButton.accessibilityIdentifier = "Filter Button"
+        filterDescriptionLabel.accessibilityIdentifier = "Filter description label"
+        filterDescriptionClearButton.accessibilityIdentifier = "Filter description clear button"
     }
 }

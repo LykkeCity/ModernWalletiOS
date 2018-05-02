@@ -65,6 +65,8 @@ class PortfolioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        settupAccessiabilityIdentifiers()
+        
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         view.backgroundColor = UIColor.clear
@@ -273,5 +275,17 @@ fileprivate extension SharedSequenceConvertibleType where SharingStrategy == Dri
 fileprivate extension ObservableType where Self.E == [Variable<Asset>] {
     func asDriver() -> Driver<[Variable<Asset>]> {
         return asDriver(onErrorJustReturn: [])
+    }
+}
+
+// MARK: - UI testing purposes
+extension PortfolioViewController {
+    
+    fileprivate func settupAccessiabilityIdentifiers() {
+        fiatFilterButton.accessibilityIdentifier =  "Fiat filter button"
+        allFilterButton.accessibilityIdentifier =  "All filter button"
+        cryptoFilterButton.accessibilityIdentifier =  "Crypto filter button"
+        tableView.accessibilityIdentifier = "Portfolio table view"
+        
     }
 }

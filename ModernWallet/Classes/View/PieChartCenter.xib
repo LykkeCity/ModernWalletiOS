@@ -38,6 +38,7 @@
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wA0-dx-HdW">
                             <rect key="frame" x="0.0" y="0.0" width="58.5" height="35"/>
+                            <accessibility key="accessibilityConfiguration" identifier="balanceAmount"/>
                             <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="30"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
