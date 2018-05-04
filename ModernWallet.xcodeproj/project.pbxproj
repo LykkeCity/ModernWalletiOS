@@ -22,6 +22,8 @@
 		19855C572088EA5300DEB789 /* CreatePINPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C562088EA5300DEB789 /* CreatePINPage.swift */; };
 		19D52AF720936A6E005421F9 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D52AF620936A6E005421F9 /* SettingsPage.swift */; };
 		19D52B02209A069E005421F9 /* AssetDetailsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D52B01209A069E005421F9 /* AssetDetailsPage.swift */; };
+		19D52B04209B4635005421F9 /* AddMoneyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D52B03209B4635005421F9 /* AddMoneyPage.swift */; };
+		19D52B06209C501D005421F9 /* AddMoneyFromCreditCardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D52B05209C501D005421F9 /* AddMoneyFromCreditCardPage.swift */; };
 		19E94C402084E84000F6BB9C /* ModernMoneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94C3F2084E84000F6BB9C /* ModernMoneyUITests.swift */; };
 		19E94C4C2085E1BC00F6BB9C /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94C4B2085E1BC00F6BB9C /* Page.swift */; };
 		19E94C4E2085E22000F6BB9C /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E94C4D2085E22000F6BB9C /* LoginPage.swift */; };
@@ -243,6 +245,8 @@
 		19855C562088EA5300DEB789 /* CreatePINPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePINPage.swift; sourceTree = "<group>"; };
 		19D52AF620936A6E005421F9 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		19D52B01209A069E005421F9 /* AssetDetailsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailsPage.swift; sourceTree = "<group>"; };
+		19D52B03209B4635005421F9 /* AddMoneyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyPage.swift; sourceTree = "<group>"; };
+		19D52B05209C501D005421F9 /* AddMoneyFromCreditCardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyFromCreditCardPage.swift; sourceTree = "<group>"; };
 		19E94C3D2084E84000F6BB9C /* ModernMoneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModernMoneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19E94C3F2084E84000F6BB9C /* ModernMoneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernMoneyUITests.swift; sourceTree = "<group>"; };
 		19E94C412084E84000F6BB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -550,6 +554,8 @@
 				197AA2EB2090C2AF004EACBD /* SideNavBar.swift */,
 				19D52AF620936A6E005421F9 /* SettingsPage.swift */,
 				19D52B01209A069E005421F9 /* AssetDetailsPage.swift */,
+				19D52B03209B4635005421F9 /* AddMoneyPage.swift */,
+				19D52B05209C501D005421F9 /* AddMoneyFromCreditCardPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -1422,12 +1428,14 @@
 				19855C452088ABC400DEB789 /* RegistrationEmailPage.swift in Sources */,
 				19E94C4E2085E22000F6BB9C /* LoginPage.swift in Sources */,
 				19855C572088EA5300DEB789 /* CreatePINPage.swift in Sources */,
+				19D52B06209C501D005421F9 /* AddMoneyFromCreditCardPage.swift in Sources */,
 				19855C472088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift in Sources */,
 				19D52B02209A069E005421F9 /* AssetDetailsPage.swift in Sources */,
 				19E94C542086081A00F6BB9C /* EnterPINPage.swift in Sources */,
 				19855C552088E4D700DEB789 /* EnterPhoneCodePage.swift in Sources */,
 				19E94C402084E84000F6BB9C /* ModernMoneyUITests.swift in Sources */,
 				19855C4D2088D8C400DEB789 /* CreatePasswordPage.swift in Sources */,
+				19D52B04209B4635005421F9 /* AddMoneyPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

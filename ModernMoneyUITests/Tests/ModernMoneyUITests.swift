@@ -22,12 +22,12 @@ class ModernMoneyUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-
-        let sideNavBar = SideNavBar()
-        if sideNavBar.menuIcon.exists {
-            sideNavBar.open()
-            sideNavBar.selectMenuItem(item: "LOGOUT")
-        }
+//
+//        let sideNavBar = SideNavBar()
+//        if sideNavBar.menuIcon.exists {
+//            sideNavBar.open()
+//            sideNavBar.selectMenuItem(item: "LOGOUT")
+//        }
         
     }
    
@@ -542,6 +542,60 @@ class ModernMoneyUITests: XCTestCase {
         
         XCTAssertFalse(assetDetailsPage.sendButton.isEnabled)
         XCTAssertFalse(assetDetailsPage.receiveButton.isEnabled)
+    }
+    
+    func testSubmitAddMoneyFromCreditCard() {
+        // Add Money Form CC order is submited successfully when all data is filled successfully
+        
+        let addMoneyPage = AddMoneyPage()
+        let addMoneyFromCrediCardPage = AddMoneyFromCreditCardPage()
+        let testData = TestData()
+        
+        addMoneyPage.open()
+        addMoneyPage.selectCreditCardOption()
+        addMoneyPage.selectCurrency(currency: "EUR")
+        XCTAssertTrue(addMoneyFromCrediCardPage.getAmount() == "00.00")
+        print(addMoneyFromCrediCardPage.getAssetSymbol())
+        // XCTAssertTrue(addMoneyFromCrediCardPage.getAssetSymbol() == "€")
+
+        print(addMoneyFromCrediCardPage.getAssetCode())
+        // XCTAssertTrue(addMoneyFromCrediCardPage.getAssetCode() == "EUR")
+        
+        addMoneyFromCrediCardPage.enterAmount(amount: "10.5")
+        addMoneyFromCrediCardPage.enterFirstName(firstName: testData.firstName)
+        addMoneyFromCrediCardPage.enterLastName(lastName: testData.lastName)
+        addMoneyFromCrediCardPage.enterAddress(address: testData.street)
+        addMoneyFromCrediCardPage.enterCity(city: testData.city)
+        addMoneyFromCrediCardPage.enterZip(zip: testData.zipCode)
+        addMoneyFromCrediCardPage.enterCounty(country: testData.country)
+        addMoneyFromCrediCardPage.enterPhoneCode(code: "+123")
+        addMoneyFromCrediCardPage.enterPhone(phone: "2000020")
+        addMoneyFromCrediCardPage.tapSubmit()
+        // TODO:
+        
+  }
+    
+    func testFieldAmountShouldNotBeEmpty() {
+        // When the user submit the order with amount value 00.00, error message "Field Amount should not be empty" appear on the screen
+        
+        let addMoneyPage = AddMoneyPage()
+        let addMoneyFromCrediCardPage = AddMoneyFromCreditCardPage()
+        let testData = TestData()
+        
+        addMoneyPage.open()
+        addMoneyPage.selectCreditCardOption()
+        addMoneyPage.selectCurrency(currency: "EUR")
+        XCTAssertTrue(addMoneyFromCrediCardPage.getAmount() == "00.00")
+        addMoneyFromCrediCardPage.enterFirstName(firstName: testData.firstName)
+        addMoneyFromCrediCardPage.enterLastName(lastName: testData.lastName)
+        addMoneyFromCrediCardPage.enterAddress(address: testData.street)
+        addMoneyFromCrediCardPage.enterCity(city: testData.city)
+        addMoneyFromCrediCardPage.enterZip(zip: testData.zipCode)
+        addMoneyFromCrediCardPage.enterCounty(country: testData.country)
+        addMoneyFromCrediCardPage.enterPhoneCode(code: "+123")
+        addMoneyFromCrediCardPage.enterPhone(phone: "2000020")
+        addMoneyFromCrediCardPage.tapSubmit()
+        XCTAssertTrue(addMoneyFromCrediCardPage.emptyAmountErrMessage.exists)
     }
 
 }

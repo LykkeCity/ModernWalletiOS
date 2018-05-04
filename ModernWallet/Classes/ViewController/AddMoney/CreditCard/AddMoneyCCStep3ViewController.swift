@@ -64,3 +64,21 @@ class AddMoneyCCStep3ViewController: UIViewController {
     */
 
 }
+
+// MARK: - UI testing purposes
+extension AddMoneyCCStep3ViewController {
+    
+    fileprivate func settupAccessiabilityIdentifiers() {
+        paymentCompleteLabel.accessibilityIdentifier = "Payment complete label"
+        orderDetailsLabel.accessibilityIdentifier = "Order Details Label"
+        orderRefLabel.accessibilityIdentifier = "Order Ref Label"
+        orderDateLabel.accessibilityIdentifier = "Order date label"
+        amountLabel.accessibilityIdentifier = "Amount label"
+        paymentMethodLabel.accessibilityIdentifier = "Payment method label"
+        cardHolderNameLabel.accessibilityIdentifier = "Card holder name label"
+        addressLabel.accessibilityIdentifier = "Address label"
+        countryLabel.accessibilityIdentifier = "Country label"
+        zipLabel.accessibilityIdentifier = "Zip label"
+        returnToPortfolioButton.accessibilityIdentifier = "Return to portfolio button"
+    }
+}

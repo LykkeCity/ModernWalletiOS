@@ -56,6 +56,8 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        settupAccessiabilityIdentifiers()
+        
         NotificationCenter.default
             .addObserver(self, selector: #selector(StartViewController.presentPendingViewController), name: .kycDocumentsUploadedOrApproved, object: nil)
         
@@ -166,3 +168,14 @@ class StartViewController: UIViewController {
         return vc
     }
 }
+
+// MARK: - UI testing purposes
+extension StartViewController {
+    
+    fileprivate func settupAccessiabilityIdentifiers() {
+        bankAccountLabel.accessibilityIdentifier = "Bank account label"
+        creditCardLabel.accessibilityIdentifier = "Credit card label"
+        receiveCryptoLabel.accessibilityIdentifier = "Receive crypto label"
+    }
+}
+

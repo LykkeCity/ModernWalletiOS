@@ -89,3 +89,18 @@ extension BuyAssetListView: InputForm {
     }
 
 }
+
+// MARK: - UI testing purposes
+extension BuyAssetListView {
+    fileprivate func settupAccessiabilityIdentifiers() {
+        // tapToSelectAsset.accessibilityIdentifier = "Tap to select asset"
+        baseAssetCode.accessibilityIdentifier = "Base asset code"
+        amontInBase.accessibilityIdentifier = "Amount in base asset"
+        assetCode.accessibilityIdentifier = "Asset Code"
+        amount.accessibilityIdentifier = "Amount"
+        assetName.accessibilityIdentifier = "Asset name"
+        assetIcon.accessibilityIdentifier = "Asset icon"
+        label.accessibilityIdentifier = "Label"
+        }
+    }
+

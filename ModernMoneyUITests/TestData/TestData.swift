@@ -17,6 +17,10 @@ protocol TestDataProtocol {
     var phoneNumber: String { get }
     var password: String { get }
     var hunt: String { get }
+    var street: String { get }
+    var city: String { get }
+    var zipCode: String { get }
+    var country: String { get }
 }
 
 class TestData: TestDataProtocol {
@@ -27,14 +31,21 @@ class TestData: TestDataProtocol {
     let phoneNumber: String
     let password: String
     let hunt: String
-    
+    let street: String
+    let city: String
+    let zipCode: String
+    let country: String
     
     init() {
         firstName = faker.name.firstName()
         lastName = faker.name.lastName()
         email = faker.internet.email()
-        phoneNumber = "+359" + faker.phoneNumber.phoneNumber()
+        phoneNumber = "+359" + faker.phoneNumber.phoneNumber() //TODO: Generate the code
         password = faker.internet.password()
         hunt = faker.lorem.word()
+        street = faker.address.streetName() + " " + faker.address.streetSuffix()
+        city = faker.address.city()
+        zipCode = faker.address.postcode()
+        country = faker.address.country()
     }
 }

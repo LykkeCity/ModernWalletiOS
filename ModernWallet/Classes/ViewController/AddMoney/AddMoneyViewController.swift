@@ -43,6 +43,8 @@ class AddMoneyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        settupAccessiabilityIdentifiers()
+        
         // Do any additional setup after loading the view.
         setUserInterface()
         navController?.delegate = self
@@ -91,6 +93,19 @@ extension AddMoneyViewController: NavigationWizzardProtocol, UINavigationControl
         manageBackButtonVisibility(navigationController, willShow: viewController)
         managePageIndicators(navigationController, willShow: viewController)
         manageAddMoneyLabel(navigationController, willShow: viewController)
+    }
+}
+
+// MARK: - UI testing purposes
+extension AddMoneyViewController {
+    
+    fileprivate func settupAccessiabilityIdentifiers() {
+        backButton.accessibilityIdentifier = "Back button"
+        pageIndicatorBtn1.accessibilityIdentifier = "Page indicator btn 1"
+        pageIndicatorBtn2.accessibilityIdentifier = "Page indicator btn 2"
+        pageIndicatorBtn3.accessibilityIdentifier = "Page indicator btn 3"
+        startView.accessibilityIdentifier = "Start view"
+        addMoneyLabel.accessibilityIdentifier = "Add Money Label"
     }
 }
 

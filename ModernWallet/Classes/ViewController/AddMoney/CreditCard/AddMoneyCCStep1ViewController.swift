@@ -51,7 +51,9 @@ class AddMoneyCCStep1ViewController: AddMoneyBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        settupAccessiabilityIdentifiers()
+        
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.clear
         
@@ -239,4 +241,26 @@ extension AddMoneyCCStep1ViewController: InputForm {
         return goToTextField(after: textField)
     }
 
+}
+
+// MARK: - UI testing purposes
+extension AddMoneyCCStep1ViewController {
+    
+    fileprivate func settupAccessiabilityIdentifiers() {
+        assetCode.accessibilityIdentifier = "Asset Code"
+        assetSymbol.accessibilityIdentifier = "Asset Symbol"
+        amountTextField.accessibilityIdentifier = "Amount text field"
+        ccContainerView.accessibilityIdentifier = "cc conteiner view"
+        amauntField.accessibilityIdentifier = "Amount field"
+        firstNameField.accessibilityIdentifier = "First name field"
+        lastNameField.accessibilityIdentifier = "Last name field"
+        addressField.accessibilityIdentifier = "Address field"
+        cityField.accessibilityIdentifier = "City field"
+        zipField.accessibilityIdentifier = "Zip field"
+        countryField.accessibilityIdentifier = "Country field"
+        codeField.accessibilityIdentifier = "Code field"
+        phoneField.accessibilityIdentifier = "Phone field"
+        submitButton.accessibilityIdentifier = "Submit button"
+        scrollView.accessibilityIdentifier = "Scroll view"
+    }
 }
