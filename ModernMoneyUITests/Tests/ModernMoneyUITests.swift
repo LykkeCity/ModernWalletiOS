@@ -742,5 +742,77 @@ class ModernMoneyUITests: XCTestCase {
         addMoneyFromCrediCardPage.tapDone()
         XCTAssertTrue(Page.app.staticTexts["Field Phone should not be empty"].exists)
     }
+    
+    func testAddMoneyFromCCWhenAmmountExceedsCCDepositLimit() {
+        // Error message appears when the user tries to submit the form but the entered amount exceeds the credit card deposit limit
+        
+        let addMoneyPage = AddMoneyPage()
+        let addMoneyFromCrediCardPage = AddMoneyFromCreditCardPage()
+        let testData = TestData()
+        
+        addMoneyPage.open()
+        addMoneyPage.selectCreditCardOption()
+        addMoneyPage.selectCurrency(currency: "EUR")
+        XCTAssertTrue(addMoneyFromCrediCardPage.getAmount() == "00.00")
+        addMoneyFromCrediCardPage.enterAmount(amount: "3001")
+        addMoneyFromCrediCardPage.enterFirstName(firstName: testData.firstName)
+        addMoneyFromCrediCardPage.enterLastName(lastName: testData.lastName)
+        addMoneyFromCrediCardPage.enterAddress(address: testData.street)
+        addMoneyFromCrediCardPage.enterCity(city: testData.city)
+        addMoneyFromCrediCardPage.enterZip(zip: testData.zipCode)
+        addMoneyFromCrediCardPage.enterCounty(country: testData.country)
+        addMoneyFromCrediCardPage.enterPhoneCode(code: "+123")
+        addMoneyFromCrediCardPage.enterPhone(phone: "2000020")
+        addMoneyFromCrediCardPage.tapDone()
+        XCTAssertTrue(Page.app.staticTexts["The credit card deposit limit is EUR 3000"].exists)
+    }
+    
+    func testOrderAmountShouldBeGreaterThan8() {
+        // Test for minimal order amount
+        
+        let addMoneyPage = AddMoneyPage()
+        let addMoneyFromCrediCardPage = AddMoneyFromCreditCardPage()
+        let testData = TestData()
+        
+        addMoneyPage.open()
+        addMoneyPage.selectCreditCardOption()
+        addMoneyPage.selectCurrency(currency: "USD")
+        XCTAssertTrue(addMoneyFromCrediCardPage.getAmount() == "00.00")
+        addMoneyFromCrediCardPage.enterAmount(amount: "7.99")
+        addMoneyFromCrediCardPage.enterFirstName(firstName: testData.firstName)
+        addMoneyFromCrediCardPage.enterLastName(lastName: testData.lastName)
+        addMoneyFromCrediCardPage.enterAddress(address: testData.street)
+        addMoneyFromCrediCardPage.enterCity(city: testData.city)
+        addMoneyFromCrediCardPage.enterZip(zip: testData.zipCode)
+        addMoneyFromCrediCardPage.enterCounty(country: testData.country)
+        addMoneyFromCrediCardPage.enterPhoneCode(code: "+123")
+        addMoneyFromCrediCardPage.enterPhone(phone: "2000020")
+        addMoneyFromCrediCardPage.tapDone()
+        XCTAssertTrue(Page.app.staticTexts["The order amount should be greater than USD 8"].exists)
+    }
+    
+    func testPhoneNumberShouldBeValid() {
+        // Test with invalid phone number
+        
+        let addMoneyPage = AddMoneyPage()
+        let addMoneyFromCrediCardPage = AddMoneyFromCreditCardPage()
+        let testData = TestData()
+        
+        addMoneyPage.open()
+        addMoneyPage.selectCreditCardOption()
+        addMoneyPage.selectCurrency(currency: "USD")
+        XCTAssertTrue(addMoneyFromCrediCardPage.getAmount() == "00.00")
+        addMoneyFromCrediCardPage.enterAmount(amount: "50")
+        addMoneyFromCrediCardPage.enterFirstName(firstName: testData.firstName)
+        addMoneyFromCrediCardPage.enterLastName(lastName: testData.lastName)
+        addMoneyFromCrediCardPage.enterAddress(address: testData.street)
+        addMoneyFromCrediCardPage.enterCity(city: testData.city)
+        addMoneyFromCrediCardPage.enterZip(zip: testData.zipCode)
+        addMoneyFromCrediCardPage.enterCounty(country: testData.country)
+        addMoneyFromCrediCardPage.enterPhoneCode(code: "+123")
+        addMoneyFromCrediCardPage.enterPhone(phone: "1")
+        addMoneyFromCrediCardPage.tapDone()
+        XCTAssertTrue(Page.app.staticTexts["Invalid phone number"].exists) // Fails because of LMW-508
+    }
 }
 
