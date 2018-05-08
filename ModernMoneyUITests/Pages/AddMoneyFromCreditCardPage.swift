@@ -54,36 +54,52 @@ class AddMoneyFromCreditCardPage: Page {
     
     func enterFirstName(firstName: String) {
         firstNameField.tap()
-        if firstNameField.value as! String != "" {
-            firstNameField.press(forDuration: 1.2)
-            Page.app.menuItems["Select All"].tap()
+        let fieldValue = firstNameField.value as! String
+        if fieldValue != "" {
+            var strLen = fieldValue.count
+            while strLen != 0 {
+                Page.app/*@START_MENU_TOKEN@*/.keyboards.keys["delete"]/*[[".keyboards.keys[\"delete\"]",".keys[\"delete\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
+                strLen = strLen - 1
+            }
         }
         firstNameField.typeText(firstName)
     }
     
     func enterLastName(lastName: String) {
         lastNameField.tap()
-        if lastNameField.value as! String != "" {
-            lastNameField.press(forDuration: 1.2)
-            Page.app.menuItems["Select All"].tap()
+        let fieldValue = lastNameField.value as! String
+        if fieldValue != "" {
+            var strLen = fieldValue.count
+            while strLen != 0 {
+                Page.app/*@START_MENU_TOKEN@*/.keyboards.keys["delete"]/*[[".keyboards.keys[\"delete\"]",".keys[\"delete\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
+                strLen = strLen - 1
+            }
         }
         lastNameField.typeText(lastName)
     }
     
     func enterAddress(address: String) {
         addressField.tap()
-        if addressField.value as! String != "" {
-            addressField.press(forDuration: 1.2)
-            Page.app.menuItems["Select All"].tap()
+        let fieldValue = addressField.value as! String
+        if fieldValue != "" {
+            var strLen = fieldValue.count
+            while strLen != 0 {
+                Page.app/*@START_MENU_TOKEN@*/.keyboards.keys["delete"]/*[[".keyboards.keys[\"delete\"]",".keys[\"delete\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
+                strLen = strLen - 1
+            }
         }
         addressField.typeText(address)
     }
     
     func enterCity(city: String) {
         cityField.tap()
-        if cityField.value as! String != "" {
-            cityField.press(forDuration: 1.2)
-            Page.app.menuItems["Select All"].tap()
+        let fieldValue = cityField.value as! String
+        if fieldValue != "" {
+            var strLen = fieldValue.count
+            while strLen != 0 {
+                Page.app/*@START_MENU_TOKEN@*/.keyboards.keys["delete"]/*[[".keyboards.keys[\"delete\"]",".keys[\"delete\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
+                strLen = strLen - 1
+            }
         }
         cityField.typeText(city)
     }
@@ -98,27 +114,39 @@ class AddMoneyFromCreditCardPage: Page {
     
     func enterZip(zip: String) {
         zipField.tap()
-        if zipField.value as! String != "" {
-            zipField.press(forDuration: 1.2)
-            Page.app.menuItems["Select All"].tap()
+        let fieldValue = zipField.value as! String
+        if fieldValue != "" {
+            var strLen = fieldValue.count
+            while strLen != 0 {
+                Page.app.keys["Delete"].tap()
+                strLen = strLen - 1
+            }
         }
         zipField.typeText(zip)
     }
     
     func enterPhoneCode(code: String) {
         codeField.tap()
-        if codeField.value as! String != "" {
-            codeField.press(forDuration: 1.2)
-            Page.app.menuItems["Select All"].tap()
+        let fieldValue = codeField.value as! String
+        if fieldValue != "" {
+            var strLen = fieldValue.count
+            while strLen != 0 {
+                Page.app.keys["Delete"].tap()
+                strLen = strLen - 1
+            }
         }
         codeField.typeText(code)
     }
     
     func enterPhone(phone: String) {
         phoneField.tap()
-        if phoneField.value as! String != "" {
-            phoneField.press(forDuration: 1.2)
-            Page.app.menuItems["Select All"].tap()
+        let fieldValue = phoneField.value as! String
+        if fieldValue != "" {
+            var strLen = fieldValue.count
+            while strLen != 0 {
+                Page.app.keys["Delete"].tap()
+                strLen = strLen - 1
+            }
         }
         phoneField.typeText(phone)
     }

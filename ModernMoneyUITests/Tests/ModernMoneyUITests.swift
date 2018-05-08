@@ -610,7 +610,7 @@ class ModernMoneyUITests: XCTestCase {
         addMoneyPage.selectCurrency(currency: "EUR")
         XCTAssertTrue(addMoneyFromCrediCardPage.getAmount() == "00.00")
         addMoneyFromCrediCardPage.enterAmount(amount: "10.5")
-        addMoneyFromCrediCardPage.enterFirstName(firstName: " ")
+        addMoneyFromCrediCardPage.enterFirstName(firstName: "")
         addMoneyFromCrediCardPage.enterLastName(lastName: testData.lastName)
         addMoneyFromCrediCardPage.enterAddress(address: testData.street)
         addMoneyFromCrediCardPage.enterCity(city: testData.city)
@@ -618,9 +618,9 @@ class ModernMoneyUITests: XCTestCase {
         addMoneyFromCrediCardPage.enterCounty(country: testData.country)
         addMoneyFromCrediCardPage.enterPhoneCode(code: "+123")
         addMoneyFromCrediCardPage.enterPhone(phone: "2000020")
-        addMoneyFromCrediCardPage.tapSubmit()
-        XCTAssertTrue(Page.app.staticTexts["Field First Name should not be empty"].exists)
-    }
+        addMoneyFromCrediCardPage.tapDone()
+        XCTAssertTrue(Page.app.staticTexts["Field First Name should not be empty"].exists) // Fails because of LMW-459
+  }
     
     func testLastNameFieldShouldNotBeEmpty() {
         // Last Name field is requred and cannot be empty.
@@ -634,18 +634,113 @@ class ModernMoneyUITests: XCTestCase {
         addMoneyPage.selectCurrency(currency: "EUR")
         XCTAssertTrue(addMoneyFromCrediCardPage.getAmount() == "00.00")
         addMoneyFromCrediCardPage.enterAmount(amount: "10.5")
-        addMoneyFromCrediCardPage.enterFirstName(firstName: testData.lastName)
-        addMoneyFromCrediCardPage.enterLastName(lastName: " ")
+        addMoneyFromCrediCardPage.enterFirstName(firstName: testData.firstName)
+        addMoneyFromCrediCardPage.enterLastName(lastName: "")
         addMoneyFromCrediCardPage.enterAddress(address: testData.street)
         addMoneyFromCrediCardPage.enterCity(city: testData.city)
         addMoneyFromCrediCardPage.enterZip(zip: testData.zipCode)
         addMoneyFromCrediCardPage.enterCounty(country: testData.country)
         addMoneyFromCrediCardPage.enterPhoneCode(code: "+123")
         addMoneyFromCrediCardPage.enterPhone(phone: "2000020")
-        addMoneyFromCrediCardPage.tapSubmit()
-        XCTAssertTrue(Page.app.staticTexts["Field Last Name should not be empty"].exists)
+        addMoneyFromCrediCardPage.tapDone()
+        XCTAssertTrue(Page.app.staticTexts["Field Last Name should not be empty"].exists) // Fails because of LMW-459
     }
 
-
+    func testAddressFieldShouldNotBeEmpty() {
+        // Address field is requred and cannot be empty.
+        
+        let addMoneyPage = AddMoneyPage()
+        let addMoneyFromCrediCardPage = AddMoneyFromCreditCardPage()
+        let testData = TestData()
+        
+        addMoneyPage.open()
+        addMoneyPage.selectCreditCardOption()
+        addMoneyPage.selectCurrency(currency: "EUR")
+        XCTAssertTrue(addMoneyFromCrediCardPage.getAmount() == "00.00")
+        addMoneyFromCrediCardPage.enterAmount(amount: "10.5")
+        addMoneyFromCrediCardPage.enterFirstName(firstName: testData.firstName)
+        addMoneyFromCrediCardPage.enterLastName(lastName: testData.lastName)
+        addMoneyFromCrediCardPage.enterAddress(address: "")
+        addMoneyFromCrediCardPage.enterCity(city: testData.city)
+        addMoneyFromCrediCardPage.enterZip(zip: testData.zipCode)
+        addMoneyFromCrediCardPage.enterCounty(country: testData.country)
+        addMoneyFromCrediCardPage.enterPhoneCode(code: "+123")
+        addMoneyFromCrediCardPage.enterPhone(phone: "2000020")
+        addMoneyFromCrediCardPage.tapDone()
+        XCTAssertTrue(Page.app.staticTexts["Field Address should not be empty"].exists)
+    }
+    
+    
+    func testCityFieldShouldNotBeEmpty() {
+        // City field is requred and cannot be empty.
+        
+        let addMoneyPage = AddMoneyPage()
+        let addMoneyFromCrediCardPage = AddMoneyFromCreditCardPage()
+        let testData = TestData()
+        
+        addMoneyPage.open()
+        addMoneyPage.selectCreditCardOption()
+        addMoneyPage.selectCurrency(currency: "EUR")
+        XCTAssertTrue(addMoneyFromCrediCardPage.getAmount() == "00.00")
+        addMoneyFromCrediCardPage.enterAmount(amount: "10.5")
+        addMoneyFromCrediCardPage.enterFirstName(firstName: testData.firstName)
+        addMoneyFromCrediCardPage.enterLastName(lastName: testData.lastName)
+        addMoneyFromCrediCardPage.enterAddress(address: testData.street)
+        addMoneyFromCrediCardPage.enterCity(city: "")
+        addMoneyFromCrediCardPage.enterZip(zip: testData.zipCode)
+        addMoneyFromCrediCardPage.enterCounty(country: testData.country)
+        addMoneyFromCrediCardPage.enterPhoneCode(code: "+123")
+        addMoneyFromCrediCardPage.enterPhone(phone: "2000020")
+        addMoneyFromCrediCardPage.tapDone()
+        XCTAssertTrue(Page.app.staticTexts["Field City should not be empty"].exists)
+    }
+    
+    func testZipFieldShouldNotBeEmpty() {
+        // Zip field is requred and cannot be empty.
+        
+        let addMoneyPage = AddMoneyPage()
+        let addMoneyFromCrediCardPage = AddMoneyFromCreditCardPage()
+        let testData = TestData()
+        
+        addMoneyPage.open()
+        addMoneyPage.selectCreditCardOption()
+        addMoneyPage.selectCurrency(currency: "EUR")
+        XCTAssertTrue(addMoneyFromCrediCardPage.getAmount() == "00.00")
+        addMoneyFromCrediCardPage.enterAmount(amount: "10.5")
+        addMoneyFromCrediCardPage.enterFirstName(firstName: testData.firstName)
+        addMoneyFromCrediCardPage.enterLastName(lastName: testData.lastName)
+        addMoneyFromCrediCardPage.enterAddress(address: testData.street)
+        addMoneyFromCrediCardPage.enterCity(city: testData.city)
+        addMoneyFromCrediCardPage.enterZip(zip: "")
+        addMoneyFromCrediCardPage.enterCounty(country: testData.country)
+        addMoneyFromCrediCardPage.enterPhoneCode(code: "+123")
+        addMoneyFromCrediCardPage.enterPhone(phone: "2000020")
+        addMoneyFromCrediCardPage.tapDone()
+        XCTAssertTrue(Page.app.staticTexts["Field Zip should not be empty"].exists)
+    }
+    
+    func testPhoneNumberFieldShouldNotBeEmpty() {
+        // Phone Number field is requred and cannot be empty.
+        
+        let addMoneyPage = AddMoneyPage()
+        let addMoneyFromCrediCardPage = AddMoneyFromCreditCardPage()
+        let testData = TestData()
+        
+        addMoneyPage.open()
+        addMoneyPage.selectCreditCardOption()
+        addMoneyPage.selectCurrency(currency: "EUR")
+        XCTAssertTrue(addMoneyFromCrediCardPage.getAmount() == "00.00")
+        addMoneyFromCrediCardPage.enterAmount(amount: "10.5")
+        addMoneyFromCrediCardPage.enterFirstName(firstName: testData.firstName)
+        addMoneyFromCrediCardPage.enterLastName(lastName: testData.lastName)
+        addMoneyFromCrediCardPage.enterAddress(address: testData.street)
+        addMoneyFromCrediCardPage.enterCity(city: testData.city)
+        addMoneyFromCrediCardPage.enterZip(zip: testData.zipCode)
+        addMoneyFromCrediCardPage.enterCounty(country: testData.country)
+        addMoneyFromCrediCardPage.enterPhoneCode(code: "")
+        addMoneyFromCrediCardPage.enterPhone(phone: "")
+        addMoneyFromCrediCardPage.tapDone()
+        XCTAssertTrue(Page.app.staticTexts["Field Phone should not be empty"].exists)
+    }
 }
 
