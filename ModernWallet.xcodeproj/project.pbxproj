@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		11DA99157D1096C1AE2DAB86 /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA906845E44B9E56EC79B6 /* PortfolioViewController.swift */; };
+		19085E4E20A1F002003BF1C3 /* BuyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19085E4D20A1F002003BF1C3 /* BuyPage.swift */; };
 		1939714F209075C200ABDA9A /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1939714E209075C200ABDA9A /* TestData.swift */; };
+		197779AF20A309D60069EF76 /* TransactionsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197779AE20A309D60069EF76 /* TransactionsPage.swift */; };
 		197AA2EC2090C2AF004EACBD /* SideNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197AA2EB2090C2AF004EACBD /* SideNavBar.swift */; };
 		19855C452088ABC400DEB789 /* RegistrationEmailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C442088ABC400DEB789 /* RegistrationEmailPage.swift */; };
 		19855C472088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C462088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift */; };
@@ -231,7 +233,9 @@
 /* Begin PBXFileReference section */
 		11DA906845E44B9E56EC79B6 /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		18D2E9858DFE4FA358E0A0C1 /* Pods-ModernMoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModernMoney.release.xcconfig"; path = "Pods/Target Support Files/Pods-ModernMoney/Pods-ModernMoney.release.xcconfig"; sourceTree = "<group>"; };
+		19085E4D20A1F002003BF1C3 /* BuyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyPage.swift; sourceTree = "<group>"; };
 		1939714E209075C200ABDA9A /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		197779AE20A309D60069EF76 /* TransactionsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsPage.swift; sourceTree = "<group>"; };
 		197AA2EB2090C2AF004EACBD /* SideNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavBar.swift; sourceTree = "<group>"; };
 		19855C442088ABC400DEB789 /* RegistrationEmailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEmailPage.swift; sourceTree = "<group>"; };
 		19855C462088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEnterEmailValidationCodePage.swift; sourceTree = "<group>"; };
@@ -556,6 +560,8 @@
 				19D52B01209A069E005421F9 /* AssetDetailsPage.swift */,
 				19D52B03209B4635005421F9 /* AddMoneyPage.swift */,
 				19D52B05209C501D005421F9 /* AddMoneyFromCreditCardPage.swift */,
+				19085E4D20A1F002003BF1C3 /* BuyPage.swift */,
+				197779AE20A309D60069EF76 /* TransactionsPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -1429,7 +1435,9 @@
 				19E94C4E2085E22000F6BB9C /* LoginPage.swift in Sources */,
 				19855C572088EA5300DEB789 /* CreatePINPage.swift in Sources */,
 				19D52B06209C501D005421F9 /* AddMoneyFromCreditCardPage.swift in Sources */,
+				197779AF20A309D60069EF76 /* TransactionsPage.swift in Sources */,
 				19855C472088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift in Sources */,
+				19085E4E20A1F002003BF1C3 /* BuyPage.swift in Sources */,
 				19D52B02209A069E005421F9 /* AssetDetailsPage.swift in Sources */,
 				19E94C542086081A00F6BB9C /* EnterPINPage.swift in Sources */,
 				19855C552088E4D700DEB789 /* EnterPhoneCodePage.swift in Sources */,

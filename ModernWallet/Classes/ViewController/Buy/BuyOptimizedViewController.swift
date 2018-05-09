@@ -90,6 +90,8 @@ class BuyOptimizedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        settupAccessiabilityIdentifiers()
+        
         firstAssetList.itemPicker.picker.backgroundColor = #colorLiteral(red: 0, green: 0.431372549, blue: 0.3411764706, alpha: 1)
         secondAssetList.itemPicker.picker.backgroundColor = #colorLiteral(red: 0, green: 0.431372549, blue: 0.3411764706, alpha: 1)
 
@@ -419,4 +421,17 @@ extension BuyOptimizedViewController: InputForm {
         return goToTextField(after: textField)
     }
     
+}
+
+// MARK: - UI testing purposes
+extension BuyOptimizedViewController {
+    
+    fileprivate func settupAccessiabilityIdentifiers() {
+        scrollView.accessibilityIdentifier = "Scroll view"
+        secondAssetList.accessibilityIdentifier = "Second asset list"
+        firstAssetList.accessibilityIdentifier = "First asset list"
+        spreadAmount.accessibilityIdentifier = "Spread amount"
+        spreadPercent.accessibilityIdentifier = "Spread percent"
+        submitButton.accessibilityIdentifier = "Submit button"
+    }
 }

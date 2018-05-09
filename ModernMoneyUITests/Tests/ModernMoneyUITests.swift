@@ -814,5 +814,33 @@ class ModernMoneyUITests: XCTestCase {
         addMoneyFromCrediCardPage.tapDone()
         XCTAssertTrue(Page.app.staticTexts["Invalid phone number"].exists) // Fails because of LMW-508
     }
+    
+    func testBuyAsset() {
+        // Buy asset
+
+        let buyPage = BuyPage()
+        let transactionsPage = TransactionsPage()
+        
+        buyPage.open()
+        buyPage.selectBuyAsset(asset: "USD")
+        buyPage.tapDoneBtn()
+        
+        buyPage.selectPayWithAsset(asset: "EUR")
+        buyPage.tapDoneBtn()
+        
+        buyPage.enterBuyAmount(amount: "11.12")
+        buyPage.tapNextBtn()
+        
+        buyPage.tapDoneBtn()
+        
+        buyPage.tapBuyBtn()
+
+        XCTAssertTrue(Page.app.staticTexts["Your exchange has been successfuly processed.It will appear in your transaction history soon."].exists)
+        
+        transactionsPage.open()
+        Page.app.staticTexts["TRANSACTIONS"].waitForExistence(timeout: 10) //TODO: make helper method
+        
+        XCTAssertTrue(Page.app.staticTexts["Buy USD"].exists && Page.app.staticTexts["+11.12 USD"].exists)
+    }
 }
 

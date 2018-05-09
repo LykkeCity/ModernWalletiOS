@@ -49,6 +49,8 @@ class BuyAssetListView: UIView {
     func xibSetup() {
         view = loadViewFromNib("BuyAssetListView")
         
+        settupAccessiabilityIdentifiers()
+        
         // use bounds not frame or it'll be offset
         view.frame = bounds
         

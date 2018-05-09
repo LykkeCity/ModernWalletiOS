@@ -47,6 +47,8 @@ class SendToWalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        settupAccessiabilityIdentifiers()
+        
         viewModel
             .bind(toViewController: self)
             .disposed(by: disposeBag)
@@ -148,5 +150,19 @@ fileprivate extension CashOutToAddressViewModel {
                 vc?.navigationController?.popViewController(animated: true)
             })
         ]
+    }
+}
+
+// MARK: - UI testing purposes
+extension SendToWalletViewController {
+    
+    fileprivate func settupAccessiabilityIdentifiers() {
+        scrollView.accessibilityIdentifier = "Scroll view"
+        walletAddressTextField.accessibilityIdentifier = "Wallet Address Text Field"
+        amountTextField.accessibilityIdentifier = "Amount Text Field"
+        proceedButton.accessibilityIdentifier = "Procced button"
+        headingLabel.accessibilityIdentifier = "Heading label"
+        pasteButton.accessibilityIdentifier = "Paste button"
+        currencyLabel.accessibilityIdentifier = "Currency label"
     }
 }

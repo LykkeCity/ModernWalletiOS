@@ -47,6 +47,8 @@ class ReceiveWalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        settupAccessiabilityIdentifiers()
+        
         containerView.setShadow(radius: 4.0, color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), opacity: 0.5, offset: CGSize(width: 0, height: 2))
         
         emailButton.setTitle(Localize("receive.newDesign.email"), for: .normal)
@@ -202,4 +204,19 @@ class CenteredAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitio
         }
     }
     
+}
+
+// MARK: - UI testing purposes
+extension ReceiveWalletViewController {
+    
+    fileprivate func settupAccessiabilityIdentifiers() {
+        containerView.accessibilityIdentifier = "Container view"
+        assetIconImageView.accessibilityIdentifier = "Asset icon image view"
+        titleLabel.accessibilityIdentifier = "Title label"
+        qrCodeImageView.accessibilityIdentifier = "QR code image view"
+        addressLabel.accessibilityIdentifier = "Address label"
+        emailButton.accessibilityIdentifier = "Email Button"
+        copyButton.accessibilityIdentifier = "Coppy button"
+       shareButton.accessibilityIdentifier = "Share button"
+    }
 }

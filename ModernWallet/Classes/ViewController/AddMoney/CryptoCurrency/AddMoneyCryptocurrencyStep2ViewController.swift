@@ -48,6 +48,8 @@ class AddMoneyCryptocurrencyStep2ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        settupAccessiabilityIdentifiers()
+        
         view.backgroundColor = UIColor.clear
         title = Localize("wallets.private.address.pagetitle")
         
@@ -125,4 +127,15 @@ fileprivate extension CopyWalletAddressViewModel {
             tap.drive(onNext: {[weak vc] in vc?.copy(walletAddress: $0)})
         ]
     }
+}
+
+// MARK: - UI testing purposes
+extension AddMoneyCryptocurrencyStep2ViewController {
+    
+    fileprivate func settupAccessiabilityIdentifiers() {
+        qrCodeImageView.accessibilityIdentifier = "QR code image view"
+        emailMeButton.accessibilityIdentifier = "Email Me Button"
+        walletDescription.accessibilityIdentifier = "Wallet Description"
+        copyLabel.accessibilityIdentifier = "Copy label"
+      }
 }
