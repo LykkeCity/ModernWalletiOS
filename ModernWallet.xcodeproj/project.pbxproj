@@ -11,6 +11,9 @@
 		19085E4E20A1F002003BF1C3 /* BuyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19085E4D20A1F002003BF1C3 /* BuyPage.swift */; };
 		1939714F209075C200ABDA9A /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1939714E209075C200ABDA9A /* TestData.swift */; };
 		197779AF20A309D60069EF76 /* TransactionsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197779AE20A309D60069EF76 /* TransactionsPage.swift */; };
+		197779B120A49EF10069EF76 /* SellPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197779B020A49EF10069EF76 /* SellPage.swift */; };
+		197779B720A5845A0069EF76 /* LoginUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197779B620A5845A0069EF76 /* LoginUITests.swift */; };
+		197779B920A58CFC0069EF76 /* RegistrationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197779B820A58CFC0069EF76 /* RegistrationUITests.swift */; };
 		197AA2EC2090C2AF004EACBD /* SideNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197AA2EB2090C2AF004EACBD /* SideNavBar.swift */; };
 		19855C452088ABC400DEB789 /* RegistrationEmailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C442088ABC400DEB789 /* RegistrationEmailPage.swift */; };
 		19855C472088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19855C462088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift */; };
@@ -236,6 +239,9 @@
 		19085E4D20A1F002003BF1C3 /* BuyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyPage.swift; sourceTree = "<group>"; };
 		1939714E209075C200ABDA9A /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		197779AE20A309D60069EF76 /* TransactionsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsPage.swift; sourceTree = "<group>"; };
+		197779B020A49EF10069EF76 /* SellPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellPage.swift; sourceTree = "<group>"; };
+		197779B620A5845A0069EF76 /* LoginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUITests.swift; sourceTree = "<group>"; };
+		197779B820A58CFC0069EF76 /* RegistrationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUITests.swift; sourceTree = "<group>"; };
 		197AA2EB2090C2AF004EACBD /* SideNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavBar.swift; sourceTree = "<group>"; };
 		19855C442088ABC400DEB789 /* RegistrationEmailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEmailPage.swift; sourceTree = "<group>"; };
 		19855C462088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEnterEmailValidationCodePage.swift; sourceTree = "<group>"; };
@@ -515,6 +521,8 @@
 			isa = PBXGroup;
 			children = (
 				19E94C3F2084E84000F6BB9C /* ModernMoneyUITests.swift */,
+				197779B620A5845A0069EF76 /* LoginUITests.swift */,
+				197779B820A58CFC0069EF76 /* RegistrationUITests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -562,6 +570,7 @@
 				19D52B05209C501D005421F9 /* AddMoneyFromCreditCardPage.swift */,
 				19085E4D20A1F002003BF1C3 /* BuyPage.swift */,
 				197779AE20A309D60069EF76 /* TransactionsPage.swift */,
+				197779B020A49EF10069EF76 /* SellPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -1435,6 +1444,7 @@
 				19E94C4E2085E22000F6BB9C /* LoginPage.swift in Sources */,
 				19855C572088EA5300DEB789 /* CreatePINPage.swift in Sources */,
 				19D52B06209C501D005421F9 /* AddMoneyFromCreditCardPage.swift in Sources */,
+				197779B720A5845A0069EF76 /* LoginUITests.swift in Sources */,
 				197779AF20A309D60069EF76 /* TransactionsPage.swift in Sources */,
 				19855C472088AE3100DEB789 /* RegistrationEnterEmailValidationCodePage.swift in Sources */,
 				19085E4E20A1F002003BF1C3 /* BuyPage.swift in Sources */,
@@ -1442,7 +1452,9 @@
 				19E94C542086081A00F6BB9C /* EnterPINPage.swift in Sources */,
 				19855C552088E4D700DEB789 /* EnterPhoneCodePage.swift in Sources */,
 				19E94C402084E84000F6BB9C /* ModernMoneyUITests.swift in Sources */,
+				197779B920A58CFC0069EF76 /* RegistrationUITests.swift in Sources */,
 				19855C4D2088D8C400DEB789 /* CreatePasswordPage.swift in Sources */,
+				197779B120A49EF10069EF76 /* SellPage.swift in Sources */,
 				19D52B04209B4635005421F9 /* AddMoneyPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
