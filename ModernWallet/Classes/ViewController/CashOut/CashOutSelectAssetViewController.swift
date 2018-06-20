@@ -13,13 +13,13 @@ import WalletCore
 
 class CashOutSelectAssetViewController: UIViewController {
     
-    @IBOutlet private var availableBalanceLabel: UILabel!
+    @IBOutlet fileprivate var availableBalanceLabel: UILabel!
     
-    @IBOutlet private var assetAmountView: AssetAmountView!
+    @IBOutlet fileprivate var assetAmountView: AssetAmountView!
     
-    @IBOutlet private var selectAssetLabel: UILabel!
+    @IBOutlet fileprivate var selectAssetLabel: UILabel!
     
-    @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet fileprivate var collectionView: UICollectionView!
     
     private let totalBalanceViewModel = TotalBalanceViewModel(refresh: ReloadTrigger.instance.trigger(interval: 10))
     private let disposeBag = DisposeBag()
@@ -53,6 +53,8 @@ class CashOutSelectAssetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
+        
+        settupAccessiabilityIdentifiers()
         
         navigationItem.title = Localize("cashOut.newDesign.title")
         
@@ -173,5 +175,16 @@ fileprivate extension ObservableType where Self.E == Variable<Asset> {
                     .just(ApiResult.success(withData: $0))
                     .startWith(.loading)
             }
+    }
+}
+
+// MARK: - UI testing purposes
+extension CashOutSelectAssetViewController {
+    
+    fileprivate func settupAccessiabilityIdentifiers() {
+        availableBalanceLabel.accessibilityIdentifier =  "Available balance label"
+        assetAmountView.accessibilityIdentifier =  "Asset amount view"
+        selectAssetLabel.accessibilityIdentifier =  "Select asset label"
+        collectionView.accessibilityIdentifier =  "Collection view"
     }
 }

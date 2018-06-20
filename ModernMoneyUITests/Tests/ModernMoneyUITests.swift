@@ -55,27 +55,9 @@ class ModernMoneyUITests: XCTestCase {
     func testPortfolioAddMoneyLink() {
         // Taping on "+Add Money" link on Portfolio page redirects to Add Money page.
         
-        let loginPage = LoginPage()
-        let enterPasswordPage = EnterPasswordPage()
-        let enterPINPage = EnterPINPage()
-        let enterSMSCodePage = EnterSMSCodePage()
         let portfolioPage = PortfolioPage()
         
-        loginPage.tapYourEmailTextField()
-        loginPage.enterEmail(email: "radi.dichev@primeholding.com")
-        loginPage.tapSignInButton()
-        
-        enterPasswordPage.tapYourPasswordTextField()
-        enterPasswordPage.enterPassword(password: "123456")
-        enterPasswordPage.tapSignInButton()
-        
-        XCTAssertTrue(Page.app.staticTexts["ENTER PIN"].exists)
-        
-        enterPINPage.enterPIN(pin: "0000")
-                
-        enterSMSCodePage.tapCodeField()
-        enterSMSCodePage.enterCode(code: "0000")
-        enterSMSCodePage.tapConfirnButton()
+        // login(email: "user@lykke.com", password: "123456", pin: "0000", smsCode: "0000")
         
         portfolioPage.tapAddMoneyLink()
         
@@ -85,28 +67,10 @@ class ModernMoneyUITests: XCTestCase {
     
     func testPortfolioOpenAssetDetailsPage() {
         // Asset details page opens when user taps on currency.
-        
-        let loginPage = LoginPage()
-        let enterPasswordPage = EnterPasswordPage()
-        let enterPINPage = EnterPINPage()
-        let enterSMSCodePage = EnterSMSCodePage()
+
         let portfolioPage = PortfolioPage()
         
-        loginPage.tapYourEmailTextField()
-        loginPage.enterEmail(email: "radi.dichev@primeholding.com")
-        loginPage.tapSignInButton()
-        
-        enterPasswordPage.tapYourPasswordTextField()
-        enterPasswordPage.enterPassword(password: "123456")
-        enterPasswordPage.tapSignInButton()
-        
-        XCTAssertTrue(Page.app.staticTexts["ENTER PIN"].exists)
-        
-        enterPINPage.enterPIN(pin: "0000")
-        
-        enterSMSCodePage.tapCodeField()
-        enterSMSCodePage.enterCode(code: "0000")
-        enterSMSCodePage.tapConfirnButton()
+        // login(email: "user@lykke.com", password: "123456", pin: "0000", smsCode: "0000")
         
         portfolioPage.tapOnCurrency(currency: "EUR")
         
@@ -121,7 +85,7 @@ class ModernMoneyUITests: XCTestCase {
         let settingsPage = SettingsPage()
         let portfolioPage = PortfolioPage()
         
-        login(email: "user@lykke.com", password: "123456", pin: "0000", smsCode: "0000")
+        // login(email: "user@lykke.com", password: "123456", pin: "0000", smsCode: "0000")
         let baseAsset = portfolioPage.getTotalBalanceAmount().first
         let newBaseAsset = "BTC"
         settingsPage.open()
@@ -180,7 +144,7 @@ class ModernMoneyUITests: XCTestCase {
         let expectedNunberOfRecords = 7
         let expectedCurrencies = ["USD", "EUR", "CHF", "LKK", "ETH", "SLR", "BTC"]
         
-        login(email: "user@lykke.com", password: "123456", pin: "0000", smsCode: "0000")
+       // login(email: "user@lykke.com", password: "123456", pin: "0000", smsCode: "0000")
         
         portfolioPage.swipeTableUp()
         XCTAssertTrue(portfolioPage.getTableRowCount() == expectedNunberOfRecords)
@@ -508,6 +472,26 @@ class ModernMoneyUITests: XCTestCase {
         XCTAssertTrue(Page.app.staticTexts["Buy USD"].exists && Page.app.staticTexts["+11.12 USD"].exists)
     }
     
+    func testBuyAssetLKKMinimalOrderSize() {
+        // LKK minimal order size is 4
+        
+        let buyPage = BuyPage()
+        let page = Page()
+        
+        buyPage.open()
+        buyPage.selectBuyAsset(asset: "LKK")
+        buyPage.tapDoneBtn()
+        
+        buyPage.enterBuyAmount(amount: "3")
+        buyPage.tapNextBtn()
+        
+        buyPage.tapDoneBtn()
+        
+        buyPage.tapBuyBtn()
+        
+        XCTAssertTrue(page.isErrorAlert(alertText: "The amount should be higher than minimal order size 4 LKK"))
+    }
+    
     func testSellAsset() {
         // Sell asset
         
@@ -534,6 +518,32 @@ class ModernMoneyUITests: XCTestCase {
         Page.app.staticTexts["TRANSACTIONS"].waitForExistence(timeout: 10) //TODO: make helper method
         
         XCTAssertTrue(Page.app.staticTexts["Sell USD"].exists && Page.app.staticTexts["10.01 USD"].exists)
+    }
+    
+    func testSellAssetLKKMinimalOrderSize() {
+        // LKK minimal order size is 4
+        
+        let sellPage = SellPage()
+        let page = Page()
+        
+        sellPage.open()
+        sellPage.selectSellAsset(asset: "LKK")
+        sellPage.tapDoneBtn()
+        
+        sellPage.enterSellAmount(amount: "3")
+        sellPage.tapNextBtn()
+        
+        sellPage.tapDoneBtn()
+        
+        sellPage.tapSellBtn()
+        
+        XCTAssertTrue(page.isErrorAlert(alertText: "The amount should be higher than minimal order size 4 LKK"))
+    }
+    
+    func testCashOut() {
+        //
+        
+        
     }
 }
 
