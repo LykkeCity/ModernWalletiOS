@@ -32,7 +32,7 @@ class AddMoneyCCStep1ViewController: AddMoneyBaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
         
     private lazy var creditCardViewModel:CreditCardBaseInfoViewModel = {
-        return CreditCardBaseInfoViewModel(submit: self.submitButton.rx.tap.confirm(vc: self),
+        return CreditCardBaseInfoViewModel(submit: self.submitButton.rx.tap.asObservable(),
                                            assetToAdd: self.аssetObservable())
     }()
     
@@ -238,16 +238,4 @@ extension AddMoneyCCStep1ViewController: InputForm {
         return goToTextField(after: textField)
     }
 
-}
-
-fileprivate extension ObservableType where Self.E == Void {
-    
-    func confirm(vc: UIViewController?
-        ) -> Observable<Void> {
-        
-        return flatMap{ [weak vc] _  -> Observable<Void> in
-            guard let vc = vc else { return Observable<Void>.never() }
-            return PinViewController.presentOrderPinViewController(from: vc, title: Localize("newDesign.enterPin"), isTouchIdEnabled: true)
-        }
-    }
 }
