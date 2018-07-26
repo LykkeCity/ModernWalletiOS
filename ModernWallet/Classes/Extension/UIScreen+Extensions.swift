@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIScreen {
-    
+
     /// Return if the screen is too small
     class var isSmallScreen: Bool {
         switch UIScreen.main.bounds.height {

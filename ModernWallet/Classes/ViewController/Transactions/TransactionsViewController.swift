@@ -17,11 +17,11 @@ class TransactionsViewController: UIViewController {
     @IBOutlet weak var totalBalanceContainer: UIView!
     @IBOutlet weak var showHideGraphButton: UIButton!
     @IBOutlet weak var graphViewContainer: UIView!
-    
+
     let disposeBag = DisposeBag()
-    
+
     let isGraphHidden = Variable(true)
-    
+
     var searchContainer: UISearchContainerViewController? {
         willSet {
             if newValue == nil {
@@ -32,7 +32,7 @@ class TransactionsViewController: UIViewController {
                 )
             }
         }
-        
+
         didSet {
             guard let container = searchContainer else { return }
             container.searchController.delegate = self
@@ -40,33 +40,32 @@ class TransactionsViewController: UIViewController {
             container.searchController.searchBar.becomeFirstResponder()
         }
     }
-    
+
     var transactionsController: TransactionsStep1ViewController? {
-        return childViewControllers.first{ $0 is TransactionsStep1ViewController } as? TransactionsStep1ViewController
+        return childViewControllers.first { $0 is TransactionsStep1ViewController } as? TransactionsStep1ViewController
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-         
+
         transactionLabel.text = Localize("transaction.newDesign.transactionTitle")
 
         isGraphHidden.asDriver()
-            .map{!$0}
+            .map {!$0}
             .drive(totalBalanceContainer.rx.isHidden)
             .addDisposableTo(disposeBag)
-        
+
         isGraphHidden.asDriver()
             .drive(graphViewContainer.rx.isHidden)
             .disposed(by: disposeBag)
-        
+
         showHideGraphButton.rx.tap
-            .map{[weak self] in self?.isGraphHidden.value}
+            .map {[weak self] in self?.isGraphHidden.value}
             .filterNil()
-            .map{!$0}
+            .map {!$0}
             .bind(to: isGraphHidden)
             .disposed(by: disposeBag)
-        
-        
+
         transactionsController?.findTransactionBtn.rx.tap.asObservable()
             .subscribe(onNext: { [weak self] in
                 self?.searchContainer = TransactionsStep1ViewController.factorySearchContainer(
@@ -75,7 +74,7 @@ class TransactionsViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         // Do any additional setup after loading the view.
-        
+
     }
 
     @IBAction func onBackTap(_ sender: UIButton) {
@@ -85,11 +84,11 @@ class TransactionsViewController: UIViewController {
             (drawerController.mainViewController as? RootViewController)?.embed(viewController: portfolioVC, animated: true)
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
-        
+
         self.searchContainer?.searchController.isActive = false
-        
+
     }
 }
 

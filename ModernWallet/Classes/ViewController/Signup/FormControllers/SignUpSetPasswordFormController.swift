@@ -12,13 +12,13 @@ import RxCocoa
 import WalletCore
 
 class SignUpSetPasswordFormController: FormController {
-    
+
     let email: String
-    
+
     init(email: String) {
         self.email = email
     }
-    
+
     lazy var formViews: [UIView] = {
         return [
             self.titleLabel(title: Localize("auth.newDesign.createPassword")),
@@ -26,67 +26,67 @@ class SignUpSetPasswordFormController: FormController {
             self.reenterPassTextField
         ]
     }()
-    
+
     private lazy var passwordTextField: UITextField = {
         let textField = self.textField(placeholder: Localize("auth.newDesign.enterPassword"))
         textField.isSecureTextEntry = true
         textField.returnKeyType = .next
         return textField
     }()
-    
+
     private lazy var reenterPassTextField: UITextField = {
         let textField = self.textField(placeholder: Localize("auth.newDesign.enterAgain"))
         textField.isSecureTextEntry = true
         textField.returnKeyType = .next
         return textField
     }()
-    
+
     var canGoBack: Bool {
         return true
     }
-    
+
     var buttonTitle: String? {
         return Localize("auth.newDesign.next")
     }
-    
+
     var next: FormController? {
         return SignUpPasswordHintFormController(email: email, password: passwordTextField.text!)
     }
-    
+
     var segueIdentifier: String? {
         return nil
     }
-    
-    lazy var viewModel : SignUpRegistrationViewModel={
+
+    lazy var viewModel: SignUpRegistrationViewModel= {
         return SignUpRegistrationViewModel(submit: Observable.never() )
     }()
-    
+
     private var disposeBag = DisposeBag()
-    
-    func bind<T>(button: UIButton, nextTrigger: PublishSubject<Void>, pinTrigger: PublishSubject<PinViewController?>, loading: UIBindingObserver<T, Bool>, error: UIBindingObserver<T, [AnyHashable : Any]>) where T : UIViewController {
+
+    func bind<T>(button: UIButton, nextTrigger: PublishSubject<Void>, pinTrigger: PublishSubject<PinViewController?>, loading: UIBindingObserver<T, Bool>, error: UIBindingObserver<T, [AnyHashable: Any]>) where T: UIViewController {
         disposeBag = DisposeBag()
-        
+
         passwordTextField.rx.text
             .filterNil()
             .bind(to: viewModel.password)
             .disposed(by: disposeBag)
-        
+
         passwordTextField.rx.returnTap
             .subscribe(onNext: { _ in
                 self.reenterPassTextField.becomeFirstResponder()
             })
             .disposed(by: disposeBag)
-        
+
         reenterPassTextField.rx.text
             .filterNil()
             .bind(to: viewModel.reenterPassword)
             .disposed(by: disposeBag)
-        
+
         reenterPassTextField.rx.returnTap
             .withLatestFrom(viewModel.isValid.asObservable())
             .filterTrueAndBind(toTrigger: nextTrigger)
             .disposed(by: disposeBag)
-        
+
         viewModel.isValid
             .bind(to: button.rx.isEnabled)
             .disposed(by: disposeBag)
@@ -95,9 +95,9 @@ class SignUpSetPasswordFormController: FormController {
             .bind(to: nextTrigger)
             .disposed(by: disposeBag)
     }
-    
+
     func unbind() {
         disposeBag = DisposeBag()
     }
-    
+
 }

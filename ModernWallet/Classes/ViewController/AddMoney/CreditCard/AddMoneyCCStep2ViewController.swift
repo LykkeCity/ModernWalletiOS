@@ -11,7 +11,7 @@ import WalletCore
 import WebKit
 
 class AddMoneyCCStep2ViewController: UIViewController {
-    
+
     var webView: WKWebView!
     var paymentUrl: LWPacketGetPaymentUrl?
 
@@ -21,15 +21,15 @@ class AddMoneyCCStep2ViewController: UIViewController {
         webView.uiDelegate = self
         view = webView
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let paymentUrl = self.paymentUrl else {return}
         guard let urlString = paymentUrl.urlString else {return}
         guard let url = URL(string: urlString) else {return}
-        
+
         webView.load(URLRequest(url: url))
-        
+
         // Do any additional setup after loading the view.
 //        self.view.backgroundColor = UIColor.clear
     }
@@ -38,18 +38,17 @@ class AddMoneyCCStep2ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     @IBAction func submitAciton(_ sender: UIButton) {
-        
+
 //        let parentVC = self.parent as! LWAddMoneyViewController
 //        parentVC.nextActionCCStep2()
     }
-    
+
     @IBAction func dismissViewController(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     /*
     // MARK: - Navigation
 
@@ -63,5 +62,5 @@ class AddMoneyCCStep2ViewController: UIViewController {
 }
 
 extension AddMoneyCCStep2ViewController: WKUIDelegate {
-    
+
 }

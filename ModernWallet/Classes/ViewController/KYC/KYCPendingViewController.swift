@@ -14,10 +14,10 @@ import RxCocoa
 class KYCPendingViewController: UIViewController {
 
     @IBOutlet weak var message: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let fullName = LWKeychainManager.instance()?.fullName() ?? ""
         message.text = String(format: Localize("kyc.pending.text"), fullName)
         // Do any additional setup after loading the view.
@@ -27,11 +27,11 @@ class KYCPendingViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func onClose(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     /*
     // MARK: - Navigation
 

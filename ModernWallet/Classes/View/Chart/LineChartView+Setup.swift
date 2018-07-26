@@ -10,7 +10,7 @@ import Foundation
 import Charts
 
 extension LineChartView {
-    
+
     /// Setup line chart view according Lykke design
     func setup() {
         legend.enabled = false
@@ -18,7 +18,7 @@ extension LineChartView {
         drawBordersEnabled = false
         drawGridBackgroundEnabled = false
         drawMarkers = false
-        
+
         leftAxis.enabled = false
         rightAxis.enabled = false
         xAxis.enabled = false

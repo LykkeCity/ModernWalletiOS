@@ -28,18 +28,18 @@ extension SignUpStep {
         get {
             return UserDefaults.standard.signUpStep
         }
-        
+
         set {
             guard let signUpStep = newValue else {
                 resetInstance()
                 return
             }
-            
+
             UserDefaults.standard.signUpStep = signUpStep
             UserDefaults.standard.synchronize()
         }
     }
-    
+
     static func resetInstance() {
         UserDefaults.standard.nulifySignUpStep()
     }
@@ -47,130 +47,129 @@ extension SignUpStep {
 
 // MARK: - Mappers
 extension SignUpStep {
-    
+
     typealias ControllerResult = (formController: FormController?, viewController: UIViewController?, showPin: Bool)
-    
+
     func initializeFormController(
         authManager: LWRxAuthManager = LWRxAuthManager.instance,
         keychainManager: LWKeychainManager = LWKeychainManager.instance()
     ) -> Observable<ApiResult<ControllerResult?>> {
-        
+
         return authManager.settings.request()
-            .map{personalData -> ApiResult<ControllerResult?> in
-            
+            .map {personalData -> ApiResult<ControllerResult?> in
+
                 switch personalData {
                 case .loading:
                     return .loading
-                    
+
                 case .success(let data):
                     return .success(withData: self.initializeFormController(personlData: data, keychainManager: keychainManager))
-            
+
                 case .error(let errorData):
                     return .error(withData: errorData)
-                    
+
                 case .notAuthorized:
                     return .success(withData: self.initializeFormController(personlData: nil, keychainManager: keychainManager))
-                    
+
                 case .forbidden:
                     return .forbidden
                 }
             }
             .shareReplay(1)
     }
-        
+
     func initializeFormController(personlData: LWPacketPersonalData?, keychainManager: LWKeychainManager) -> ControllerResult {
         let email = getEmail(fromPacket: personlData)
         let phone = getPhone(fromPacket: personlData)
-        
+
         switch self {
-        
+
         case .email:
             return (formController: SignUpEmailFormController(email: email), viewController: nil, showPin: false)
-            
+
         case .confirmEmailWithCode:
             return (formController: SignUpEmailCodeFormController(email: email), viewController: nil, showPin: false)
-            
+
         case .setPassword:
             return (formController: SignUpSetPasswordFormController(email: email), viewController: nil, showPin: false)
-            
+
         case .setPasswordHint:
             return (formController: SignUpSetPasswordFormController(email: email), viewController: nil, showPin: false)
-            
+
         case .fillProfile:
             return (formController: SignUpFillProfileFormController(), viewController: nil, showPin: false)
-            
+
         case .setPhone:
             return (formController: SignUpFillPhoneFormController(), viewController: nil, showPin: false)
-            
+
         case .confirmPhone:
             guard let phone = phone else {
                 return (formController: SignUpFillPhoneFormController(), viewController: nil, showPin: false)
             }
-            
+
             return (formController: SignInConfirmPhoneFormController(signIn: false, phone: phone), viewController: nil, showPin: false)
-            
+
         case .setPin:
             return (formController: SignInConfirmPhoneFormController(signIn: false, phone: phone ?? ""), viewController: nil, showPin: true)
-            
+
         case .generateWallet:
             let shakeViewController = UIStoryboard(name: "SignIn", bundle: nil).instantiateViewController(withIdentifier: "signUpShake")
             return (formController: nil, viewController: shakeViewController, showPin: false)
         }
     }
-    
+
     static func initFrom(formController: FormController?) -> SignUpStep? {
-        
+
         guard let formController = formController else {
             return nil
         }
-        
+
         if formController is SignUpEmailFormController {
             return SignUpStep.email
         }
-        
+
         if formController is SignUpEmailCodeFormController {
             return SignUpStep.confirmEmailWithCode
         }
-        
+
         if formController is SignUpSetPasswordFormController {
             return SignUpStep.setPassword
         }
-        
+
         if formController is SignUpPasswordHintFormController {
             return SignUpStep.setPasswordHint
         }
-        
+
         if formController is SignUpFillProfileFormController {
             return SignUpStep.fillProfile
         }
-        
+
         if formController is SignUpFillPhoneFormController {
             return SignUpStep.setPhone
         }
-        
+
         if let confirmPhoneformController = formController as? SignInConfirmPhoneFormController, !confirmPhoneformController.signIn {
             return SignUpStep.confirmPhone
         }
-        
+
         return nil
     }
 }
 
 // MARK: - Utilities
 fileprivate extension SignUpStep {
-    func getPhone(fromPacket packet:  LWPacketPersonalData?) -> String? {
+    func getPhone(fromPacket packet: LWPacketPersonalData?) -> String? {
         guard let phone = packet?.data?.phone, phone.isNotEmpty else {
             return UserDefaults.standard.tempPhone
         }
-        
+
         return phone
     }
-    
+
     func getEmail(fromPacket packet: LWPacketPersonalData?) -> String {
         return packet?.data?.email ?? UserDefaults.standard.tempEmail ?? ""
     }
 }
-
 
 // MARK: - <#Description#>
 extension SignUpStep {
@@ -178,10 +177,10 @@ extension SignUpStep {
         if case .generateWallet = self {
             return true
         }
-        
+
         return false
     }
-    
+
     var isNotGenerateWallet: Bool {
         return !isGenerateWallet
     }
@@ -190,16 +189,16 @@ extension SignUpStep {
 // MARK: - RX
 extension ObservableType where Self.E == ApiResult<SignUpStep.ControllerResult?> {
     func filterSuccess() -> Observable<SignUpStep.ControllerResult?> {
-        return filter{ $0.isSuccess }.map{
+        return filter { $0.isSuccess }.map {
             guard let controller = $0.getSuccess() else {
                 return nil
             }
-            
+
             return controller
         }
     }
-    
+
     func isLoading() -> Observable<Bool> {
-        return map{$0.isLoading}
+        return map {$0.isLoading}
     }
 }

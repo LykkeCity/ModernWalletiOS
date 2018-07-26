@@ -14,13 +14,13 @@ import RxCocoa
 
 class KYCStep3ViewController: UIViewController, KYCStepBinder {
     @IBOutlet weak var photoPlaceholder: KYCPhotoPlaceholderView!
-    
+
     let disposeBag = DisposeBag()
     var documentsViewModel: KYCDocumentsViewModel!
     var documentsUploadViewModel: KycUploadDocumentsViewModel!
-    
+
     lazy var loadingViewModel: LoadingViewModel = self.loadingViewModelFactory()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         photoPlaceholder.hintLabel.text = Localize("kyc.process.titles.address")
@@ -53,7 +53,7 @@ extension KYCStep3ViewController: IndicatorInfoProvider {
 }
 
 extension KYCStep3ViewController: KYCDocumentTypeAware {
-    var kYCDocumentType: KYCDocumentType{
+    var kYCDocumentType: KYCDocumentType {
         return .proofOfAddress
     }
 }

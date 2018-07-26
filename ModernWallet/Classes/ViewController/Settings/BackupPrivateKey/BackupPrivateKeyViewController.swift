@@ -10,7 +10,7 @@ import UIKit
 import WalletCore
 
 class BackupPrivateKeyViewController: UIViewController {
-    
+
     @IBOutlet private weak var titleLabel: UILabel!
 
     override func viewDidLoad() {
@@ -18,9 +18,9 @@ class BackupPrivateKeyViewController: UIViewController {
 
         titleLabel.text = Localize("settings.newDesign.backupPrivateKey")
     }
-    
+
     // MARK: IBActions
-    
+
     @IBAction func closeTapped() {
         dismiss(animated: true)
     }

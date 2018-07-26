@@ -10,7 +10,7 @@ import UIKit
 import WalletCore
 
 class BackupPrivateKeyCompleteViewController: UIViewController {
-    
+
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var messageLabel: UILabel!
 
@@ -20,5 +20,5 @@ class BackupPrivateKeyCompleteViewController: UIViewController {
         titleLabel.text = Localize("backup.newDesign.completeTitle")
         messageLabel.text = Localize("backup.newDesign.completeMessage")
     }
-    
+
 }

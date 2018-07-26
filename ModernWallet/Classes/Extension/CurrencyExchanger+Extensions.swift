@@ -10,7 +10,6 @@ import Foundation
 import WalletCore
 import RxSwift
 
-
 extension CurrencyExchanger {
     convenience init() {
         self.init(refresh: Observable<Void>.interval(5.0))

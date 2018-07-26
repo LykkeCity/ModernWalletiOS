@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIView {
-    
+
     func setShadow(radius: CGFloat, color: CGColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), opacity: Float = 1.0, offset: CGSize = .zero) {
         let viewLayer = self.layer
         viewLayer.shadowRadius = radius
@@ -17,5 +17,5 @@ extension UIView {
         viewLayer.shadowOpacity = opacity
         viewLayer.shadowOffset = offset
     }
-    
+
 }

@@ -14,22 +14,22 @@ import WalletCore
 class BankInfoViewController: AddMoneyBaseViewController {
 
     @IBOutlet weak var emailButton: UIButton!
-    
+
     private let disposeBag = DisposeBag()
-    
+
     private lazy var currencyDepositViewModel: CurrencyDepositViewModel = {
         return CurrencyDepositViewModel(trigger: self.emailButton.rx.tap.asObservable())
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         #if TEST
             emailButton.isEnabled = false
         #endif
-        
+
         emailButton.setTitle(Localize("addMoney.newDesign.bankaccount.emailMe"), for: UIControlState.normal)
-        
+
         currencyDepositViewModel.assetId.value = assetToAdd.identity
         // !!!: For VM to work properly it needs balance value, but currently
         // we have no UI for the amount so we set it to 1
@@ -45,7 +45,6 @@ class BankInfoViewController: AddMoneyBaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     // MARK: - Navigation
 

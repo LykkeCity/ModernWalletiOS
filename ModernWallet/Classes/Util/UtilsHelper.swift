@@ -20,27 +20,24 @@ public enum DisplayType {
 }
 
 public final class Display {
-    class var width:CGFloat { return UIScreen.main.bounds.size.width }
-    class var height:CGFloat { return UIScreen.main.bounds.size.height }
-    class var maxLength:CGFloat { return max(width, height) }
-    class var minLength:CGFloat { return min(width, height) }
-    class var zoomed:Bool { return UIScreen.main.nativeScale >= UIScreen.main.scale }
-    class var retina:Bool { return UIScreen.main.scale >= 2.0 }
-    class var phone:Bool { return UIDevice.current.userInterfaceIdiom == .phone }
-    class var pad:Bool { return UIDevice.current.userInterfaceIdiom == .pad }
-    class var carplay:Bool { return UIDevice.current.userInterfaceIdiom == .carPlay }
-    class var tv:Bool { return UIDevice.current.userInterfaceIdiom == .tv }
-    class var typeIsLike:DisplayType {
+    class var width: CGFloat { return UIScreen.main.bounds.size.width }
+    class var height: CGFloat { return UIScreen.main.bounds.size.height }
+    class var maxLength: CGFloat { return max(width, height) }
+    class var minLength: CGFloat { return min(width, height) }
+    class var zoomed: Bool { return UIScreen.main.nativeScale >= UIScreen.main.scale }
+    class var retina: Bool { return UIScreen.main.scale >= 2.0 }
+    class var phone: Bool { return UIDevice.current.userInterfaceIdiom == .phone }
+    class var pad: Bool { return UIDevice.current.userInterfaceIdiom == .pad }
+    class var carplay: Bool { return UIDevice.current.userInterfaceIdiom == .carPlay }
+    class var tv: Bool { return UIDevice.current.userInterfaceIdiom == .tv }
+    class var typeIsLike: DisplayType {
         if phone && maxLength < 568 {
             return .iphone4
-        }
-        else if phone && maxLength == 568 {
+        } else if phone && maxLength == 568 {
             return .iphone5
-        }
-        else if phone && maxLength == 667 {
+        } else if phone && maxLength == 667 {
             return .iphone6
-        }
-        else if phone && maxLength == 736 {
+        } else if phone && maxLength == 736 {
             return .iphone6plus
         }
         return .unknown

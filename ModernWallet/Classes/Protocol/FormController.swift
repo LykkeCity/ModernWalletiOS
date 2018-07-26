@@ -12,25 +12,25 @@ import RxCocoa
 import TextFieldEffects
 
 protocol FormController {
-    
+
     var formViews: [UIView] { get }
-    
+
     var canGoBack: Bool { get }
-    
+
     var buttonTitle: String? { get }
-    
+
     var next: FormController? { get }
-    
+
     var segueIdentifier: String? { get }
-    
+
     func bind<T: UIViewController>(button: UIButton, nextTrigger: PublishSubject<Void>, pinTrigger: PublishSubject<PinViewController?>, loading: UIBindingObserver<T, Bool>, error: UIBindingObserver<T, [AnyHashable: Any]>)
-    
+
     func unbind()
 
 }
 
 extension FormController {
-    
+
     func titleLabel(title: String?) -> UILabel {
         let label = UILabel()
         label.font = UIFont(name: "Geomanist-Light", size: 15.0)
@@ -41,7 +41,7 @@ extension FormController {
         label.textAlignment = .center
         return label
     }
-    
+
     func textField(placeholder: String?) -> UITextField {
         let textField = HoshiTextField()
         textField.placeholder = placeholder
@@ -55,5 +55,5 @@ extension FormController {
         textField.addConstraint(NSLayoutConstraint(item: textField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 60))
         return textField
     }
-    
+
 }

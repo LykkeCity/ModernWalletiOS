@@ -13,34 +13,33 @@ import WalletCore
 
 class KYCPhotoFailedViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    
+
     var documentsModel: LWKYCDocumentsModel?
-    
+
     typealias TableCellModel = (type: KYCDocumentType, message: String?)
-    
+
     var statuses: [TableCellModel] {
         guard let documentsModel = self.documentsModel else {return []}
-        
+
         return [
             KYCDocumentType.selfie,
             KYCDocumentType.idCard,
             KYCDocumentType.proofOfAddress
         ]
-        .filter{documentsModel.status(for: $0).isRejected}
-        .map{(
+        .filter {documentsModel.status(for: $0).isRejected}
+        .map {(
             type: $0,
             message: documentsModel.comment(for: $0)
         )}
     }
-    
-    
+
     private let disposeBag = DisposeBag()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         Observable.just(statuses)
-            .bind(to: tableView.rx.items(cellIdentifier: "KYCPhotoFailedTableViewCell", cellType: KYCPhotoFailedTableViewCell.self)) { (row, element, cell) in
+            .bind(to: tableView.rx.items(cellIdentifier: "KYCPhotoFailedTableViewCell", cellType: KYCPhotoFailedTableViewCell.self)) { (_, element, cell) in
                 cell.title.text = element.type.failedPhotoTitle
                 cell.message.text = element.message
             }
@@ -55,7 +54,6 @@ class KYCPhotoFailedViewController: UIViewController {
     @IBAction func onCancel(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
 
     /*
     // MARK: - Navigation

@@ -22,13 +22,13 @@ class AddMoneyCCStep3ViewController: UIViewController {
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var zipLabel: UILabel!
     @IBOutlet weak var returnToPortfolioButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.clear
-        
+
         paymentCompleteLabel.text = Localize("addMoney.newDesign.creditcard.paymentComplete")
         orderDetailsLabel.text = Localize("addMoney.newDesign.creditcard.orderDetails")
         orderRefLabel.text = Localize("addMoney.newDesign.creditcard.orderRef")
@@ -46,12 +46,11 @@ class AddMoneyCCStep3ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func portfolioAction(_ sender: UIButton) {
 //        let parentVC = self.parent as! LWAddMoneyViewController
 //        parentVC.portfolioAction(sender)
     }
-    
 
     /*
     // MARK: - Navigation

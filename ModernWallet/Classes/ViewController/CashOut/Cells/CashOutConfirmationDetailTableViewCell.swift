@@ -9,7 +9,7 @@
 import UIKit
 
 class CashOutConfirmationDetailTableViewCell: UITableViewCell {
-    
+
     @IBOutlet private(set) var nameLabel: UILabel!
     @IBOutlet private(set) var detailsLabel: UILabel!
 

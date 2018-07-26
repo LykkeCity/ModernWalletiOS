@@ -11,8 +11,8 @@ import RxSwift
 import Charts
 import WalletCore
 
-class FakeData{
-    
+class FakeData {
+
     static let historyGraphData = [
         LWHistoryGraphModel(
             baseValue: Asset.Currency(identity: "USD", name: "Dollars", shortName: "USD", value: 285512.0, accuracy: 2, sign: "$"),
@@ -42,16 +42,16 @@ class FakeData{
             baseValue: Asset.Currency(identity: "USD", name: "Dollars", shortName: "USD", value: 285620.0, accuracy: 2, sign: "$"),
             value: Asset.Currency(identity: "BTC", name: "Dollars", shortName: "BTC", value: 129.0, accuracy: 2, sign: "b")
         )
-    ].enumerated().map{(offset, element) in
-        return ChartDataEntry(x:  Double(offset), y: element.baseValue.value.doubleValue, data: element as AnyObject)
+    ].enumerated().map {(offset, element) in
+        return ChartDataEntry(x: Double(offset), y: element.baseValue.value.doubleValue, data: element as AnyObject)
     }
-    
+
     static let cryptoCyrrency = Variable([
         Variable(LWACurrencyMarketValueModel(
             name: "BITCOIN",
             capitalization: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 19353702532.00, accuracy: 2, sign: "$"),
             variance: LWACurrencyMarketValueModel.Variance(
-                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2,  sign: "$"),
+                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2, sign: "$"),
                 percent: 0.34
             )
         )),
@@ -59,7 +59,7 @@ class FakeData{
             name: "BITCOIN",
             capitalization: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 19353702532.00, accuracy: 2, sign: "$"),
             variance: LWACurrencyMarketValueModel.Variance(
-                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2,  sign: "$"),
+                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2, sign: "$"),
                 percent: 0.34
             )
         )),
@@ -67,7 +67,7 @@ class FakeData{
             name: "BITCOIN",
             capitalization: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 19353702532.00, accuracy: 2, sign: "$"),
             variance: LWACurrencyMarketValueModel.Variance(
-                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2,  sign: "$"),
+                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2, sign: "$"),
                 percent: 0.34
             )
         )),
@@ -75,7 +75,7 @@ class FakeData{
             name: "BITCOIN",
             capitalization: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 19353702532.00, accuracy: 2, sign: "$"),
             variance: LWACurrencyMarketValueModel.Variance(
-                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2,  sign: "$"),
+                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2, sign: "$"),
                 percent: 0.34
             )
         )),
@@ -83,7 +83,7 @@ class FakeData{
             name: "BITCOIN",
             capitalization: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 19353702532.00, accuracy: 2, sign: "$"),
             variance: LWACurrencyMarketValueModel.Variance(
-                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2,  sign: "$"),
+                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2, sign: "$"),
                 percent: 0.34
             )
         )),
@@ -91,7 +91,7 @@ class FakeData{
             name: "BITCOIN",
             capitalization: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 19353702532.00, accuracy: 2, sign: "$"),
             variance: LWACurrencyMarketValueModel.Variance(
-                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2,  sign: "$"),
+                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2, sign: "$"),
                 percent: 0.34
             )
         )),
@@ -99,7 +99,7 @@ class FakeData{
             name: "BITCOIN",
             capitalization: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 19353702532.00, accuracy: 2, sign: "$"),
             variance: LWACurrencyMarketValueModel.Variance(
-                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2,  sign: "$"),
+                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2, sign: "$"),
                 percent: 0.34
             )
         )),
@@ -107,10 +107,10 @@ class FakeData{
             name: "BITCOIN",
             capitalization: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 19353702532.00, accuracy: 2, sign: "$"),
             variance: LWACurrencyMarketValueModel.Variance(
-                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2,  sign: "$"),
+                currency: Asset.Currency(identity: "USD", name: "US DOLLARS", shortName: "USD", value: 1222.56, accuracy: 2, sign: "$"),
                 percent: 0.34
             )
-        )),
-       
+        ))
+
    ])
 }

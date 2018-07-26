@@ -10,16 +10,16 @@ import UIKit
 
 @IBDesignable
 public class IconOverTextButton: UIButton {
-    
+
     @IBInspectable public var spacing: CGFloat = 0.0
-    
+
     public override var intrinsicContentSize: CGSize {
         let imageSize = self.imageSize
         let textSize = self.titleSize
         return CGSize(width: max(imageSize.width, textSize.width),
                       height: imageSize.height + spacing + textSize.height)
     }
-    
+
     public override func contentRect(forBounds bounds: CGRect) -> CGRect {
         var rect = CGRect(origin: bounds.origin, size: intrinsicContentSize)
         rect.size.width = min(rect.width, bounds.width)
@@ -36,8 +36,7 @@ public class IconOverTextButton: UIButton {
         let horizontalAlignment: UIControlContentHorizontalAlignment
         if #available(iOS 11.0, *) {
             horizontalAlignment = effectiveContentHorizontalAlignment
-        }
-        else {
+        } else {
             horizontalAlignment = contentHorizontalAlignment
         }
         switch horizontalAlignment {
@@ -52,7 +51,7 @@ public class IconOverTextButton: UIButton {
         }
         return rect
     }
-    
+
     public override func titleRect(forContentRect contentRect: CGRect) -> CGRect {
         var rect = CGRect(origin: contentRect.origin, size: titleSize)
         isTitleRectPassedOnce = true
@@ -60,8 +59,7 @@ public class IconOverTextButton: UIButton {
         let horizontalAlignment: UIControlContentHorizontalAlignment
         if #available(iOS 11.0, *) {
             horizontalAlignment = effectiveContentHorizontalAlignment
-        }
-        else {
+        } else {
             horizontalAlignment = contentHorizontalAlignment
         }
         switch horizontalAlignment {
@@ -75,7 +73,7 @@ public class IconOverTextButton: UIButton {
         rect.origin.y += contentRect.height - rect.height
         return rect
     }
-    
+
     public override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
         var rect = CGRect(origin: contentRect.origin, size: imageSize)
         rect.size.width = min(rect.width, contentRect.width)
@@ -85,8 +83,7 @@ public class IconOverTextButton: UIButton {
         let horizontalAlignment: UIControlContentHorizontalAlignment
         if #available(iOS 11.0, *) {
             horizontalAlignment = effectiveContentHorizontalAlignment
-        }
-        else {
+        } else {
             horizontalAlignment = contentHorizontalAlignment
         }
         switch horizontalAlignment {
@@ -107,11 +104,11 @@ public class IconOverTextButton: UIButton {
         let font = (isTitleRectPassedOnce ? titleLabel?.font : nil) ?? UIFont.systemFont(ofSize: UIFont.buttonFontSize)
         return text.size(attributes: [NSFontAttributeName: font])
     }
-    
+
     private var imageSize: CGSize {
         return image(for: state)?.size ?? .zero
     }
-    
+
     private var isTitleRectPassedOnce = false
 
 }

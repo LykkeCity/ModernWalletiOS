@@ -17,23 +17,23 @@ class DrawerController: KYDrawerController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.showPortfolio), name: .loggedIn, object: nil)
         // Do any additional setup after loading the view.
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         if UserDefaults.standard.isNotLoggedIn || SignUpStep.instance != nil {
             presentLoginController()
         }
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     func showPortfolio() {
         SignUpStep.instance = nil
         let portfolioVC = storyboard!.instantiateViewController(withIdentifier: "Portfolio")
-        
+
         (mainViewController as? RootViewController)?.embed(viewController: portfolioVC, animated: false)
         self.setDrawerState(.closed, animated: false)
     }
@@ -42,7 +42,6 @@ class DrawerController: KYDrawerController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

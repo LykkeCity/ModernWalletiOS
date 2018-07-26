@@ -14,12 +14,12 @@ extension KYCDocumentStatus {
         if case .empty = self {
             return Localize("kyc.process.shoot")
         }
-        
+
         return Localize("kyc.process.reshoot")
     }
-    
+
     var image: UIImage? {
-        
+
         switch self {
         case .empty: return nil
         case .uploaded: return #imageLiteral(resourceName: "kycIconUploaded")
@@ -27,17 +27,17 @@ extension KYCDocumentStatus {
         case .rejected: return #imageLiteral(resourceName: "kycIconDeclined")
         }
     }
-    
+
     var isUploaded: Bool {
         if case .uploaded = self {return true}
         return false
     }
-    
+
     var isRejected: Bool {
         if case .rejected = self {return true}
         return false
     }
-    
+
     var isUploadedOrApproved: Bool {
         return [.uploaded, .approved].contains(self)
     }

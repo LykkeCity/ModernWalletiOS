@@ -12,18 +12,18 @@ import RxCocoa
 import WalletCore
 
 class CashOutPersonalDetailsViewController: UIViewController {
-    
+
      @IBOutlet internal weak var scrollView: UIScrollView!
-    
+
     @IBOutlet private weak var subtitleLabel: UILabel!
     @IBOutlet fileprivate weak var nameTextField: UITextField!
     @IBOutlet fileprivate weak var reasonTextField: UITextField!
     @IBOutlet fileprivate weak var notesTextField: UITextField!
-    
+
     @IBOutlet fileprivate weak var nextButton: UIButton!
-    
+
     var cashOutViewModel: CashOutViewModel!
-    
+
     private var disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -34,27 +34,27 @@ class CashOutPersonalDetailsViewController: UIViewController {
         reasonTextField.placeholder = Localize("cashOut.newDesign.transactionReason")
         notesTextField.placeholder = Localize("cashOut.newDesign.additionalNotes")
         nextButton.setTitle(Localize("newDesign.next"), for: .normal)
-        
+
         let generalViewModel = cashOutViewModel.generalViewModel
-        
+
         (nameTextField.rx.textInput <-> generalViewModel.name)
             .disposed(by: disposeBag)
-        
+
         (reasonTextField.rx.textInput <-> generalViewModel.transactionReason)
             .disposed(by: disposeBag)
-        
+
         (notesTextField.rx.textInput <-> generalViewModel.additionalNotes)
             .disposed(by: disposeBag)
-        
+
         let isFormValidDriver = generalViewModel.isValid.asDriver(onErrorJustReturn: false)
-        
+
         isFormValidDriver
             .drive(nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        
+
         setupFormUX(disposedBy: disposeBag)
     }
-    
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -70,11 +70,11 @@ class CashOutPersonalDetailsViewController: UIViewController {
 }
 
 extension CashOutPersonalDetailsViewController: InputForm {
-    
+
     var submitButton: UIButton! {
         return nextButton
     }
-    
+
     var textFields: [UITextField] {
         return [
             nameTextField,
@@ -82,9 +82,9 @@ extension CashOutPersonalDetailsViewController: InputForm {
             notesTextField
         ]
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return goToTextField(after: textField)
     }
-    
+
 }

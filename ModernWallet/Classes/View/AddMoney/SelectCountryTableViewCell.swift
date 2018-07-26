@@ -9,14 +9,14 @@
 import UIKit
 
 class SelectCountryTableViewCell: UITableViewCell {
-    
+
     @IBOutlet private weak var nameLabel: UILabel!
-    
+
     var name: String? {
         get { return nameLabel.text }
         set { nameLabel.text = newValue }
     }
-    
+
     var isSelectedCountry: Bool {
         get { return accessoryType == .checkmark }
         set { accessoryType = newValue ? .checkmark : .none }

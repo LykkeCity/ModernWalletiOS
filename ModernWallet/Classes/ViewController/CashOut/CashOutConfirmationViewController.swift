@@ -12,16 +12,16 @@ import RxCocoa
 import WalletCore
 
 class CashOutConfirmationViewController: UIViewController {
-    
+
     typealias TitleDetailPair = (title: String?, detail: String?)
-    
+
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var confirmButton: UIButton!
-    
+
     var cashOutViewModel: CashOutViewModel!
-    
+
     private let disposeBag = DisposeBag()
-    
+
     fileprivate lazy var bankAccountDetails: [TitleDetailPair] = {
         let bankAccountViewModel = self.cashOutViewModel.bankAccountViewModel
         return [
@@ -48,39 +48,39 @@ class CashOutConfirmationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         confirmButton.setTitle(Localize("newDesign.confirm"), for: .normal)
-        
+
         confirmButton.rx.tap
             .flatMap { return PinViewController.presentOrderPinViewController(from: self, title: Localize("newDesign.enterPin"), isTouchIdEnabled: true) }
             .bind(to: cashOutViewModel.trigger)
             .disposed(by: disposeBag)
-        
+
         cashOutViewModel.errors
             .drive(rx.error)
             .disposed(by: disposeBag)
-        
+
         cashOutViewModel.success
             .drive(onNext: { [weak self] result in
                 FinalizePendingRequestsTrigger.instance.finalizeNow()
                 self?.performSegue(withIdentifier: "ShowSummary", sender: result)
             })
             .disposed(by: disposeBag)
-        
+
         cashOutViewModel.loadingViewModel.isLoading
             .asDriver(onErrorJustReturn: false)
             .drive(rx.loading)
             .disposed(by: disposeBag)
-        
+
         tableView.reloadData()
     }
-    
+
     // MARK: - IBActions
-    
-    @IBAction func unwindToConfirmationViewController(segue:UIStoryboardSegue) { }
+
+    @IBAction func unwindToConfirmationViewController(segue: UIStoryboardSegue) { }
 
     // MARK: - Navigation
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowSummary" {
             guard
@@ -90,9 +90,9 @@ class CashOutConfirmationViewController: UIViewController {
             vc.result = result
         }
     }
-    
+
     // MARK: - Private
-    
+
     fileprivate func titleDetailPairForRow(at indexPath: IndexPath) -> TitleDetailPair? {
         switch indexPath.section {
         case 1:
@@ -107,12 +107,12 @@ class CashOutConfirmationViewController: UIViewController {
 }
 
 extension CashOutConfirmationViewController: UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         // Cash Details, Bank Account Details, General
         return 3
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -126,7 +126,7 @@ extension CashOutConfirmationViewController: UITableViewDataSource {
             return 0
         }
     }
-    
+
     func titleForHeaderInSection(_ section: Int) -> String? {
         switch section {
         case 0:
@@ -139,7 +139,7 @@ extension CashOutConfirmationViewController: UITableViewDataSource {
             return nil
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             return self.tableView(tableView, sectionHeaderCellForRowAt: indexPath)
@@ -154,13 +154,13 @@ extension CashOutConfirmationViewController: UITableViewDataSource {
         }
         return cell
     }
-    
+
     private func tableView(_ tableView: UITableView, sectionHeaderCellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeaderCell", for: indexPath) as! CashOutSectionHeaderTableViewCell
         cell.titleLabel.text = titleForHeaderInSection(indexPath.section)
         return cell
     }
-    
+
     private func tableView(_ tableView: UITableView, cashSectionCellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard indexPath.row <= 1 else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TotalCell", for: indexPath) as! CashOutTotalTableViewCell
@@ -171,14 +171,14 @@ extension CashOutConfirmationViewController: UITableViewDataSource {
         cell.bind(to: cashOutViewModel)
         return cell
     }
-    
+
 }
 
 extension Variable where Element == String {
-    
+
     var valueOrNil: String? {
         let value = self.value
         return value.isNotEmpty ? value : nil
     }
-    
+
 }

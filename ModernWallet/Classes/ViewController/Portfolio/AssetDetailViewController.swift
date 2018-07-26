@@ -18,26 +18,26 @@ class AssetDetailViewController: UIViewController {
     @IBOutlet weak var receiveButton: UIButton!
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var transactionsTap: UITapGestureRecognizer!
-    
+
     @IBOutlet weak var sendButton: IconOverTextButton!
     @IBOutlet weak var transactionsTable: UITableView!
     @IBOutlet weak var messageButton: UIButton!
-    
+
     @IBOutlet weak var filterDescriptionView: UIStackView!
     @IBOutlet weak var filterDescriptionLabel: UILabel!
     @IBOutlet weak var filterDescriptionClearButton: UIButton!
     @IBOutlet weak var headerHeight: NSLayoutConstraint!
 
     private var filterViewController: TransactionPickDateRangeViewController?
-    
+
     fileprivate lazy var assetBalanceViewModel: AssetBalanceViewModel = {
         return AssetBalanceViewModel(asset: self.asset.asObservable())
     }()
-    
+
     fileprivate lazy var currencyExchanger: CurrencyExchanger = {
         return CurrencyExchanger()
     }()
-    
+
     fileprivate lazy var transactionsViewModel: TransactionsViewModel = {
         return TransactionsViewModel(
             downloadCsv: self.messageButton.rx.tap.asObservable(),
@@ -50,16 +50,16 @@ class AssetDetailViewController: UIViewController {
     } ()
 
     private let disposeBag = DisposeBag()
-    
+
     var asset: Variable<Asset>!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        transactionsTable.contentInset = UIEdgeInsetsMake(0, 0, 44, 0)
+
+        transactionsTable.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
 
         transactionsTable.register(UINib(nibName: "AssetInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "AssetInfoTableViewCell")
-        
+
         transactionsViewModel.transactionsAsCsv = self.messageButton.rx.tap
             .asObservable()
             .mapToCSVURL(transactions: transactionsViewModel
@@ -67,7 +67,6 @@ class AssetDetailViewController: UIViewController {
                                         .asObservable()
                                         .filter(byAsset: asset.value))
 
-        
         transactionsViewModel
             .bind(toViewController: self)
             .disposed(by: disposeBag)
@@ -85,17 +84,17 @@ class AssetDetailViewController: UIViewController {
             .asDriver(onErrorJustReturn: "")
             .drive(rx.title)
             .disposed(by: disposeBag)
-        
+
         asset.asDriver()
-            .map{$0.wallet?.asset.blockchainWithdraw ?? false}
+            .map {$0.wallet?.asset.blockchainWithdraw ?? false}
             .drive(sendButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        
+
         assetBalanceViewModel.blockchainAddress.asDriver()
-            .map{ $0.isNotEmpty }
+            .map { $0.isNotEmpty }
             .drive(receiveButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        
+
         assetAmount.configure(fontSize: 30)
         baseAssetAmount.configure(fontSize: 12)
 
@@ -103,7 +102,7 @@ class AssetDetailViewController: UIViewController {
         transactionsViewModel.filterViewModel.filterDescription
             .drive(filterDescriptionLabel.rx.attributedText)
             .disposed(by: disposeBag)
-        
+
         transactionsViewModel.filterViewModel.filterDatePair.asObservable()
             .map { return $0.start == nil && $0.end == nil }
             .startWith(true)
@@ -116,12 +115,12 @@ class AssetDetailViewController: UIViewController {
             .map({ return (start: nil, end: nil) })
             .bind(to: transactionsViewModel.filterViewModel.filterDatePair)
             .disposed(by: disposeBag)
-        
+
         transactionsViewModel.isDownloadButtonEnabled
             .drive(messageButton.rx.isEnabled)
             .disposed(by: disposeBag)
     }
-    
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -149,7 +148,7 @@ class AssetDetailViewController: UIViewController {
         case "ShowFilterPopover":
             guard let filterNavigationController = segue.destination as? UINavigationController,
                 let filterViewController = filterNavigationController.topViewController as? TransactionPickDateRangeViewController else { return }
-            
+
             filterNavigationController.modalPresentationStyle = UIModalPresentationStyle.popover
             filterNavigationController.preferredContentSize = CGSize(width: transactionsTable.bounds.width, height: 280)
 
@@ -161,17 +160,17 @@ class AssetDetailViewController: UIViewController {
                 filterPopover.permittedArrowDirections = UIScreen.isSmallScreen ? .down : .up
                 filterPopover.sourceView = self.filterButton
                 filterPopover.delegate = self
-                filterPopover.sourceRect = CGRect(x: self.filterButton.bounds.midX, y: self.filterButton.bounds.midY + popoverOffset, width: 0,height: 0)
+                filterPopover.sourceRect = CGRect(x: self.filterButton.bounds.midX, y: self.filterButton.bounds.midY + popoverOffset, width: 0, height: 0)
             }
-            
+
             filterViewController.filterViewModel = transactionsViewModel.filterViewModel
-            
+
         default:
             break
         }
     }
 
-    func creatCSV(_ path: URL) -> Void {
+    func creatCSV(_ path: URL) {
         let vc = UIActivityViewController(activityItems: [path], applicationActivities: [])
         present(vc, animated: true, completion: nil)
     }
@@ -185,7 +184,7 @@ fileprivate extension TransactionsViewModel {
                 .bind(
                     to: vc.transactionsTable.rx.items(cellIdentifier: "AssetInfoTableViewCell",
                                                    cellType: AssetInfoTableViewCell.self)
-                ){ (row, element, cell) in
+                ) { (_, element, cell) in
                     cell.bind(toTransaction: element)
                 },
             loading.isLoading
@@ -194,7 +193,7 @@ fileprivate extension TransactionsViewModel {
                 .asObservable()
                 .filterSuccess()
                 .bind(onNext: {[weak vc] path in vc?.creatCSV(path)}),
-            
+
             errors.drive(vc.rx.error)
         ]
     }
@@ -207,8 +206,8 @@ extension AssetDetailViewController: UIPopoverPresentationControllerDelegate {
 
 extension ObservableType where Self.E == [TransactionViewModel] {
     func filter(byAsset asset: Asset) -> Observable<[TransactionViewModel]> {
-        return map{ transactions in
-            transactions.filter{transaction in
+        return map { transactions in
+            transactions.filter {transaction in
                 transaction.transaction.asset == asset.wallet?.asset.identity
             }
         }

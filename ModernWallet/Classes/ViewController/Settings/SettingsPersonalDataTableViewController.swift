@@ -12,28 +12,28 @@ import RxCocoa
 import WalletCore
 
 class SettingsPersonalDataTableViewController: UITableViewController {
-    
+
     struct RowInfo {
         let icon: UIImage
         let name: String?
         let value: String?
     }
-    
+
     var viewModel: SettingsViewModel!
-    
+
     private let rows = Variable([RowInfo]())
-    
+
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationItem.title = Localize("settings.newDesign.personalData")
-        
+
         let cellNib = UINib(nibName: "SettingsTableViewCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "SettingsCell")
         tableView.backgroundView = BackgroundView(frame: tableView.bounds)
-        
+
         viewModel.personalData.asObservable()
             .mapToSettingsRowInfo()
             .do(onNext: { [tableView] (rows) in
@@ -44,9 +44,9 @@ class SettingsPersonalDataTableViewController: UITableViewController {
             .asDriver(onErrorJustReturn: [])
             .drive(rows)
             .disposed(by: disposeBag)
-        
+
         rows.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: "SettingsCell", cellType: SettingsTableViewCell.self)) { (row, element, cell) in
+            .bind(to: tableView.rx.items(cellIdentifier: "SettingsCell", cellType: SettingsTableViewCell.self)) { (_, element, cell) in
                 cell.setPersonalData(element)
             }
             .disposed(by: disposeBag)
@@ -55,7 +55,7 @@ class SettingsPersonalDataTableViewController: UITableViewController {
 }
 
 extension Observable where Element == LWPersonalDataModel {
-    
+
     func mapToSettingsRowInfo() -> Observable<[SettingsPersonalDataTableViewController.RowInfo]> {
         return map { (personalData) in
             var rowsData = [SettingsPersonalDataTableViewController.RowInfo]()
@@ -70,11 +70,11 @@ extension Observable where Element == LWPersonalDataModel {
             return rowsData
         }
     }
-    
+
 }
 
 extension SettingsTableViewCell {
-    
+
     func setPersonalData(_ rowInfo: SettingsPersonalDataTableViewController.RowInfo) {
         separator.isHidden = true
         titleLabel.font = UIFont(name: "Geomanist-Light", size: 15.0)
@@ -83,5 +83,5 @@ extension SettingsTableViewCell {
         titleLabel.text = rowInfo.value
         subtitleLabel.text = rowInfo.name
     }
-    
+
 }

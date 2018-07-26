@@ -22,11 +22,11 @@ class TransactionsStep1ViewController: UIViewController {
     @IBOutlet weak var findTransactionLbl: UILabel!
     @IBOutlet weak var filterTransactionLbl: UILabel!
     @IBOutlet weak var downloadCSVLbl: UILabel!
-    
+
     var isTableHeaderHidden = false
     var shouldAddBackgroundImage = false
-    
-    lazy var transactionsViewModel:TransactionsViewModel = {
+
+    lazy var transactionsViewModel: TransactionsViewModel = {
         return TransactionsViewModel(
             downloadCsv: self.downloadCSV.rx.tap.asObservable(),
             dependency: (
@@ -36,32 +36,32 @@ class TransactionsStep1ViewController: UIViewController {
             )
         )
     }()
-    
+
     let disposeBag = DisposeBag()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
-        
+
         if shouldAddBackgroundImage {
             view.insertSubview(UIImageView(image: #imageLiteral(resourceName: "Background")), belowSubview: transactionsTableView)
         }
-        
+
         tableHeader.isHidden = isTableHeaderHidden
-        
+
         localize()
-        
+
         transactionsTableView.register(UINib(nibName: "AssetInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "AssetInfoTableViewCell")
-        
+
         filterTransactionBtn.rx.tap.asObservable()
-            .map{[transactionsViewModel] in transactionsViewModel.sortBy.value.reversed }
+            .map {[transactionsViewModel] in transactionsViewModel.sortBy.value.reversed }
             .bind(to: transactionsViewModel.sortBy)
             .disposed(by: disposeBag)
-        
+
         transactionsViewModel
             .bind(toViewController: self)
             .disposed(by: disposeBag)
-        
+
         transactionsViewModel.isDownloadButtonEnabled
             .drive(downloadCSV.rx.isEnabled)
             .disposed(by: disposeBag)
@@ -71,18 +71,18 @@ class TransactionsStep1ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func creatCSV(_ path: URL) -> Void {
+
+    func creatCSV(_ path: URL) {
         let vc = UIActivityViewController(activityItems: [path], applicationActivities: [])
         present(vc, animated: true, completion: nil)
     }
-    
+
     private func localize() {
         findTransactionLbl.text = Localize("transaction.newDesign.findTransaction")
         filterTransactionLbl.text = Localize("transaction.newDesign.sortTransaction")
         downloadCSVLbl.text = Localize("transaction.newDesign.downoloadCSV")
     }
-    
+
     /*
     // MARK: - Navigation
 
@@ -99,35 +99,34 @@ extension TransactionsStep1ViewController: UISearchResultsUpdating {
         guard let text = searchController.searchBar.text else {
             return
         }
-        
+
         transactionsViewModel.filter.value = text
     }
-    
-    
+
     static func factorySearchContainer(withViewModel viewModel: TransactionsViewModel? = nil) -> UISearchContainerViewController {
         let storyboard = UIStoryboard(name: "Transactions", bundle: nil)
-        
+
         guard let searchResultsController = storyboard.instantiateViewController(withIdentifier: "transactionsVC")
             as? TransactionsStep1ViewController else {
                 fatalError("Unable to instatiate a SearchResultsViewController from the storyboard.")
         }
-        
+
         if let viewModel = viewModel {
             searchResultsController.transactionsViewModel = viewModel
         }
-        
+
         searchResultsController.isTableHeaderHidden = true
         searchResultsController.shouldAddBackgroundImage = true
-        
+
         let searchController = UISearchController(searchResultsController: searchResultsController)
         let searchContainer = UISearchContainerViewController(searchController: searchController)
-        
+
         searchController.searchResultsUpdater = searchResultsController
         searchController.searchBar.placeholder = "Search transactions"
         searchController.searchBar.tintColor = UIColor.white
         searchController.searchBar.barTintColor = Colors.darkGreen
         searchController.searchBar.sizeToFit()
-        
+
         return searchContainer
     }
 }
@@ -138,20 +137,20 @@ fileprivate extension TransactionsViewModel {
             transactions.asObservable()
                 .bind(to: vc.transactionsTableView.rx.items(cellIdentifier: "AssetInfoTableViewCell",
                                                             cellType: AssetInfoTableViewCell.self)
-                ){ (row, element, cell) in cell.bind(toTransaction: element) },
-            
+                ) { (_, element, cell) in cell.bind(toTransaction: element) },
+
             loading.isLoading
                 .bind(to: vc.rx.loading),
-            
+
             transactionsAsCsv
                 .asObservable()
                 .filterSuccess()
                 .bind(onNext: {[weak vc] path in vc?.creatCSV(path)}),
-            
+
             sortBy.asDriver()
-                .map{ $0.asImage() }
+                .map { $0.asImage() }
                 .drive(vc.sortIcon.rx.image),
-            
+
             errors.drive(vc.rx.error)
         ]
     }

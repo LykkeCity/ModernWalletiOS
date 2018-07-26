@@ -14,7 +14,7 @@ extension Reactive where Base: UIView {
     var isHiddenAnimated: UIBindingObserver<Base, Bool> {
         return UIBindingObserver(UIElement: self.base) { button, value in
             let alpha = CGFloat(value ? 0.0 : 1.0)
-            
+
             UIView.animate(
                 withDuration: 0.3,
                 delay: 0,
@@ -26,4 +26,3 @@ extension Reactive where Base: UIView {
         }
     }
 }
-

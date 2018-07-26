@@ -12,19 +12,19 @@ import RxCocoa
 import WalletCore
 
 extension AssetCollectionCellViewModel {
-    
+
     func driveAmount(to view: AssetAmountView) -> [Disposable] {
         return [
             cryptoAmount.drive(view.rx.amount),
             cryptoCode.drive(view.rx.code)
         ]
     }
-    
+
     func driveAmountInBase(to view: AssetAmountView) -> [Disposable] {
         return [
             realAmount.drive(view.rx.amount),
             realCode.drive(view.rx.code)
         ]
     }
-    
+
 }

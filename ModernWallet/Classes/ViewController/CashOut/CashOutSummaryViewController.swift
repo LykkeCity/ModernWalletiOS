@@ -10,7 +10,7 @@ import UIKit
 import WalletCore
 
 class CashOutSummaryViewController: UIViewController {
-    
+
     @IBOutlet private weak var successLabel: UILabel!
     @IBOutlet private weak var detailsLabel: UILabel!
     @IBOutlet private weak var waitMessageLabel: UILabel!
@@ -32,17 +32,17 @@ class CashOutSummaryViewController: UIViewController {
     @IBOutlet private weak var accountHolderCityTitleLabel: UILabel!
     @IBOutlet private weak var accountHolderCityLabel: UILabel!
     @IBOutlet private weak var button: UIButton!
-    
+
     var result: LWModelCashOutSwiftResult!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         localize()
-        
+
         setResultToLabels()
     }
-    
+
     private func localize() {
         successLabel.text = Localize("cashOut.newDesign.success")
         detailsLabel.text = Localize("cashOut.newDesign.transactionDetails")
@@ -57,7 +57,7 @@ class CashOutSummaryViewController: UIViewController {
         accountHolderCityTitleLabel.text = Localize("cashOut.newDesign.accHolderCity")
         button.setTitle(Localize("cashOut.newDesign.backToPortfolio"), for: .normal)
     }
-    
+
     private func setResultToLabels() {
         amountView.amount = result.amount
         amountView.code = result.asset

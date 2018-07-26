@@ -10,10 +10,10 @@ import Foundation
 import WalletCore
 
 protocol NavigationWizzardProtocol {
-    var backButton: UIButton!{get}
-    var pageIndicators: [UIButton]{get}
-    var moneyLabel: UILabel!{get}
-    
+    var backButton: UIButton! {get}
+    var pageIndicators: [UIButton] {get}
+    var moneyLabel: UILabel! {get}
+
     func managePageIndicators(_ navigationController: UINavigationController, willShow viewController: UIViewController)
     func manageBackButtonVisibility(_ navigationController: UINavigationController, willShow viewController: UIViewController)
     func getMaxIndicatorCount(_ navigationController: UINavigationController, willShow viewController: UIViewController) -> Int
@@ -23,14 +23,12 @@ extension NavigationWizzardProtocol {
     func manageBackButtonVisibility(_ navigationController: UINavigationController, willShow viewController: UIViewController) {
         backButton.isHidden = navigationController.childViewControllers.count <= 1
     }
-    
+
     func manageAddMoneyLabel(_ navigationController: UINavigationController, willShow viewController: UIViewController) {
-        if navigationController.childViewControllers.count <= 1{
+        if navigationController.childViewControllers.count <= 1 {
             moneyLabel.text = Localize("addMoney.newDesign.addMoneyFrom")
-        }
-            
-        else {
-            
+        } else {
+
             if var baseLabelString = Localize("addMoney.newDesign.addMoneyFrom") {
                 baseLabelString = baseLabelString.appending(" ")
                 if let startViewController = navigationController.childViewControllers.first as? StartViewController {
@@ -40,20 +38,20 @@ extension NavigationWizzardProtocol {
             }
         }
     }
-    
+
     func managePageIndicators(_ navigationController: UINavigationController, willShow viewController: UIViewController) {
         if navigationController.childViewControllers.count <= 1 {
-            pageIndicators.forEach{$0.isHidden = true}
+            pageIndicators.forEach {$0.isHidden = true}
             return
         }
-        
+
         let maxIndicatorsCount = getMaxIndicatorCount(navigationController, willShow: viewController)
-        
-        pageIndicators.enumerated().forEach{(index, button) in
+
+        pageIndicators.enumerated().forEach {(index, button) in
             button.isHidden = index >= maxIndicatorsCount
         }
-        
-        pageIndicators.enumerated().forEach{(index, button) in
+
+        pageIndicators.enumerated().forEach {(index, button) in
             button.isSelected = navigationController.childViewControllers.count - 2 == index
         }
     }

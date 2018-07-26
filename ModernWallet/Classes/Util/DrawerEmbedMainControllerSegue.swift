@@ -9,7 +9,7 @@
 import UIKit
 
 class DrawerEmbedMainControllerSegue: UIStoryboardSegue {
-    
+
     final override func perform() {
         guard
             let drawerController = source.drawerController,
@@ -18,7 +18,7 @@ class DrawerEmbedMainControllerSegue: UIStoryboardSegue {
         rootViewController.embed(viewController: destination, animated: true)
         drawerController.setDrawerState(.closed, animated: false)
 //        drawerController.endAppearanceTransition()
-        
+
 //        let navViewController = destination.childViewControllers.first{ $0 is UINavigationController}
 //        let portfolioViewController = navViewController?.childViewControllers.first{ $0 is PortfolioViewController }
 //        portfolioViewController?.viewDidAppear(true)

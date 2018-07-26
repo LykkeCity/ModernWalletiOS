@@ -11,15 +11,15 @@ import UIKit
 
 @IBDesignable
 class LimitedHoshiTextField: HoshiTextField {
-    
+
     @IBInspectable
     var maxLength: Int = 40    // set a default value
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         addTarget(self, action: #selector(editingChanged), for: .editingChanged)
     }
-    
+
     func editingChanged(sender: UITextField) {
         guard let text = sender.text?.prefix(maxLength) else { return }
         sender.text = String(text)

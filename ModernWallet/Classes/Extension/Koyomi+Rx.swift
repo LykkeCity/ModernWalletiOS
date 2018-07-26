@@ -16,7 +16,7 @@ import Koyomi
 extension Reactive where Base: Koyomi {
     /// Select date on the calendar
     var selectDate: UIBindingObserver<Base, Date?> {
-        return UIBindingObserver(UIElement: self.base) { calendar, value in
+        return UIBindingObserver(UIElement: self.base) { _, value in
             guard let value = value else {
                 self.base.unselectAll()
                 return
@@ -24,15 +24,15 @@ extension Reactive where Base: Koyomi {
             self.base.select(date: value)
         }
     }
-    
+
     var prevMonth: UIBindingObserver<Base, Void> {
-        return UIBindingObserver(UIElement: self.base, binding: { (calendar, _) in
+        return UIBindingObserver(UIElement: self.base, binding: { (_, _) in
             self.base.display(in: .previous)
         })
     }
-    
+
     var nextMonth: UIBindingObserver<Base, Void> {
-        return UIBindingObserver(UIElement: self.base, binding: { (calendar, _) in
+        return UIBindingObserver(UIElement: self.base, binding: { (_, _) in
             self.base.display(in: .next)
         })
     }
@@ -41,13 +41,13 @@ extension Reactive where Base: Koyomi {
 class KoyomiDelegateProxy: DelegateProxy, DelegateProxyType, KoyomiDelegate {
     static func currentDelegateFor(_ object: AnyObject) -> AnyObject? {
         guard let koyomiObject: Koyomi = object as? Koyomi else { return nil }
-        
+
         return koyomiObject.calendarDelegate
     }
-    
+
     static func setCurrentDelegate(_ delegate: AnyObject?, toObject object: AnyObject) {
         guard let koyomiObject: Koyomi = object as? Koyomi else { return }
-        
+
         koyomiObject.calendarDelegate = delegate as? KoyomiDelegate
     }
 }
@@ -56,7 +56,7 @@ extension Koyomi {
     private var rx_delegate: DelegateProxy {
         return KoyomiDelegateProxy.proxyForObject(self)
     }
-    
+
     public var rx_selectedDate: Observable<Date> {
         let selector = #selector(KoyomiDelegate.koyomi(_:didSelect:forItemAt:))
         return rx_delegate.methodInvoked(selector)
@@ -65,7 +65,7 @@ extension Koyomi {
         }.filterNil()
         .shareReplay(1)
     }
-    
+
     public var rx_displayedMonth: Observable<String> {
         let selector = #selector(KoyomiDelegate.koyomi(_:currentDateString:))
         return rx_delegate.methodInvoked(selector)
@@ -75,4 +75,3 @@ extension Koyomi {
         .shareReplay(1)
     }
 }
-
