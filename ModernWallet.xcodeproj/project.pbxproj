@@ -975,7 +975,7 @@
 			buildConfigurationList = CF21DC921C17590E00D2399E /* Build configuration list for PBXNativeTarget "ModernMoney" */;
 			buildPhases = (
 				C918EDD15CF50635C50F8104 /* [CP] Check Pods Manifest.lock */,
-				C55335BB2109C6CA00AAFBD8 /* perform SwiftLint check operation */,
+				C55335BB2109C6CA00AAFBD8 /* Perform SwiftLint check operation */,
 				CF21DC771C17590E00D2399E /* Sources */,
 				CF21DC781C17590E00D2399E /* Frameworks */,
 				CF21DC791C17590E00D2399E /* Resources */,
@@ -1183,14 +1183,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ModernMoney/Pods-ModernMoney-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C55335BB2109C6CA00AAFBD8 /* perform SwiftLint check operation */ = {
+		C55335BB2109C6CA00AAFBD8 /* Perform SwiftLint check operation */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "perform SwiftLint check operation";
+			name = "Perform SwiftLint check operation";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
