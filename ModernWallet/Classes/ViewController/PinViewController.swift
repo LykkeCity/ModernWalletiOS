@@ -206,9 +206,9 @@ class PinViewController: UIViewController {
             self.dismiss(success: true, animated: true)
         }, bad: {
             print("Something went wrong")
-        }) {
+        }, unavailable: {
             print("Something went wrong")
-        }
+        })
     }
 
     @IBAction private func deleteTapped() {

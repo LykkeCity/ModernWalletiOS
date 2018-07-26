@@ -32,7 +32,7 @@ class TotalBalanceViewController: UIViewController {
             .drive(currencyCode.rx.text)
             .disposed(by: disposeBag)
 
-// TODO: Move loading indicator in parent controller (this one where resides Total Balance view controller)
+// NOTE: Move loading indicator in parent controller (this one where resides Total Balance view controller)
 //        viewModel.loading.isLoading
 //            .bind(to: rx.loading)
 //            .disposed(by: disposeBag)

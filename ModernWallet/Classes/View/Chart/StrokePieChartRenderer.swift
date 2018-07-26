@@ -23,7 +23,7 @@ class StrokeChartRenderer: PieChartRenderer {
         guard
             let chart = chart,
             let animator = animator
-            else {return }
+            else { return }
 
         var angle: CGFloat = 0.0
         let rotationAngle = chart.rotationAngle

@@ -25,8 +25,7 @@ extension UIViewController {
 
     func show(errorMessage: String?) {
         let alertController = UIAlertController(title: Localize("utils.error"), message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-        let okAction = UIAlertAction(title: Localize("utils.ok"), style: UIAlertActionStyle.default) {
-            (_: UIAlertAction) -> Void in
+        let okAction = UIAlertAction(title: Localize("utils.ok"), style: UIAlertActionStyle.default) { (_: UIAlertAction) -> Void in
             print("OK")
         }
 

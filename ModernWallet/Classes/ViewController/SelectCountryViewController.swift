@@ -12,7 +12,7 @@ import RxCocoa
 import RxDataSources
 import WalletCore
 
-protocol SelectCountryViewControllerDelegate {
+protocol SelectCountryViewControllerDelegate: class {
 
     func controller(_ controller: SelectCountryViewController, didSelectCountry country: LWCountryModel)
 
@@ -28,7 +28,7 @@ class SelectCountryViewController: UIViewController {
 
     var selectedCountry: LWCountryModel?
 
-    var delegate: SelectCountryViewControllerDelegate?
+    weak var delegate: SelectCountryViewControllerDelegate?
 
     private let disposeBag = DisposeBag()
 

@@ -13,7 +13,7 @@ import RxCocoa
 @IBDesignable
 class AssetAmountView: UIView {
 
-    @IBInspectable var amountFont: UIFont? {
+    var amountFont: UIFont? {
         get { return amountLabel?.font }
         set {
             amountLabel?.font = newValue
@@ -21,7 +21,7 @@ class AssetAmountView: UIView {
         }
     }
 
-    @IBInspectable var codeFont: UIFont? {
+    var codeFont: UIFont? {
         get { return codeLabel?.font }
         set {
             codeLabel?.font = newValue

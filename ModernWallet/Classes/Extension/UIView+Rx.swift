@@ -19,10 +19,11 @@ extension Reactive where Base: UIView {
                 withDuration: 0.3,
                 delay: 0,
                 options: [.curveLinear, .allowUserInteraction, .beginFromCurrentState],
-                animations: {button.alpha = alpha}
-            ) { _ in
+                animations: {
+                    button.alpha = alpha
+            }, completion: { _ in
                 button.isHidden = value
-            }
+            })
         }
     }
 }

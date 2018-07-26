@@ -129,10 +129,10 @@ class StartViewController: UIViewController {
         switch action {
         case .bankAccount:
             vc.showOnlyAssetsWithSwiftTransfer()
-            break
+
         case .creditCard:
             vc.showOnlyVisaDepositableAssets()
-            break
+
         case .cryptoCurrency:
             break
         }

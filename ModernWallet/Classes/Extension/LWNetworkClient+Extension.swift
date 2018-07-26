@@ -70,8 +70,12 @@ extension LWNetworkTemplate: LWAuthManagerDelegate {
         case "NeedToFillData":
             identifier = "kycTabNVC"
         case "RestrictedArea":
+            identifier = ""
             fallthrough
         default:
+            return
+        }
+        guard identifier.isNotEmpty else {
             return
         }
         let kycVC = UIStoryboard(name: "KYC", bundle: nil).instantiateViewController(withIdentifier: identifier)
