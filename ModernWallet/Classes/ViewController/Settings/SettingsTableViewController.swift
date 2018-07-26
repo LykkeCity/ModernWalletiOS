@@ -89,11 +89,15 @@ class SettingsTableViewController: UITableViewController {
         guard let segueID = segue.identifier else { return }
         switch segueID {
         case "PersonalData":
-            let vc = segue.destination as! SettingsPersonalDataTableViewController
+            guard let vc = segue.destination as? SettingsPersonalDataTableViewController else {
+                return
+            }
             vc.viewModel = viewModel
 
         case "BaseAssetSelection":
-            let vc = segue.destination as! AssetPickerTableViewController
+            guard let vc = segue.destination as? AssetPickerTableViewController else {
+                return
+            }
             bindAssetPickerForBaseCurrencyChange(vc)
         default:
             break

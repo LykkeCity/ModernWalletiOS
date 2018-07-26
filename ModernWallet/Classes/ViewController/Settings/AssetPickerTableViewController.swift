@@ -88,8 +88,10 @@ extension AssetPickerTableViewController {
 
     static func instantiateViewController() -> AssetPickerTableViewController {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "assetPickerViewController")
-        return vc as! AssetPickerTableViewController
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "assetPickerViewController") as? AssetPickerTableViewController else {
+            return AssetPickerTableViewController()
+        }
+        return vc
     }
 
     func bindViewModels() {

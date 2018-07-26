@@ -28,7 +28,7 @@ class BackupPrivateKeyWordsViewController: UIViewController {
                 return words
             }
         }
-        return LWPrivateKeyManager.generateSeedWords12() as! [String]
+        return (LWPrivateKeyManager.generateSeedWords12() as? [String]) ?? []
     }()
 
     fileprivate var selectedWordIndex = 0 {

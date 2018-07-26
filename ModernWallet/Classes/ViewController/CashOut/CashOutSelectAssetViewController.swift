@@ -67,7 +67,7 @@ class CashOutSelectAssetViewController: UIViewController {
             .drive(onNext: { [weak self] isEmpty in
                 guard isEmpty, let `self` = self else { return }
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let emptyWalletVC = storyboard.instantiateViewController(withIdentifier: "EmptyWallet") as! EmptyWalletViewController
+                guard let emptyWalletVC = storyboard.instantiateViewController(withIdentifier: "EmptyWallet") as? EmptyWalletViewController else { return }
                 emptyWalletVC.message = Localize("emptyWallet.newDesign.cashOutMessage")
                 self.rx.loading.onNext(false)
                 self.navigationController?.setViewControllers([emptyWalletVC], animated: false)

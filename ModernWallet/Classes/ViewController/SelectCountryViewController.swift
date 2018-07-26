@@ -106,7 +106,9 @@ extension SelectCountryViewController: UITableViewDataSource, UITableViewDelegat
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let country = self.country(at: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as! SelectCountryTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as? SelectCountryTableViewCell else {
+            return SelectCountryTableViewCell()
+        }
         cell.name = country.name
         cell.isSelectedCountry = country.identity == selectedCountry?.identity
         return cell

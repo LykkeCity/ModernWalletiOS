@@ -207,9 +207,11 @@ class BuyOptimizedViewController: UIViewController {
 
         totalBalanceViewModel.isEmpty
             .drive(onNext: { [weak self] isEmpty in
-                guard isEmpty, let `self` = self else { return }
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let emptyWalletVC = storyboard.instantiateViewController(withIdentifier: "EmptyWallet") as! EmptyWalletViewController
+                guard isEmpty,
+                    let `self` = self,
+                    let emptyWalletVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EmptyWallet") as? EmptyWalletViewController else {
+                    return
+                }
                 let messageKey = self.tradeType == .buy ? "emptyWallet.newDesign.buyMessage" : "emptyWallet.newDesign.sellMessage"
                 emptyWalletVC.message = Localize(messageKey)
                 self.rx.loading.onNext(false)

@@ -41,6 +41,9 @@ extension GraphProtocol  where Self: UIViewController {
     }
 
     mutating func updatePeriodButtons(periodArray: [LWGraphPeriodModel]) {
+        guard let graphDisposeBag = disposeBagP as? DisposeBag else {
+            return
+        }
 
         let width: CGFloat = (self.view.bounds.size.width - 20) / CGFloat(periodArray.count)
         var index = 0
@@ -59,7 +62,7 @@ extension GraphProtocol  where Self: UIViewController {
             button.rx.tap
                 .map {period}
                 .bind(to: graphViewModelP.selectedPeriod)
-                .disposed(by: disposeBagP as! DisposeBag)
+                .disposed(by: graphDisposeBag)
 
             periodsButtonsViewP.addSubview(button)
             periodButtonsArray.append(button)

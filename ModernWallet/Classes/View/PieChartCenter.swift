@@ -56,7 +56,9 @@ extension UIView {
 
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: nimName, bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        guard let view = nib.instantiate(withOwner: self, options: nil)[0] as? UIView else {
+            return UIView()
+        }
 
         return view
     }

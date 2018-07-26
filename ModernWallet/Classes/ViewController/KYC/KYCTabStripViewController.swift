@@ -57,11 +57,12 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
     }
 
     fileprivate lazy var controllers: [UIViewController] = {
-        guard let storyboard = self.storyboard else {return []}
-
-        let step1 = storyboard.instantiateViewController(withIdentifier: "kycStep1VC") as! KYCStep1ViewController
-        let step2 = storyboard.instantiateViewController(withIdentifier: "kycStep2VC") as! KYCStep2ViewController
-        let step3 = storyboard.instantiateViewController(withIdentifier: "kycStep3VC") as! KYCStep3ViewController
+        guard let storyboard = self.storyboard,
+            let step1 = storyboard.instantiateViewController(withIdentifier: "kycStep1VC") as? KYCStep1ViewController,
+            let step2 = storyboard.instantiateViewController(withIdentifier: "kycStep2VC") as? KYCStep2ViewController,
+            let step3 = storyboard.instantiateViewController(withIdentifier: "kycStep3VC") as? KYCStep3ViewController else {
+                return []
+        }
 
         step1.documentsViewModel = self.documentsViewModel
         step2.documentsViewModel = self.documentsViewModel

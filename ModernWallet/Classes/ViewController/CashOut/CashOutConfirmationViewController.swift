@@ -147,7 +147,9 @@ extension CashOutConfirmationViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             return self.tableView(tableView, cashSectionCellForRowAt: indexPath)
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! CashOutConfirmationDetailTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as? CashOutConfirmationDetailTableViewCell else {
+            return CashOutConfirmationDetailTableViewCell()
+        }
         if let pair = titleDetailPairForRow(at: indexPath) {
             cell.nameLabel.text = pair.title
             cell.detailsLabel.text = pair.detail
@@ -156,18 +158,24 @@ extension CashOutConfirmationViewController: UITableViewDataSource {
     }
 
     private func tableView(_ tableView: UITableView, sectionHeaderCellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeaderCell", for: indexPath) as! CashOutSectionHeaderTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeaderCell", for: indexPath) as? CashOutSectionHeaderTableViewCell else {
+            return CashOutSectionHeaderTableViewCell()
+        }
         cell.titleLabel.text = titleForHeaderInSection(indexPath.section)
         return cell
     }
 
     private func tableView(_ tableView: UITableView, cashSectionCellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard indexPath.row <= 1 else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TotalCell", for: indexPath) as! CashOutTotalTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TotalCell", for: indexPath) as? CashOutTotalTableViewCell else {
+                return CashOutTotalTableViewCell()
+            }
             cell.bind(to: cashOutViewModel.totalObservable)
             return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AssetCell", for: indexPath) as! CashOutAssetDetailsTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AssetCell", for: indexPath) as? CashOutAssetDetailsTableViewCell else {
+            return CashOutAssetDetailsTableViewCell()
+        }
         cell.bind(to: cashOutViewModel)
         return cell
     }
