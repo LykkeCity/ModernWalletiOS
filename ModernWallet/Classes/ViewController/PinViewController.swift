@@ -106,7 +106,7 @@ class PinViewController: UIViewController {
 
     private let checkPinTrigger = PublishSubject<Void>()
 
-    lazy var checkPinViewModel: PinGetViewModel= {
+    lazy var checkPinViewModel: PinGetViewModel = {
         let result = PinGetViewModel(submit: self.checkPinTrigger.asObservable() )
         result.loading.asDriver(onErrorJustReturn: false)
             .drive(self.rx.loading)
@@ -128,7 +128,7 @@ class PinViewController: UIViewController {
 
     private let setPinTrigger = PublishSubject<Void>()
 
-    private lazy var setPinViewModel: SignUpPinSetViewModel= {
+    private lazy var setPinViewModel: SignUpPinSetViewModel = {
         let result = SignUpPinSetViewModel(submit: self.setPinTrigger.asObservable())
         result.loading.asDriver(onErrorJustReturn: false)
             .drive(self.rx.loading)

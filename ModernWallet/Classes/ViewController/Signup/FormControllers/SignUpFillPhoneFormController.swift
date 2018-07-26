@@ -45,7 +45,7 @@ class SignUpFillPhoneFormController: FormController {
 
     private let sendPhoneTrigger = PublishSubject<Void>()
 
-    private lazy var viewModel: PhoneNumberViewModel= {
+    private lazy var viewModel: PhoneNumberViewModel = {
         return PhoneNumberViewModel(saveSubmit: self.sendPhoneTrigger.asObservable() )
     }()
 

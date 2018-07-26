@@ -59,7 +59,7 @@ class SignUpPasswordHintFormController: FormController {
 
     private let registrationTrigger = PublishSubject<Void>()
 
-    private lazy var viewModel: SignUpRegistrationViewModel= {
+    private lazy var viewModel: SignUpRegistrationViewModel = {
         let viewModel = SignUpRegistrationViewModel(submit: self.registrationTrigger.asObservable())
         viewModel.clientInfo.value = LWDeviceInfo.instance().clientInfo()
         viewModel.email.value = self.email

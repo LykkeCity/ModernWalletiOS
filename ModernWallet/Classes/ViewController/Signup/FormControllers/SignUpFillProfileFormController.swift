@@ -55,7 +55,7 @@ class SignUpFillProfileFormController: FormController {
 
     private let sendFullnameTrigger = PublishSubject<Void>()
 
-    private lazy var viewModel: ClientFullNameSetViewModel= {
+    private lazy var viewModel: ClientFullNameSetViewModel = {
         return ClientFullNameSetViewModel(trigger: self.sendFullnameTrigger.asObservable())
     }()
 

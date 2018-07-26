@@ -57,7 +57,7 @@ class SignUpSetPasswordFormController: FormController {
         return nil
     }
 
-    lazy var viewModel: SignUpRegistrationViewModel= {
+    lazy var viewModel: SignUpRegistrationViewModel = {
         return SignUpRegistrationViewModel(submit: Observable.never() )
     }()
 

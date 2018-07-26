@@ -53,7 +53,7 @@ class SignUpEmailFormController: FormController {
 
     private var signUpTrigger = PublishSubject<Void>()
 
-    lazy var viewModel: SignUpEmailViewModel= {
+    lazy var viewModel: SignUpEmailViewModel = {
         return SignUpEmailViewModel(submit: self.signUpTrigger.asObservable() )
     }()
 

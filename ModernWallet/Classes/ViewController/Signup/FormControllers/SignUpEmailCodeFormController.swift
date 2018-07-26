@@ -74,7 +74,7 @@ class SignUpEmailCodeFormController: FormController {
 
     private var checkCodeTrigger = PublishSubject<Void>()
 
-    lazy var viewModel: RegisterSendPinEmailViewModel= {
+    lazy var viewModel: RegisterSendPinEmailViewModel = {
         let viewModel = RegisterSendPinEmailViewModel(submitConfirmPin: self.checkCodeTrigger.asObservable(), submitResendPin: self.resendEmailButton.rx.tap.asObservable() )
         viewModel.email.value = self.email
         return viewModel
