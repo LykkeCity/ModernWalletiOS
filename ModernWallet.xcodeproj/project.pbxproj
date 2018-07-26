@@ -975,6 +975,7 @@
 			buildConfigurationList = CF21DC921C17590E00D2399E /* Build configuration list for PBXNativeTarget "ModernMoney" */;
 			buildPhases = (
 				C918EDD15CF50635C50F8104 /* [CP] Check Pods Manifest.lock */,
+				C55335BB2109C6CA00AAFBD8 /* Perform SwiftLint check operation */,
 				CF21DC771C17590E00D2399E /* Sources */,
 				CF21DC781C17590E00D2399E /* Frameworks */,
 				CF21DC791C17590E00D2399E /* Resources */,
@@ -1181,6 +1182,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ModernMoney/Pods-ModernMoney-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C55335BB2109C6CA00AAFBD8 /* Perform SwiftLint check operation */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Perform SwiftLint check operation";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    \"${PODS_ROOT}/SwiftLint/swiftlint\"\nelse\n    echo \"SwiftLint pod not installed, run `pod install` in the project directory.\"\n    exit 1\nfi";
 		};
 		C918EDD15CF50635C50F8104 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

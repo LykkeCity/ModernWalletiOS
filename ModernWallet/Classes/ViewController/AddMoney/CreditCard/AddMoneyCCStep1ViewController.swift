@@ -14,7 +14,7 @@ import TextFieldEffects
 import RxKeyboard
 
 class AddMoneyCCStep1ViewController: AddMoneyBaseViewController {
-    
+
     @IBOutlet weak var assetCode: UILabel!
     @IBOutlet weak var assetSymbol: UILabel!
     @IBOutlet weak var amountTextField: UITextField!
@@ -30,12 +30,12 @@ class AddMoneyCCStep1ViewController: AddMoneyBaseViewController {
     @IBOutlet weak var phoneField: HoshiTextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
-        
-    private lazy var creditCardViewModel:CreditCardBaseInfoViewModel = {
+
+    private lazy var creditCardViewModel: CreditCardBaseInfoViewModel = {
         return CreditCardBaseInfoViewModel(submit: self.submitButton.rx.tap.confirm(vc: self),
                                            assetToAdd: self.аssetObservable())
     }()
-    
+
     fileprivate var selectedCountry: LWCountryModel? {
         didSet {
             guard let country = selectedCountry else {
@@ -44,9 +44,9 @@ class AddMoneyCCStep1ViewController: AddMoneyBaseViewController {
             creditCardViewModel.input.country.value = country.name
         }
     }
-    
+
     private let selectCountryViewModel = SelectCountryViewModel()
-    
+
     fileprivate let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -54,30 +54,29 @@ class AddMoneyCCStep1ViewController: AddMoneyBaseViewController {
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.clear
-        
+
         ccContainerView.layer.borderWidth = 1.0
         ccContainerView.layer.borderColor = UIColor.white.cgColor
         ccContainerView.layer.cornerRadius = 10.0
-        
+
         creditCardViewModel.bindToFormFields(self)
         creditCardViewModel.bindToAsset(self)
         creditCardViewModel.bindToPaymentUrl(self)
         creditCardViewModel.driveErrors(self)
-        
+
         creditCardViewModel.loadingViewModel.isLoading
             .bind(to: self.rx.loading)
             .disposed(by: disposeBag)
-        
-        creditCardViewModel.loadingViewModel.isLoading.map{!$0}
+
+        creditCardViewModel.loadingViewModel.isLoading.map {!$0}
             .bind(to: submitButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        
+
         //add buttons above of the keyboard for these type of keyboards that don't have return button, 
         //and call textFieldShouldReturn on button tap
         setupFormUX(disposedBy: disposeBag)
     }
 
-    
     func setUserInterface() {
 //        amountToAddLabel.text = Localize("addMoney.newDesign.creditcard.amountToAdd")
 //        ccNumberLabel.text = Localize("addMoney.newDesign.creditcard.ccNumber")
@@ -88,7 +87,7 @@ class AddMoneyCCStep1ViewController: AddMoneyBaseViewController {
 //        submitBtn.setTitle(Localize("addMoney.newDesign.creditcard.submit"), for: UIControlState.normal)
 
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -114,114 +113,114 @@ class AddMoneyCCStep1ViewController: AddMoneyBaseViewController {
 }
 
 extension AddMoneyCCStep1ViewController: SelectCountryViewControllerDelegate {
-    
+
     func controller(_ controller: SelectCountryViewController, didSelectCountry country: LWCountryModel) {
         self.selectedCountry = country
         controller.dismiss(animated: true)
     }
-    
+
 }
 
 fileprivate extension CreditCardBaseInfoViewModel {
-    
+
     func driveErrors(_ viewController: AddMoneyCCStep1ViewController) {
-        errors.firstName.map{$0 != nil}
+        errors.firstName.map {$0 != nil}
             .drive(viewController.firstNameField.rx.error)
             .disposed(by: viewController.disposeBag)
-        
-        errors.lastName.map{$0 != nil}
+
+        errors.lastName.map {$0 != nil}
             .drive(viewController.lastNameField.rx.error)
             .disposed(by: viewController.disposeBag)
-        
-        errors.address.map{$0 != nil}
+
+        errors.address.map {$0 != nil}
             .drive(viewController.addressField.rx.error)
             .disposed(by: viewController.disposeBag)
-        
-        errors.city.map{$0 != nil}
+
+        errors.city.map {$0 != nil}
             .drive(viewController.cityField.rx.error)
             .disposed(by: viewController.disposeBag)
-        
-        errors.zip.map{$0 != nil}
+
+        errors.zip.map {$0 != nil}
             .drive(viewController.zipField.rx.error)
             .disposed(by: viewController.disposeBag)
-        
-        errors.country.map{$0 != nil}
+
+        errors.country.map {$0 != nil}
             .drive(viewController.countryField.rx.error)
             .disposed(by: viewController.disposeBag)
-        
-        errors.phoneCode.map{$0 != nil}
+
+        errors.phoneCode.map {$0 != nil}
             .drive(viewController.codeField.rx.error)
             .disposed(by: viewController.disposeBag)
-        
-        errors.phone.map{$0 != nil}
+
+        errors.phone.map {$0 != nil}
             .drive(viewController.phoneField.rx.error)
             .disposed(by: viewController.disposeBag)
-        
+
         errors.errorMessage
             .drive(onNext: {[weak viewController] message in
                 viewController?.view.makeToast(message)
             })
             .disposed(by: viewController.disposeBag)
     }
-    
+
     func bindToPaymentUrl(_ viewController: AddMoneyCCStep1ViewController) {
         paymentUrlResult.filterSuccess()
             .subscribe(onNext: {[weak viewController] paymentUrl in
                 guard let addMoneyCC2NVC = viewController?.storyboard?.instantiateViewController(withIdentifier: "addMoneyCC2NVC")
                     as? UINavigationController else {return}
-                
+
                 guard let addMoneyCC2VC = addMoneyCC2NVC.childViewControllers.first
                     as? AddMoneyCCStep2ViewController else {return}
-                
+
                 addMoneyCC2VC.paymentUrl = paymentUrl
                 viewController?.navigationController?.parent?.present(addMoneyCC2NVC, animated: true, completion: nil)
             })
             .disposed(by: viewController.disposeBag)
     }
-    
+
     func bindToAsset(_ viewController: AddMoneyCCStep1ViewController) {
         assetCode
             .drive(viewController.assetCode.rx.text)
             .disposed(by: viewController.disposeBag)
-        
+
         assetSymbol
             .drive(viewController.assetSymbol.rx.text)
             .disposed(by: viewController.disposeBag)
     }
-    
+
     func bindToFormFields(_ vc: AddMoneyCCStep1ViewController) {
-        
+
         (vc.amountTextField.rx.textInput <-> input.amount)
             .disposed(by: vc.disposeBag)
-        
+
         (vc.firstNameField.rx.textInput <-> input.firstName)
             .disposed(by: vc.disposeBag)
-        
+
         (vc.lastNameField.rx.textInput <-> input.lastName)
             .disposed(by: vc.disposeBag)
-        
+
         (vc.cityField.rx.textInput <-> input.city)
             .disposed(by: vc.disposeBag)
-        
+
         (vc.zipField.rx.textInput <-> input.zip)
             .disposed(by: vc.disposeBag)
-        
+
         (vc.addressField.rx.textInput <-> input.address)
             .disposed(by: vc.disposeBag)
-        
+
         (vc.countryField.rx.textInput <-> input.country)
             .disposed(by: vc.disposeBag)
-        
+
         (vc.codeField.rx.textInput <-> input.phoneCode)
             .disposed(by: vc.disposeBag)
-        
+
         (vc.phoneField.rx.textInput <-> input.phone)
             .disposed(by: vc.disposeBag)
     }
 }
 
 extension AddMoneyCCStep1ViewController: InputForm {
-    
+
     var textFields: [UITextField] {
         return [
             amountTextField,
@@ -229,11 +228,11 @@ extension AddMoneyCCStep1ViewController: InputForm {
             lastNameField,
             addressField,
             cityField,
-            zipField,
+            zipField
 
         ]
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return goToTextField(after: textField)
     }
@@ -241,11 +240,11 @@ extension AddMoneyCCStep1ViewController: InputForm {
 }
 
 fileprivate extension ObservableType where Self.E == Void {
-    
+
     func confirm(vc: UIViewController?
         ) -> Observable<Void> {
-        
-        return flatMap{ [weak vc] _  -> Observable<Void> in
+
+        return flatMap { [weak vc] _  -> Observable<Void> in
             guard let vc = vc else { return Observable<Void>.never() }
             return PinViewController.presentOrderPinViewController(from: vc, title: Localize("newDesign.enterPin"), isTouchIdEnabled: true)
         }

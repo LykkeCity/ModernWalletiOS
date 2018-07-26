@@ -48,15 +48,15 @@ PODS:
   - FirebaseAnalytics (4.0.5):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
   - FirebaseCore (4.0.13):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
   - FirebaseInstanceID (2.0.8):
     - FirebaseCore (~> 4.0)
   - GHODictionary (1.1.0)
   - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/NSData+zlib (2.1.3):
+  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - Koyomi (1.2.8)
   - KYDrawerController (2.0.4)
@@ -93,6 +93,7 @@ PODS:
   - SideMenu (3.1.5)
   - Siren (2.0.8)
   - SocketRocket (0.5.1)
+  - SwiftLint (0.26.0)
   - SwiftReorder (2.0.2)
   - SwiftSpinner (1.5.0)
   - SWTableViewCell (0.3.7)
@@ -130,14 +131,57 @@ DEPENDENCIES:
   - RxDataSources (~> 1.0)
   - SideMenu
   - Siren (from `https://github.com/ArtSabintsev/Siren.git`, branch `swift3.2`)
+  - SwiftLint
   - SwiftReorder (~> 2.0)
-  - SwiftSpinner (from `https://github.com/StanevPrime/SwiftSpinner`, branch `show-spinner-during-hide-transition`)
+  - SwiftSpinner (from `https://github.com/StoykovPrime/SwiftSpinner`, branch `endless-loading-during-hide-transition`)
   - SWTableViewCell
   - TextFieldEffects (~> 1.3)
   - Toast
   - UIScrollView-InfiniteScroll (~> 1.0.0)
   - WalletCore (from `../WalletCoreiOS`)
   - XLPagerTabStrip (~> 7.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - Alamofire
+    - AlamofireImage
+    - BlocksKit
+    - Charts
+    - CocoaAsyncSocket
+    - Crashlytics
+    - EasyMapping
+    - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - GHODictionary
+    - GoogleToolboxForMac
+    - KYDrawerController
+    - MBProgressHUD
+    - MDWamp
+    - MPMessagePack
+    - nanopb
+    - QRCodeReader.swift
+    - ReachabilitySwift
+    - RxCocoa
+    - RxDataSources
+    - RxKeyboard
+    - RxOptional
+    - RxSwift
+    - RxSwiftExt
+    - SideMenu
+    - SocketRocket
+    - SwiftLint
+    - SwiftReorder
+    - SWTableViewCell
+    - TextFieldEffects
+    - Toast
+    - UIDeviceIdentifier
+    - UIScrollView-InfiniteScroll
+    - Valet
+    - XLPagerTabStrip
 
 EXTERNAL SOURCES:
   Koyomi:
@@ -147,10 +191,10 @@ EXTERNAL SOURCES:
     :branch: swift3.2
     :git: https://github.com/ArtSabintsev/Siren.git
   SwiftSpinner:
-    :branch: show-spinner-during-hide-transition
-    :git: https://github.com/StanevPrime/SwiftSpinner
+    :branch: endless-loading-during-hide-transition
+    :git: https://github.com/StoykovPrime/SwiftSpinner
   WalletCore:
-    :path: ../WalletCoreiOS
+    :path: "../WalletCoreiOS"
 
 CHECKOUT OPTIONS:
   Koyomi:
@@ -160,8 +204,8 @@ CHECKOUT OPTIONS:
     :commit: f6590001df279b76ac05ea3d06ab347e44559441
     :git: https://github.com/ArtSabintsev/Siren.git
   SwiftSpinner:
-    :commit: bd0702ff74bb6c2d6ca744d0bbeddba7b94c648d
-    :git: https://github.com/StanevPrime/SwiftSpinner
+    :commit: dc6bf20d9533fe85a9949f7d87cd4450350f0a17
+    :git: https://github.com/StoykovPrime/SwiftSpinner
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -196,6 +240,7 @@ SPEC CHECKSUMS:
   SideMenu: 47dbf9e4d878062d8994aed43f6e4bf6c1fea30b
   Siren: 4269fa935d0d890ba57ca7cce0569cc285456ca9
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
   SwiftReorder: 92630efd492828601e837f1e3204d68708a2981c
   SwiftSpinner: f0fafbbc554ba45d2aa78e52879184a9ac045747
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
@@ -207,6 +252,6 @@ SPEC CHECKSUMS:
   WalletCore: 95d4cbb9e4672f6425850cf6be13de91fdd97fd1
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
 
-PODFILE CHECKSUM: 660296f5824a72d4a26d530dfc3b6635ed984e91
+PODFILE CHECKSUM: 0f68ffc7b0c0fe2996a97feab8eccc507e056681
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

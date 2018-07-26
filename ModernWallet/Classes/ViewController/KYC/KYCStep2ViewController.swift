@@ -14,28 +14,27 @@ import RxCocoa
 
 class KYCStep2ViewController: UIViewController, KYCStepBinder {
     @IBOutlet weak var photoPlaceholder: KYCPhotoPlaceholderView!
-    
+
     let disposeBag = DisposeBag()
     var documentsViewModel: KYCDocumentsViewModel!
     var documentsUploadViewModel: KycUploadDocumentsViewModel!
-    
+
     lazy var loadingViewModel: LoadingViewModel = self.loadingViewModelFactory()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         photoPlaceholder.hintLabel.text = Localize("kyc.process.titles.passport")
         photoPlaceholder.imageView.image = #imageLiteral(resourceName: "kycPassport")
         bindKYC(disposedBy: disposeBag)
-        
+
         // Do any additional setup after loading the view.
-        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -56,7 +55,7 @@ extension KYCStep2ViewController: IndicatorInfoProvider {
 }
 
 extension KYCStep2ViewController: KYCDocumentTypeAware {
-    var kYCDocumentType: KYCDocumentType{
+    var kYCDocumentType: KYCDocumentType {
         return .idCard
     }
 }

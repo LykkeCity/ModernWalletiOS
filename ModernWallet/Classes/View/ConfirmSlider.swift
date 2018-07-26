@@ -12,7 +12,7 @@ import RxCocoa
 
 @IBDesignable
 class ConfirmSlider: UIControl {
-    
+
     override var isEnabled: Bool {
         didSet {
             let color: CGColor = isEnabled ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.6)
@@ -20,35 +20,35 @@ class ConfirmSlider: UIControl {
             layer.borderColor = color
         }
     }
-    
+
     var value: Bool {
         get { return handlerLocation == 1 }
         set { handlerLocation = newValue ? 1 : 0 }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         setup()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+
         setup()
     }
-    
+
     override func layoutSubviews() {
         let handlerRect = CGRect(x: handlerLocation * (bounds.width - bounds.height), y: 0, width: bounds.height, height: bounds.height)
         handlerLayer.path = UIBezierPath(ovalIn: handlerRect).cgPath
     }
-    
+
     override var intrinsicContentSize: CGSize {
         return CGSize(width: 175.0, height: 69.0)
     }
-    
+
     // MARK: - Private
-    
+
     private lazy var handlerLayer: CAShapeLayer! = {
         let handlerLayer = CAShapeLayer()
         handlerLayer.fillColor = nil
@@ -56,16 +56,16 @@ class ConfirmSlider: UIControl {
         handlerLayer.strokeColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         return handlerLayer
     }()
-    
+
     fileprivate var handlerLocation: CGFloat = 0.0 {
         didSet {
             let center = CGPoint(x: (bounds.width - bounds.height) * handlerLocation, y: 0.0)
             handlerLayer.position = center
         }
     }
-    
+
     private var gestureStartLocation: CGFloat = 0.0
-    
+
     private func setup() {
         backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -73,13 +73,13 @@ class ConfirmSlider: UIControl {
         layer.cornerRadius = bounds.height / 2.0
         layer.masksToBounds = true
         layer.addSublayer(handlerLayer)
-        
+
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(ConfirmSlider.handlePanGesture(_:)))
         gesture.maximumNumberOfTouches = 1
         gesture.delegate = self
         addGestureRecognizer(gesture)
     }
-    
+
     @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .began:
@@ -108,7 +108,7 @@ class ConfirmSlider: UIControl {
 
 // MARK: - UIGestureRecognizerDelegate
 extension ConfirmSlider: UIGestureRecognizerDelegate {
-    
+
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let point = gestureRecognizer.location(in: self)
         let handlerRadius = 0.5 * bounds.height
@@ -117,5 +117,5 @@ extension ConfirmSlider: UIGestureRecognizerDelegate {
         let distanceFromCenter = sqrt(dx * dx + dy * dy)
         return distanceFromCenter <= handlerRadius
     }
-    
+
 }

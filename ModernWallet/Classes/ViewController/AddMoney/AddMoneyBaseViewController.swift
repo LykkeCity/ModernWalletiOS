@@ -17,12 +17,12 @@ protocol AddMoneyTransfer: class {
 class AddMoneyBaseViewController: UIViewController {
 
     var assetModel = Variable<LWAssetModel!>(nil)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         assert(assetModel.value != nil, "Transfer asset must be set before displayng view controller \(self)")
     }
-    
+
     func аssetObservable() -> Observable<LWAssetModel> {
         return assetModel.asObservable().map { (val) -> LWAssetModel in
             return val
@@ -35,7 +35,7 @@ extension AddMoneyBaseViewController: AddMoneyTransfer {
         get {
             return self.assetModel.value
         }
-        
+
         set {
             self.assetModel.value = newValue
         }

@@ -12,33 +12,33 @@ import RxCocoa
 import WalletCore
 
 class AssetPickerTableViewController: UITableViewController {
-    
+
     var assetPicked: Observable<LWAssetModel> {
         return assetPickSubject.asObservable()
     }
-    
+
     var displayBaseAssetAsSelected = false
-    
-    fileprivate var filter: ((SingleAssetViewModel) -> Bool)? = nil
-    
+
+    fileprivate var filter: ((SingleAssetViewModel) -> Bool)?
+
     fileprivate let baseAssetsViewModel = BaseAssetsViewModel()
-    
+
     fileprivate let assetPickSubject = PublishSubject<LWAssetModel>()
-    
+
     fileprivate let rows = Variable([SingleAssetViewModel]())
-    
+
     fileprivate let disposeBag = DisposeBag()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationItem.title = Localize("settings.newDesign.baseAsset")
 
         tableView.backgroundView = BackgroundView(frame: tableView.bounds)
-        
+
         rows.asObservable()
         .bind(to: tableView.rx.items(cellIdentifier: "PickAssetCell",
-                                     cellType: AssetPickTableViewCell.self)) { [weak self] (row, element, cell) in
+                                     cellType: AssetPickTableViewCell.self)) { [weak self] (_, element, cell) in
             cell.displayBaseAssetAsSelected = self?.displayBaseAssetAsSelected ?? false
             cell.setBaseAssetData(element)
         }.disposed(by: disposeBag)
@@ -46,20 +46,20 @@ class AssetPickerTableViewController: UITableViewController {
         let rowSelected = tableView.rx
         .modelSelected(SingleAssetViewModel.self)
         .observeOn(MainScheduler.asyncInstance)
-        
+
         rowSelected
         .subscribe(onNext: { [weak self] selected in
             if let indexPath = self?.tableView.indexPathForSelectedRow {
                 self?.tableView.deselectRow(at: indexPath, animated: true)
             }
-            
+
             self?.assetPickSubject.onNext(selected.asset.value)
         })
         .disposed(by: disposeBag)
-        
+
         bindViewModels()
     }
-    
+
     func applyFilter(_ filter: @escaping ((LWAssetModel) -> Bool)) {
         self.filter = { (singleAssetVM: SingleAssetViewModel) -> Bool in
             return filter(singleAssetVM.asset.value)
@@ -85,19 +85,21 @@ fileprivate extension BaseAssetsViewModel {
 }
 
 extension AssetPickerTableViewController {
-    
+
     static func instantiateViewController() -> AssetPickerTableViewController {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "assetPickerViewController")
-        return vc as! AssetPickerTableViewController
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "assetPickerViewController") as? AssetPickerTableViewController else {
+            return AssetPickerTableViewController()
+        }
+        return vc
     }
-    
+
     func bindViewModels() {
         baseAssetsViewModel
             .bind(toRows: rows, inViewController: self)
             .disposed(by: disposeBag)
     }
-    
+
     func dismissViewController(_ animated: Bool = true) {
         if let navigationVc = self.navigationController {
             navigationVc.popViewController(animated: animated)
@@ -105,11 +107,11 @@ extension AssetPickerTableViewController {
             dismiss(animated: animated, completion: nil)
         }
     }
-    
+
     func showOnlyAssetsWithSwiftTransfer() {
         applyFilter { $0.swiftDeposit && $0.isFiat }
     }
-    
+
     func showOnlyVisaDepositableAssets() {
         applyFilter { $0.visaDeposit && $0.isFiat }
     }
@@ -120,7 +122,7 @@ extension AssetPickTableViewCell {
         assetInfo.title
             .drive(assetTitleLabel.rx.text)
             .disposed(by: disposeBag)
-        
+
         assetInfo.isSelected.asObservable()
         .filter { [weak self] _ in
             return self?.displayBaseAssetAsSelected ?? false
@@ -131,4 +133,3 @@ extension AssetPickTableViewCell {
         .disposed(by: disposeBag)
     }
 }
-

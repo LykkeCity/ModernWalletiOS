@@ -14,16 +14,16 @@ extension Reactive where Base: UIView {
     var isHiddenAnimated: UIBindingObserver<Base, Bool> {
         return UIBindingObserver(UIElement: self.base) { button, value in
             let alpha = CGFloat(value ? 0.0 : 1.0)
-            
+
             UIView.animate(
                 withDuration: 0.3,
                 delay: 0,
                 options: [.curveLinear, .allowUserInteraction, .beginFromCurrentState],
-                animations: {button.alpha = alpha}
-            ) { _ in
+                animations: {
+                    button.alpha = alpha
+            }, completion: { _ in
                 button.isHidden = value
-            }
+            })
         }
     }
 }
-

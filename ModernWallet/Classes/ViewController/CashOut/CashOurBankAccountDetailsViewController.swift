@@ -14,7 +14,7 @@ import WalletCore
 class CashOurBankAccountDetailsViewController: UIViewController {
 
     @IBOutlet internal weak var scrollView: UIScrollView!
-    
+
     @IBOutlet private weak var subtitleLabel: UILabel!
     @IBOutlet fileprivate weak var accountNameTextField: UITextField!
     @IBOutlet fileprivate weak var ibanTextField: UITextField!
@@ -27,9 +27,9 @@ class CashOurBankAccountDetailsViewController: UIViewController {
     @IBOutlet fileprivate weak var accountHolderCityTextField: UITextField!
 
     @IBOutlet fileprivate weak var nextButton: UIButton!
-    
+
     var cashOutViewModel: CashOutViewModel!
-    
+
     fileprivate let disposeBag = DisposeBag()
 
     fileprivate var selectedCountry: LWCountryModel? {
@@ -40,20 +40,20 @@ class CashOurBankAccountDetailsViewController: UIViewController {
             cashOutViewModel.bankAccountViewModel.accountHolderCountry.value = country.name
         }
     }
-    
+
     private let selectCountryViewModel = SelectCountryViewModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         localize()
-        
+
         cashOutViewModel.bankAccountViewModel.bind(self)
-        
+
         setupFormUX(disposedBy: disposeBag)
     }
-    
-    private func localize(){
+
+    private func localize() {
         subtitleLabel.text = Localize("cashOut.newDesign.inputBankAccountDetails")
         accountNameTextField.placeholder = Localize("cashOut.newDesign.bankName")
         ibanTextField.placeholder = Localize("cashOut.newDesign.iban")
@@ -74,7 +74,7 @@ class CashOurBankAccountDetailsViewController: UIViewController {
             guard let vc = segue.destination as? CashOutConfirmationViewController else { return }
             vc.cashOutViewModel = cashOutViewModel
         }
-        
+
         if segue.identifier == "SelectCountry" {
             guard
                 let navController = segue.destination as? UINavigationController,
@@ -94,33 +94,33 @@ fileprivate extension CashOutBankAccountViewModel {
     func bind(_ viewController: CashOurBankAccountDetailsViewController) {
         (viewController.accountNameTextField.rx.textInput <-> bankName)
             .disposed(by: viewController.disposeBag)
-        
+
         (viewController.ibanTextField.rx.textInput <-> iban)
             .disposed(by: viewController.disposeBag)
-        
+
         (viewController.bicTextField.rx.textInput <-> bic)
             .disposed(by: viewController.disposeBag)
-        
+
         (viewController.accountHolderTextField.rx.textInput <-> accountHolder)
             .disposed(by: viewController.disposeBag)
-        
+
         (viewController.currencyTextField.rx.textInput <-> accountHolderAddress)
             .disposed(by: viewController.disposeBag)
-        
+
         (viewController.accountHolderCountryTextField.rx.textInput <-> accountHolderCountry)
             .disposed(by: viewController.disposeBag)
-        
+
         (viewController.accountHolderCountryCodeTextField.rx.textInput <-> accountHolderCountryCode)
             .disposed(by: viewController.disposeBag)
-        
+
         (viewController.accountHolderZipCodeTextField.rx.textInput <-> accountHolderZipCode)
             .disposed(by: viewController.disposeBag)
-        
+
         (viewController.accountHolderCityTextField.rx.textInput <-> accountHolderCity)
             .disposed(by: viewController.disposeBag)
-        
+
         let isFormValidDriver = isValid.asDriver(onErrorJustReturn: false)
-        
+
         isFormValidDriver
             .drive(viewController.nextButton.rx.isEnabled)
             .disposed(by: viewController.disposeBag)
@@ -128,20 +128,20 @@ fileprivate extension CashOutBankAccountViewModel {
 }
 
 extension CashOurBankAccountDetailsViewController: SelectCountryViewControllerDelegate {
-    
+
     func controller(_ controller: SelectCountryViewController, didSelectCountry country: LWCountryModel) {
         self.selectedCountry = country
         controller.dismiss(animated: true)
     }
-    
+
 }
 
 extension CashOurBankAccountDetailsViewController: InputForm {
-    
+
     var submitButton: UIButton! {
         return nextButton
     }
-    
+
     var textFields: [UITextField] {
         return [
             accountNameTextField,
@@ -154,9 +154,9 @@ extension CashOurBankAccountDetailsViewController: InputForm {
             accountHolderCityTextField
         ]
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return goToTextField(after: textField)
     }
-    
+
 }

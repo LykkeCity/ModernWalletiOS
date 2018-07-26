@@ -11,19 +11,19 @@ import RxCocoa
 import RxSwift
 
 extension Reactive where Base: UIButton {
-    
+
     var title: UIBindingObserver<Base, String> {
         return UIBindingObserver(UIElement: self.base) { button, value in
             button.setTitle(value, for: UIControlState.normal)
         }
     }
-    
+
     var borderColor: UIBindingObserver<Base, UIColor> {
         return UIBindingObserver(UIElement: self.base) { button, color in
             button.borderColor = color
         }
     }
-    
+
     var isEanbledWithBorderColor: UIBindingObserver<Base, Bool> {
         return UIBindingObserver(UIElement: self.base) { button, value in
             button.isEnabled = value
@@ -31,4 +31,3 @@ extension Reactive where Base: UIButton {
         }
     }
 }
-

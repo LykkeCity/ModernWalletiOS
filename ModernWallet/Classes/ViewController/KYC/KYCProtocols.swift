@@ -13,17 +13,17 @@ import WalletCore
 import RxSwift
 
 protocol KYCPhotoPlaceholder {
-    weak var photoPlaceholder: KYCPhotoPlaceholderView!{get set}
+    weak var photoPlaceholder: KYCPhotoPlaceholderView! {get set}
 }
 
 protocol KYCDocumentTypeAware {
-    var kYCDocumentType: KYCDocumentType{get}
+    var kYCDocumentType: KYCDocumentType {get}
 }
 
 protocol KYCStepBinder: class {
     var documentsViewModel: KYCDocumentsViewModel! {get set}
     var documentsUploadViewModel: KycUploadDocumentsViewModel! {get set}
-    
+
     var loadingViewModel: LoadingViewModel {get}
     func bindKYC(disposedBy disposeBag: DisposeBag)
 }
@@ -35,16 +35,15 @@ extension KYCStepBinder where Self: UIViewController, Self: KYCDocumentTypeAware
             self.documentsViewModel.loadingViewModel.isLoading
         ])
     }
-    
+
     func bindKYC(disposedBy disposeBag: DisposeBag) {
         documentsViewModel.documents
             .subscribeToFillImage(forVC: self)
             .disposed(by: disposeBag)
-        
+
         loadingViewModel.isLoading
-            .skipWhileWithIndex{isLoading, index in index == 0 && isLoading == false}
+            .skipWhileWithIndex {isLoading, index in index == 0 && isLoading == false}
             .bind(to: rx.loading)
             .disposed(by: disposeBag)
     }
 }
-

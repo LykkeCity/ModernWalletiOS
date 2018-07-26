@@ -10,7 +10,7 @@ import UIKit
 import WalletCore
 
 class BackupPrivateKeyWordsViewController: UIViewController {
-    
+
     @IBOutlet private weak var messageLabel: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet fileprivate weak var prevButton: UIButton!
@@ -20,17 +20,17 @@ class BackupPrivateKeyWordsViewController: UIViewController {
     fileprivate let words: [String] = {
         let keyManager = LWPrivateKeyManager.shared()
         if let words = keyManager?.privateKeyWords() as? [String] {
-            return words;
+            return words
         }
         if let encrypthedKey = keyManager?.encryptedKeyLykke {
             keyManager?.decryptLykkePrivateKeyAndSave(encrypthedKey)
             if let words = keyManager?.privateKeyWords() as? [String] {
-                return words;
+                return words
             }
         }
-        return LWPrivateKeyManager.generateSeedWords12() as! [String]
+        return (LWPrivateKeyManager.generateSeedWords12() as? [String]) ?? []
     }()
-    
+
     fileprivate var selectedWordIndex = 0 {
         didSet {
             prevButton.isEnabled = selectedWordIndex > 0
@@ -40,7 +40,7 @@ class BackupPrivateKeyWordsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         nextButton.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         nextButton.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         nextButton.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
@@ -48,10 +48,10 @@ class BackupPrivateKeyWordsViewController: UIViewController {
         messageLabel.text = Localize("backup.newDesign.writeDownWords")
         prevButton.setTitle(Localize("backup.newDesign.prevWord"), for: .normal)
         nextButton.setTitle(Localize("backup.newDesign.nextWord"), for: .normal)
-        
+
         updatePageLabel()
     }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
@@ -59,15 +59,15 @@ class BackupPrivateKeyWordsViewController: UIViewController {
         }
         layout.itemSize = collectionView.bounds.size
     }
-    
+
     // MARK: - IBActions
-    
+
     @IBAction private func prevButtonTapped() {
         selectedWordIndex = max(selectedWordIndex - 1, 0)
         let indexPath = IndexPath(row: selectedWordIndex, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
-    
+
     @IBAction private func nextButtonTapped() {
         if selectedWordIndex == words.count { return }
         let nextWordIndex = selectedWordIndex + 1
@@ -88,9 +88,9 @@ class BackupPrivateKeyWordsViewController: UIViewController {
             (segue.destination as? BackupPrivateKeyCheckWordsViewController)?.words = words
         }
     }
-    
+
     // MARK: - Private
-    
+
     fileprivate func updatePageLabel() {
         let pageFormat = Localize("backup.newDesign.wordPageFmt") ?? "%d OF %d"
         pageLabel.text = String(format: pageFormat, currentWordIndex + 1, words.count)
@@ -99,25 +99,25 @@ class BackupPrivateKeyWordsViewController: UIViewController {
 }
 
 extension BackupPrivateKeyWordsViewController: UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return words.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordCell", for: indexPath)
-        
+
         guard let wordLabel = cell.contentView.subviews.first as? UILabel else {
             return cell
         }
         wordLabel.text = words[indexPath.row]
         return cell
     }
-    
+
 }
 
 extension BackupPrivateKeyWordsViewController: UICollectionViewDelegate {
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let wordIndex = Int(scrollView.contentOffset.x / scrollView.bounds.width + 0.5)
         if wordIndex != currentWordIndex {
@@ -128,5 +128,5 @@ extension BackupPrivateKeyWordsViewController: UICollectionViewDelegate {
             updatePageLabel()
         }
     }
-    
+
 }

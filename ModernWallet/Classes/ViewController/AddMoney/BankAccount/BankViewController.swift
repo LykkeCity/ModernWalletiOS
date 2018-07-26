@@ -12,14 +12,14 @@ import RxSwift
 import RxCocoa
 
 class BankViewController: AddMoneyBaseViewController {
-    
+
     @IBOutlet weak var bicLabel: UILabel!
     @IBOutlet weak var accountNumberLabel: UILabel!
     @IBOutlet weak var accountNameLabel: UILabel!
     @IBOutlet weak var purposeOfPaymentLabel: UILabel!
     @IBOutlet weak var bankAddressLabel: UILabel!
     @IBOutlet weak var companyAddressLabel: UILabel!
-    
+
     @IBOutlet weak var bicLbl: UILabel!
     @IBOutlet weak var accountNumberLbl: UILabel!
     @IBOutlet weak var accountNameLbl: UILabel!
@@ -28,27 +28,27 @@ class BankViewController: AddMoneyBaseViewController {
     @IBOutlet weak var companyAddressLbl: UILabel!
     @IBOutlet weak var emailButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    
+
     lazy var swiftCredentialsViewModel: SwiftCredentialsViewModel = {
         return SwiftCredentialsViewModel(credentialsForAsset: self.assetModel.value)
     }()
-    
+
     let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+
         self.view.backgroundColor = UIColor.clear
-        
+
         applyTranslations()
-        
+
         swiftCredentialsViewModel
             .bind(toViewController: self)
             .disposed(by: disposeBag)
     }
-    
+
     func applyTranslations() {
         bicLbl.text = Localize("addMoney.newDesign.bankaccount.bic")
         accountNumberLbl.text = Localize("addMoney.newDesign.bankaccount.accountNumber")
@@ -56,26 +56,24 @@ class BankViewController: AddMoneyBaseViewController {
         bankAddressLbl.text = Localize("addMoney.newDesign.bankaccount.bankAddress")
         purposeOfPaymentLbl.text = Localize("addMoney.newDesign.bankaccount.purpose")
         companyAddressLbl.text = Localize("addMoney.newDesign.bankaccount.companyAddress")
-        
+
 //        emailButton.setTitle(Localize("addMoney.newDesign.bankaccount.emailMe"), for: UIControlState.normal)
 //        nextButton.setTitle(Localize("addMoney.newDesign.bankaccount.next"), for: UIControlState.normal)
     }
 
-    
     @IBAction func backAction(_ sender: UITapGestureRecognizer) {
         navigationController?.popViewController(animated: true)
     }
     @IBAction func nextAction(_ sender: UIButton) {
-        
+
 //        let parentVC = self.parent as! LWAddMoneyViewController
 //        parentVC.nextAction(sender)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

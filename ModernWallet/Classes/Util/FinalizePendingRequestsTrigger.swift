@@ -10,24 +10,23 @@ import Foundation
 import RxSwift
 
 class FinalizePendingRequestsTrigger {
-    
+
     static let instance = FinalizePendingRequestsTrigger()
-    
+
     private let trigger: PublishSubject<Void>
-    
+
     func trigger(interval: RxTimeInterval) -> Observable<Void> {
         return Observable.merge([trigger.asObservable(), Observable.interval(interval)])
     }
-    
+
     func finalizeNow() {
         trigger.onNext(Void())
     }
-    
+
     // MARK: - Private
-    
+
     private init() {
         trigger = PublishSubject()
     }
-    
-}
 
+}

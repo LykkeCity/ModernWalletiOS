@@ -17,19 +17,19 @@ class MenuTableViewController: UITableViewController {
     let selectedCellBGColor = UIColor.red
     let notSelectedCellBGColor = UIColor.clear
     static let comingSoonColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 0.4)
-    
+
     private struct MenuItem {
-        
+
         let title: String
         let image: UIImage?
         let color: UIColor?
         let storyboardName: String?
         let viewControllerIdentifier: String?
-        let onSelect: ((_ viewController: UIViewController) -> ())?
-        
+        let onSelect: ((_ viewController: UIViewController) -> Void)?
+
         init(title: String, image: UIImage? = nil, viewControllerIdentifier: String? = nil, storyboardName: String? = nil,
-             color: UIColor? = nil, onSelect: ((_ viewController: UIViewController) -> ())? = nil) {
-            
+             color: UIColor? = nil, onSelect: ((_ viewController: UIViewController) -> Void)? = nil) {
+
             self.title = title
             self.image = image
             self.storyboardName = storyboardName
@@ -38,11 +38,11 @@ class MenuTableViewController: UITableViewController {
             self.onSelect = onSelect
         }
     }
-    
+
     private var menuIndexes: Variable<[Int]> = Variable([])
     private let disposeBag = DisposeBag()
-    
-    private var items : [MenuItem] = [
+
+    private var items: [MenuItem] = [
         MenuItem(title: Localize("menu.newDesign.addMoney"), image: #imageLiteral(resourceName: "ADD MONEY"), storyboardName: "AddMoney"),
         MenuItem(title: Localize("menu.newDesign.buy"), image: #imageLiteral(resourceName: "BUY"), storyboardName: "Buy") {viewController in
             guard let viewController = viewController as? BuyOptimizedViewController else { return }
@@ -66,19 +66,19 @@ class MenuTableViewController: UITableViewController {
         MenuItem(title: Localize("menu.newDesign.logout"), image: #imageLiteral(resourceName: "LogoutIcon"), viewControllerIdentifier: nil, color: nil,
                  onSelect: MenuTableViewController.logout)
     ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0)
-        
+
+        self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
+
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(MenuTableViewController.longPressGestureRecognized(_:)))
         tableView.addGestureRecognizer(longpress)
-        
+
         menuIndexes.value = UserDefaults.standard.menuIndexes ?? Array(0...items.count-1)
-        
+
         menuIndexes.asObservable()
             .filter({ [weak self] in $0.count == self?.items.count })
             .subscribe(onNext: {
@@ -95,29 +95,31 @@ class MenuTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuTableViewCell
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as? MenuTableViewCell else {
+            return MenuTableViewCell()
+        }
+
         let position = menuIndexes.value[indexPath.row]
         let item = items[position]
         if let menuNameLabelColor = item.color {
             cell.menuNameLabel.textColor = menuNameLabelColor
         }
-        
+
         cell.menuNameLabel.text = item.title
         cell.menuImageView.image = item.image
 
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedCell = tableView.cellForRow(at: indexPath as IndexPath) {
             selectedCell.isSelected = false
         }
-        
+
         let position = menuIndexes.value[indexPath.row]
         let item = items[position]
         Analytics.logEvent("select_menu_item", parameters: [
-                "name" : item.title
+                "name": item.title
             ])
         guard let viewController = instantiateViewController(byMenuItem: item),
             let drawerController = self.drawerController,
@@ -126,26 +128,26 @@ class MenuTableViewController: UITableViewController {
             item.onSelect?(self)
             return
         }
-        
+
         item.onSelect?(viewController)
-        
+
         rootViewController.embed(viewController: viewController, animated: true)
         drawerController.setDrawerState(.closed, animated: true)
     }
-    
+
     // MARK: - Private
-    
+
     private var cellSnapshot: UIView?
     private var cellIsAnimating = false
     private var cellNeedToShow = false
     private var initialIndexPath: IndexPath?
     /// Store the initial IndexPath, from which the reorder started
     private var movementStartIndexPath: IndexPath?
-    
+
     @objc private func longPressGestureRecognized(_ gestureRecognizer: UILongPressGestureRecognizer) {
         let locationInView = gestureRecognizer.location(in: tableView)
         let indexPath = tableView.indexPathForRow(at: locationInView)
-        
+
         switch gestureRecognizer.state {
         case UIGestureRecognizerState.began:
             guard let indexPath = indexPath,
@@ -155,9 +157,9 @@ class MenuTableViewController: UITableViewController {
             }
             initialIndexPath = indexPath
             cellSnapshot  = snapshotOfCell(cell)
-            
+
             movementStartIndexPath = indexPath
-            
+
             var center = cell.center
             cellSnapshot!.center = center
             cellSnapshot!.alpha = 0.0
@@ -176,7 +178,7 @@ class MenuTableViewController: UITableViewController {
                 }
                 self.cellIsAnimating = false
                 if self.cellNeedToShow {
-                    
+
                     self.cellNeedToShow = false
                     UIView.animate(withDuration: 0.25, animations: { () -> Void in
                         cell.alpha = 1
@@ -185,7 +187,7 @@ class MenuTableViewController: UITableViewController {
                     cell.isHidden = true
                 }
             })
-            
+
         case UIGestureRecognizerState.changed:
             guard let cellSnapshot = cellSnapshot else {
                 return
@@ -193,12 +195,12 @@ class MenuTableViewController: UITableViewController {
             var center = cellSnapshot.center
             center.y = locationInView.y
             cellSnapshot.center = center
-            
+
             if ((indexPath != nil) && (indexPath != initialIndexPath)) {
                 tableView.moveRow(at: initialIndexPath!, to: indexPath!)
                 initialIndexPath = indexPath
             }
-            
+
         default:
             guard let indexPath = initialIndexPath, let cell = tableView.cellForRow(at: indexPath) else {
                 return
@@ -209,16 +211,16 @@ class MenuTableViewController: UITableViewController {
                 cell.isHidden = false
                 cell.alpha = 0.0
             }
-            
+
             let movedItemIndex = menuIndexes.value.remove(at: movementStartIndexPath!.row)
             menuIndexes.value.insert(movedItemIndex, at: indexPath.row)
-            
+
             UIView.animate(withDuration: 0.25, animations: { () -> Void in
                 self.cellSnapshot?.center = cell.center
                 self.cellSnapshot?.transform = CGAffineTransform.identity
                 self.cellSnapshot?.alpha = 0.0
                 cell.alpha = 1.0
-                
+
             }, completion: { (finished) -> Void in
                 if finished {
                     self.initialIndexPath = nil
@@ -230,14 +232,14 @@ class MenuTableViewController: UITableViewController {
             })
         }
     }
-    
+
     private func snapshotOfCell(_ inputView: UIView) -> UIView {
         UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0.0)
         inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()! as UIImage
         UIGraphicsEndImageContext()
-        
-        let cellSnapshot : UIView = UIImageView(image: image)
+
+        let cellSnapshot: UIView = UIImageView(image: image)
         cellSnapshot.layer.masksToBounds = false
         cellSnapshot.layer.cornerRadius = 0.0
         cellSnapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
@@ -246,7 +248,6 @@ class MenuTableViewController: UITableViewController {
         return cellSnapshot
     }
 
-    
     private func instantiateViewController(byMenuItem menuItem: MenuItem) -> UIViewController? {
         if menuItem.storyboardName == nil, menuItem.viewControllerIdentifier == nil {
             return nil
@@ -254,33 +255,31 @@ class MenuTableViewController: UITableViewController {
         let storyboard: UIStoryboard
         if let storyboardName = menuItem.storyboardName {
             storyboard = UIStoryboard(name: storyboardName, bundle: nil)
-        }
-        else {
+        } else {
             storyboard = self.storyboard!
         }
         if let identifier = menuItem.viewControllerIdentifier {
             return storyboard.instantiateViewController(withIdentifier: identifier)
-        }
-        else {
+        } else {
             return storyboard.instantiateInitialViewController()
         }
     }
-    
+
     static func logout(_ viewController: UIViewController) {
-        
+
         UserDefaults.standard.isLoggedIn = false
         UserDefaults.standard.synchronize()
-        
+
         if LWKeychainManager.instance().isAuthenticated {
            LWAuthManager.instance().requestLogout()
         }
-        
+
         LWKeychainManager.instance().clear()
         LWPrivateKeyManager.shared().logoutUser()
         LWKYCDocumentsModel.shared().logout()
         LWEthereumTransactionsManager.shared().logout()
         LWMarginalWalletsDataManager.stop()
-        
+
         viewController.presentLoginController()
 //        LWPrivateWalletsManager.shared().logout()
     }

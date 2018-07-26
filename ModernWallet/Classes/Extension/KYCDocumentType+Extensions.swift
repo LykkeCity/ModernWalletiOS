@@ -10,7 +10,7 @@ import Foundation
 import WalletCore
 
 extension KYCDocumentType {
-    static func find(byIndex index: Int) ->  KYCDocumentType? {
+    static func find(byIndex index: Int) -> KYCDocumentType? {
         switch index {
         case 0:
             return .selfie
@@ -22,7 +22,7 @@ extension KYCDocumentType {
             return nil
         }
     }
-    
+
     var index: Int {
         switch self {
         case .selfie:
@@ -33,7 +33,7 @@ extension KYCDocumentType {
             return 2
         }
     }
-    
+
     var failedPhotoTitle: String {
         switch self {
         case .selfie:
@@ -44,7 +44,7 @@ extension KYCDocumentType {
             return "Photo of your proof of address".localizedUppercase
         }
     }
-    
+
     var next: KYCDocumentType? {
         return KYCDocumentType.find(byIndex: index + 1)
     }

@@ -10,11 +10,11 @@ import UIKit
 import WalletCore
 
 class EmptyWalletViewController: UIViewController {
-    
+
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var messageLabel: UILabel!
     @IBOutlet private weak var button: UIButton!
-    
+
     var message: String?
 
     override func viewDidLoad() {

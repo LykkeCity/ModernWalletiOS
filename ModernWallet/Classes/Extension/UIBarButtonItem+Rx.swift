@@ -1,4 +1,3 @@
-
 //
 //  UIBarButtonItem.swift
 //  ModernWallet
@@ -12,7 +11,7 @@ import RxCocoa
 import RxSwift
 
 extension Reactive where Base: UIBarButtonItem {
-    
+
     var title: UIBindingObserver<Base, String> {
         return UIBindingObserver(UIElement: self.base) { button, value in
             button.title = value

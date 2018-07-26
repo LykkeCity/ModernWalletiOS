@@ -16,27 +16,27 @@ class TotalBalanceViewController: UIViewController {
     @IBOutlet weak var currencyCode: UILabel!
     @IBOutlet weak var totalBalanceAmaunt: UILabel!
     @IBOutlet weak var totalBalanceLabel: UILabel!
-    
+
     private let viewModel = TotalBalanceViewModel(refresh: ReloadTrigger.instance.trigger(interval: 10))
     private let disposeBag = DisposeBag()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
-        
+
         viewModel.balance
             .drive(totalBalanceAmaunt.rx.text)
             .disposed(by: disposeBag)
-        
+
         viewModel.currencyName
             .drive(currencyCode.rx.text)
             .disposed(by: disposeBag)
 
-// TODO: Move loading indicator in parent controller (this one where resides Total Balance view controller)
+// NOTE: Move loading indicator in parent controller (this one where resides Total Balance view controller)
 //        viewModel.loading.isLoading
 //            .bind(to: rx.loading)
 //            .disposed(by: disposeBag)
-        
+
         totalBalanceLabel.text = Localize("totalbalance.newDesign.totalValue")
     }
 
@@ -44,7 +44,6 @@ class TotalBalanceViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

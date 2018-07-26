@@ -13,7 +13,7 @@ import WalletCore
 import Toast
 
 class ReceiveWalletViewController: UIViewController {
-    
+
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var assetIconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -24,21 +24,21 @@ class ReceiveWalletViewController: UIViewController {
     @IBOutlet weak var shareButton: UIButton!
 
     var asset: Variable<Asset>!
-    
+
     var address: String!
-    
+
     private let disposeBag = DisposeBag()
 
     override var modalPresentationStyle: UIModalPresentationStyle {
         get { return .custom }
         set {}
     }
-    
+
     override var transitioningDelegate: UIViewControllerTransitioningDelegate? {
         get { return self }
         set {}
     }
-    
+
     override var preferredContentSize: CGSize {
         get { return CGSize(width: max(Display.width - 60.0, 300.0), height: 440.0) }
         set {}
@@ -46,9 +46,9 @@ class ReceiveWalletViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         containerView.setShadow(radius: 4.0, color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), opacity: 0.5, offset: CGSize(width: 0, height: 2))
-        
+
         emailButton.setTitle(Localize("receive.newDesign.email"), for: .normal)
         copyButton.setTitle(Localize("receive.newDesign.copy"), for: .normal)
         shareButton.setTitle(Localize("receive.newDesign.share"), for: .normal)
@@ -57,16 +57,16 @@ class ReceiveWalletViewController: UIViewController {
         if let iconUrl = walletAsset?.iconUrl {
             assetIconImageView.af_setTemplateImage(withURL: iconUrl, useToken: false)
         }
-        
+
         let format = Localize("receive.newDesign.receivingAddressFmt")!
         titleLabel.text = String(format: format, walletAsset?.displayName ?? "").trimmingCharacters(in: .whitespaces)
-        
+
         qrCodeImageView.image = UIImage.generateQRCode(
             fromString: address,
             withSize: qrCodeImageView.frame.size,
             color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         )
-        
+
         let sendEmailObservable = emailButton.rx.tap.asObservable()
             .flatMap { [weak emailButton, walletAsset, address] (_) -> Observable<ApiResult<LWPacketSendBlockchainEmail>> in
                 emailButton?.isEnabled = false
@@ -76,44 +76,43 @@ class ReceiveWalletViewController: UIViewController {
                 let params: LWRxAuthManagerSendBlockchainEmail.RequestParams
                 if asset.identity == "SLR" {
                     params = (assetId: asset.identity, address: "")
-                }
-                else {
+                } else {
                     params = (assetId: asset.identity ?? asset.issuerId, address: address)
                 }
                 return LWRxAuthManager.instance.sendBlockchainEmail.request(withParams: params)
             }
             .shareReplay(1)
-        
+
         sendEmailObservable.isLoading().map { !$0 }
             .asDriver(onErrorJustReturn: false)
             .drive(emailButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        
+
         sendEmailObservable.filterSuccess()
             .map { _ in return Localize("receive.newDesign.emailToast") }
             .asDriver(onErrorJustReturn: nil)
             .drive(onNext: { [weak containerView] message in containerView?.makeToast(message) })
             .disposed(by: disposeBag)
-        
+
         sendEmailObservable.filterError()
             .asDriver(onErrorJustReturn: [:])
             .drive(rx.error)
             .disposed(by: disposeBag)
-        
+
         addressLabel.text = address
     }
 
     // MARK: - IBActions
-    
+
     @IBAction func closeTapped() {
         dismiss(animated: true)
     }
-    
+
     @IBAction func copyTapped() {
         UIPasteboard.general.string = address
         containerView.makeToast(Localize("receive.newDesign.copyToast"))
     }
-    
+
     @IBAction func shareTapped() {
         shareButton.isEnabled = false
         let messageFormat = Localize("receive.newDesign.shareMessageFmt") ?? "%@ %@"
@@ -128,8 +127,7 @@ class ReceiveWalletViewController: UIViewController {
             shareButton?.isEnabled = true
             if success {
                 containerView?.makeToast(Localize("receive.newDesign.shareToast"))
-            }
-            else {
+            } else {
                 containerView?.makeToast(error?.localizedDescription)
             }
         }
@@ -139,29 +137,29 @@ class ReceiveWalletViewController: UIViewController {
 }
 
 extension ReceiveWalletViewController: UIViewControllerTransitioningDelegate {
-    
+
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return CenteredAnimatedTransitioning(presenting: true)
     }
-    
+
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return CenteredAnimatedTransitioning(presenting: false)
     }
-    
+
 }
 
 class CenteredAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
-    
+
     private let presenting: Bool
-    
+
     init(presenting: Bool) {
         self.presenting = presenting
     }
-    
+
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }
-    
+
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         if presenting {
@@ -183,8 +181,7 @@ class CenteredAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitio
                            completion: { _ in
                             transitionContext.completeTransition(true)
             })
-        }
-        else {
+        } else {
             guard
                 let viewController = transitionContext.viewController(forKey: .from),
                 let view = viewController.view
@@ -201,5 +198,5 @@ class CenteredAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitio
             })
         }
     }
-    
+
 }

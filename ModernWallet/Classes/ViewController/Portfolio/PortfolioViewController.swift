@@ -26,57 +26,57 @@ class PortfolioViewController: UIViewController {
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var pieChartCenterView: PieChartCenter!
     @IBOutlet weak var emptyPortfolioView: EmptyPortfolioView!
-    
+
     fileprivate let disposeBag = DisposeBag()
     fileprivate let pieChartValueFormatter = PieValueFormatter()
-    
+
     var filterButtonsMap: [AssetsFilterViewModel.FilterType: IconOverTextButton] {
         return [
             AssetsFilterViewModel.FilterType.all: self.allFilterButton,
             AssetsFilterViewModel.FilterType.crypto: self.cryptoFilterButton,
-            AssetsFilterViewModel.FilterType.fiat: self.fiatFilterButton,
+            AssetsFilterViewModel.FilterType.fiat: self.fiatFilterButton
         ]
     }
-    
+
     private let reloadTrigger = ReloadTrigger.instance.trigger(interval: 10).shareReplay(1)
-    
+
     fileprivate lazy var totalBalanceViewModel: TotalBalanceViewModel = {
         return TotalBalanceViewModel(refresh: self.reloadTrigger)
     }()
-    
+
     fileprivate lazy var walletsViewModel: WalletsViewModel = {
         return WalletsViewModel(
             refreshWallets: self.reloadTrigger,
             mainInfo: self.totalBalanceViewModel.observables.mainInfo.filterSuccess()
         )
     }()
-    
+
     fileprivate lazy var loadingViewModel: LoadingViewModel = {
         return LoadingViewModel([
             self.totalBalanceViewModel.loading.isLoading,
             self.walletsViewModel.loadingViewModel.isLoading.take(2) // prevent the loading indicator to appear when this request is refreshed
         ])
     }()
-    
+
     fileprivate lazy var assetsFilterViewModel = {
         return AssetsFilterViewModel(assetsToFilter: self.walletsViewModel.wallets)
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
+
         view.backgroundColor = UIColor.clear
         configurePieChart()
         configureTableView()
-        
+
         if UserDefaults.standard.isNotLoggedIn || SignUpStep.instance != nil {
             return
         }
-        
+
         tableView.register(UINib(nibName: "AssetInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "AssetInfoTableViewCell")
-        
+
         //Bind table
         tableView.rx
             .modelSelected(Variable<Asset>.self)
@@ -84,7 +84,7 @@ class PortfolioViewController: UIViewController {
                 self?.performSegue(withIdentifier: "assetDetail", sender: model)
             })
             .disposed(by: disposeBag)
-        
+
         //Bind buttons that shows add money
         Observable
             .merge(
@@ -95,25 +95,25 @@ class PortfolioViewController: UIViewController {
                 self?.performSegue(withIdentifier: "AddMoney", sender: nil)
             })
             .disposed(by: disposeBag)
-        
+
         // Bind the totalBalanceViewModel loading to the table's `isHidden` property
         self.totalBalanceViewModel.loading.isLoading.asObservable()
             .startWith(true)
             .bind(to: tableView.rx.isHidden)
             .disposed(by: disposeBag)
-        
+
         bindViewModels()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     private func configureTableView() {
         tableView.backgroundColor = UIColor.clear
     }
-    
+
     /// Add colors, renerer at cetera to pie chart
     private func configurePieChart() {
         pieChartView.renderer = StrokeChartRenderer(chart: pieChartView, animator: pieChartView.chartAnimator, viewPortHandler: pieChartView.viewPortHandler)
@@ -123,65 +123,63 @@ class PortfolioViewController: UIViewController {
         pieChartView.legend.enabled = false
         pieChartView.drawCenterTextEnabled = false
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let assetViewController = segue.destination as? AssetDetailViewController,
-           let asset = sender as? Variable<Asset>
-        {
+           let asset = sender as? Variable<Asset> {
             assetViewController.asset = asset
         }
     }
 }
 
-
 // MARK: - AssetsFilterViewModel binders to PortfolioViewController
 fileprivate extension AssetsFilterViewModel {
-    
+
     private func bindPieChart(toViewController viewController: PortfolioViewController) -> Disposable {
         let pieChartView = viewController.pieChartView
         let pieChartValueFormatter = viewController.pieChartValueFormatter
-        
+
         return Driver
             .merge(filteredAssets.mapToPieChartDataSet(), filteredAssets.mapToEmptyChart())
             .drive(onNext: { dataSet in
-                
+
                 dataSet.colors = [UIColor.clear]
                 dataSet.valueFormatter = pieChartValueFormatter
                 pieChartView?.data = PieChartData(dataSet: dataSet)
                 pieChartView?.data?.setValueFont(UIFont(name: "GEOMANIST", size: 16))
             })
     }
-    
+
     private func bind(toTableView tableView: UITableView) -> Disposable {
         return filteredAssets.asObservable()
-            .map{ $0.sorted{ $0.0.value.percent > $0.1.value.percent } }
-            .bind(to: tableView.rx.items(cellIdentifier: "AssetInfoTableViewCell", cellType: AssetInfoTableViewCell.self)) { (row, element, cell) in
+            .map { $0.sorted { $0.0.value.percent > $0.1.value.percent } }
+            .bind(to: tableView.rx.items(cellIdentifier: "AssetInfoTableViewCell", cellType: AssetInfoTableViewCell.self)) { (_, element, cell) in
                 cell.bind(toAsset: AssetCellViewModel(element))
             }
     }
-    
+
     private func bindFilter(toViewController viewController: PortfolioViewController) -> Disposable {
         return Observable
             .merge(
-                viewController.allFilterButton.rx.tap.map{ _ in AssetsFilterViewModel.FilterType.all },
-                viewController.cryptoFilterButton.rx.tap.map{ _ in AssetsFilterViewModel.FilterType.crypto },
-                viewController.fiatFilterButton.rx.tap.map{ _ in AssetsFilterViewModel.FilterType.fiat }
+                viewController.allFilterButton.rx.tap.map { _ in AssetsFilterViewModel.FilterType.all },
+                viewController.cryptoFilterButton.rx.tap.map { _ in AssetsFilterViewModel.FilterType.crypto },
+                viewController.fiatFilterButton.rx.tap.map { _ in AssetsFilterViewModel.FilterType.fiat }
             )
             .distinctUntilChanged()
             .bind(to: filter)
     }
-    
+
     private func bindFilterButtonsState(toViewController viewController: PortfolioViewController) -> Disposable {
         let filterButtonsMap = viewController.filterButtonsMap
-        
+
         return filter.asDriver().drive(onNext: { filterType in
-            filterButtonsMap.forEach{ arg in
+            filterButtonsMap.forEach { arg in
                 let (key, value) = arg
                 value.isSelected = key == filterType
             }
         })
     }
-    
+
     func bind(toViewController viewController: PortfolioViewController) -> [Disposable] {
         return [
             bindPieChart(toViewController: viewController),
@@ -195,23 +193,22 @@ fileprivate extension AssetsFilterViewModel {
 // MARK: - WalletsViewModel binders to PortfolioViewController
 fileprivate extension WalletsViewModel {
     func bind(toViewController viewController: PortfolioViewController) -> [Disposable] {
-        
+
         return [
             wallets.asDriver()
-                .map{ $0.isNotEmpty }
+                .map { $0.isNotEmpty }
                 .drive(viewController.emptyPortfolioView.rx.isHidden),
-            
+
             wallets.asDriver()
-                .map{ $0.isEmpty }
+                .map { $0.isEmpty }
                 .drive(viewController.pieChartCenterView.addMoneyButton.rx.isHidden),
-            
+
             wallets.asDriver()
-                .map{ $0.isEmpty }
+                .map { $0.isEmpty }
                 .drive(viewController.filterContainer.rx.isHidden)
         ]
     }
 }
-
 
 // MARK: - TotalBalanceViewModel binders to PortfolioViewController
 fileprivate extension TotalBalanceViewModel {
@@ -230,15 +227,15 @@ fileprivate extension PortfolioViewController {
         totalBalanceViewModel
             .bind(toViewController: self)
             .disposed(by: disposeBag)
-        
+
         walletsViewModel
             .bind(toViewController: self)
             .disposed(by: disposeBag)
-        
+
         assetsFilterViewModel
             .bind(toViewController: self)
             .disposed(by: disposeBag)
-        
+
         loadingViewModel.isLoading
             .asDriver(onErrorJustReturn: false)
             .drive(rx.loading)
@@ -246,27 +243,26 @@ fileprivate extension PortfolioViewController {
     }
 }
 
-
 // MARK: - RX custom operators
 fileprivate extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy, Self.E == [Variable<Asset>] {
     func mapToPieChartDataSet() -> Driver<PieChartDataSet> {
-        
+
         return
-            filter{ $0.isNotEmpty }
-            .map{ $0.filter{$0.value.percent > 0} }
-            .map{ $0.map{ PieChartDataEntry(value: $0.value.percent, data: $0.value) } }
-            .map{ PieChartDataSet(values: $0, label: nil) }
+            filter { $0.isNotEmpty }
+            .map { $0.filter {$0.value.percent > 0} }
+            .map { $0.map { PieChartDataEntry(value: $0.value.percent, data: $0.value) } }
+            .map { PieChartDataSet(values: $0, label: nil) }
     }
-    
+
     func mapToEmptyChart() -> Driver<PieChartDataSet> {
-        
-        return filter{$0.isEmpty}
-            .map{_ in [
+
+        return filter {$0.isEmpty}
+            .map {_ in [
                 PieChartDataEntry(value: 20.0, data: "0%" as AnyObject),
                 PieChartDataEntry(value: 30.0, data: "0%" as AnyObject),
                 PieChartDataEntry(value: 40.0, data: "0%" as AnyObject)
             ]}
-            .map{PieChartDataSet(values: $0, label: nil)}
+            .map {PieChartDataSet(values: $0, label: nil)}
     }
 }
 

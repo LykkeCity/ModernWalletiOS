@@ -10,7 +10,7 @@ import Foundation
 import Charts
 
 extension LineChartDataSet {
-    
+
     /// Setup LineChartDataSet according Lykke design
     ///
     /// - Returns: Self
@@ -32,20 +32,20 @@ extension LineChartDataSet {
         if let font = UIFont(name: "GEOMANIST", size: 16) {
             valueFont = font
         }
-        
+
         drawValuesEnabled = false
-        
+
         let gradientColors =  [
             ChartColorTemplates.colorFromString("#00ffffff").cgColor,
             ChartColorTemplates.colorFromString("#3fffffff").cgColor
         ] as CFArray
-        
-        if let gradient = CGGradient(colorsSpace: nil, colors:gradientColors, locations: nil) {
+
+        if let gradient = CGGradient(colorsSpace: nil, colors: gradientColors, locations: nil) {
             fillAlpha = CGFloat(7.0)
             fill = Fill.fillWithLinearGradient(gradient, angle: CGFloat(90.0))
             drawFilledEnabled = true
         }
-        
+
         return self
     }
 }

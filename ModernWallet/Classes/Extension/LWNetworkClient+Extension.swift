@@ -10,7 +10,7 @@ import Foundation
 import WalletCore
 
 extension LWNetworkTemplate: LWAuthManagerDelegate {
-    
+
     func showReleaseError(_ error: NSError, request: NSURLRequest) {
         guard request.showErrorIfFailed else {
             return
@@ -33,19 +33,19 @@ extension LWNetworkTemplate: LWAuthManagerDelegate {
             viewController.show(errorMessage: message)
         }
     }
-    
+
     func showBackupView(_ isOptional: Bool, message: String) {
         DispatchQueue.main.async {
             guard let visibleVC = (UIApplication.shared.delegate as? AppDelegate)?.visibleViewController else {
                 return
             }
-            
+
             let storyboard = UIStoryboard(name: "Settings", bundle: nil)
             let backupVC = storyboard.instantiateViewController(withIdentifier: "BackupPrivateKey")
             visibleVC.present(backupVC, animated: true)
         }
     }
-    
+
     func showKycView() {
         guard
             let visibleVC = (UIApplication.shared.delegate as? AppDelegate)?.visibleViewController,
@@ -57,7 +57,7 @@ extension LWNetworkTemplate: LWAuthManagerDelegate {
         authManager.delegate = self
         authManager.requestKYCStatusGet()
     }
-    
+
     public func authManager(_ manager: LWAuthManager!, didGetKYCStatus status: String!, personalData: LWPersonalDataModel!) {
         guard let visibleVC = (UIApplication.shared.delegate as? AppDelegate)?.visibleViewController else {
             return
@@ -70,8 +70,12 @@ extension LWNetworkTemplate: LWAuthManagerDelegate {
         case "NeedToFillData":
             identifier = "kycTabNVC"
         case "RestrictedArea":
+            identifier = ""
             fallthrough
         default:
+            return
+        }
+        guard identifier.isNotEmpty else {
             return
         }
         let kycVC = UIStoryboard(name: "KYC", bundle: nil).instantiateViewController(withIdentifier: identifier)

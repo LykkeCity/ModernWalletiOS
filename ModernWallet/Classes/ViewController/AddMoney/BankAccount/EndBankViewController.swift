@@ -11,7 +11,7 @@ import KYDrawerController
 import WalletCore
 
 class EndBankViewController: UIViewController {
-    
+
     @IBOutlet weak var returnToPortfolioButton: UIButton!
 
     override func viewDidLoad() {
@@ -26,12 +26,11 @@ class EndBankViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func portfolioAction(_ sender: UIButton) {
 //        let parentVC = self.parent as! LWAddMoneyViewController
 //        parentVC.portfolioAction(sender)
     }
-    
 
     /*
     // MARK: - Navigation

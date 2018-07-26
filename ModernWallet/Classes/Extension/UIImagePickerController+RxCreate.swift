@@ -15,10 +15,10 @@ func dismissViewController(_ viewController: UIViewController, animated: Bool) {
         DispatchQueue.main.async {
             dismissViewController(viewController, animated: animated)
         }
-        
+
         return
     }
-    
+
     if viewController.presentingViewController != nil {
         viewController.dismiss(animated: animated, completion: nil)
     }
@@ -42,7 +42,7 @@ extension ObservableType where Self.E == Void {
 }
 
 extension Reactive where Base: UIImagePickerController {
-    static func createWithParent(_ parent: UIViewController?, animated: Bool = true, configureImagePicker: @escaping (UIImagePickerController) throws -> () = { x in }) -> Observable<UIImagePickerController> {
+    static func createWithParent(_ parent: UIViewController?, animated: Bool = true, configureImagePicker: @escaping (UIImagePickerController) throws -> Void = { x in }) -> Observable<UIImagePickerController> {
         return Observable.create { [weak parent] observer in
             let imagePicker = UIImagePickerController()
             let dismissDisposable = imagePicker.rx
@@ -53,23 +53,22 @@ extension Reactive where Base: UIImagePickerController {
                     }
                     dismissViewController(imagePicker, animated: animated)
                 })
-            
+
             do {
                 try configureImagePicker(imagePicker)
-            }
-            catch let error {
+            } catch let error {
                 observer.on(.error(error))
                 return Disposables.create()
             }
-            
+
             guard let parent = parent else {
                 observer.on(.completed)
                 return Disposables.create()
             }
-            
+
             parent.present(imagePicker, animated: animated, completion: nil)
             observer.on(.next(imagePicker))
-            
+
             return Disposables.create(dismissDisposable, Disposables.create {
                 dismissViewController(imagePicker, animated: animated)
             })
@@ -78,18 +77,18 @@ extension Reactive where Base: UIImagePickerController {
 }
 
 extension Reactive where Base: UIImagePickerController {
-    
+
     /**
      Reactive wrapper for `delegate` message.
      */
-    public var didFinishPickingMediaWithInfo: Observable<[String : AnyObject]> {
+    public var didFinishPickingMediaWithInfo: Observable<[String: AnyObject]> {
         return delegate
             .methodInvoked(#selector(UIImagePickerControllerDelegate.imagePickerController(_:didFinishPickingMediaWithInfo:)))
             .map({ (a) in
                 return try castOrThrow(Dictionary<String, AnyObject>.self, a[1])
             })
     }
-    
+
     /**
      Reactive wrapper for `delegate` message.
      */
@@ -98,14 +97,13 @@ extension Reactive where Base: UIImagePickerController {
             .methodInvoked(#selector(UIImagePickerControllerDelegate.imagePickerControllerDidCancel(_:)))
             .map {_ in () }
     }
-    
+
 }
 
-
-fileprivate func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
+private func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
     guard let returnValue = object as? T else {
         throw RxCocoaError.castingError(object: object, targetType: resultType)
     }
-    
+
     return returnValue
 }
