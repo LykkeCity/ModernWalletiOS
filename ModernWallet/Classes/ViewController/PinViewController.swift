@@ -72,7 +72,6 @@ class PinViewController: UIViewController {
     @IBOutlet private weak var keyboardView: UIStackView!
     @IBOutlet private var keyboardButtons: [UIButton]!
     @IBOutlet private weak var touchIdButton: UIButton!
-    @IBOutlet private weak var forgotPinButton: UIButton!
 
     var permitedTriesCount = 3
     
@@ -163,12 +162,10 @@ class PinViewController: UIViewController {
             SignUpStep.instance = .setPin
         }
 
-        forgotPinButton.setTitle(Localize("auth.newDesign.forgotPin"), for: UIControlState.normal)
         triesLeftCount = permitedTriesCount
         
         switch mode {
         case .createPin:
-            forgotPinButton.isHidden = true
             titleLabel.text = Localize("pin.create.new.title")
             touchIdButton.alpha = 0.0
         case .enterPin(var isTouchIdEnabled):
@@ -217,6 +214,7 @@ class PinViewController: UIViewController {
     }
     
     @IBAction private func forgotPinTapped() {
+        
     }
     
     @IBAction private func closeTapped() {

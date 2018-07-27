@@ -22,7 +22,8 @@ class SignInPasswordFormController: FormController {
     lazy var formViews: [UIView] = {
         return [
             self.titleLabel(title: self.email),
-            self.passwordTextField
+            self.passwordTextField,
+            self.forgottenPasswordView
         ]
     }()
     
@@ -31,6 +32,26 @@ class SignInPasswordFormController: FormController {
         textField.isSecureTextEntry = true
         textField.returnKeyType = .next
         return textField
+    }()
+    
+    private lazy var forgottenPasswordView: UIView = {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        let button = self.forgottenPasswordTextButton
+        view.addSubview(button)
+        view.addConstraint(NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 60.0))
+        view.addConstraint(NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 20.0))
+        view.addConstraint(NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+        return view
+    }()
+    
+    private lazy var forgottenPasswordTextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle(Localize("auth.newDesign.forgottenPassword"), for: .normal)
+        button.titleLabel?.font = UIFont(name: "Geomanist", size: 14.0)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        return button
     }()
     
     var canGoBack: Bool {
@@ -55,8 +76,10 @@ class SignInPasswordFormController: FormController {
     
     private var loginTrigger = PublishSubject<Void>()
     
+    private var forgotPasswordTrigger = PublishSubject<Void>()
+
     private lazy var loginViewModel: LogInViewModel = {
-        let viewModel = LogInViewModel(submit: self.loginTrigger.asObservable())
+        let viewModel = LogInViewModel(submit: self.loginTrigger.asObservable(), forgotPassword: self.forgotPasswordTrigger.asObservable())
         viewModel.email.value = self.email
         return viewModel
     }()
@@ -76,6 +99,10 @@ class SignInPasswordFormController: FormController {
         
         button.rx.tap
             .bind(to: loginTrigger)
+            .disposed(by: disposeBag)
+        
+        forgottenPasswordTextButton.rx.tap
+            .bind(to: forgotPasswordTrigger)
             .disposed(by: disposeBag)
         
         passwordTextField.rx.text.asObservable()

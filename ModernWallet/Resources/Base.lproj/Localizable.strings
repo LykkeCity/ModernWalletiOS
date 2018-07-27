@@ -824,6 +824,7 @@
 "auth.newDesign.signup" = "SIGN UP";
 "auth.newDesign.email" = "Type your email";
 "auth.newDesign.password" = "Type your password";
+"auth.newDesign.forgottenPassword" = "I forgot my password";
 "auth.newDesign.subtitle" = "Modern Money";
 "auth.newDesign.forgotPin" = "Forgot PIN?";
 "auth.newDesign.enterPin" = "ENTER PIN";
@@ -848,6 +849,14 @@
 "auth.newDesign.generateKeysTitle" = "Generate a private key";
 "auth.newDesign.generateKeysInstructions" = "Shake your iPhone to generate the private key to your Modern money";
 "auth.newDesign.generateKeysDetails" = "It takes 3 times to shake the phone in order to create private key";
+
+"forgottenPassword.newDesign.changePasswordTitle" = "Set new password";
+"forgottenPassword.newDesign.newPasswordPlaceholder" = "Password (min 6 symbols)";
+"forgottenPassword.newDesign.confirmNewPasswordPlaceholder" = "Confirm your password";
+"forgottenPassword.newDesign.submitButton" = "NEXT";
+"forgottenPassword.newDesign.completeTitle" = "SUCCESSFUL!";
+"forgottenPassword.newDesign.completeMessage" = "Great! Your password and the PIN changed. You can log in to the app.";
+"forgottenPassword.newDesign.buttonTitle" = "GO TO LOGIN";
 
 "menu.newDesign.addMoney" = "ADD MONEY";
 "menu.newDesign.buy" = "BUY";

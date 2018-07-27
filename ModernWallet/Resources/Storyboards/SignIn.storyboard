@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yt1-eT-DyF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yt1-eT-DyF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -156,6 +156,7 @@
                         <outlet property="selectTestServerButton" destination="CNb-hs-ZkU" id="i1j-8m-gDe"/>
                         <outlet property="submitButton" destination="SqJ-rG-SsS" id="mdr-jt-0tV"/>
                         <segue destination="gga-op-U57" kind="show" identifier="CreateKey" id="Z1d-Uy-bzp"/>
+                        <segue destination="TqI-xa-drW" kind="show" identifier="ForgottenPassword" id="L7A-5c-6If"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFr-zM-ODr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -229,7 +230,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnx-Ve-EVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="815" y="2096"/>
+            <point key="canvasLocation" x="969" y="1842"/>
+        </scene>
+        <!--CheckWords-->
+        <scene sceneID="YHk-s9-qN8">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ForgottenPassword" storyboardName="ForgottenPassword" referencedIdentifier="CheckWords" id="TqI-xa-drW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gEW-0r-GId" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="968" y="2384"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JEi-ST-bQi">

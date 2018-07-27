@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Geomanist-Book.otf">
-            <string>Geomanist</string>
-        </array>
         <array key="Geomanist-Light.otf">
             <string>Geomanist-Light</string>
+        </array>
+        <array key="Geomanist-Regular.otf">
+            <string>Geomanist</string>
         </array>
     </customFonts>
     <objects>
@@ -23,7 +23,6 @@
             <connections>
                 <outlet property="closeButton" destination="NYd-jc-qbw" id="FzP-oM-s3M"/>
                 <outlet property="dotsView" destination="IkV-7f-Jfy" id="3Vw-4J-5EH"/>
-                <outlet property="forgotPinButton" destination="iMv-iw-B3w" id="MgD-eT-jpq"/>
                 <outlet property="keyboardView" destination="Ge5-M4-EBx" id="zaa-aF-98c"/>
                 <outlet property="titleLabel" destination="Fp1-kG-UZZ" id="pdD-9M-hlK"/>
                 <outlet property="touchIdButton" destination="c8n-F4-4Hg" id="Qff-N3-Ngf"/>
@@ -209,7 +208,7 @@
                                 </stackView>
                             </subviews>
                         </stackView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMv-iw-B3w">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMv-iw-B3w">
                             <rect key="frame" x="147" y="609" width="81" height="30"/>
                             <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                             <state key="normal" title="Forgot PIN?"/>
