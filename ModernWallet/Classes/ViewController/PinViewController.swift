@@ -36,6 +36,17 @@ class PinViewController: UIViewController {
         return viewController
     }
     
+    static func presentResetPinController(from viewController: UIViewController, title: String?) -> Observable<(complete: Bool, pin: String)> {
+        let pinViewController = createPinViewController
+        pinViewController.mode = .resetPin
+        pinViewController.title = title
+        viewController.present(pinViewController, animated: true)
+        return Observable.combineLatest(
+                pinViewController.complete,
+                pinViewController.setPinViewModel.pin.asObservable()
+        ) { (complete: $0, pin: $1) }
+    }
+    
     static func presentPinViewController(from viewController: UIViewController, title: String?, isTouchIdEnabled: Bool) -> Observable<Void> {
         let pinViewController = enterPinViewController(title: title, isTouchIdEnabled: isTouchIdEnabled)
         viewController.present(pinViewController, animated: true)
@@ -84,6 +95,7 @@ class PinViewController: UIViewController {
     private enum Mode {
         case enterPin(isTouchIdEnabled: Bool)
         case createPin
+        case resetPin
     }
     
     private var mode: Mode = .enterPin(isTouchIdEnabled: false)
@@ -165,7 +177,7 @@ class PinViewController: UIViewController {
         triesLeftCount = permitedTriesCount
         
         switch mode {
-        case .createPin:
+        case .createPin, .resetPin:
             titleLabel.text = Localize("pin.create.new.title")
             touchIdButton.alpha = 0.0
         case .enterPin(var isTouchIdEnabled):
@@ -231,6 +243,8 @@ class PinViewController: UIViewController {
             checkIfPinsMatch()
         case .enterPin:
             checkIsPinCorrect()
+        case .resetPin:
+            checkIfPinsMatch(setRemotely: false)
         }
     }
     
@@ -252,7 +266,7 @@ class PinViewController: UIViewController {
         }
     }
     
-    private func checkIfPinsMatch() {
+    private func checkIfPinsMatch(setRemotely: Bool = true) {
         guard pins.count == 2 else {
             digits = []
             return
@@ -262,7 +276,13 @@ class PinViewController: UIViewController {
             return
         }
         setPinViewModel.pin.value = pins[0]
-        setPinTrigger.onNext(Void())
+        /// If `true` make the request to the API (for registration)
+        /// If `false` keep the pin and dismiss the view controller, but omit the request (for forgotten password)
+        if setRemotely {
+            setPinTrigger.onNext(Void())
+        } else {
+            self.dismiss(success: true, animated: true)
+        }
     }
     
     private func shakeAndReset() {

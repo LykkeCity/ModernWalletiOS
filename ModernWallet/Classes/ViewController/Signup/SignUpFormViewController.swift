@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import WalletCore
 
 class SignUpFormViewController: UIViewController {
@@ -27,6 +28,8 @@ class SignUpFormViewController: UIViewController {
 
     private var forms = [FormController]()
     
+    private var forgotPasswordTrigger = PublishSubject<UINavigationController>()
+    
     private var nextTrigger = PublishSubject<Void>()
     
     private var pinTrigger = PublishSubject<PinViewController?>()
@@ -39,6 +42,19 @@ class SignUpFormViewController: UIViewController {
         push(formController: SingInEmailFormController(), animated: false)
         
         scrollView.subscribeKeyBoard(withDisposeBag: disposeBag)
+        
+        forgotPasswordTrigger.asDriver(onErrorJustReturn: UINavigationController())
+            .drive(onNext: { [weak self] navigationController in
+                guard let signInEmailForm = self?.forms.first as? SingInEmailFormController else {
+                    return
+                }
+                
+                guard let forgottenPasswordCheckWordsViewController = navigationController.viewControllers.first as? ForgottenPasswordCheckWordsViewController else { return }
+                
+                forgottenPasswordCheckWordsViewController.email = signInEmailForm.emailTextField.text
+                self?.navigationController?.pushViewController(forgottenPasswordCheckWordsViewController, animated: true)
+            })
+        .disposed(by: disposeBag)
         
         nextTrigger.asDriver(onErrorJustReturn: ())
             .drive(onNext: { [weak self] _ in
@@ -150,7 +166,7 @@ class SignUpFormViewController: UIViewController {
         if let previuosFormController = forms.last {
             previuosFormController.unbind()
         }
-        formController.bind(button: submitButton, nextTrigger: nextTrigger, pinTrigger: pinTrigger, loading: rx.loading, error: rx.error)
+        formController.bind(button: submitButton, nextTrigger: nextTrigger, pinTrigger: pinTrigger, forgotPasswordTrigger: forgotPasswordTrigger, loading: rx.loading, error: rx.error)
         submitButton.setTitle(formController.buttonTitle, for: .normal)
         forms.append(formController)
         
@@ -207,7 +223,7 @@ class SignUpFormViewController: UIViewController {
             })
         }
         currentFormContrller.unbind()
-        previousFormController.bind(button: submitButton, nextTrigger: nextTrigger, pinTrigger: pinTrigger, loading: rx.loading, error: rx.error)
+        previousFormController.bind(button: submitButton, nextTrigger: nextTrigger, pinTrigger: pinTrigger, forgotPasswordTrigger: forgotPasswordTrigger, loading: rx.loading, error: rx.error)
         submitButton.setTitle(previousFormController.buttonTitle, for: .normal)
         
         didPop()

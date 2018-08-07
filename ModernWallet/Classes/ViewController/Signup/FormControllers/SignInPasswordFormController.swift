@@ -76,17 +76,15 @@ class SignInPasswordFormController: FormController {
     
     private var loginTrigger = PublishSubject<Void>()
     
-    private var forgotPasswordTrigger = PublishSubject<Void>()
-
     private lazy var loginViewModel: LogInViewModel = {
-        let viewModel = LogInViewModel(submit: self.loginTrigger.asObservable(), forgotPassword: self.forgotPasswordTrigger.asObservable())
+        let viewModel = LogInViewModel(submit: self.loginTrigger.asObservable())
         viewModel.email.value = self.email
         return viewModel
     }()
     
     private var disposeBag = DisposeBag()
     
-    func bind<T: UIViewController>(button: UIButton, nextTrigger: PublishSubject<Void>, pinTrigger: PublishSubject<PinViewController?>, loading: UIBindingObserver<T, Bool>, error: UIBindingObserver<T, [AnyHashable: Any]>) {
+    func bind<T>(button: UIButton, nextTrigger: PublishSubject<Void>, pinTrigger: PublishSubject<PinViewController?>, forgotPasswordTrigger: PublishSubject<UINavigationController>, loading: UIBindingObserver<T, Bool>, error: UIBindingObserver<T, [AnyHashable: Any]>) {
         disposeBag = DisposeBag()
         
         passwordTextField.rx.returnTap
@@ -102,6 +100,7 @@ class SignInPasswordFormController: FormController {
             .disposed(by: disposeBag)
         
         forgottenPasswordTextButton.rx.tap
+            .flatMapLatest { _ in return ForgottenPasswordCheckWordsViewController.createForgottenPasswordCheckWordsViewController}
             .bind(to: forgotPasswordTrigger)
             .disposed(by: disposeBag)
         
