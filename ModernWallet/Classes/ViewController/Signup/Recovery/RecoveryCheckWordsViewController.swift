@@ -1,5 +1,5 @@
 //
-//  ForgottenPasswordCheckWordsViewController.swift
+//  RecoveryCheckWordsViewController.swift
 //  ModernMoney
 //
 //  Created by Vladimir Dimov on 24.07.18.
@@ -10,25 +10,26 @@ import UIKit
 import RxSwift
 import RxCocoa
 import WalletCore
+import TextFieldEffects
 
-class ForgottenPasswordCheckWordsViewController: UIViewController {
+class RecoveryCheckWordsViewController: UIViewController {
+    
+    let email = Variable<String>("")
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var messageLabel: UILabel!
-    @IBOutlet private weak var typingTextField: LimitedHoshiTextField!
+    @IBOutlet private weak var typingTextField: HoshiTextField!
     @IBOutlet private weak var confirmButton: UIButton!
     
-    var email: String!
-    
-    static var createForgottenPasswordCheckWordsViewController: Observable<UINavigationController> {
+    static var createRecoveryCheckWordsViewController: Observable<UINavigationController> {
         guard let viewController = UIStoryboard(name: "ForgottenPassword", bundle: nil).instantiateViewController(withIdentifier: "CheckWords") as? UINavigationController else { return Observable.empty() }
         // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
         viewController.modalPresentationStyle = .custom
         return Observable.just(viewController)
     }
     
-    lazy var validateSeedWordsViewModel: ValidateSeedWordsViewModel = {
-        return ValidateSeedWordsViewModel(email: self.email)
+    lazy var validateSeedWordsViewModel = {
+       return ValidateSeedWordsViewModel(withEmail: self.email.asObservable())
     }()
  
     private let disposeBag = DisposeBag()
@@ -43,6 +44,10 @@ class ForgottenPasswordCheckWordsViewController: UIViewController {
         scrollView?.subscribeKeyBoard(withDisposeBag: disposeBag)
         scrollView?.keyboardDismissMode = .onDrag
         
+        email.asObservable()
+            .bind(to: RecoveryViewModel.instance.email)
+            .disposed(by: disposeBag)
+        
         typingTextField.rx.text
             .orEmpty
             .throttle(0.5, scheduler: MainScheduler.instance)
@@ -55,11 +60,16 @@ class ForgottenPasswordCheckWordsViewController: UIViewController {
             .disposed(by: disposeBag)
 
         confirmButton.rx.tap
-            .debug("confirmbutton")
             .bind(to: validateSeedWordsViewModel.checkTrigger)
             .disposed(by: disposeBag)
         
-        validateSeedWordsViewModel.isOwnershipConfirmed
+        validateSeedWordsViewModel.ownershipData
+            .map { $0.signature }
+            .bind(to: RecoveryViewModel.instance.signedOwnershipMessage)
+            .disposed(by: disposeBag)
+        
+        validateSeedWordsViewModel.ownershipData
+            .map { $0.isConfirmed }
             .subscribe(onNext: { [weak self] isConfirmed in
                 guard let strongSelf = self else { return }
                 
@@ -76,16 +86,12 @@ class ForgottenPasswordCheckWordsViewController: UIViewController {
 //
 //                    return
 //                }
-                let recoveryModel = LWRecoveryPasswordModel()
-                recoveryModel.email = strongSelf.email
                 
-                guard let changePasswordViewController = self?.storyboard?.instantiateViewController(withIdentifier: "ChangePassword")
-                    as? ChangePasswordViewController else {
+                guard let recoveryChangePasswordViewController = strongSelf.storyboard?.instantiateViewController(withIdentifier: "ChangePassword")
+                    as? RecoveryChangePasswordViewController else {
                         return
                 }
-                    changePasswordViewController.recoveryModel = recoveryModel
-                    
-                    self?.navigationController?.pushViewController(changePasswordViewController, animated: true)
+                strongSelf.navigationController?.pushViewController(recoveryChangePasswordViewController, animated: true)
             })
             .disposed(by: disposeBag)
         
@@ -115,12 +121,12 @@ class ForgottenPasswordCheckWordsViewController: UIViewController {
     }
     
     private func localize(){
-        messageLabel.text = Localize("forgottenPassword.newDesign.checkWordsTitle")
-        typingTextField.placeholder = Localize("forgottenPassword.newDesign.checkWordsTextFieldPlaceholder")
-        confirmButton.setTitle(Localize("forgottenPassword.newDesign.checkWordsSubmitButton"), for: .normal)
+        messageLabel.text = Localize("recovery.newDesign.checkWordsTitle")
+        typingTextField.placeholder = Localize("recovery.newDesign.checkWordsTextFieldPlaceholder")
+        confirmButton.setTitle(Localize("recovery.newDesign.checkWordsSubmitButton"), for: .normal)
     }
     
-    private func style(textField: LimitedHoshiTextField) {
+    private func style(textField: HoshiTextField) {
         textField.returnKeyType = .next
         textField.font = UIFont(name: "Geomanist", size: 16.0)
         textField.placeholderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
@@ -149,7 +155,7 @@ class ForgottenPasswordCheckWordsViewController: UIViewController {
     }
 }
 
-extension ForgottenPasswordCheckWordsViewController: UITextFieldDelegate {
+extension RecoveryCheckWordsViewController: UITextFieldDelegate {
     
 //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 //        guard let text = textField.text else {

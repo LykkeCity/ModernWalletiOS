@@ -100,7 +100,7 @@ class SignInPasswordFormController: FormController {
             .disposed(by: disposeBag)
         
         forgottenPasswordTextButton.rx.tap
-            .flatMapLatest { _ in return ForgottenPasswordCheckWordsViewController.createForgottenPasswordCheckWordsViewController}
+            .flatMapLatest { _ in return RecoveryCheckWordsViewController.createRecoveryCheckWordsViewController}
             .bind(to: forgotPasswordTrigger)
             .disposed(by: disposeBag)
         

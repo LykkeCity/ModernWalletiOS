@@ -45,14 +45,15 @@ class SignUpFormViewController: UIViewController {
         
         forgotPasswordTrigger.asDriver(onErrorJustReturn: UINavigationController())
             .drive(onNext: { [weak self] navigationController in
-                guard let signInEmailForm = self?.forms.first as? SingInEmailFormController else {
+                guard let signInEmailForm = self?.forms.first as? SingInEmailFormController,
+                    let email = signInEmailForm.emailTextField.text else {
                     return
                 }
                 
-                guard let forgottenPasswordCheckWordsViewController = navigationController.viewControllers.first as? ForgottenPasswordCheckWordsViewController else { return }
+                guard let recoveryCheckWordsViewController = navigationController.viewControllers.first as? RecoveryCheckWordsViewController else { return }
                 
-                forgottenPasswordCheckWordsViewController.email = signInEmailForm.emailTextField.text
-                self?.navigationController?.pushViewController(forgottenPasswordCheckWordsViewController, animated: true)
+                recoveryCheckWordsViewController.email.value = email
+                self?.navigationController?.pushViewController(recoveryCheckWordsViewController, animated: true)
             })
         .disposed(by: disposeBag)
         

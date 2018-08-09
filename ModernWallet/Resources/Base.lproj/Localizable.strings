@@ -850,24 +850,23 @@
 "auth.newDesign.generateKeysInstructions" = "Shake your iPhone to generate the private key to your Modern money";
 "auth.newDesign.generateKeysDetails" = "It takes 3 times to shake the phone in order to create private key";
 
-"forgottenPassword.newDesign.checkWordsTitle" = "Type in your secret words from backup separated by spaces";
-"forgottenPassword.newDesign.checkWordsTextFieldPlaceholder" = "Words";
-"forgottenPassword.newDesign.checkWordsSubmitButton" = "SUBMIT";
+"recovery.newDesign.checkWordsTitle" = "Type in your secret words from backup separated by spaces";
+"recovery.newDesign.checkWordsTextFieldPlaceholder" = "Words";
+"recovery.newDesign.checkWordsSubmitButton" = "SUBMIT";
 
-"forgottenPassword.newDesign.changePasswordTitle" = "Set new password";
-"forgottenPassword.newDesign.newPasswordPlaceholder" = "Password (min 6 symbols)";
-"forgottenPassword.newDesign.confirmNewPasswordPlaceholder" = "Confirm your password";
-"forgottenPassword.newDesign.newPasswordSubmitButton" = "NEXT";
+"recovery.newDesign.changePasswordTitle" = "Set new password";
+"recovery.newDesign.newPasswordPlaceholder" = "Password (min 6 symbols)";
+"recovery.newDesign.confirmNewPasswordPlaceholder" = "Confirm your password";
+"recovery.newDesign.newPasswordSubmitButton" = "NEXT";
 
-"forgottenPassword.newDesign.completedTitle" = "SUCCESSFUL!";
-"forgottenPassword.newDesign.completedMessage" = "Great! Your password and the PIN changed. You can log in to the app.";
-"forgottenPassword.newDesign.completedButtonTitle" = "GO TO LOGIN";
+"recovery.newDesign.confirmSmsCodeTitle" = "Please enter the 4-digits code that just have been sent to your mobile phone %@";
+"recovery.newDesign.confirmSmsCodePlaceholder" = "Enter code";
+"recovery.newDesign.resendCodeTitle" = "Haven't received the code?";
+"recovery.newDesign.confirmSmsCodeButtonTitle" = "SUBMIT";
 
-
-"forgottenPassword.newDesign.confirmSmsCodeTitle" = "Please enter the 4-digits code that just have been sent to your mobile phone %s";
-"forgottenPassword.newDesign.confirmSmsCodePlaceholder" = "Enter code";
-"forgottenPassword.newDesign.resendCodeTitle" = "Haven't received the code?";
-"forgottenPassword.newDesign.confirmSmsCodeButtonTitle" = "SUBMIT";
+"recovery.newDesign.completedTitle" = "SUCCESSFUL!";
+"recovery.newDesign.completedMessage" = "Great! Your password and the PIN changed. You can log in to the app.";
+"recovery.newDesign.completedButtonTitle" = "GO TO LOGIN";
 
 "menu.newDesign.addMoney" = "ADD MONEY";
 "menu.newDesign.buy" = "BUY";

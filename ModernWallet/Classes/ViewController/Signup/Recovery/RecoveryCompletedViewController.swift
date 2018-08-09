@@ -1,5 +1,5 @@
 //
-//  ForgottenPasswordCompletedViewController.swift
+//  RecoveryCompletedViewController.swift
 //  ModernMoney
 //
 //  Created by Vladimir Dimov on 24.07.18.
@@ -10,7 +10,7 @@ import UIKit
 import WalletCore
 import RxSwift
 
-class ForgottenPasswordCompletedViewController: UIViewController {
+class RecoveryCompletedViewController: UIViewController {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var messageLabel: UILabel!
@@ -29,9 +29,9 @@ class ForgottenPasswordCompletedViewController: UIViewController {
     }
     
     func localize(){
-        titleLabel.text = Localize("forgottenPassword.newDesign.completedTitle")
-        messageLabel.text = Localize("forgottenPassword.newDesign.completedMessage")
-        completeButton.setTitle(Localize("forgottenPassword.newDesign.completedButtonTitle"), for: .normal)
+        titleLabel.text = Localize("recovery.newDesign.completedTitle")
+        messageLabel.text = Localize("recovery.newDesign.completedMessage")
+        completeButton.setTitle(Localize("recovery.newDesign.completedButtonTitle"), for: .normal)
     }
     
 }

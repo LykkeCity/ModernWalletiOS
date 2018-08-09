@@ -1,5 +1,5 @@
 //
-//  ChangePasswordViewController.swift
+//  RecoveryChangePasswordViewController.swift
 //  ModernMoney
 //
 //  Created by Vladimir Dimov on 24.07.18.
@@ -10,22 +10,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 import WalletCore
+import TextFieldEffects
 
-class ChangePasswordViewController: UIViewController {
+class RecoveryChangePasswordViewController: UIViewController {
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet weak var passwordTextField: LimitedHoshiTextField!
-    @IBOutlet weak var cofirmPasswordTextField: LimitedHoshiTextField!
+    @IBOutlet weak var passwordTextField: HoshiTextField!
+    @IBOutlet weak var cofirmPasswordTextField: HoshiTextField!
     @IBOutlet private weak var confirmButton: UIButton!
     
     private let disposeBag = DisposeBag()
     
-    /// Object to store the required recovery data
-    var recoveryModel = LWRecoveryPasswordModel()
-    
     /// Change password viewModel
-    lazy var viewModel : ChangePasswordViewModel = {
+    lazy var changePasswordViewModel : ChangePasswordViewModel = {
         return ChangePasswordViewModel()
     }()
     
@@ -35,9 +33,15 @@ class ChangePasswordViewController: UIViewController {
         scrollView?.subscribeKeyBoard(withDisposeBag: disposeBag)
         scrollView?.keyboardDismissMode = .onDrag
         
-        passwordTextField.rx.text
-            .filterNil()
-            .bind(to: viewModel.password)
+        let passwordValue = passwordTextField.rx.text.orEmpty
+            .shareReplay(1)
+        
+        passwordValue
+            .bind(to: changePasswordViewModel.password)
+            .disposed(by: disposeBag)
+        
+        passwordValue
+            .bind(to: RecoveryViewModel.instance.newPassword)
             .disposed(by: disposeBag)
         
 //        passwordTextField.rx.returnTap
@@ -47,9 +51,8 @@ class ChangePasswordViewController: UIViewController {
 //            })
 //            .disposed(by: disposeBag)
         
-        cofirmPasswordTextField.rx.text
-            .filterNil()
-            .bind(to: viewModel.confirmPassword)
+        cofirmPasswordTextField.rx.text.orEmpty
+            .bind(to: changePasswordViewModel.confirmPassword)
             .disposed(by: disposeBag)
         
 //        cofirmPasswordTextField.rx.returnTap
@@ -57,35 +60,38 @@ class ChangePasswordViewController: UIViewController {
 //            .filterTrueAndBind(toTrigger: nextTrigger)
 //            .disposed(by: disposeBag)
         
-        viewModel.isValid
+        changePasswordViewModel.isValid
             .bind(to: confirmButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        confirmButton.rx.tap
+        let pinAndPasswordValue = confirmButton.rx.tap
             .flatMapLatest { [weak self]  _ -> Observable<(complete: Bool, pin: String)> in
                 guard let strongSelf = self else { return .never() }
                 return PinViewController.presentResetPinController(from: strongSelf, title: "Hello world")
             }
             .filter { $0.complete }
+            .shareReplay(1)
+        
+        pinAndPasswordValue
+            .map { $0.pin }
+            .bind(to: RecoveryViewModel.instance.newPin)
+            .disposed(by: disposeBag)
+            
+        pinAndPasswordValue
             .subscribe(onNext: { [weak self] value in
                 guard let strongSelf = self,
                     let password = strongSelf.passwordTextField.text else { return }
                 
                 print("Password = \(password) |||||| Pin = \(value.pin)")
                 
-                strongSelf.recoveryModel.password = password
-                strongSelf.recoveryModel.pin = value.pin
-                
                 print("Done!")
                 
-                guard let confirmPhoneViewController = strongSelf.storyboard?.instantiateViewController(withIdentifier: "ConfirmSmsCode")
-                    as? ForgottenPasswordConfirmPhoneViewController else {
+                guard let recoveryConfirmPhoneViewController = strongSelf.storyboard?.instantiateViewController(withIdentifier: "ConfirmSmsCode")
+                    as? RecoveryConfirmPhoneViewController else {
                         return
                 }
-                
-                confirmPhoneViewController.recoveryModel = strongSelf.recoveryModel
-                
-                strongSelf.navigationController?.pushViewController(confirmPhoneViewController, animated: true)
+
+                strongSelf.navigationController?.pushViewController(recoveryConfirmPhoneViewController, animated: true)
             })
             .disposed(by: disposeBag)
         
@@ -95,13 +101,13 @@ class ChangePasswordViewController: UIViewController {
     }
     
     private func localize() {
-        titleLabel.text = Localize("forgottenPassword.newDesign.changePasswordTitle")
-        passwordTextField.placeholder = Localize("forgottenPassword.newDesign.newPasswordPlaceholder")
-        cofirmPasswordTextField.placeholder = Localize("forgottenPassword.newDesign.confirmNewPasswordPlaceholder")
-        confirmButton.setTitle(Localize("forgottenPassword.newDesign.newPasswordSubmitButton"), for: .normal)
+        titleLabel.text = Localize("recovery.newDesign.changePasswordTitle")
+        passwordTextField.placeholder = Localize("recovery.newDesign.newPasswordPlaceholder")
+        cofirmPasswordTextField.placeholder = Localize("recovery.newDesign.confirmNewPasswordPlaceholder")
+        confirmButton.setTitle(Localize("recovery.newDesign.newPasswordSubmitButton"), for: .normal)
     }
     
-    private func style(textField: LimitedHoshiTextField) {
+    private func style(textField: HoshiTextField) {
         textField.isSecureTextEntry = true
         textField.returnKeyType = .next
         textField.font = UIFont(name: "Geomanist", size: 16.0)
@@ -118,7 +124,7 @@ class ChangePasswordViewController: UIViewController {
     }
 }
 
-extension ChangePasswordViewController: InputForm {
+extension RecoveryChangePasswordViewController: InputForm {
 
     var textFields: [UITextField] {
         return [
