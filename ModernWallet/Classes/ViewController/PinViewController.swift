@@ -40,7 +40,13 @@ class PinViewController: UIViewController {
         let pinViewController = createPinViewController
         pinViewController.mode = .resetPin
         pinViewController.title = title
-        viewController.present(pinViewController, animated: true)
+        // Detect wether the `viewController` is in navigation controller or not
+        // And present the `pinViewController`
+        if let navigationController = viewController.navigationController {
+            navigationController.present(pinViewController, animated: true)
+        } else {
+            viewController.present(pinViewController, animated: true)
+        }
         return Observable.combineLatest(
                 pinViewController.complete,
                 pinViewController.setPinViewModel.pin.asObservable()

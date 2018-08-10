@@ -18,6 +18,7 @@ class RecoveryChangePasswordViewController: UIViewController {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet weak var passwordTextField: HoshiTextField!
     @IBOutlet weak var cofirmPasswordTextField: HoshiTextField!
+    @IBOutlet weak var hintTextField: HoshiTextField!
     @IBOutlet private weak var confirmButton: UIButton!
     
     private let disposeBag = DisposeBag()
@@ -42,6 +43,17 @@ class RecoveryChangePasswordViewController: UIViewController {
         
         passwordValue
             .bind(to: RecoveryViewModel.instance.newPassword)
+            .disposed(by: disposeBag)
+        
+        let hintValue = hintTextField.rx.text.orEmpty
+            .shareReplay(1)
+        
+        hintValue
+            .bind(to: changePasswordViewModel.hint)
+            .disposed(by: disposeBag)
+        
+        hintValue
+            .bind(to: RecoveryViewModel.instance.newHint)
             .disposed(by: disposeBag)
         
 //        passwordTextField.rx.returnTap
@@ -96,19 +108,25 @@ class RecoveryChangePasswordViewController: UIViewController {
             .disposed(by: disposeBag)
         
         localize()
-        style(textField: passwordTextField)
-        style(textField: cofirmPasswordTextField)
+        style(textField: passwordTextField, secureText: true)
+        style(textField: cofirmPasswordTextField, secureText: true)
+        style(textField: hintTextField)
     }
     
     private func localize() {
         titleLabel.text = Localize("recovery.newDesign.changePasswordTitle")
         passwordTextField.placeholder = Localize("recovery.newDesign.newPasswordPlaceholder")
         cofirmPasswordTextField.placeholder = Localize("recovery.newDesign.confirmNewPasswordPlaceholder")
+        hintTextField.placeholder = Localize("recovery.newDesign.hintPlaceholder")
         confirmButton.setTitle(Localize("recovery.newDesign.newPasswordSubmitButton"), for: .normal)
     }
     
     private func style(textField: HoshiTextField) {
-        textField.isSecureTextEntry = true
+        style(textField: textField, secureText: false)
+    }
+    
+    private func style(textField: HoshiTextField, secureText: Bool) {
+        textField.isSecureTextEntry = secureText
         textField.returnKeyType = .next
         textField.font = UIFont(name: "Geomanist", size: 16.0)
         textField.placeholderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)

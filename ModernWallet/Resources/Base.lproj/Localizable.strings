@@ -854,15 +854,20 @@
 "recovery.newDesign.checkWordsTextFieldPlaceholder" = "Words";
 "recovery.newDesign.checkWordsSubmitButton" = "SUBMIT";
 
-"recovery.newDesign.changePasswordTitle" = "Set new password";
+"recovery.newDesign.changePasswordTitle" = "Set new hint and password";
 "recovery.newDesign.newPasswordPlaceholder" = "Password (min 6 symbols)";
 "recovery.newDesign.confirmNewPasswordPlaceholder" = "Confirm your password";
+"recovery.newDesign.hintPlaceholder" = "Hint";
 "recovery.newDesign.newPasswordSubmitButton" = "NEXT";
 
 "recovery.newDesign.confirmSmsCodeTitle" = "Please enter the 4-digits code that just have been sent to your mobile phone %@";
 "recovery.newDesign.confirmSmsCodePlaceholder" = "Enter code";
 "recovery.newDesign.resendCodeTitle" = "Haven't received the code?";
 "recovery.newDesign.confirmSmsCodeButtonTitle" = "SUBMIT";
+"recovery.newDesign.requestVoiceCallTitle" = "Request voice call";
+"recovery.newDesign.requestVoiceCallMessage" = "Please wait. In several minutes our support manager will contact you.";
+"recovery.newDesign.requestVoiceCallButtonTitle" = "OK, I UNDERSTAND";
+
 
 "recovery.newDesign.completedTitle" = "SUCCESSFUL!";
 "recovery.newDesign.completedMessage" = "Great! Your password and the PIN changed. You can log in to the app.";

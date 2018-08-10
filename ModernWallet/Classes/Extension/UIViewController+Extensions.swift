@@ -34,6 +34,17 @@ extension UIViewController {
         present(alertController, animated: true)
     }
     
+    func showAlert(title: String, message: String, buttonTitle: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let actionButton = UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default) {
+            (result : UIAlertAction) -> Void in
+            print("OK")
+        }
+        
+        alertController.addAction(actionButton)
+        present(alertController, animated: true)
+    }
+    
     func presentLoginController() {
         let signInStory = UIStoryboard.init(name: "SignIn", bundle: nil)
         let signUpNav = signInStory.instantiateInitialViewController()!// instantiateViewController(withIdentifier: "SignUpNav")

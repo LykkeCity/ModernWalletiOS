@@ -68,6 +68,11 @@ class RecoveryCheckWordsViewController: UIViewController {
             .bind(to: RecoveryViewModel.instance.signedOwnershipMessage)
             .disposed(by: disposeBag)
         
+        validateSeedWordsViewModel.error
+            .debug("lqlq")
+            .drive(rx.error)
+            .disposed(by: disposeBag)
+
         validateSeedWordsViewModel.ownershipData
             .map { $0.isConfirmed }
             .subscribe(onNext: { [weak self] isConfirmed in
@@ -75,7 +80,8 @@ class RecoveryCheckWordsViewController: UIViewController {
                 
                 print("We got our response from the server. And it is: \(isConfirmed)")
                 
-//                guard isConfirmed else {
+                guard isConfirmed else {
+                    strongSelf.show(errorMessage: Localize("restore.form.wrongseed.text"))
 //                    let alert = UIAlertController(title: Localize("restore.form.wrongseed.title"),
 //                                                  message: Localize("restore.form.wrongseed.text"),
 //                                                  preferredStyle: .alert)
@@ -83,9 +89,9 @@ class RecoveryCheckWordsViewController: UIViewController {
 //                    alert.addAction(UIAlertAction(title: Localize("restore.form.wrongseed.ok"), style: .cancel, handler: nil))
 //
 //                    strongSelf.navigationController?.present(alert, animated: true, completion: nil)
-//
-//                    return
-//                }
+
+                    return
+                }
                 
                 guard let recoveryChangePasswordViewController = strongSelf.storyboard?.instantiateViewController(withIdentifier: "ChangePassword")
                     as? RecoveryChangePasswordViewController else {
