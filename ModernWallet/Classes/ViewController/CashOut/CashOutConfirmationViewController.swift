@@ -56,8 +56,8 @@ class CashOutConfirmationViewController: UIViewController {
             .bind(to: cashOutViewModel.trigger)
             .disposed(by: disposeBag)
         
-        cashOutViewModel.errors.asObservable()
-            .bind(to: rx.error)
+        cashOutViewModel.errors
+            .drive(rx.error)
             .disposed(by: disposeBag)
         
         cashOutViewModel.success
