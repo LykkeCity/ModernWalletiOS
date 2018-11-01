@@ -42,7 +42,6 @@ extension KYCStepBinder where Self: UIViewController, Self: KYCDocumentTypeAware
             .disposed(by: disposeBag)
         
         loadingViewModel.isLoading
-            .skipWhileWithIndex{isLoading, index in index == 0 && isLoading == false}
             .bind(to: rx.loading)
             .disposed(by: disposeBag)
     }

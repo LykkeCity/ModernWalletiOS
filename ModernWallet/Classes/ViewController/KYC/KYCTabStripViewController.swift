@@ -159,10 +159,19 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
             .bind(to: pendingApprovalContainer.rx.isHiddenAnimated)
             .disposed(by: disposeBag)
         
-        documentsAndType
+        let documentStatus = documentsAndType
             .mapToStatus()
+            .shareReplay(1)
+            
+        documentStatus
             .map{$0.isUploaded}
             .bind(to: cameraButton.rx.isHiddenAnimated)
+            .disposed(by: disposeBag)
+        
+        documentStatus
+            .filter { !$0.isUploaded || !$0.isUploadedOrApproved || $0.isRejected }
+            .map {_ in true}
+            .bind(to: cameraButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
         let imagePicker = UIImagePickerController()
@@ -177,6 +186,7 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
         imagePicker.delegate = self
         
         cameraButton.rx.tap.bind{ [weak self] in
+            self?.cameraButton.isEnabled = false
             self?.present(imagePicker, animated: true, completion: nil)
         }.disposed(by: disposeBag)
         
@@ -192,6 +202,7 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
 
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.cameraButton.isEnabled = true
         dismiss(animated: true, completion: nil)
     }
     
