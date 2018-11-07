@@ -31,6 +31,9 @@ extension KYCDocumentType {
             return 1
         case .proofOfAddress:
             return 2
+            
+        default:
+            return -1
         }
     }
     
@@ -42,6 +45,9 @@ extension KYCDocumentType {
             return "Photo of your passport or another Id".localizedUppercase
         case .proofOfAddress:
             return "Photo of your proof of address".localizedUppercase
+            
+        default:
+            return ""
         }
     }
     

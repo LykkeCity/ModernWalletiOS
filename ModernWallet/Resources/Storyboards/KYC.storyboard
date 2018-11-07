@@ -14,105 +14,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Step1 View Controller-->
-        <scene sceneID="ds5-hd-dgm">
-            <objects>
-                <viewController storyboardIdentifier="kycStep1VC" id="vVd-03-28z" customClass="KYCStep1ViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RMD-ZX-iZX"/>
-                        <viewControllerLayoutGuide type="bottom" id="66x-DU-2fp"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="U4N-wn-g8O">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gM7-ff-Ye0" customClass="KYCPhotoPlaceholderView" customModule="ModernMoney" customModuleProvider="target">
-                                <rect key="frame" x="32" y="0.0" width="311" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="66x-DU-2fp" firstAttribute="top" secondItem="gM7-ff-Ye0" secondAttribute="bottom" id="ANg-oX-fMB"/>
-                            <constraint firstItem="gM7-ff-Ye0" firstAttribute="leading" secondItem="U4N-wn-g8O" secondAttribute="leading" constant="32" id="YIu-L0-Hcl"/>
-                            <constraint firstItem="gM7-ff-Ye0" firstAttribute="top" secondItem="U4N-wn-g8O" secondAttribute="top" id="aNP-Ax-m4Z"/>
-                            <constraint firstAttribute="trailing" secondItem="gM7-ff-Ye0" secondAttribute="trailing" constant="32" id="j77-iW-xZS"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="photoPlaceholder" destination="gM7-ff-Ye0" id="LMp-Hz-Kt3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SXF-Tw-HnN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="21.600000000000001" y="538.38080959520244"/>
-        </scene>
-        <!--Step2 View Controller-->
-        <scene sceneID="lv4-tH-Amj">
-            <objects>
-                <viewController storyboardIdentifier="kycStep2VC" id="9Gp-Cr-SAM" customClass="KYCStep2ViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="v9g-sI-Rye"/>
-                        <viewControllerLayoutGuide type="bottom" id="TH6-6l-Gds"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8PB-tc-IFX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUQ-wC-4Db" customClass="KYCPhotoPlaceholderView" customModule="ModernMoney" customModuleProvider="target">
-                                <rect key="frame" x="32" y="0.0" width="311" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="HUQ-wC-4Db" firstAttribute="leading" secondItem="8PB-tc-IFX" secondAttribute="leading" constant="32" id="PbU-OF-Jno"/>
-                            <constraint firstAttribute="trailing" secondItem="HUQ-wC-4Db" secondAttribute="trailing" constant="32" id="X6S-cf-czY"/>
-                            <constraint firstItem="TH6-6l-Gds" firstAttribute="top" secondItem="HUQ-wC-4Db" secondAttribute="bottom" id="aNE-9i-sUS"/>
-                            <constraint firstItem="HUQ-wC-4Db" firstAttribute="top" secondItem="8PB-tc-IFX" secondAttribute="top" id="x9y-A1-pdy"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="photoPlaceholder" destination="HUQ-wC-4Db" id="7dd-vd-wIv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="53t-BT-l5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="920.79999999999995" y="539.28035982008998"/>
-        </scene>
-        <!--Step3 View Controller-->
-        <scene sceneID="dAF-E5-pdU">
-            <objects>
-                <viewController storyboardIdentifier="kycStep3VC" id="okm-xa-NCr" customClass="KYCStep3ViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Vtg-AJ-Gry"/>
-                        <viewControllerLayoutGuide type="bottom" id="RR3-n0-sHV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2d8-oS-qao">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cc7-sA-M1v" customClass="KYCPhotoPlaceholderView" customModule="ModernMoney" customModuleProvider="target">
-                                <rect key="frame" x="32" y="0.0" width="311" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="cc7-sA-M1v" firstAttribute="leading" secondItem="2d8-oS-qao" secondAttribute="leading" constant="32" id="BzL-Al-R1Y"/>
-                            <constraint firstItem="RR3-n0-sHV" firstAttribute="top" secondItem="cc7-sA-M1v" secondAttribute="bottom" id="jnl-RV-Jlo"/>
-                            <constraint firstAttribute="trailing" secondItem="cc7-sA-M1v" secondAttribute="trailing" constant="32" id="kCe-aX-fkJ"/>
-                            <constraint firstItem="cc7-sA-M1v" firstAttribute="top" secondItem="2d8-oS-qao" secondAttribute="top" id="yTN-Wi-wxt"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="photoPlaceholder" destination="cc7-sA-M1v" id="cDE-Nw-6IP"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Bw-ag-YoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1728.8" y="538.38080959520244"/>
-        </scene>
         <!--REGISTER-->
         <scene sceneID="OLC-OD-IFW">
             <objects>
@@ -497,13 +398,13 @@ Image should be well lit and in focus.</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPW-CI-b1e">
-                                <rect key="frame" x="36" y="320" width="303" height="20"/>
+                                <rect key="frame" x="36" y="320" width="303" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dear Linda, your informaiton is being revired by our KYC team.As soon as this process is complete, we'll inform you by email." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohj-xB-ons">
-                                <rect key="frame" x="20" y="348" width="335" height="45"/>
+                                <rect key="frame" x="20" y="351.5" width="335" height="52.5"/>
                                 <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -557,13 +458,46 @@ Image should be well lit and in focus.</string>
             </objects>
             <point key="canvasLocation" x="3430" y="-197"/>
         </scene>
+        <!--Step View Controller-->
+        <scene sceneID="rzU-LL-X3u">
+            <objects>
+                <viewController storyboardIdentifier="kycStepVC" id="cM2-of-A9s" customClass="KYCStepViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9KO-Qk-ArW"/>
+                        <viewControllerLayoutGuide type="bottom" id="Uzt-ir-bTi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C2P-jG-sKa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Xk-8s-X76" customClass="KYCPhotoPlaceholderView" customModule="ModernMoney" customModuleProvider="target">
+                                <rect key="frame" x="32" y="0.0" width="311" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Xk-8s-X76" firstAttribute="leading" secondItem="C2P-jG-sKa" secondAttribute="leading" constant="32" id="1JO-sE-zR9"/>
+                            <constraint firstItem="7Xk-8s-X76" firstAttribute="top" secondItem="C2P-jG-sKa" secondAttribute="top" id="mqz-wo-Yrx"/>
+                            <constraint firstAttribute="trailing" secondItem="7Xk-8s-X76" secondAttribute="trailing" constant="32" id="sQO-CD-g6u"/>
+                            <constraint firstItem="Uzt-ir-bTi" firstAttribute="top" secondItem="7Xk-8s-X76" secondAttribute="bottom" id="vMw-eT-if4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="photoPlaceholder" destination="7Xk-8s-X76" id="fz8-YP-Xe0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eSH-wO-tsF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-39" y="510"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="CloseCross" width="17" height="17"/>
+        <image name="CloseCross" width="17.5" height="17.5"/>
         <image name="kycFinished" width="143" height="171"/>
         <image name="kycIconDeclined" width="17" height="17"/>
         <image name="kycPending" width="120" height="121"/>
-        <image name="kycPhotoFailed" width="65" height="100"/>
+        <image name="kycPhotoFailed" width="65" height="100.5"/>
         <image name="nextArrow" width="11" height="21"/>
     </resources>
 </document>

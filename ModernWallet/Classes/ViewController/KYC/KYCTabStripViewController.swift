@@ -19,28 +19,9 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var pendingApprovalContainer: UIStackView!
     
-    private var pickedImage = Variable<UIImage?>(nil)
+    private let selectedScreenSubject = PublishSubject<KYCStepViewController>()
     
     private let disposeBag = DisposeBag()
-    
-    lazy var documentsViewModel: KYCDocumentsViewModel = {
-        return KYCDocumentsViewModel(
-            trigger: self.documentsUploadViewModel.image.asObservable()
-                .filterNil()
-                .map{_ in Void()}
-                .startWith(Void()),
-            forAsset: LWRxAuthManager.instance.baseAsset.request()
-        )
-    }()
-    
-    lazy var documentsUploadViewModel: KycUploadDocumentsViewModel = {
-        return KycUploadDocumentsViewModel(
-            forImage: self.pickedImage.asObservable(),
-            withType: self.documentType
-        )
-    }()
-    
-    let documentType = Variable<KYCDocumentType?>(nil)
     
     let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
     
@@ -59,14 +40,16 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
     fileprivate lazy var controllers: [UIViewController] = {
         guard let storyboard = self.storyboard else {return []}
         
-        let step1 = KYCStep1ViewController.create(withViewModel: self.documentsViewModel, andUploadViewModel: self.documentsUploadViewModel, andDisposeBag: self.disposeBag)
-        let step2 = KYCStep2ViewController.create(withViewModel: self.documentsViewModel, andUploadViewModel: self.documentsUploadViewModel, andDisposeBag: self.disposeBag)
-        let step3 = KYCStep3ViewController.create(withViewModel: self.documentsViewModel, andUploadViewModel: self.documentsUploadViewModel, andDisposeBag: self.disposeBag)
-        
-        return [step1, step2, step3]
+        return [
+            KYCStepViewController.create(withType: .selfie),
+            KYCStepViewController.create(withType: .idCard),
+            KYCStepViewController.create(withType: .proofOfAddress)
+        ]
     }()
     
     override func viewDidLoad() {
+        pagerBehaviour = PagerTabStripBehaviour.common(skipIntermediateViewControllers: true)
+        
         // change selected bar color
         guard let font = UIFont(name: "Geomanist-Book", size: 14) else {return}
         settings.style.buttonBarBackgroundColor = .clear
@@ -85,43 +68,72 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
             newCell?.label.alpha = 1.0
         }
         
+        // MARK: Button bindings
+        cameraButton.rx.tap
+            .withLatestFrom(selectedScreenSubject)
+            .subscribe(onNext: { controller in
+                controller.pickerTrigger.onNext(())
+            })
+            .disposed(by: disposeBag)
+        
+        
+        // MARK: Current screen bindings
+        let currentScreen = selectedScreenSubject.asObservable()
+            .shareReplay(1)
+        
+        let currentScreenDocuments = currentScreen
+            .flatMapLatest { $0.documentsViewModel.documents }
+            .shareReplay(1)
+        
         nextStepButton.rx.tap.asObservable()
-            .withLatestFrom(documentsViewModel.documents)
+            .withLatestFrom(currentScreenDocuments)
             .subscribeToMoveNext(withVC: self)
             .disposed(by: disposeBag)
         
-        documentsUploadViewModel.image
+        currentScreen
+            .flatMapLatest { $0.documentsUploadViewModel.image.asObservable() }
             .filterNil()
+            .asDriver(onErrorJustReturn: UIImage())
             .driveToReplacePlaceHolder(inVC: self)
             .disposed(by: disposeBag)
         
-        Driver.merge(
-            documentsViewModel.error,
-            documentsUploadViewModel.error
-        )
-        .drive(onNext: {[weak self] error in
-            guard let `self` = self else {return}
-            self.show(error: error)
-        })
-        .disposed(by: disposeBag)
+        currentScreen
+            .flatMapLatest { Observable<Bool>.merge(
+                $0.documentsViewModel.loadingViewModel.isLoading,
+                $0.documentsUploadViewModel.loadingViewModel.isLoading)
+            }
+            .bind(to: rx.loading)
+            .disposed(by: disposeBag)
         
-        documentsViewModel.documents
+        currentScreen
+            .flatMapLatest {
+                Driver.merge($0.documentsViewModel.error, $0.documentsUploadViewModel.error)
+            }
+            .asDriver(onErrorJustReturn: [:])
+            .drive(onNext: { [weak self] error in
+                guard let `self` = self else { return }
+                self.show(error: error)
+            })
+            .disposed(by: disposeBag)
+        
+        currentScreenDocuments
             .subscribeToFillIcon(forType: .selfie, inButtonBar: self.buttonBarView)
             .disposed(by: disposeBag)
         
-        documentsViewModel.documents
+        currentScreenDocuments
             .subscribeToFillIcon(forType: .idCard, inButtonBar: self.buttonBarView)
             .disposed(by: disposeBag)
         
-        documentsViewModel.documents
+        currentScreenDocuments
             .subscribeToFillIcon(forType: .proofOfAddress,  inButtonBar: self.buttonBarView)
             .disposed(by: disposeBag)
         
-        documentType.asObservable()
+        currentScreen
+            .flatMapLatest { $0.type.asObservable() }
             .bindToDisable(button: self.nextStepButton)
             .disposed(by: disposeBag)
         
-        documentsViewModel.documents
+        currentScreenDocuments
             .filterAnyRejected()
             .mapToFailedViewController(withStoryBoard: self.storyboard)
             .subscribe(onNext: {[weak self] controller in
@@ -129,7 +141,7 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
             })
             .disposed(by: disposeBag)
         
-        documentsViewModel.documents
+        currentScreenDocuments
             .filterAllUploadedOrApproved()
             .subscribe(onNext: {[weak self] _ in
                 self?.dismiss(animated: true) {
@@ -139,7 +151,8 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
             .disposed(by: disposeBag)
         
         let documentsAndType = Observable
-            .combineLatest(documentsViewModel.documents, documentType.asObservable().filterNil())
+            .combineLatest(currentScreenDocuments, currentScreen.asObservable().map { $0.kYCDocumentType })
+            .shareReplay(1)
             
         documentsAndType
             .bindToChangeText(ofButton: self.cameraButton)
@@ -166,55 +179,33 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
             .bind(to: cameraButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        let imagePicker = UIImagePickerController()
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker.sourceType = .camera
-            imagePicker.allowsEditing = false
-        } else {
-            imagePicker.sourceType = .photoLibrary
-        }
-        
-        imagePicker.delegate = self
-        
-        cameraButton.rx.tap.bind{ [weak self] in
-            self?.cameraButton.isEnabled = false
-            self?.present(imagePicker, animated: true, completion: nil)
-        }.disposed(by: disposeBag)
-        
         super.viewDidLoad()
     }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.pickedImage.value = pickedImage
-        }
-        
-        dismissViewController(picker, animated: true)
-    }
-
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.cameraButton.isEnabled = true
-        dismissViewController(picker, animated: true)
-    }
-    
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         return controllers
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func dismiss(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int) {
+        super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex)
+        
+        // TODO: Change this tab controller
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            guard let kycStepVC = self.controllers[self.currentIndex] as? KYCStepViewController else { return }
+            self.selectedScreenSubject.onNext(kycStepVC)
+            
+            print(kycStepVC.kYCDocumentType.getTabTitle())
+        })
+        
+    }
+    
     override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int, withProgressPercentage progressPercentage: CGFloat, indexWasChanged: Bool) {
         super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex, withProgressPercentage: progressPercentage, indexWasChanged: indexWasChanged)
-        self.documentType.value = self.currentKYCDocumentType
+        
     }
 
     override func configure(cell: KYCTabCollectionViewCell, for indicatorInfo: IndicatorInfo) {
@@ -222,16 +213,6 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
         cell.image.image = indicatorInfo.image
         cell.image.isHidden = indicatorInfo.image == nil
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 // MARK:- Computed properties
