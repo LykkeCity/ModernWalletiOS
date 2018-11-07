@@ -13,37 +13,32 @@ import RxSwift
 import RxCocoa
 
 class KYCStep3ViewController: UIViewController, KYCStepBinder {
+    
     @IBOutlet weak var photoPlaceholder: KYCPhotoPlaceholderView!
     
-    let disposeBag = DisposeBag()
+    var disposeBag: DisposeBag!
     var documentsViewModel: KYCDocumentsViewModel!
     var documentsUploadViewModel: KycUploadDocumentsViewModel!
     
     lazy var loadingViewModel: LoadingViewModel = self.loadingViewModelFactory()
+    
+    static func create(withViewModel documentsViewModel: KYCDocumentsViewModel, andUploadViewModel uploadViewModel: KycUploadDocumentsViewModel, andDisposeBag disposeBag: DisposeBag) -> KYCStep3ViewController {
+        guard let controller = UIStoryboard(name: "KYC", bundle: nil)
+            .instantiateViewController(withIdentifier: "kycStep3VC") as? KYCStep3ViewController else {
+                return KYCStep3ViewController()
+        }
+        controller.documentsViewModel = documentsViewModel
+        controller.documentsUploadViewModel = uploadViewModel
+        controller.disposeBag = disposeBag
+        return controller
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         photoPlaceholder.hintLabel.text = Localize("kyc.process.titles.address")
         photoPlaceholder.imageView.image = #imageLiteral(resourceName: "kycAddress")
         bindKYC(disposedBy: disposeBag)
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension KYCStep3ViewController: IndicatorInfoProvider {

@@ -59,17 +59,9 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
     fileprivate lazy var controllers: [UIViewController] = {
         guard let storyboard = self.storyboard else {return []}
         
-        let step1 = storyboard.instantiateViewController(withIdentifier: "kycStep1VC") as! KYCStep1ViewController
-        let step2 = storyboard.instantiateViewController(withIdentifier: "kycStep2VC") as! KYCStep2ViewController
-        let step3 = storyboard.instantiateViewController(withIdentifier: "kycStep3VC") as! KYCStep3ViewController
-        
-        step1.documentsViewModel = self.documentsViewModel
-        step2.documentsViewModel = self.documentsViewModel
-        step3.documentsViewModel = self.documentsViewModel
-        
-        step1.documentsUploadViewModel = self.documentsUploadViewModel
-        step2.documentsUploadViewModel = self.documentsUploadViewModel
-        step3.documentsUploadViewModel = self.documentsUploadViewModel
+        let step1 = KYCStep1ViewController.create(withViewModel: self.documentsViewModel, andUploadViewModel: self.documentsUploadViewModel, andDisposeBag: self.disposeBag)
+        let step2 = KYCStep2ViewController.create(withViewModel: self.documentsViewModel, andUploadViewModel: self.documentsUploadViewModel, andDisposeBag: self.disposeBag)
+        let step3 = KYCStep3ViewController.create(withViewModel: self.documentsViewModel, andUploadViewModel: self.documentsUploadViewModel, andDisposeBag: self.disposeBag)
         
         return [step1, step2, step3]
     }()
@@ -197,13 +189,13 @@ class KYCTabStripViewController: BaseButtonBarPagerTabStripViewController<KYCTab
             self.pickedImage.value = pickedImage
         }
         
-        dismiss(animated: true, completion: nil)
+        dismissViewController(picker, animated: true)
     }
 
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.cameraButton.isEnabled = true
-        dismiss(animated: true, completion: nil)
+        dismissViewController(picker, animated: true)
     }
     
     
