@@ -330,11 +330,9 @@ extension PinGetViewModel {
                     vc?.dismiss(success: true, animated: true)
                 }),
             error
-                .map { [weak vc] error in
+                .do(onNext: { [weak vc] _ in
                     vc?.shakeAndReset()
-                    
-                    return error
-                }
+                })
                 .subscribe(vc.rx.error),
             loadingViewModel.isLoading
                 .asDriver(onErrorJustReturn: false)
