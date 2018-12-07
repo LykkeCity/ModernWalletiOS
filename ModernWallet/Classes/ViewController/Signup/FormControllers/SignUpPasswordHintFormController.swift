@@ -92,74 +92,23 @@ class SignUpPasswordHintFormController: FormController {
             .filterError()
             .bind(to: error)
             .disposed(by: disposeBag)
-
-        #if TEST
-            
-            let allAssetRequest = viewModel.result.asObservable()
-                .filterSuccess()
-                .flatMap { _ in
-                    return LWRxAuthManager.instance.allAssets.request()
-                }
-                .shareReplay(1)
-            
-            let setBaseAssetRequest = allAssetRequest
-                .filterSuccess()
-                .map { (assets) in
-                    return assets.filter { $0.displayId == "USD" }.first?.identity ?? "USD"
-                }
-                .flatMap { assetId in
-                    LWRxAuthManager.instance.baseAssetSet.request(withParams: assetId)
-                }
-                .shareReplay(1)
-            
-            testLoadingViewModel = LoadingViewModel([
-                viewModel.loading,
-                allAssetRequest.isLoading(),
-                setBaseAssetRequest.isLoading()
-            ])
-            
-            testLoadingViewModel?.isLoading
-                .asDriver(onErrorJustReturn: false)
-                .drive(onNext: { button.isEnabled = !$0 })
-                .disposed(by: disposeBag)
-            
-            testLoadingViewModel?.isLoading
-                .bind(to: loading)
-                .disposed(by: disposeBag)
-
-            // use zip in order to wait till loading for all above three calls has finished before going to next screen.
-            let isLoading = Observable.zip(
-                testLoadingViewModel!.isLoading,
-                setBaseAssetRequest.map { $0.isLoading }
-            ) { $0 && $1 }
-            .shareReplay(1)
         
-            Observable.zip(
-                testLoadingViewModel!.isLoading.filter{ !$0 },
-                setBaseAssetRequest.filter{ !$0.isLoading }
-            ) { _,_ in Void() }
-                .waitFor(isLoading)
-                .bind(to: nextTrigger)
-                .disposed(by: disposeBag)
-            
-        #else
-            
-            viewModel.result.asObservable()
-                .filterSuccess()
-                .map { _ in return () }
-                .waitFor(viewModel.loading)
-                .bind(to: nextTrigger)
-                .disposed(by: disposeBag)
-
-            viewModel.loading
-                .asDriver(onErrorJustReturn: false)
-                .drive(onNext: { button.isEnabled = !$0 })
-                .disposed(by: disposeBag)
-
-            viewModel.loading
-                .bind(to: loading)
-                .disposed(by: disposeBag)
-        #endif
+        viewModel.loadingViewModel.isLoading
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { button.isEnabled = !$0 })
+            .disposed(by: disposeBag)
+        
+        viewModel.loadingViewModel.isLoading
+            .bind(to: loading)
+            .disposed(by: disposeBag)
+        
+        viewModel.result.asObservable()
+            .filterSuccess()
+            .map { _ in return () }
+            .observeOn(MainScheduler.instance)
+            .waitFor(viewModel.loadingViewModel.isLoading)
+            .bind(to: nextTrigger)
+            .disposed(by: disposeBag)
         
         hintTextField.rx.returnTap
             .withLatestFrom(viewModel.isValidHint)
