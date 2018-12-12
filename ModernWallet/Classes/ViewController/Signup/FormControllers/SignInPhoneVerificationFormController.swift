@@ -103,7 +103,16 @@ class SignInPhoneVerificationFormController: FormController {
             .bind(to: toast)
             .disposed(by: disposeBag)
         
-        verifyViewModel.loadingViewModel.isLoading
+        sendViewModel.loadingViewModel.isLoading
+            .map{ !$0 }
+            .bind(to: self.resendSmsButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        Observable
+            .merge(
+                sendViewModel.loadingViewModel.isLoading.skip(2),
+                verifyViewModel.loadingViewModel.isLoading
+            )
             .observeOn(MainScheduler.instance)
             .bind(to: loading)
             .disposed(by: disposeBag)

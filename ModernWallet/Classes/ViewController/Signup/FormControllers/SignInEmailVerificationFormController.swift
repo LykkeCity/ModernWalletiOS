@@ -100,6 +100,11 @@ class SignInEmailVerificationFormController: FormController {
             .bind(to: toast)
             .disposed(by: disposeBag)
         
+        sendViewModel.loadingViewModel.isLoading
+            .map{ !$0 }
+            .bind(to: self.resendEmailButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
         let emailCode = emailCodeTextField.rx.text.orEmpty
             .shareReplay(1)
             
@@ -126,7 +131,11 @@ class SignInEmailVerificationFormController: FormController {
             .bind(to: nextTrigger)
             .disposed(by: disposeBag)
         
-        verifyViewModel.loadingViewModel.isLoading
+        Observable
+            .merge(
+                sendViewModel.loadingViewModel.isLoading.skip(2),
+                verifyViewModel.loadingViewModel.isLoading
+            )
             .observeOn(MainScheduler.instance)
             .bind(to: loading)
             .disposed(by: disposeBag)
