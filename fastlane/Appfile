@@ -3,7 +3,7 @@ apple_id("apple@primeholding.com") # Your Apple email address
 
 
 itc_team_id("118074238") # App Store Connect Team ID
-team_id("ZNE622G954") # Developer Portal Team ID
+team_id("SPFVYM4YAV") # Developer Portal Team ID
 
 
 # For more information about the Appfile, see:
