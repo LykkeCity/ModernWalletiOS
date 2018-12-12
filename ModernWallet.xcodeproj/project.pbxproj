@@ -1056,7 +1056,7 @@
 				TargetAttributes = {
 					CF21DC7A1C17590E00D2399E = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = ZNE622G954;
+						DevelopmentTeam = SPFVYM4YAV;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -1546,7 +1546,7 @@
 				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = ZNE622G954;
+				DEVELOPMENT_TEAM = SPFVYM4YAV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1564,11 +1564,11 @@
 					"$(PROJECT_DIR)/ModernWallet/Classes/Model/Core/Security",
 					"$(PROJECT_DIR)/ModernWallet/Classes/Model/Core/CoreBitcoin",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.primeholding.modernmoney;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lykkex.modernmoney;
 				PRODUCT_MODULE_NAME = ModernMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "610b3fc9-8085-4dd4-85ec-590b643ab024";
-				PROVISIONING_PROFILE_SPECIFIER = "com.primeholding.modernmoney - Development";
+				PROVISIONING_PROFILE_SPECIFIER = "modern-development";
 				SWIFT_OBJC_BRIDGING_HEADER = "ModernWallet/Classes/ModernWallet-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1589,7 +1589,7 @@
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 11;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = ZNE622G954;
+				DEVELOPMENT_TEAM = SPFVYM4YAV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1607,11 +1607,11 @@
 					"$(PROJECT_DIR)/ModernWallet/Classes/Model/Core/Security",
 					"$(PROJECT_DIR)/ModernWallet/Classes/Model/Core/CoreBitcoin",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.primeholding.modernmoney;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lykkex.modernmoney;
 				PRODUCT_MODULE_NAME = ModernMoney;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "610b3fc9-8085-4dd4-85ec-590b643ab024";
-				PROVISIONING_PROFILE_SPECIFIER = "com.primeholding.modernmoney AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "modern-distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "ModernWallet/Classes/ModernWallet-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1686,7 +1686,7 @@
 				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = ZNE622G954;
+				DEVELOPMENT_TEAM = SPFVYM4YAV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1705,11 +1705,11 @@
 					"$(PROJECT_DIR)/ModernWallet/Classes/Model/Core/CoreBitcoin",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"TEST\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.primeholding.modernmoney;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lykkex.modernmoney;
 				PRODUCT_MODULE_NAME = ModernMoney;
 				PRODUCT_NAME = "$(TARGET_NAME).Test";
 				PROVISIONING_PROFILE = "610b3fc9-8085-4dd4-85ec-590b643ab024";
-				PROVISIONING_PROFILE_SPECIFIER = "com.primeholding.modernmoney - Development";
+				PROVISIONING_PROFILE_SPECIFIER = "modern-development";
 				SWIFT_OBJC_BRIDGING_HEADER = "ModernWallet/Classes/ModernWallet-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1775,7 +1775,7 @@
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 11;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = ZNE622G954;
+				DEVELOPMENT_TEAM = SPFVYM4YAV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1794,11 +1794,11 @@
 					"$(PROJECT_DIR)/ModernWallet/Classes/Model/Core/CoreBitcoin",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"TEST\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.primeholding.modernmoney;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lykkex.modernmoney;
 				PRODUCT_MODULE_NAME = ModernMoney;
 				PRODUCT_NAME = "$(TARGET_NAME).Test";
 				PROVISIONING_PROFILE = "610b3fc9-8085-4dd4-85ec-590b643ab024";
-				PROVISIONING_PROFILE_SPECIFIER = "com.primeholding.modernmoney AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "modern-distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "ModernWallet/Classes/ModernWallet-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
