@@ -45,7 +45,8 @@ platform :ios do
     
     upload_to_testflight(
       skip_waiting_for_build_processing: true,
-      ipa: "build/ModernMoney.ipa"
+      ipa: "build/ModernMoney.ipa",
+      itc_provider: "SPFVYM4YAV"
     )
 
      # Commit the version bump
