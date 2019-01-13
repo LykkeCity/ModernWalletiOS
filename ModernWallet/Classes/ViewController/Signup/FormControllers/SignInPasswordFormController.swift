@@ -63,7 +63,19 @@ class SignInPasswordFormController: RecoveryController {
         return Localize("auth.newDesign.signin")
     }
     
+    private var needToFillPhone = false
+    private var needToFillPin = false
+    
     var next: FormController? {
+        if needToFillPhone {
+            let email = LWKeychainManager.instance()?.personalData()?.email ?? ""
+            return SignUpFillPhoneFormController(email: email)
+        }
+        
+        if needToFillPin {
+            return nil // look at segueIdentifier
+        }
+        
         return SignInPhoneVerificationFormController(phone: LWKeychainManager.instance()?.personalData()?.phone ?? "", email: self.email)
     }
     
@@ -72,10 +84,20 @@ class SignInPasswordFormController: RecoveryController {
     }
     
     var segueIdentifier: String? {
+        if needToFillPin {
+            return "CreateKey"
+        }
+        
         return nil
     }
     
+    
+    
     private var pinViewController: PinViewController {
+        if needToFillPin {
+            return PinViewController.createPinViewControllerWithoutCloseButton
+        }
+        
         return PinViewController.enterPinViewController(title: Localize("auth.newDesign.enterPin"), isTouchIdEnabled: false)
     }
     
@@ -125,9 +147,17 @@ class SignInPasswordFormController: RecoveryController {
             .bind(to: error)
             .disposed(by: disposeBag)
         
-        let pinViewControllerObservable = loginViewModel.result.asObservable().filterSuccess()
-            .map { _ in return self.pinViewController }
-            .shareReplay(1)
+        let pinViewControllerObservable = Driver
+            .merge(
+                loginViewModel.needToFillPin
+                    .do(onNext: { [weak self] in
+                        self?.needToFillPin = true
+                    }),
+                loginViewModel.showPinViewController
+            )
+            .map{ [weak self] in return self?.pinViewController }
+            .filterNil()
+            .asObservable()
         
         let pinResult = pinViewControllerObservable
             .flatMap { $0.complete }
@@ -145,9 +175,18 @@ class SignInPasswordFormController: RecoveryController {
             .bind(to: error)
             .disposed(by: disposeBag)
 
-        pinResult
+        let needToFillPhone =  loginViewModel.needToFillPhone
+            .asObservable()
+            .do(onNext: { [weak self] in
+                self?.needToFillPhone = true
+            })
+        
+        let pinSucceded = pinResult
             .filter{ $0 }
             .map{ _ in () }
+        
+        Observable
+            .merge(needToFillPhone, pinSucceded)
             .bind(to: nextTrigger)
             .disposed(by: disposeBag)
         
