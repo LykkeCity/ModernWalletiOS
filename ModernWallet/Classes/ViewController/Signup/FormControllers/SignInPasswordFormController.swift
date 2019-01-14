@@ -63,20 +63,10 @@ class SignInPasswordFormController: RecoveryController {
         return Localize("auth.newDesign.signin")
     }
     
-    private var needToFillPhone = false
-    private var needToFillPin = false
+    private var needToFill: LogInViewModel.NeedToFill? = nil
     
     var next: FormController? {
-        if needToFillPhone {
-            let email = LWKeychainManager.instance()?.personalData()?.email ?? ""
-            return SignUpFillPhoneFormController(email: email)
-        }
-        
-        if needToFillPin {
-            return nil // look at segueIdentifier
-        }
-        
-        return SignInPhoneVerificationFormController(phone: LWKeychainManager.instance()?.personalData()?.phone ?? "", email: self.email)
+        return needToFill.asController(email: self.email)
     }
     
     var recoveryStep: RecoveryController? {
@@ -84,7 +74,7 @@ class SignInPasswordFormController: RecoveryController {
     }
     
     var segueIdentifier: String? {
-        if needToFillPin {
+        if self.needToFill?.isPin() ?? false {
             return "CreateKey"
         }
         
@@ -94,7 +84,7 @@ class SignInPasswordFormController: RecoveryController {
     
     
     private var pinViewController: PinViewController {
-        if needToFillPin {
+        if self.needToFill?.isPin() ?? false {
             return PinViewController.createPinViewControllerWithoutCloseButton
         }
         
@@ -147,17 +137,22 @@ class SignInPasswordFormController: RecoveryController {
             .bind(to: error)
             .disposed(by: disposeBag)
         
-        let pinViewControllerObservable = Driver
+        let needToFillDriver = loginViewModel.needToFill
+            .asObservable()
+            .observeOn(MainScheduler.asyncInstance)
+            .do(onNext: { [weak self]  in self?.needToFill = $0 })
+            .shareReplay(1)
+        
+        let pinViewControllerObservable = Observable
             .merge(
-                loginViewModel.needToFillPin
-                    .do(onNext: { [weak self] in
-                        self?.needToFillPin = true
-                    }),
-                loginViewModel.showPinViewController
+                needToFillDriver
+                    .filter{ $0.isPin() }
+                    .map{ _ in () },
+                loginViewModel.showPinViewController.asObservable()
             )
             .map{ [weak self] in return self?.pinViewController }
             .filterNil()
-            .asObservable()
+            .shareReplay(1)
         
         let pinResult = pinViewControllerObservable
             .flatMap { $0.complete }
@@ -175,18 +170,20 @@ class SignInPasswordFormController: RecoveryController {
             .bind(to: error)
             .disposed(by: disposeBag)
 
-        let needToFillPhone =  loginViewModel.needToFillPhone
-            .asObservable()
-            .do(onNext: { [weak self] in
-                self?.needToFillPhone = true
-            })
+        let needToFill = needToFillDriver
+            .filter{ !$0.isPin() }
+            .map{ _ in () }
+            .waitFor(loginViewModel.loading)
+            .shareReplay(1)
         
         let pinSucceded = pinResult
             .filter{ $0 }
             .map{ _ in () }
+            .shareReplay(1)
         
         Observable
-            .merge(needToFillPhone, pinSucceded)
+            .merge(needToFill, pinSucceded)
+            .observeOn(MainScheduler.asyncInstance)
             .bind(to: nextTrigger)
             .disposed(by: disposeBag)
         
@@ -198,9 +195,8 @@ class SignInPasswordFormController: RecoveryController {
     func unbind() {
         disposeBag = DisposeBag()
     }
-    
 }
-
+    
 extension Observable where Element == Void {
     
     func bindToResignFirstResponder(views: [UIView]) -> Disposable {
@@ -211,4 +207,27 @@ extension Observable where Element == Void {
         })
     }
     
+}
+
+
+fileprivate extension Optional where Wrapped == LogInViewModel.NeedToFill {
+    
+    func asController(email: String) -> FormController? {
+        guard let needToFill = self else {
+            return SignInPhoneVerificationFormController(phone: LWKeychainManager.instance()?.personalData()?.phone ?? "", email: email)
+        }
+        
+        let email = LWKeychainManager.instance()?.personalData()?.email ?? ""
+        
+        switch needToFill {
+        case .fullName:
+            return SignUpFillProfileFormController(email: email)
+            
+        case .phone:
+            return SignUpFillPhoneFormController(email: email)
+            
+        case .pin:
+            return nil // look at segueIdentifier
+        }
+    }
 }
