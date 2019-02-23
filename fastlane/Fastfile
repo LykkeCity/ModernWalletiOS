@@ -1,0 +1,69 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    
+    # ensure there are new commits after the last version bump
+    if last_git_commit[:message]["Version Bump"]
+      next
+    end
+
+    xcodeproj = "ModernWallet.xcodeproj"
+    workspace = "ModernWallet.xcworkspace"
+    scheme = "ModernMoney"
+
+    # Ensure that your git status is not dirty
+    ensure_git_status_clean
+
+    increment_build_number(
+      build_number: latest_testflight_build_number + 1,
+      xcodeproj: xcodeproj
+    )
+    
+    build_app(
+      workspace: workspace, 
+      scheme: scheme,
+      output_directory: "build",
+      output_name: "ModernMoney.ipa"
+    )
+    
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true,
+      ipa: "build/ModernMoney.ipa",
+      itc_provider: "SPFVYM4YAV"
+    )
+
+     # Commit the version bump
+    commit_version_bump(xcodeproj: xcodeproj)
+
+    # Add a git tag for this build. This will automatically
+    # use an appropriate git tag name
+    add_git_tag
+
+    # Push the new commit and tag back to your git remote
+    push_to_git_remote
+  end
+
+  desc "Get certificate and provisioning profile"
+  lane :obtain_signing_entities do
+    get_certificates           # invokes cert
+    get_provisioning_profile   # invokes sigh
+  end
+
+end

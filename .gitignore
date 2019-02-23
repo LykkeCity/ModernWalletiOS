@@ -1,0 +1,15 @@
+Pods/
+.DS_Store
+.idea/
+*.xcworkspace
+ModernWallet.xcodeproj/xcuserdata/
+ModernWallet.xcworkspace/xcuserdata/
+ModernWallet/.DS_Store
+ModernWallet/Classes/.DS_Store
+ModernWallet/Resources/.DS_Store
+ModernWallet/Resources/Images/.DS_Store
+build/
+fastlane/report.xml
+fastlane/README.md
+ModernMoney.ipa
+ModernMoney.app.dSYM.zip

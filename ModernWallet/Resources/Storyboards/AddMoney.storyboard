@@ -1,0 +1,1744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JNW-9u-JrF">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Geomanist-Book.otf">
+            <string>Geomanist-Book</string>
+        </array>
+        <array key="Geomanist-Light.otf">
+            <string>Geomanist-Light</string>
+        </array>
+        <array key="Geomanist-Regular.otf">
+            <string>Geomanist</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Add Money View Controller-->
+        <scene sceneID="lod-Xg-kwi">
+            <objects>
+                <viewController storyboardIdentifier="AddMoney" id="JNW-9u-JrF" customClass="AddMoneyViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6PT-V0-2PV"/>
+                        <viewControllerLayoutGuide type="bottom" id="YRM-zR-LBK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m4s-bH-D6z" customClass="BackgroundView" customModule="ModernMoney" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFP-x2-PRp" userLabel="Total Balance">
+                                <rect key="frame" x="0.0" y="20" width="414" height="274.33333333333331"/>
+                                <connections>
+                                    <segue destination="CBF-9f-bxA" kind="embed" id="Zvq-8b-KdN"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQw-ge-W3y">
+                                <rect key="frame" x="0.0" y="20" width="60" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="KG8-gH-bV2"/>
+                                    <constraint firstAttribute="width" secondItem="FQw-ge-W3y" secondAttribute="height" multiplier="1:0.8" id="gQs-JX-6hT"/>
+                                </constraints>
+                                <state key="normal" image="backArrow"/>
+                                <connections>
+                                    <action selector="backAction:" destination="JNW-9u-JrF" eventType="touchUpInside" id="p2K-hv-RVJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD MONEY FROM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzr-PJ-lmk">
+                                <rect key="frame" x="147.66666666666666" y="234" width="118.99999999999997" height="15.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yI8-fa-J6c">
+                                <rect key="frame" x="199.66666666666666" y="257.33333333333331" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="qiv-Mb-RwV"/>
+                                    <constraint firstAttribute="width" constant="15" id="wYX-tg-dXH"/>
+                                </constraints>
+                                <state key="normal" image="ovalInActive"/>
+                                <state key="selected" image="ovalActive"/>
+                            </button>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="em3-dq-0PP">
+                                <rect key="frame" x="223" y="257.33333333333331" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="MB2-JW-UHp"/>
+                                    <constraint firstAttribute="width" constant="15" id="w3y-DQ-vDq"/>
+                                </constraints>
+                                <state key="normal" image="ovalInActive"/>
+                                <state key="selected" image="ovalActive"/>
+                            </button>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaY-8G-jPl">
+                                <rect key="frame" x="176" y="257.33333333333331" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="8X4-0g-XqL"/>
+                                    <constraint firstAttribute="height" constant="15" id="Sy3-iZ-0EW"/>
+                                </constraints>
+                                <state key="normal" image="ovalInActive"/>
+                                <state key="selected" image="ovalActive"/>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BuS-gy-3mq" userLabel="StartContainer">
+                                <rect key="frame" x="0.0" y="294.33333333333326" width="414" height="441.66666666666674"/>
+                                <connections>
+                                    <segue destination="QnG-09-xWr" kind="embed" id="5ec-X4-sPd"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yI8-fa-J6c" firstAttribute="top" secondItem="Bzr-PJ-lmk" secondAttribute="bottom" constant="8" id="0pG-5f-qOH"/>
+                            <constraint firstItem="FQw-ge-W3y" firstAttribute="top" secondItem="6PT-V0-2PV" secondAttribute="bottom" id="5tj-HU-SQo"/>
+                            <constraint firstItem="YRM-zR-LBK" firstAttribute="top" secondItem="BuS-gy-3mq" secondAttribute="bottom" id="8OF-rU-wCQ"/>
+                            <constraint firstItem="BuS-gy-3mq" firstAttribute="centerX" secondItem="m4s-bH-D6z" secondAttribute="centerX" id="Ba1-Rt-2wb"/>
+                            <constraint firstItem="YRM-zR-LBK" firstAttribute="top" secondItem="BuS-gy-3mq" secondAttribute="bottom" id="CVB-Zk-VzH"/>
+                            <constraint firstItem="yI8-fa-J6c" firstAttribute="centerX" secondItem="m4s-bH-D6z" secondAttribute="centerX" id="HD1-cg-Guw"/>
+                            <constraint firstItem="em3-dq-0PP" firstAttribute="leading" secondItem="yI8-fa-J6c" secondAttribute="trailing" constant="8.5" id="IQn-gg-bI1"/>
+                            <constraint firstItem="yI8-fa-J6c" firstAttribute="leading" secondItem="aaY-8G-jPl" secondAttribute="trailing" constant="8.5" id="Mqf-bG-UID"/>
+                            <constraint firstItem="Bzr-PJ-lmk" firstAttribute="centerX" secondItem="m4s-bH-D6z" secondAttribute="centerX" id="NAh-dX-aXn"/>
+                            <constraint firstItem="NFP-x2-PRp" firstAttribute="top" secondItem="6PT-V0-2PV" secondAttribute="bottom" id="TiW-4n-naG"/>
+                            <constraint firstItem="BuS-gy-3mq" firstAttribute="top" secondItem="NFP-x2-PRp" secondAttribute="bottom" id="XZZ-jP-aRq"/>
+                            <constraint firstItem="BuS-gy-3mq" firstAttribute="top" secondItem="aaY-8G-jPl" secondAttribute="bottom" constant="22" id="aLA-JZ-Ih8"/>
+                            <constraint firstItem="NFP-x2-PRp" firstAttribute="leading" secondItem="m4s-bH-D6z" secondAttribute="leading" id="jx2-41-Z8q"/>
+                            <constraint firstItem="em3-dq-0PP" firstAttribute="centerY" secondItem="aaY-8G-jPl" secondAttribute="centerY" id="lTJ-43-9dE"/>
+                            <constraint firstItem="BuS-gy-3mq" firstAttribute="height" secondItem="m4s-bH-D6z" secondAttribute="height" multiplier="0.6" id="niP-h7-VMx"/>
+                            <constraint firstItem="BuS-gy-3mq" firstAttribute="leading" secondItem="m4s-bH-D6z" secondAttribute="leading" id="qLA-9V-iy2"/>
+                            <constraint firstAttribute="trailing" secondItem="NFP-x2-PRp" secondAttribute="trailing" id="wgz-qA-i4C"/>
+                            <constraint firstItem="FQw-ge-W3y" firstAttribute="leading" secondItem="m4s-bH-D6z" secondAttribute="leading" id="xKB-d6-abY"/>
+                            <constraint firstItem="yI8-fa-J6c" firstAttribute="centerY" secondItem="aaY-8G-jPl" secondAttribute="centerY" id="y4q-sd-gt8"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addMoneyLabel" destination="Bzr-PJ-lmk" id="4bB-gc-7v5"/>
+                        <outlet property="backButton" destination="FQw-ge-W3y" id="MNw-hF-FhY"/>
+                        <outlet property="pageIndicatorBtn1" destination="aaY-8G-jPl" id="Rm0-lQ-Ick"/>
+                        <outlet property="pageIndicatorBtn2" destination="yI8-fa-J6c" id="0MV-UA-skw"/>
+                        <outlet property="pageIndicatorBtn3" destination="em3-dq-0PP" id="eXd-cF-jas"/>
+                        <outlet property="pageIndicatorConstraint" destination="HD1-cg-Guw" id="uJe-GH-Uvu"/>
+                        <outlet property="startView" destination="BuS-gy-3mq" id="c2f-0Y-q1x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H7Q-kK-AXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1101.5999999999999" y="449.32533733133437"/>
+        </scene>
+        <!--TotalBalanceViewController-->
+        <scene sceneID="D8y-LM-ytg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="TotalBalanceViewController" id="CBF-9f-bxA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gwz-L7-4aM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1763" y="242"/>
+        </scene>
+        <!--End Bank View Controller-->
+        <scene sceneID="46R-cP-peC">
+            <objects>
+                <viewController id="DBL-f3-YPi" customClass="EndBankViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iem-ud-Hml"/>
+                        <viewControllerLayoutGuide type="bottom" id="L7I-Fa-Lvg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KnU-gi-dzX" customClass="BackgroundView" customModule="ModernMoney" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axe-bV-ehz" userLabel="End Bank View">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnO-ts-R6c" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="2"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="Shc-Bm-p4E"/>
+                                        </constraints>
+                                    </view>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aup-dL-Ynf">
+                                        <rect key="frame" x="0.0" y="2" width="414" height="665"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0IX-cQ-nkx">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="RHc-Hs-cYX">
+                                                        <rect key="frame" x="36" y="26" width="342" height="198"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lTV-It-B9i">
+                                                                <rect key="frame" x="139.33333333333334" y="0.0" width="63.666666666666657" height="66"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkIcon" translatesAutoresizingMaskIntoConstraints="NO" id="enP-NW-86i">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="63.666666666666664" height="38"/>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="SUCCESS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HI-kC-8ly" userLabel="SUCCESS">
+                                                                        <rect key="frame" x="0.0" y="50" width="63.666666666666664" height="16"/>
+                                                                        <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="16"/>
+                                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Lykke bank account details have been sent to your email address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQh-4h-ccr">
+                                                                <rect key="frame" x="5.3333333333333428" y="84" width="331.33333333333326" height="32"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="16"/>
+                                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eK2-tv-gqR">
+                                                                <rect key="frame" x="16" y="134" width="310" height="64"/>
+                                                                <string key="text">Once you have instructed your bank to wire money to the Lykke Bank then please allow 3-5 working days for your %s bank transfer to appear in your Lykke Wallet.</string>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="16"/>
+                                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="eK2-tv-gqR" firstAttribute="leading" secondItem="RHc-Hs-cYX" secondAttribute="leading" constant="16" id="oXJ-Vi-Wsl"/>
+                                                            <constraint firstAttribute="trailing" secondItem="eK2-tv-gqR" secondAttribute="trailing" constant="16" id="r7T-d7-dm3"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="RHc-Hs-cYX" secondAttribute="bottom" constant="26" id="Ber-Ji-WJg"/>
+                                                    <constraint firstItem="RHc-Hs-cYX" firstAttribute="top" secondItem="0IX-cQ-nkx" secondAttribute="top" constant="26" id="jLz-WE-tSe"/>
+                                                    <constraint firstItem="RHc-Hs-cYX" firstAttribute="centerX" secondItem="0IX-cQ-nkx" secondAttribute="centerX" id="jy5-Sh-AXE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="RHc-Hs-cYX" secondAttribute="trailing" constant="36" id="p75-Z7-WqB"/>
+                                                    <constraint firstItem="RHc-Hs-cYX" firstAttribute="leading" secondItem="0IX-cQ-nkx" secondAttribute="leading" constant="36" id="qCP-up-EmE"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="0IX-cQ-nkx" secondAttribute="trailing" id="153-H8-bQf"/>
+                                            <constraint firstItem="0IX-cQ-nkx" firstAttribute="leading" secondItem="Aup-dL-Ynf" secondAttribute="leading" id="Bci-mW-qVY"/>
+                                            <constraint firstItem="0IX-cQ-nkx" firstAttribute="centerX" secondItem="Aup-dL-Ynf" secondAttribute="centerX" id="IEN-sx-ESq"/>
+                                            <constraint firstAttribute="bottom" secondItem="0IX-cQ-nkx" secondAttribute="bottom" id="JS0-zm-I5H"/>
+                                            <constraint firstItem="0IX-cQ-nkx" firstAttribute="top" secondItem="Aup-dL-Ynf" secondAttribute="top" id="foA-tQ-DPT"/>
+                                        </constraints>
+                                    </scrollView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSY-Zp-caI" userLabel="Footer">
+                                        <rect key="frame" x="0.0" y="667" width="414" height="69"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5z-m2-1BO" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="0.0" width="374" height="2"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="aOg-G3-Fja"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="mki-Vn-mCv">
+                                                <rect key="frame" x="122" y="21.666666666666629" width="170" height="26"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PORTFOLIO" translatesAutoresizingMaskIntoConstraints="NO" id="sgE-LK-spX">
+                                                        <rect key="frame" x="0.0" y="3" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="HDW-eV-Neb"/>
+                                                            <constraint firstAttribute="height" constant="20" id="ftu-D4-ewb"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFb-EL-sFI">
+                                                        <rect key="frame" x="32" y="0.0" width="138" height="26"/>
+                                                        <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="12"/>
+                                                        <state key="normal" title="RETURN TO PORTFOLIO"/>
+                                                        <connections>
+                                                            <action selector="portfolioAction:" destination="DBL-f3-YPi" eventType="touchUpInside" id="YXU-sv-cnY"/>
+                                                            <segue destination="pr1-1c-hal" kind="custom" customClass="DrawerEmbedMainControllerSegue" customModule="ModernMoney" customModuleProvider="target" id="Vu1-RS-glB"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="m5z-m2-1BO" secondAttribute="trailing" constant="20" id="1Cw-uh-JPJ"/>
+                                            <constraint firstItem="mki-Vn-mCv" firstAttribute="centerY" secondItem="oSY-Zp-caI" secondAttribute="centerY" id="GTS-m4-OZc"/>
+                                            <constraint firstItem="m5z-m2-1BO" firstAttribute="top" secondItem="oSY-Zp-caI" secondAttribute="top" id="HWQ-mz-9DS"/>
+                                            <constraint firstItem="mki-Vn-mCv" firstAttribute="centerX" secondItem="oSY-Zp-caI" secondAttribute="centerX" id="eN7-Ns-E0Q"/>
+                                            <constraint firstAttribute="height" constant="69" id="pTv-x7-6jT"/>
+                                            <constraint firstItem="m5z-m2-1BO" firstAttribute="leading" secondItem="oSY-Zp-caI" secondAttribute="leading" constant="20" id="tRd-Vj-SqH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="hnO-ts-R6c" firstAttribute="top" secondItem="axe-bV-ehz" secondAttribute="top" id="2Nj-dc-51H"/>
+                                    <constraint firstAttribute="trailing" secondItem="oSY-Zp-caI" secondAttribute="trailing" id="9ps-dJ-AZx"/>
+                                    <constraint firstAttribute="trailing" secondItem="Aup-dL-Ynf" secondAttribute="trailing" id="NRi-ER-QOa"/>
+                                    <constraint firstItem="oSY-Zp-caI" firstAttribute="leading" secondItem="axe-bV-ehz" secondAttribute="leading" id="OCo-OS-jFt"/>
+                                    <constraint firstAttribute="trailing" secondItem="hnO-ts-R6c" secondAttribute="trailing" constant="20" id="Rga-n7-Va2"/>
+                                    <constraint firstItem="oSY-Zp-caI" firstAttribute="top" secondItem="Aup-dL-Ynf" secondAttribute="bottom" id="bOE-Gb-aJR"/>
+                                    <constraint firstItem="Aup-dL-Ynf" firstAttribute="top" secondItem="hnO-ts-R6c" secondAttribute="bottom" id="c9u-J4-b2P"/>
+                                    <constraint firstItem="Aup-dL-Ynf" firstAttribute="leading" secondItem="axe-bV-ehz" secondAttribute="leading" id="dmX-TL-ygg"/>
+                                    <constraint firstItem="hnO-ts-R6c" firstAttribute="leading" secondItem="axe-bV-ehz" secondAttribute="leading" constant="20" id="seY-do-4r0"/>
+                                    <constraint firstAttribute="bottom" secondItem="oSY-Zp-caI" secondAttribute="bottom" id="tiV-gc-LFq"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="00c-5i-tdg" appends="YES" id="DoT-sy-C60"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="axe-bV-ehz" secondAttribute="trailing" id="3GE-jw-L2Q"/>
+                            <constraint firstItem="axe-bV-ehz" firstAttribute="leading" secondItem="KnU-gi-dzX" secondAttribute="leading" id="VSg-Xh-Gey"/>
+                            <constraint firstAttribute="bottom" secondItem="axe-bV-ehz" secondAttribute="bottom" id="Yyw-JD-eoX"/>
+                            <constraint firstItem="axe-bV-ehz" firstAttribute="top" secondItem="KnU-gi-dzX" secondAttribute="top" id="dbf-hg-BGc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="returnToPortfolioButton" destination="iFb-EL-sFI" id="0uV-cA-nhw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qws-ii-nmA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="00c-5i-tdg" userLabel="Bank 1 Navigate Back">
+                    <connections>
+                        <action selector="swipeToNavigateBack:" destination="DBL-f3-YPi" id="BEc-KY-wm6"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2765.5999999999999" y="1248.5757121439281"/>
+        </scene>
+        <!--Portfolio-->
+        <scene sceneID="grK-Re-ozu">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Portfolio" storyboardName="Main" referencedIdentifier="Portfolio" id="pr1-1c-hal" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sSk-wQ-Y8z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3350" y="1185"/>
+        </scene>
+        <!--Bank Info View Controller-->
+        <scene sceneID="ByS-tY-fxW">
+            <objects>
+                <viewController storyboardIdentifier="bankInfo" id="vs0-o8-uYz" customClass="BankInfoViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="biE-i3-zl3"/>
+                        <viewControllerLayoutGuide type="bottom" id="EWT-uS-ftb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BFo-vf-cs4" customClass="BackgroundView" customModule="ModernMoney" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GvH-Z2-P0t" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="374" height="2"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="Qgt-H6-fSy"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hgb-LJ-FQ2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="635"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E98-bY-Zh9">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="286"/>
+                                        <subviews>
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="YA3-Bl-zYH">
+                                                <rect key="frame" x="36" y="26" width="342" height="198"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To deposit funds from your personal bank account to your Lykke Wallet please follow the steps below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5r-dG-b1T">
+                                                        <rect key="frame" x="7.3333333333333428" y="0.0" width="327.66666666666663" height="48"/>
+                                                        <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="16"/>
+                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Click “Email me the Lykke Bank Details” below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHJ-er-SbG">
+                                                        <rect key="frame" x="7.6666666666666572" y="66" width="326.66666666666674" height="16"/>
+                                                        <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="16"/>
+                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Once you recieve the email with the Lykke bank details forward them on to your bank." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI7-6e-pW3">
+                                                        <rect key="frame" x="13.666666666666657" y="100" width="315" height="32"/>
+                                                        <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="16"/>
+                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. Instruct your bank to send the specified amount you require via a wire transfer to the Lykke bank account." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IU9-98-vZc">
+                                                        <rect key="frame" x="15.333333333333343" y="150" width="311.33333333333326" height="48"/>
+                                                        <fontDescription key="fontDescription" name="Geomanist-Light" family="Geomanist" pointSize="16"/>
+                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJZ-QT-U2k">
+                                                <rect key="frame" x="93.666666666666686" y="256" width="227" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="sV0-vB-roI"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Geomanist" family="Geomanist" pointSize="17"/>
+                                                <state key="normal" title="VIEW THE LYKKE BANK DETAILS">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="hUz-FU-4Rj" kind="show" identifier="showSwiftCredentials" id="Bcp-Wg-Cre"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="YA3-Bl-zYH" firstAttribute="leading" secondItem="E98-bY-Zh9" secondAttribute="leading" constant="36" id="2Xo-WF-ZvS"/>
+                                            <constraint firstItem="YA3-Bl-zYH" firstAttribute="top" secondItem="E98-bY-Zh9" secondAttribute="top" constant="26" id="GNM-fU-cNE"/>
+                                            <constraint firstAttribute="trailing" secondItem="YA3-Bl-zYH" secondAttribute="trailing" constant="36" id="Ipo-y9-2hB"/>
+                                            <constraint firstItem="TJZ-QT-U2k" firstAttribute="top" secondItem="YA3-Bl-zYH" secondAttribute="bottom" constant="32" id="WzX-lq-vxJ"/>
+                                            <constraint firstItem="TJZ-QT-U2k" firstAttribute="centerX" secondItem="E98-bY-Zh9" secondAttribute="centerX" id="aI7-fW-7t4"/>
+                                            <constraint firstItem="YA3-Bl-zYH" firstAttribute="centerX" secondItem="E98-bY-Zh9" secondAttribute="centerX" id="s4i-Sw-N5F"/>
+                                            <constraint firstAttribute="bottom" secondItem="TJZ-QT-U2k" secondAttribute="bottom" id="vOD-6m-6YN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="E98-bY-Zh9" firstAttribute="leading" secondItem="Hgb-LJ-FQ2" secondAttribute="leading" id="IrV-6W-Zhq"/>
+                                    <constraint firstAttribute="trailing" secondItem="E98-bY-Zh9" secondAttribute="trailing" id="Jj9-7G-Oj1"/>
+                                    <constraint firstItem="E98-bY-Zh9" firstAttribute="centerX" secondItem="Hgb-LJ-FQ2" secondAttribute="centerX" id="U26-yW-Ikx"/>
+                                    <constraint firstItem="E98-bY-Zh9" firstAttribute="top" secondItem="Hgb-LJ-FQ2" secondAttribute="top" id="bcs-vu-WPp"/>
+                                    <constraint firstAttribute="bottom" secondItem="E98-bY-Zh9" secondAttribute="bottom" id="rpy-T1-ZzB"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbj-dF-GmO" customClass="SubmitButton" customModule="ModernMoney" customModuleProvider="target">
+                                <rect key="frame" x="32" y="635" width="350" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="69" id="zpg-ok-IrP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Geomanist" family="Geomanist" pointSize="17"/>
+                                <state key="normal" title="EMAIL ME LYKKE BANK DETAILS">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Gbj-dF-GmO" secondAttribute="trailing" constant="32" id="8fo-UV-vTH"/>
+                            <constraint firstItem="GvH-Z2-P0t" firstAttribute="top" secondItem="biE-i3-zl3" secondAttribute="bottom" id="9L0-du-tJV"/>
+                            <constraint firstAttribute="trailing" secondItem="GvH-Z2-P0t" secondAttribute="trailing" constant="20" id="GRN-WL-QK9"/>
+                            <constraint firstItem="Gbj-dF-GmO" firstAttribute="leading" secondItem="BFo-vf-cs4" secondAttribute="leading" constant="32" id="L8C-QB-cGw"/>
+                            <constraint firstItem="Gbj-dF-GmO" firstAttribute="top" secondItem="Hgb-LJ-FQ2" secondAttribute="bottom" id="WzF-Fy-hs4"/>
+                            <constraint firstItem="Hgb-LJ-FQ2" firstAttribute="leading" secondItem="BFo-vf-cs4" secondAttribute="leading" id="ZSY-ma-ALp"/>
+                            <constraint firstItem="Hgb-LJ-FQ2" firstAttribute="top" secondItem="BFo-vf-cs4" secondAttribute="top" id="c0T-nv-PLV"/>
+                            <constraint firstItem="EWT-uS-ftb" firstAttribute="top" secondItem="Gbj-dF-GmO" secondAttribute="bottom" constant="32" id="vP8-9i-Fy6"/>
+                            <constraint firstItem="GvH-Z2-P0t" firstAttribute="leading" secondItem="BFo-vf-cs4" secondAttribute="leading" constant="20" id="yB0-5g-a2O"/>
+                            <constraint firstAttribute="trailing" secondItem="Hgb-LJ-FQ2" secondAttribute="trailing" id="z32-M2-xcI"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="cdw-it-QxQ" appends="YES" id="K09-Ty-lWI"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="emailButton" destination="Gbj-dF-GmO" id="Q3B-03-HEv"/>
+                        <segue destination="DBL-f3-YPi" kind="show" identifier="showWireBankEmailSent" id="7oe-27-bfo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cbw-mE-b0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="cdw-it-QxQ">
+                    <connections>
+                        <action selector="swipeToNavigateBack:" destination="vs0-o8-uYz" id="4yj-la-OrB"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2004" y="1147"/>
+        </scene>
+        <!--Bank View Controller-->
+        <scene sceneID="nf7-jC-PcR">
+            <objects>
+                <viewController id="hUz-FU-4Rj" customClass="BankViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9V8-vA-6SS"/>
+                        <viewControllerLayoutGuide type="bottom" id="2kw-TV-KXl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MG1-Yc-LgM" customClass="BackgroundView" customModule="ModernMoney" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFp-03-QR5" userLabel="Bank View">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGl-V9-3hI" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="2"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="Q96-XH-obx"/>
+                                        </constraints>
+                                    </view>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmZ-j4-El9">
+                                        <rect key="frame" x="20" y="10" width="374" height="649"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="WrC-bZ-Lxd">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="229"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="zsi-p4-p4n">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="22"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BIC (SWIFT)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYH-XM-sk2">
+                                                                <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="13"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="BAL PL 122" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htH-1Y-E6I">
+                                                                <rect key="frame" x="128.66666666666663" y="0.0" width="203.33333333333337" height="13"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgS-Ny-p9W">
+                                                                <rect key="frame" x="344" y="0.0" width="30" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="6QP-vl-t6S"/>
+                                                                    <constraint firstAttribute="height" constant="22" id="DQS-c9-PcC"/>
+                                                                </constraints>
+                                                                <state key="normal" image="infoIcon"/>
+                                                                <connections>
+                                                                    <action selector="copyBIC" destination="hUz-FU-4Rj" eventType="touchUpInside" id="Fhv-YR-is9"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="Aq3-ez-Vj2" appends="YES" id="2Lg-pd-Hbx"/>
+                                                        </connections>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="LZV-pt-feg">
+                                                        <rect key="frame" x="0.0" y="34" width="374" height="22"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACCOUNT NUMBER" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXs-Ec-QyK">
+                                                                <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="13"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="LI44 0880 1201 4601 0833 3" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtK-hh-P4H">
+                                                                <rect key="frame" x="128.66666666666663" y="0.0" width="203.33333333333337" height="13"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPA-UQ-D73">
+                                                                <rect key="frame" x="344" y="0.0" width="30" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="22" id="E2w-RU-PjP"/>
+                                                                    <constraint firstAttribute="width" constant="30" id="XLz-hH-MJJ"/>
+                                                                </constraints>
+                                                                <state key="normal" image="infoIcon"/>
+                                                                <connections>
+                                                                    <action selector="copyAccountNumber" destination="hUz-FU-4Rj" eventType="touchUpInside" id="IjG-cG-4ul"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="zoh-N4-px1" appends="YES" id="Jhy-j1-3hJ"/>
+                                                        </connections>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="YNy-Bs-lfA">
+                                                        <rect key="frame" x="0.0" y="68" width="374" height="22"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACCOUNT NAME" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Eg-uK-vbl">
+                                                                <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="13"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="LYKKE CORP UK LIMITED" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1u-Qt-iQM">
+                                                                <rect key="frame" x="128.66666666666663" y="0.0" width="203.33333333333337" height="13"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIt-oz-dVu">
+                                                                <rect key="frame" x="344" y="0.0" width="30" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="JTZ-9I-CJ0"/>
+                                                                    <constraint firstAttribute="height" constant="22" id="bLL-Ys-p4b"/>
+                                                                </constraints>
+                                                                <state key="normal" image="infoIcon"/>
+                                                                <connections>
+                                                                    <action selector="copyAccountName" destination="hUz-FU-4Rj" eventType="touchUpInside" id="9kI-q5-y1V"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="4FU-9X-BLc" appends="YES" id="Enp-sJ-Cd5"/>
+                                                        </connections>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="PCp-7h-Wgm">
+                                                        <rect key="frame" x="0.0" y="102" width="374" height="38.666666666666657"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BANK ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFj-pH-nFM">
+                                                                <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="13"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="BANK ALPINUM - AUSTRASSE 59 POSFACH 1528, 9490 VADUZ LIECHTENSTEIN" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7k2-fw-thk">
+                                                                <rect key="frame" x="128.66666666666663" y="0.0" width="203.33333333333337" height="38.666666666666664"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrW-Z0-A8s">
+                                                                <rect key="frame" x="344" y="0.0" width="30" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="Jhi-KP-DhW"/>
+                                                                    <constraint firstAttribute="height" constant="22" id="vTi-Uf-UDF"/>
+                                                                </constraints>
+                                                                <state key="normal" image="infoIcon"/>
+                                                                <connections>
+                                                                    <action selector="copyBankAddress" destination="hUz-FU-4Rj" eventType="touchUpInside" id="0HD-bQ-nrg"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="rI0-N7-HxP" appends="YES" id="XfL-7K-NbE"/>
+                                                        </connections>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="9RY-Ex-5Ox">
+                                                        <rect key="frame" x="0.0" y="152.66666666666666" width="374" height="38.666666666666657"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMPANY ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXj-kS-FHB">
+                                                                <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="13"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="LYKKE CORP UK LIMITED PAUL STREET 86-90 LONDON EC2A 4NE UNITED KINGDOM" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5I-JC-Nk5">
+                                                                <rect key="frame" x="128.66666666666663" y="0.0" width="203.33333333333337" height="38.666666666666664"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7g-Ce-hQY">
+                                                                <rect key="frame" x="344" y="0.0" width="30" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="3Ia-3S-kM0"/>
+                                                                    <constraint firstAttribute="height" constant="22" id="6IF-Qr-dsz"/>
+                                                                </constraints>
+                                                                <state key="normal" image="infoIcon"/>
+                                                                <connections>
+                                                                    <action selector="copyCompanyAddress" destination="hUz-FU-4Rj" eventType="touchUpInside" id="J1z-w4-xnO"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="LVa-7f-4TV" appends="YES" id="FvG-Yf-0ll"/>
+                                                        </connections>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="BgS-mW-8cq">
+                                                        <rect key="frame" x="0.0" y="203.33333333333334" width="374" height="25.666666666666657"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PURPOSE OF PAYMENT" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5p-el-Knr">
+                                                                <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="25.666666666666668"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="LYKKE SHARES (COINS) PURCHASE USD (EMAIL ADDRESS OF USER)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxv-kZ-EBY">
+                                                                <rect key="frame" x="128.66666666666663" y="0.0" width="203.33333333333337" height="25.666666666666668"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2t-jJ-Uib">
+                                                                <rect key="frame" x="344" y="0.0" width="30" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="b5p-fu-foC"/>
+                                                                    <constraint firstAttribute="height" constant="22" id="eld-Kp-At4"/>
+                                                                </constraints>
+                                                                <state key="normal" image="infoIcon"/>
+                                                                <connections>
+                                                                    <action selector="copyPaymentPurpose" destination="hUz-FU-4Rj" eventType="touchUpInside" id="a84-dZ-hGl"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="Apa-BS-AXq" appends="YES" id="FNj-fb-NsF"/>
+                                                        </connections>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="6Eg-uK-vbl" firstAttribute="width" secondItem="YYH-XM-sk2" secondAttribute="width" id="5Y2-gT-ot0"/>
+                                                    <constraint firstItem="XXj-kS-FHB" firstAttribute="width" secondItem="YYH-XM-sk2" secondAttribute="width" id="GgK-Px-0OJ"/>
+                                                    <constraint firstItem="aXs-Ec-QyK" firstAttribute="width" secondItem="YYH-XM-sk2" secondAttribute="width" id="qjo-j6-x4I"/>
+                                                    <constraint firstItem="e5p-el-Knr" firstAttribute="width" secondItem="YYH-XM-sk2" secondAttribute="width" id="r5t-hA-Ozr"/>
+                                                    <constraint firstItem="jFj-pH-nFM" firstAttribute="width" secondItem="YYH-XM-sk2" secondAttribute="width" id="yBD-Eo-prQ"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="WrC-bZ-Lxd" secondAttribute="trailing" id="ZeP-GO-Gr5"/>
+                                            <constraint firstItem="WrC-bZ-Lxd" firstAttribute="top" secondItem="nmZ-j4-El9" secondAttribute="top" id="bNs-oV-yAw"/>
+                                            <constraint firstAttribute="bottom" secondItem="WrC-bZ-Lxd" secondAttribute="bottom" id="hzo-vn-wpf"/>
+                                            <constraint firstItem="WrC-bZ-Lxd" firstAttribute="width" secondItem="nmZ-j4-El9" secondAttribute="width" id="ojh-G6-ms6"/>
+                                            <constraint firstItem="WrC-bZ-Lxd" firstAttribute="leading" secondItem="nmZ-j4-El9" secondAttribute="leading" id="qlT-mA-B94"/>
+                                        </constraints>
+                                    </scrollView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jr6-iD-Du2" userLabel="Footer">
+                                        <rect key="frame" x="0.0" y="667" width="414" height="69"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="had-n7-hdl" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="0.0" width="374" height="2"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="Qu2-m9-OdS"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AOF-5q-lXp">
+                                                <rect key="frame" x="183.66666666666666" y="24.666666666666629" width="46.666666666666657" height="20"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="iEd-Ae-0TS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="10" height="20"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="BACK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VY-ah-P67">
+                                                        <rect key="frame" x="18" y="0.0" width="28.666666666666671" height="20"/>
+                                                        <fontDescription key="fontDescription" name="Geomanist" family="Geomanist" pointSize="12"/>
+                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="had-n7-hdl" firstAttribute="leading" secondItem="Jr6-iD-Du2" secondAttribute="leading" constant="20" id="OBL-BR-4ab"/>
+                                            <constraint firstItem="AOF-5q-lXp" firstAttribute="centerY" secondItem="Jr6-iD-Du2" secondAttribute="centerY" id="T7o-fe-iyK"/>
+                                            <constraint firstAttribute="trailing" secondItem="had-n7-hdl" secondAttribute="trailing" constant="20" id="Y9V-1Y-KPO"/>
+                                            <constraint firstItem="had-n7-hdl" firstAttribute="top" secondItem="Jr6-iD-Du2" secondAttribute="top" id="fHi-Ou-PRf"/>
+                                            <constraint firstAttribute="height" constant="69" id="mnt-rY-G2h"/>
+                                            <constraint firstItem="AOF-5q-lXp" firstAttribute="centerX" secondItem="Jr6-iD-Du2" secondAttribute="centerX" id="w3w-jr-pgY"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="NtY-ui-pCx" appends="YES" id="EiL-rk-T0m"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="kGl-V9-3hI" secondAttribute="trailing" constant="20" id="AMn-46-KSW"/>
+                                    <constraint firstItem="kGl-V9-3hI" firstAttribute="leading" secondItem="ZFp-03-QR5" secondAttribute="leading" constant="20" id="Gfq-1A-ZKi"/>
+                                    <constraint firstItem="Jr6-iD-Du2" firstAttribute="top" secondItem="nmZ-j4-El9" secondAttribute="bottom" constant="8" id="OHr-0K-OQa"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jr6-iD-Du2" secondAttribute="bottom" id="QGr-sb-yPd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jr6-iD-Du2" secondAttribute="trailing" id="ZNU-BC-WCk"/>
+                                    <constraint firstItem="kGl-V9-3hI" firstAttribute="top" secondItem="ZFp-03-QR5" secondAttribute="top" id="bB3-D3-ldx"/>
+                                    <constraint firstItem="Jr6-iD-Du2" firstAttribute="leading" secondItem="ZFp-03-QR5" secondAttribute="leading" id="ejO-HI-eqa"/>
+                                    <constraint firstItem="nmZ-j4-El9" firstAttribute="leading" secondItem="ZFp-03-QR5" secondAttribute="leading" constant="20" id="o17-hU-xOU"/>
+                                    <constraint firstAttribute="trailing" secondItem="nmZ-j4-El9" secondAttribute="trailing" constant="20" id="pj3-Jh-S0o"/>
+                                    <constraint firstItem="nmZ-j4-El9" firstAttribute="top" secondItem="kGl-V9-3hI" secondAttribute="bottom" constant="8" id="qNB-WC-mFn"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6FZ-dl-PA8" appends="YES" id="4Gx-P9-0xz"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ZFp-03-QR5" secondAttribute="trailing" id="3sc-cz-VyK"/>
+                            <constraint firstItem="ZFp-03-QR5" firstAttribute="top" secondItem="MG1-Yc-LgM" secondAttribute="top" id="Rhg-Ud-4nR"/>
+                            <constraint firstAttribute="bottom" secondItem="ZFp-03-QR5" secondAttribute="bottom" id="prJ-Kf-808"/>
+                            <constraint firstItem="ZFp-03-QR5" firstAttribute="leading" secondItem="MG1-Yc-LgM" secondAttribute="leading" id="xw7-BC-ASz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="accountNameLabel" destination="U1u-Qt-iQM" id="DRq-HM-jVD"/>
+                        <outlet property="accountNameLbl" destination="6Eg-uK-vbl" id="eeO-LN-tIN"/>
+                        <outlet property="accountNumberLabel" destination="DtK-hh-P4H" id="Qsb-Uy-XJq"/>
+                        <outlet property="accountNumberLbl" destination="aXs-Ec-QyK" id="Bj3-MZ-JWt"/>
+                        <outlet property="bankAddressLabel" destination="7k2-fw-thk" id="ETb-lR-plc"/>
+                        <outlet property="bankAddressLbl" destination="jFj-pH-nFM" id="KCQ-Vd-36W"/>
+                        <outlet property="bicLabel" destination="htH-1Y-E6I" id="oe0-rG-VFf"/>
+                        <outlet property="bicLbl" destination="YYH-XM-sk2" id="Jnv-sb-Pmi"/>
+                        <outlet property="companyAddressLabel" destination="c5I-JC-Nk5" id="bLi-4V-ZER"/>
+                        <outlet property="companyAddressLbl" destination="XXj-kS-FHB" id="N4q-IS-iMI"/>
+                        <outlet property="purposeOfPaymentLabel" destination="rxv-kZ-EBY" id="h7D-FC-kxm"/>
+                        <outlet property="purposeOfPaymentLbl" destination="e5p-el-Knr" id="f11-0Z-sIP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9LZ-Gl-jsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Aq3-ez-Vj2" userLabel="Copy BIC">
+                    <connections>
+                        <action selector="copyBIC" destination="hUz-FU-4Rj" id="nBR-nP-cVc"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="zoh-N4-px1" userLabel="Copy Account Number">
+                    <connections>
+                        <action selector="copyAccountNumber" destination="hUz-FU-4Rj" id="hg3-gQ-NlB"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="4FU-9X-BLc" userLabel="Copy Account Name">
+                    <connections>
+                        <action selector="copyAccountName" destination="hUz-FU-4Rj" id="ycY-s0-NP6"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="rI0-N7-HxP" userLabel="Copy Bank Address">
+                    <connections>
+                        <action selector="copyBankAddress" destination="hUz-FU-4Rj" id="Zb9-MU-Vh6"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="LVa-7f-4TV" userLabel="Copy Company Address">
+                    <connections>
+                        <action selector="copyCompanyAddress" destination="hUz-FU-4Rj" id="GKo-yT-nUk"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Apa-BS-AXq" userLabel="Copy Payment Purpose">
+                    <connections>
+                        <action selector="copyPaymentPurpose" destination="hUz-FU-4Rj" id="LgF-Ko-VXb"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="6FZ-dl-PA8" userLabel="BANK 2 Navigate Back">
+                    <connections>
+                        <action selector="swipeToNavigateBack:" destination="hUz-FU-4Rj" id="Xmr-nM-Njf"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer id="NtY-ui-pCx" userLabel="Back">
+                    <connections>
+                        <action selector="backAction:" destination="hUz-FU-4Rj" id="nHX-Td-Hwp"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2765" y="598"/>
+        </scene>
+        <!--Start View Controller-->
+        <scene sceneID="SGE-7E-vX9">
+            <objects>
+                <viewController id="1Fv-iS-Z5H" customClass="StartViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PeL-VC-eKw"/>
+                        <viewControllerLayoutGuide type="bottom" id="1lO-ft-mgd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kOa-k9-xBy" customClass="BackgroundView" customModule="ModernMoney" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="441.66666666666663"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZpU-FK-uPd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="441.66666666666669"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WP9-nH-Bmx" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                        <rect key="frame" x="32" y="0.0" width="350" height="2"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="fiU-1j-kIY"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRr-s6-r9H" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                        <rect key="frame" x="32" y="145.33333333333334" width="350" height="2"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="sQs-TV-tMr"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jph-6m-PK0" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                        <rect key="frame" x="32" y="292.33333333333331" width="350" height="2"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="nXh-XD-BXK"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgQ-uf-nqh">
+                                        <rect key="frame" x="107" y="7" width="200" height="133.33333333333334"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BANK ACCOUNT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zL-p7-k4f">
+                                                <rect key="frame" x="88" y="60.666666666666671" width="79" height="12"/>
+                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="10"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bankIcon" translatesAutoresizingMaskIntoConstraints="NO" id="xCV-Ev-UgV">
+                                                <rect key="frame" x="38" y="49.666666666666657" width="34" height="34"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPa-2E-Bac">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="133.33333333333334"/>
+                                                <connections>
+                                                    <action selector="bankAccountAction:" destination="1Fv-iS-Z5H" eventType="touchUpInside" id="1xS-jt-a6J"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="bPa-2E-Bac" secondAttribute="bottom" id="6VA-iN-qgh"/>
+                                            <constraint firstItem="2zL-p7-k4f" firstAttribute="centerY" secondItem="wgQ-uf-nqh" secondAttribute="centerY" id="BHr-4Z-E77"/>
+                                            <constraint firstItem="bPa-2E-Bac" firstAttribute="top" secondItem="wgQ-uf-nqh" secondAttribute="top" id="HRK-6q-Ck7"/>
+                                            <constraint firstItem="2zL-p7-k4f" firstAttribute="leading" secondItem="xCV-Ev-UgV" secondAttribute="trailing" constant="16" id="QOj-Mb-Clk"/>
+                                            <constraint firstAttribute="width" constant="200" id="Ucm-Mx-Vgs"/>
+                                            <constraint firstAttribute="trailing" secondItem="bPa-2E-Bac" secondAttribute="trailing" id="fcz-HF-Kag"/>
+                                            <constraint firstItem="bPa-2E-Bac" firstAttribute="leading" secondItem="wgQ-uf-nqh" secondAttribute="leading" id="ltn-kR-5Nr"/>
+                                            <constraint firstItem="xCV-Ev-UgV" firstAttribute="centerY" secondItem="wgQ-uf-nqh" secondAttribute="centerY" id="ph6-0a-dYU"/>
+                                            <constraint firstItem="xCV-Ev-UgV" firstAttribute="leading" secondItem="wgQ-uf-nqh" secondAttribute="leading" constant="38" id="yTC-pD-zHr"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MxZ-Rz-qkc">
+                                        <rect key="frame" x="107" y="152.33333333333334" width="200" height="135.00000000000003"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREDIT CARD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIe-Ge-MPi">
+                                                <rect key="frame" x="95" y="61.666666666666657" width="66" height="12"/>
+                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="10"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardIcon" translatesAutoresizingMaskIntoConstraints="NO" id="f4F-kP-Wwi">
+                                                <rect key="frame" x="45" y="56.666666666666657" width="36" height="22"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mf2-4W-veb">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="135"/>
+                                                <connections>
+                                                    <action selector="creditCardAction:" destination="1Fv-iS-Z5H" eventType="touchUpInside" id="fzp-sb-1DI"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Mf2-4W-veb" firstAttribute="leading" secondItem="MxZ-Rz-qkc" secondAttribute="leading" id="7bB-YF-uj6"/>
+                                            <constraint firstAttribute="bottom" secondItem="Mf2-4W-veb" secondAttribute="bottom" id="7pg-da-4Ub"/>
+                                            <constraint firstItem="f4F-kP-Wwi" firstAttribute="leading" secondItem="MxZ-Rz-qkc" secondAttribute="leading" constant="45" id="GMh-pG-MP9"/>
+                                            <constraint firstItem="f4F-kP-Wwi" firstAttribute="centerY" secondItem="MxZ-Rz-qkc" secondAttribute="centerY" id="Ngl-Jo-5fi"/>
+                                            <constraint firstItem="Mf2-4W-veb" firstAttribute="top" secondItem="MxZ-Rz-qkc" secondAttribute="top" id="TQ4-Bz-PEf"/>
+                                            <constraint firstAttribute="trailing" secondItem="Mf2-4W-veb" secondAttribute="trailing" id="eR1-q6-8r5"/>
+                                            <constraint firstAttribute="width" constant="200" id="f9q-Gd-UZ2"/>
+                                            <constraint firstItem="YIe-Ge-MPi" firstAttribute="centerY" secondItem="MxZ-Rz-qkc" secondAttribute="centerY" id="nJc-xa-xF9"/>
+                                            <constraint firstItem="YIe-Ge-MPi" firstAttribute="leading" secondItem="f4F-kP-Wwi" secondAttribute="trailing" constant="14" id="pfh-EJ-kBF"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WTn-le-1Og">
+                                        <rect key="frame" x="107" y="299.33333333333331" width="200" height="137.33333333333331"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECEIVE CRYPTOCURRENCY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBq-Kg-VXt">
+                                                <rect key="frame" x="64.000000000000014" y="62.666666666666686" width="139.33333333333337" height="12"/>
+                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="10"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="receiveIcon" translatesAutoresizingMaskIntoConstraints="NO" id="vQs-sX-4PP">
+                                                <rect key="frame" x="14" y="51.666666666666686" width="34" height="34"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o82-P2-7kv">
+                                                <rect key="frame" x="0.0" y="1" width="200" height="135.33333333333334"/>
+                                                <connections>
+                                                    <action selector="cryptoCurrencyAction:" destination="1Fv-iS-Z5H" eventType="touchUpInside" id="xJm-ga-m38"/>
+                                                    <segue destination="mFa-N3-wog" kind="show" id="IEM-Jr-Qks"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="vQs-sX-4PP" firstAttribute="centerY" secondItem="WTn-le-1Og" secondAttribute="centerY" id="1CB-SB-2CR"/>
+                                            <constraint firstItem="vQs-sX-4PP" firstAttribute="leading" secondItem="WTn-le-1Og" secondAttribute="leading" constant="14" id="Fu6-ko-hlE"/>
+                                            <constraint firstAttribute="bottom" secondItem="o82-P2-7kv" secondAttribute="bottom" constant="1" id="O5M-K6-Bz8"/>
+                                            <constraint firstItem="o82-P2-7kv" firstAttribute="top" secondItem="WTn-le-1Og" secondAttribute="top" constant="1" id="RF8-WC-nch"/>
+                                            <constraint firstItem="o82-P2-7kv" firstAttribute="leading" secondItem="WTn-le-1Og" secondAttribute="leading" id="VJF-9C-Pso"/>
+                                            <constraint firstAttribute="width" constant="200" id="kCz-0C-mBf"/>
+                                            <constraint firstItem="SBq-Kg-VXt" firstAttribute="leading" secondItem="vQs-sX-4PP" secondAttribute="trailing" constant="16" id="pea-bv-dhA"/>
+                                            <constraint firstItem="SBq-Kg-VXt" firstAttribute="centerY" secondItem="WTn-le-1Og" secondAttribute="centerY" id="vUH-38-jOu"/>
+                                            <constraint firstAttribute="trailing" secondItem="o82-P2-7kv" secondAttribute="trailing" id="xJP-JA-I0d"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="WTn-le-1Og" secondAttribute="bottom" constant="5" id="66R-LS-DdL"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jph-6m-PK0" secondAttribute="bottom" multiplier="3:2" id="9g7-ug-x12"/>
+                                    <constraint firstItem="WTn-le-1Og" firstAttribute="trailing" secondItem="wgQ-uf-nqh" secondAttribute="trailing" id="Aay-VF-4eN"/>
+                                    <constraint firstItem="wgQ-uf-nqh" firstAttribute="top" secondItem="WP9-nH-Bmx" secondAttribute="bottom" constant="5" id="CqA-Kf-5Oo"/>
+                                    <constraint firstItem="wgQ-uf-nqh" firstAttribute="centerX" secondItem="ZpU-FK-uPd" secondAttribute="centerX" id="Eyt-jQ-1ZV"/>
+                                    <constraint firstItem="MxZ-Rz-qkc" firstAttribute="top" secondItem="aRr-s6-r9H" secondAttribute="bottom" constant="5" id="HH6-YE-5Z4"/>
+                                    <constraint firstItem="aRr-s6-r9H" firstAttribute="trailing" secondItem="WP9-nH-Bmx" secondAttribute="trailing" id="IXT-XL-Glx"/>
+                                    <constraint firstItem="Jph-6m-PK0" firstAttribute="top" secondItem="MxZ-Rz-qkc" secondAttribute="bottom" constant="5" id="Wdl-2W-xCP"/>
+                                    <constraint firstItem="WP9-nH-Bmx" firstAttribute="top" secondItem="ZpU-FK-uPd" secondAttribute="top" id="aaa-7C-bpe"/>
+                                    <constraint firstItem="MxZ-Rz-qkc" firstAttribute="trailing" secondItem="wgQ-uf-nqh" secondAttribute="trailing" id="b4V-aY-uLM"/>
+                                    <constraint firstItem="WTn-le-1Og" firstAttribute="top" secondItem="Jph-6m-PK0" secondAttribute="bottom" constant="5" id="dAU-9N-cDm"/>
+                                    <constraint firstItem="Jph-6m-PK0" firstAttribute="leading" secondItem="WP9-nH-Bmx" secondAttribute="leading" id="dgY-ld-dKn"/>
+                                    <constraint firstItem="Jph-6m-PK0" firstAttribute="trailing" secondItem="WP9-nH-Bmx" secondAttribute="trailing" id="gop-2H-MJE"/>
+                                    <constraint firstItem="WTn-le-1Og" firstAttribute="leading" secondItem="wgQ-uf-nqh" secondAttribute="leading" id="hEV-1N-kQ4"/>
+                                    <constraint firstAttribute="bottom" secondItem="aRr-s6-r9H" secondAttribute="bottom" multiplier="3:1" id="icc-rC-Het"/>
+                                    <constraint firstItem="aRr-s6-r9H" firstAttribute="top" secondItem="wgQ-uf-nqh" secondAttribute="bottom" constant="5" id="mRp-T7-HxR"/>
+                                    <constraint firstItem="aRr-s6-r9H" firstAttribute="leading" secondItem="WP9-nH-Bmx" secondAttribute="leading" id="o8i-9e-Art"/>
+                                    <constraint firstItem="WP9-nH-Bmx" firstAttribute="leading" secondItem="ZpU-FK-uPd" secondAttribute="leading" constant="32" id="q0g-iC-k1a"/>
+                                    <constraint firstItem="MxZ-Rz-qkc" firstAttribute="leading" secondItem="wgQ-uf-nqh" secondAttribute="leading" id="uH6-BR-91h"/>
+                                    <constraint firstAttribute="trailing" secondItem="WP9-nH-Bmx" secondAttribute="trailing" constant="32" id="zuh-We-9cC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZpU-FK-uPd" firstAttribute="leading" secondItem="kOa-k9-xBy" secondAttribute="leading" id="CRz-8X-eLy"/>
+                            <constraint firstAttribute="bottom" secondItem="ZpU-FK-uPd" secondAttribute="bottom" id="KNV-bD-yrY"/>
+                            <constraint firstAttribute="trailing" secondItem="ZpU-FK-uPd" secondAttribute="trailing" id="LwT-tO-6gF"/>
+                            <constraint firstItem="ZpU-FK-uPd" firstAttribute="top" secondItem="kOa-k9-xBy" secondAttribute="top" id="ZXA-Zk-X1Z"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0S7-PC-LYd"/>
+                    <connections>
+                        <outlet property="bankAccountLabel" destination="2zL-p7-k4f" id="lKN-Xj-az9"/>
+                        <outlet property="creditCardLabel" destination="YIe-Ge-MPi" id="Ivp-Tf-03m"/>
+                        <outlet property="receiveCryptoLabel" destination="SBq-Kg-VXt" id="GrD-Wi-FPd"/>
+                        <segue destination="DWh-4p-WB8" kind="show" id="RIQ-NM-Wy5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Od-XK-dNs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1101.5999999999999" y="1148.2758620689656"/>
+        </scene>
+        <!--Add MoneyCC Step1 View Controller-->
+        <scene sceneID="c3m-oC-94s">
+            <objects>
+                <viewController storyboardIdentifier="addMoneyCCstep1VC" id="DWh-4p-WB8" customClass="AddMoneyCCStep1ViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zvf-pp-Wvy"/>
+                        <viewControllerLayoutGuide type="bottom" id="yfE-NE-Hub"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hFl-2z-3Ww" customClass="BackgroundView" customModule="ModernMoney" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="441.66666666666663"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="py1-qC-0XN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="369.66666666666669"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbt-sV-nMO" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                        <rect key="frame" x="28" y="0.0" width="358" height="2"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="x9u-yw-jgO"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER AMOUNT TO ADD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNI-FW-YSE">
+                                        <rect key="frame" x="138.33333333333331" y="22" width="137.33333333333331" height="13.666666666666664"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11.699999809265137"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" translatesAutoresizingMaskIntoConstraints="NO" id="Y2E-MQ-HAc">
+                                        <rect key="frame" x="150" y="42.666666666666671" width="114" height="35.666666666666671"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="2nE-OK-083">
+                                                <rect key="frame" x="0.0" y="0.0" width="17" height="35.333333333333336"/>
+                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="30.100000381469727"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="00.00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D3s-fL-iM6">
+                                                <rect key="frame" x="17" y="-0.3333333333333286" width="79.333333333333329" height="36"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="30.100000381469727"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="DWh-4p-WB8" id="I7A-1g-SDW"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iu1-sm-SAs">
+                                                <rect key="frame" x="96.333333333333343" y="20.666666666666671" width="17.666666666666671" height="10"/>
+                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="8.3999996185302734"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbH-tD-dHP" userLabel="Container">
+                                        <rect key="frame" x="28" y="105.33333333333331" width="358" height="219"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8zI-u5-9Os">
+                                                <rect key="frame" x="22" y="12" width="314" height="195"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="IBa-27-DfJ" userLabel="First Last Name">
+                                                        <rect key="frame" x="0.0" y="0.0" width="314" height="42.666666666666664"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="FIRST NAME" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="jip-Il-jSZ" userLabel="First Name" customClass="LimitedHoshiTextField" customModule="ModernMoney" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="78.666666666666671" height="42.666666666666664"/>
+                                                                <color key="backgroundColor" red="0.94798050283845803" green="1" blue="0.94993412857724202" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" red="0.94798050283845803" green="1" blue="0.94993412857724202" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="16.700000762939453"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                                        <color key="value" red="1" green="0.78337785802131332" blue="0.71083978140227178" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                                        <real key="value" value="0.59999999999999998"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                                        <integer key="value" value="40"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="DWh-4p-WB8" id="Sq9-7a-PWQ"/>
+                                                                </connections>
+                                                            </textField>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="LAST NAME" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="erd-Ox-0e6" userLabel="LAST NAME" customClass="LimitedHoshiTextField" customModule="ModernMoney" customModuleProvider="target">
+                                                                <rect key="frame" x="82.666666666666643" y="0.0" width="231.33333333333337" height="42.666666666666664"/>
+                                                                <color key="backgroundColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="16.700000762939453"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                                        <color key="value" red="1" green="0.78337785800000004" blue="0.71083978140000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                                        <real key="value" value="0.59999999999999998"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="DWh-4p-WB8" id="lOc-Lh-BTH"/>
+                                                                </connections>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="jip-Il-jSZ" firstAttribute="width" secondItem="IBa-27-DfJ" secondAttribute="width" multiplier="0.25" id="Hpj-7I-N0c"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="TJP-aM-txk" userLabel="Address">
+                                                        <rect key="frame" x="0.0" y="50.666666666666671" width="314" height="43"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ADDRESS" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Ja9-WX-bHS" userLabel="ADDRESS" customClass="LimitedHoshiTextField" customModule="ModernMoney" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="314" height="43"/>
+                                                                <color key="backgroundColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="16.700000762939453"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                                        <color key="value" red="1" green="0.78337785800000004" blue="0.71083978140000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                                        <real key="value" value="0.59999999999999998"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                                        <integer key="value" value="110"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="DWh-4p-WB8" id="Ncj-qo-O9H"/>
+                                                                </connections>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="lmR-Vx-gRv" userLabel="City Zip Country">
+                                                        <rect key="frame" x="0.0" y="101.66666666666667" width="314" height="42.666666666666671"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CITY" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="x3i-Jj-aRz" userLabel="City" customClass="LimitedHoshiTextField" customModule="ModernMoney" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="149" height="42.666666666666664"/>
+                                                                <color key="backgroundColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="16.700000762939453"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                                        <color key="value" red="1" green="0.78337785800000004" blue="0.71083978140000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                                        <real key="value" value="0.59999999999999998"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                                        <integer key="value" value="50"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="DWh-4p-WB8" id="Tbr-Rp-gOl"/>
+                                                                </connections>
+                                                            </textField>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ZIP" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="G3h-X6-3Cb" userLabel="Zip" customClass="LimitedHoshiTextField" customModule="ModernMoney" customModuleProvider="target">
+                                                                <rect key="frame" x="153" y="0.0" width="78.666666666666686" height="42.666666666666664"/>
+                                                                <color key="backgroundColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="16.700000762939453"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                                        <color key="value" red="1" green="0.78337785800000004" blue="0.71083978140000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                                        <real key="value" value="0.59999999999999998"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                                        <integer key="value" value="50"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="DWh-4p-WB8" id="YhG-2E-0Lb"/>
+                                                                </connections>
+                                                            </textField>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="COUNTRY" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="3bv-Xf-ikR" userLabel="Country" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                                                <rect key="frame" x="235.66666666666671" y="0.0" width="78.333333333333343" height="42.666666666666664"/>
+                                                                <color key="backgroundColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <gestureRecognizers/>
+                                                                <color key="textColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="16.700000762939453"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                                        <color key="value" red="1" green="0.78337785800000004" blue="0.71083978140000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                                        <real key="value" value="0.59999999999999998"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="DWh-4p-WB8" id="bYT-Nd-U3f"/>
+                                                                    <outletCollection property="gestureRecognizers" destination="g9n-Lo-fb3" appends="YES" id="H33-GD-ET5"/>
+                                                                </connections>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="3bv-Xf-ikR" firstAttribute="width" secondItem="lmR-Vx-gRv" secondAttribute="width" multiplier="0.25" id="Dyb-lM-cqO"/>
+                                                            <constraint firstItem="G3h-X6-3Cb" firstAttribute="width" secondItem="lmR-Vx-gRv" secondAttribute="width" multiplier="0.25" id="UEq-wh-CIR"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="avY-fI-zpN" userLabel="Phone">
+                                                        <rect key="frame" x="0.0" y="152.33333333333337" width="314" height="42.666666666666657"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="8ub-nM-XMB" userLabel="Code" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                                                <rect key="frame" x="0.0" y="0.0" width="78.666666666666671" height="42.666666666666664"/>
+                                                                <color key="backgroundColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="16.700000762939453"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                                        <color key="value" red="1" green="0.78337785800000004" blue="0.71083978140000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                                        <real key="value" value="0.59999999999999998"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="DWh-4p-WB8" id="Vco-rv-wj1"/>
+                                                                </connections>
+                                                            </textField>
+                                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="aUu-ao-n07" userLabel="Phone" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                                                <rect key="frame" x="82.666666666666643" y="0.0" width="231.33333333333337" height="42.666666666666664"/>
+                                                                <color key="backgroundColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" red="0.94798050280000001" green="1" blue="0.94993412860000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="16.700000762939453"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                                        <color key="value" red="1" green="0.78337785800000004" blue="0.71083978140000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                                                        <real key="value" value="0.59999999999999998"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="DWh-4p-WB8" id="TRX-Q2-qxN"/>
+                                                                </connections>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="8ub-nM-XMB" firstAttribute="width" secondItem="avY-fI-zpN" secondAttribute="width" multiplier="0.25" id="YNr-VT-JF3"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="8zI-u5-9Os" secondAttribute="trailing" constant="22" id="CVg-Js-sER"/>
+                                            <constraint firstAttribute="height" constant="219" id="JiV-WL-hmK"/>
+                                            <constraint firstItem="8zI-u5-9Os" firstAttribute="leading" secondItem="cbH-tD-dHP" secondAttribute="leading" constant="22" id="KBW-HQ-lm8"/>
+                                            <constraint firstItem="8zI-u5-9Os" firstAttribute="top" secondItem="cbH-tD-dHP" secondAttribute="top" constant="12" id="UL3-jH-dlJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="8zI-u5-9Os" secondAttribute="bottom" constant="12" id="p48-2n-rDG"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="bbt-sV-nMO" firstAttribute="centerX" secondItem="py1-qC-0XN" secondAttribute="centerX" id="9Dk-sk-RvA"/>
+                                    <constraint firstItem="cbH-tD-dHP" firstAttribute="top" secondItem="Y2E-MQ-HAc" secondAttribute="bottom" constant="27" id="EMJ-Em-Pdy"/>
+                                    <constraint firstItem="bbt-sV-nMO" firstAttribute="leading" secondItem="py1-qC-0XN" secondAttribute="leading" constant="28" id="Prz-UW-TMd"/>
+                                    <constraint firstItem="GNI-FW-YSE" firstAttribute="top" secondItem="bbt-sV-nMO" secondAttribute="bottom" constant="20" id="TEX-An-HTN"/>
+                                    <constraint firstAttribute="bottom" secondItem="cbH-tD-dHP" secondAttribute="bottom" constant="8" id="UdI-RH-8Pf"/>
+                                    <constraint firstItem="Y2E-MQ-HAc" firstAttribute="top" secondItem="GNI-FW-YSE" secondAttribute="bottom" constant="7" id="VzO-jD-SHt"/>
+                                    <constraint firstItem="cbH-tD-dHP" firstAttribute="trailing" secondItem="bbt-sV-nMO" secondAttribute="trailing" id="bas-9Y-hbG"/>
+                                    <constraint firstAttribute="trailing" secondItem="bbt-sV-nMO" secondAttribute="trailing" constant="28" id="eXI-6F-iFk"/>
+                                    <constraint firstItem="cbH-tD-dHP" firstAttribute="leading" secondItem="bbt-sV-nMO" secondAttribute="leading" id="hTB-Ee-xmU"/>
+                                    <constraint firstItem="Y2E-MQ-HAc" firstAttribute="centerX" secondItem="py1-qC-0XN" secondAttribute="centerX" id="hpj-3L-YqN"/>
+                                    <constraint firstItem="GNI-FW-YSE" firstAttribute="centerX" secondItem="py1-qC-0XN" secondAttribute="centerX" id="kwM-jd-1W7"/>
+                                    <constraint firstItem="bbt-sV-nMO" firstAttribute="top" secondItem="py1-qC-0XN" secondAttribute="top" id="xu7-1A-g1m"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4a-mS-dnz" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                <rect key="frame" x="28" y="369.66666666666669" width="358" height="2"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="QXO-eC-ggG"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kK-zt-GNC">
+                                <rect key="frame" x="28" y="371.66666666666669" width="358" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="AO5-kT-u4Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Geomanist-Book" family="Geomanist" pointSize="21"/>
+                                <state key="normal" title="SUBMIT">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="py1-qC-0XN" firstAttribute="leading" secondItem="hFl-2z-3Ww" secondAttribute="leading" id="FEl-fx-kHT"/>
+                            <constraint firstItem="6kK-zt-GNC" firstAttribute="leading" secondItem="T4a-mS-dnz" secondAttribute="leading" id="FM0-dj-EbV"/>
+                            <constraint firstAttribute="trailing" secondItem="py1-qC-0XN" secondAttribute="trailing" id="Flr-Rf-Zdv"/>
+                            <constraint firstItem="T4a-mS-dnz" firstAttribute="leading" secondItem="hFl-2z-3Ww" secondAttribute="leading" constant="28" id="Twu-8A-VvU"/>
+                            <constraint firstItem="6kK-zt-GNC" firstAttribute="top" secondItem="T4a-mS-dnz" secondAttribute="bottom" id="WEy-du-mlG"/>
+                            <constraint firstItem="py1-qC-0XN" firstAttribute="top" secondItem="hFl-2z-3Ww" secondAttribute="top" id="ehs-L8-XqS"/>
+                            <constraint firstItem="yfE-NE-Hub" firstAttribute="top" secondItem="6kK-zt-GNC" secondAttribute="bottom" id="lgL-jx-xfk"/>
+                            <constraint firstItem="6kK-zt-GNC" firstAttribute="trailing" secondItem="T4a-mS-dnz" secondAttribute="trailing" id="mSc-Qa-VNP"/>
+                            <constraint firstItem="T4a-mS-dnz" firstAttribute="top" secondItem="py1-qC-0XN" secondAttribute="bottom" id="sPf-Ym-OTp"/>
+                            <constraint firstAttribute="trailing" secondItem="T4a-mS-dnz" secondAttribute="trailing" constant="28" id="vAi-GR-Kct"/>
+                            <constraint firstItem="py1-qC-0XN" firstAttribute="centerX" secondItem="hFl-2z-3Ww" secondAttribute="centerX" id="vl1-LB-PfT"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="MLQ-ty-Kyt" appends="YES" id="IWJ-PT-Y1R"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="addressField" destination="Ja9-WX-bHS" id="PyY-ze-em8"/>
+                        <outlet property="amauntField" destination="D3s-fL-iM6" id="noY-na-sKZ"/>
+                        <outlet property="amountTextField" destination="D3s-fL-iM6" id="2tw-eP-05N"/>
+                        <outlet property="assetCode" destination="Iu1-sm-SAs" id="CRS-vZ-4bo"/>
+                        <outlet property="assetSymbol" destination="2nE-OK-083" id="obj-H2-4gg"/>
+                        <outlet property="ccContainerView" destination="cbH-tD-dHP" id="b4n-Aw-7AP"/>
+                        <outlet property="cityField" destination="x3i-Jj-aRz" id="bQ3-13-96e"/>
+                        <outlet property="codeField" destination="8ub-nM-XMB" id="F4a-3Y-uEs"/>
+                        <outlet property="countryField" destination="3bv-Xf-ikR" id="aZg-4t-8os"/>
+                        <outlet property="firstNameField" destination="jip-Il-jSZ" id="QHE-3V-AgH"/>
+                        <outlet property="lastNameField" destination="erd-Ox-0e6" id="eS2-i9-bLZ"/>
+                        <outlet property="phoneField" destination="aUu-ao-n07" id="qKG-YQ-bYj"/>
+                        <outlet property="scrollView" destination="py1-qC-0XN" id="Vzl-96-si0"/>
+                        <outlet property="submitButton" destination="6kK-zt-GNC" id="Nqt-zw-GuE"/>
+                        <outlet property="zipField" destination="G3h-X6-3Cb" id="PTz-Lj-WcC"/>
+                        <segue destination="yEf-Tj-CxQ" kind="show" id="G7C-bf-Hfy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tg3-03-MPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="MLQ-ty-Kyt" userLabel="CC1 Navigate Back">
+                    <connections>
+                        <action selector="swipeToNavigateBack:" destination="DWh-4p-WB8" id="Odq-lY-T5G"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer id="g9n-Lo-fb3">
+                    <connections>
+                        <segue destination="eRU-B2-LhH" kind="presentation" identifier="SelectCountry" id="OgI-dw-XJL"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2004" y="1697"/>
+        </scene>
+        <!--Add MoneyCC Step2 View Controller-->
+        <scene sceneID="YG2-Al-tAi">
+            <objects>
+                <viewController storyboardIdentifier="addMoneyCC2VC" id="XiU-Gv-POa" customClass="AddMoneyCCStep2ViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vzR-Ke-pPQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="1TB-mg-HP0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1vi-Hu-uzc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="441.66666666666663"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Q7g-Sf-MzS" appends="YES" id="RE4-Fc-X0h"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="Na4-l1-kjM">
+                        <barButtonItem key="rightBarButtonItem" image="CloseCross" id="lbo-2r-pAG">
+                            <connections>
+                                <action selector="dismissViewController:" destination="XiU-Gv-POa" id="XmF-la-p2m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ndg-IW-eTi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="Q7g-Sf-MzS" userLabel="CC2 Navigate Back">
+                    <connections>
+                        <action selector="swipeToNavigateBack:" destination="XiU-Gv-POa" id="HaR-Ne-tUf"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3606" y="1697"/>
+        </scene>
+        <!--Add Money Cryptocurrency Step1 View Controller-->
+        <scene sceneID="D3w-Hi-t0l">
+            <objects>
+                <viewController id="mFa-N3-wog" customClass="AddMoneyCryptocurrencyStep1ViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pcx-R9-EqM"/>
+                        <viewControllerLayoutGuide type="bottom" id="rox-aT-z79"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jco-oU-ELi" customClass="BackgroundView" customModule="ModernMoney" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="441.66666666666663"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3A-Rq-n61" userLabel="Divider" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                <rect key="frame" x="20" y="0.0" width="374" height="2"/>
+                                <color key="backgroundColor" red="0.29411764709999999" green="0.54117647059999996" blue="0.69803921570000005" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="I2S-8B-Y0m"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tBn-3Q-UPo">
+                                <rect key="frame" x="0.0" y="2" width="414" height="439.66666666666669"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tBn-3Q-UPo" secondAttribute="trailing" id="0oq-bR-cxT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="m3A-Rq-n61" secondAttribute="trailing" id="5UT-1B-7r3"/>
+                            <constraint firstItem="m3A-Rq-n61" firstAttribute="leading" secondItem="jco-oU-ELi" secondAttribute="leadingMargin" id="GkW-D9-1eI"/>
+                            <constraint firstItem="tBn-3Q-UPo" firstAttribute="top" secondItem="m3A-Rq-n61" secondAttribute="bottom" id="MwD-Ak-KrK"/>
+                            <constraint firstAttribute="bottom" secondItem="tBn-3Q-UPo" secondAttribute="bottom" id="PUh-45-XU1"/>
+                            <constraint firstItem="tBn-3Q-UPo" firstAttribute="leading" secondItem="jco-oU-ELi" secondAttribute="leading" id="qGC-3l-3S5"/>
+                            <constraint firstItem="m3A-Rq-n61" firstAttribute="top" secondItem="pcx-R9-EqM" secondAttribute="bottom" id="qWw-cR-Ydz"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="LDc-nC-Qmd" appends="YES" id="jez-46-3q8"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="currenciesTableView" destination="tBn-3Q-UPo" id="JIl-q5-j7T"/>
+                        <segue destination="S2r-im-EpT" kind="show" identifier="cc2Segue" id="dex-EQ-hoU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dLm-DS-ep7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="LDc-nC-Qmd" userLabel="CryptoC1 Navigate Back">
+                    <connections>
+                        <action selector="swipeToNavigateBack:" destination="mFa-N3-wog" id="Sgc-Og-NL4"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2004" y="2381"/>
+        </scene>
+        <!--Add Money Cryptocurrency Step2 View Controller-->
+        <scene sceneID="PD6-Xc-LxZ">
+            <objects>
+                <viewController storyboardIdentifier="addMoneyCC2" id="S2r-im-EpT" customClass="AddMoneyCryptocurrencyStep2ViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pKc-K4-18M"/>
+                        <viewControllerLayoutGuide type="bottom" id="YD8-Qy-GNY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dkB-MO-deB" customClass="BackgroundView" customModule="ModernMoney" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="441.66666666666663"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ft-Ja-nlS" userLabel="Divider" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                <rect key="frame" x="20" y="0.0" width="374" height="2"/>
+                                <color key="backgroundColor" red="0.29411764709999999" green="0.54117647059999996" blue="0.69803921570000005" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="g1I-KO-Isb"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="sGx-4E-9JI">
+                                <rect key="frame" x="100.33333333333333" y="20" width="213.33333333333337" height="346.66666666666669"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR WALLET ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zah-6f-EzP">
+                                        <rect key="frame" x="35.333333333333329" y="0.0" width="142.66666666666669" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="xVj-3g-u3m"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="12"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pTs-Ke-3sJ">
+                                        <rect key="frame" x="24" y="36" width="165.33333333333334" height="165.66666666666666"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="pTs-Ke-3sJ" secondAttribute="height" multiplier="1:1" id="AmR-3W-Th7"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="G7W-yY-gmt">
+                                        <rect key="frame" x="0.0" y="217.66666666666663" width="213.33333333333334" height="129"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Copy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVQ-bi-xfd">
+                                                <rect key="frame" x="88.666666666666671" y="0.0" width="36" height="95.333333333333329"/>
+                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpt-8F-lwH">
+                                                <rect key="frame" x="0.0" y="103.33333333333334" width="213.33333333333334" height="25.666666666666657"/>
+                                                <string key="text">Trading wallet balance will be updated after
+transaction is confirmed in the blockchain</string>
+                                                <fontDescription key="fontDescription" name="Geomanist-Regular" family="Geomanist" pointSize="11"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Cja-1S-Rpd" appends="YES" id="cBF-ZP-kM4"/>
+                                </connections>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZD-8U-zKw" userLabel="Divider" customClass="SeparatorView" customModule="ModernMoney" customModuleProvider="target">
+                                <rect key="frame" x="20" y="386.66666666666669" width="374" height="2"/>
+                                <color key="backgroundColor" red="0.29411764709999999" green="0.54117647059999996" blue="0.69803921570000005" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="UI7-v8-cMG"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsS-Fy-wTZ">
+                                <rect key="frame" x="20" y="392.66666666666669" width="374" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="sDA-3G-Pic"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Geomanist" family="Geomanist" pointSize="15"/>
+                                <state key="normal" title="EMAIL ME">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="YZD-8U-zKw" firstAttribute="top" relation="lessThanOrEqual" secondItem="sGx-4E-9JI" secondAttribute="bottom" constant="20" id="403-3H-hYZ"/>
+                            <constraint firstItem="sGx-4E-9JI" firstAttribute="top" secondItem="dkB-MO-deB" secondAttribute="topMargin" constant="20" id="BIM-pS-Jv9"/>
+                            <constraint firstItem="7ft-Ja-nlS" firstAttribute="leading" secondItem="dkB-MO-deB" secondAttribute="leadingMargin" id="Ch9-x4-5Fk"/>
+                            <constraint firstItem="7ft-Ja-nlS" firstAttribute="top" secondItem="pKc-K4-18M" secondAttribute="bottom" id="Cic-ih-EXM"/>
+                            <constraint firstItem="pTs-Ke-3sJ" firstAttribute="width" secondItem="dkB-MO-deB" secondAttribute="width" multiplier="0.4" id="PXk-7u-kbK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YZD-8U-zKw" secondAttribute="trailing" id="RR8-4o-aSK"/>
+                            <constraint firstItem="YZD-8U-zKw" firstAttribute="leading" secondItem="dkB-MO-deB" secondAttribute="leadingMargin" id="Ucw-3t-IyQ"/>
+                            <constraint firstItem="dsS-Fy-wTZ" firstAttribute="top" secondItem="YZD-8U-zKw" secondAttribute="bottom" constant="4" id="cJv-7d-ogb"/>
+                            <constraint firstItem="kpt-8F-lwH" firstAttribute="width" relation="lessThanOrEqual" secondItem="dkB-MO-deB" secondAttribute="width" multiplier="0.7" id="f2P-aC-8eq"/>
+                            <constraint firstItem="dsS-Fy-wTZ" firstAttribute="trailing" secondItem="YZD-8U-zKw" secondAttribute="trailing" id="hIz-UU-0in"/>
+                            <constraint firstAttribute="bottom" secondItem="dsS-Fy-wTZ" secondAttribute="bottom" constant="4" id="rxH-xP-JdX"/>
+                            <constraint firstItem="7ft-Ja-nlS" firstAttribute="trailing" secondItem="dkB-MO-deB" secondAttribute="trailingMargin" id="xeK-5N-FQS"/>
+                            <constraint firstItem="dsS-Fy-wTZ" firstAttribute="leading" secondItem="YZD-8U-zKw" secondAttribute="leading" id="z0u-Dh-vvA"/>
+                            <constraint firstItem="sGx-4E-9JI" firstAttribute="centerX" secondItem="dkB-MO-deB" secondAttribute="centerX" id="zRp-eB-rK2"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jAA-Qe-Ian" appends="YES" id="VEx-bL-Loj"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="copyButton" destination="Cja-1S-Rpd" id="wIS-a8-shf"/>
+                        <outlet property="copyLabel" destination="gVQ-bi-xfd" id="Hsk-lJ-Gxd"/>
+                        <outlet property="emailMeButton" destination="dsS-Fy-wTZ" id="j47-7S-TDh"/>
+                        <outlet property="qrCodeImageView" destination="pTs-Ke-3sJ" id="JaF-H3-F5d"/>
+                        <outlet property="walletDescription" destination="kpt-8F-lwH" id="Hei-NI-QhF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pTZ-GZ-Eri" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Cja-1S-Rpd" userLabel="Copy Wallet Address"/>
+                <swipeGestureRecognizer direction="right" id="jAA-Qe-Ian" userLabel="CryptoC2 Navigate Back">
+                    <connections>
+                        <action selector="swipeToNavigateBack:" destination="S2r-im-EpT" id="tcc-L1-pqS"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2766" y="2380"/>
+        </scene>
+        <!--Select country-->
+        <scene sceneID="LMC-vH-4GX">
+            <objects>
+                <viewController id="ygi-RG-lYu" customClass="SelectCountryViewController" customModule="ModernMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JzR-7i-cDG"/>
+                        <viewControllerLayoutGuide type="bottom" id="M9t-Ym-aMp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Trc-ef-pV1" customClass="BackgroundView" customModule="ModernMoney" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="441.66666666666663"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w3b-yV-ind">
+                                <rect key="frame" x="0.0" y="44" width="414" height="397.66666666666669"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CountryCell" id="c9O-0D-ofJ" customClass="SelectCountryTableViewCell" customModule="ModernMoney" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c9O-0D-ofJ" id="Jms-z9-KOc">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyc-Is-IrE">
+                                                    <rect key="frame" x="20" y="13.333333333333336" width="374" height="17"/>
+                                                    <fontDescription key="fontDescription" name="Geomanist" family="Geomanist" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="Jyc-Is-IrE" firstAttribute="trailing" secondItem="Jms-z9-KOc" secondAttribute="trailingMargin" id="Oat-nR-a1m"/>
+                                                <constraint firstItem="Jyc-Is-IrE" firstAttribute="centerY" secondItem="Jms-z9-KOc" secondAttribute="centerY" id="gRg-ms-upZ"/>
+                                                <constraint firstItem="Jyc-Is-IrE" firstAttribute="leading" secondItem="Jms-z9-KOc" secondAttribute="leadingMargin" id="giZ-xR-grC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="Jyc-Is-IrE" id="Rr8-jF-QuC"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ygi-RG-lYu" id="ZTK-Gi-T6c"/>
+                                    <outlet property="delegate" destination="ygi-RG-lYu" id="zOT-nr-lQR"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="w3b-yV-ind" firstAttribute="top" secondItem="JzR-7i-cDG" secondAttribute="bottom" id="98y-9N-oHS"/>
+                            <constraint firstItem="w3b-yV-ind" firstAttribute="leading" secondItem="Trc-ef-pV1" secondAttribute="leading" id="9r2-Xw-zZW"/>
+                            <constraint firstAttribute="trailing" secondItem="w3b-yV-ind" secondAttribute="trailing" id="JOe-wa-Mjb"/>
+                            <constraint firstItem="M9t-Ym-aMp" firstAttribute="top" secondItem="w3b-yV-ind" secondAttribute="bottom" id="Ldx-Ln-k2C"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select country" id="8vT-IV-GYC">
+                        <barButtonItem key="leftBarButtonItem" image="CloseCross" id="AlY-xx-9Kg">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="closeTapped" destination="ygi-RG-lYu" id="gDI-pM-TxY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="w3b-yV-ind" id="QBb-Tz-3fJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JVC-lI-gva" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4475" y="2352"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pKr-VO-cDV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="QnG-09-xWr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7SC-Ht-cc8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1Fv-iS-Z5H" kind="relationship" relationship="rootViewController" id="RTA-SA-lla"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xDa-3g-QxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="298" y="1148"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="d0e-zD-aY7">
+            <objects>
+                <navigationController storyboardIdentifier="addMoneyCC2NVC" automaticallyAdjustsScrollViewInsets="NO" id="yEf-Tj-CxQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FLi-iw-6c3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XiU-Gv-POa" kind="relationship" relationship="rootViewController" id="li8-0W-nUM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zfH-4h-FYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2766" y="1697"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EiD-3X-cVd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eRU-B2-LhH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="gJi-tn-3Rw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ygi-RG-lYu" kind="relationship" relationship="rootViewController" id="8wF-s5-nJG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zrb-PY-Tai" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3679.7101449275365" y="2351.9021739130435"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CloseCross" width="17.666666030883789" height="17.666666030883789"/>
+        <image name="PORTFOLIO" width="44.666667938232422" height="44.666667938232422"/>
+        <image name="backArrow" width="10.333333015441895" height="20"/>
+        <image name="bankIcon" width="34.666667938232422" height="34.333332061767578"/>
+        <image name="cardIcon" width="36.666667938232422" height="22.666666030883789"/>
+        <image name="checkIcon" width="38.333332061767578" height="38.333332061767578"/>
+        <image name="infoIcon" width="12.333333015441895" height="14"/>
+        <image name="ovalActive" width="16" height="16"/>
+        <image name="ovalInActive" width="15" height="15"/>
+        <image name="receiveIcon" width="34.666667938232422" height="34.333332061767578"/>
+    </resources>
+</document>
